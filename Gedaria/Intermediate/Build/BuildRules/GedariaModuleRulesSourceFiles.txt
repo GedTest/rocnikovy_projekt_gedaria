@@ -1,0 +1,3 @@
+D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria\Gedaria.Build.cs
+D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria.Target.cs
+D:\Program_files\Unreal Projects\Gedaria\Source\GedariaEditor.Target.cs
