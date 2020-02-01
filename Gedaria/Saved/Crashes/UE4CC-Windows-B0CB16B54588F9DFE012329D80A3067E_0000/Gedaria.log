@@ -1,0 +1,908 @@
+﻿Log file open, 02/01/20 09:37:24
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogInit: Display: Running engine for game: Gedaria
+LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+LogPlatformFile: Not using cached read wrapper
+LogTaskGraph: Started task graph with 5 named threads and 23 total threads with 3 sets of task threads.
+LogStats: Stats thread started at 6.881156
+LogD3D11RHI: Loaded GFSDK_Aftermath_Lib.x64.dll
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +1:00, Platform Override: ''
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin AISupport
+LogPluginManager: Mounting plugin LightPropagationVolume
+LogPluginManager: Mounting plugin ActorLayerUtilities
+LogPluginManager: Mounting plugin CLionSourceCodeAccess
+LogPluginManager: Mounting plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting plugin GitSourceControl
+LogPluginManager: Mounting plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting plugin NullSourceCodeAccess
+LogPluginManager: Mounting plugin PerforceSourceControl
+LogPluginManager: Mounting plugin SubversionSourceControl
+LogPluginManager: Mounting plugin UObjectPlugin
+LogPluginManager: Mounting plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting plugin AssetManagerEditor
+LogPluginManager: Mounting plugin CryptoKeys
+LogPluginManager: Mounting plugin DataValidation
+LogPluginManager: Mounting plugin FacialAnimation
+LogPluginManager: Mounting plugin GameplayTagsEditor
+LogPluginManager: Mounting plugin MacGraphicsSwitching
+LogPluginManager: Mounting plugin MeshEditor
+LogPluginManager: Mounting plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting plugin PluginBrowser
+LogPluginManager: Mounting plugin SpeedTreeImporter
+LogPluginManager: Mounting plugin DatasmithContent
+LogPluginManager: Mounting plugin VariantManagerContent
+LogPluginManager: Mounting plugin AlembicImporter
+LogPluginManager: Mounting plugin AppleImageUtils
+LogPluginManager: Mounting plugin AppleVision
+LogPluginManager: Mounting plugin BackChannel
+LogPluginManager: Mounting plugin CharacterAI
+LogPluginManager: Mounting plugin GeometryCache
+LogPluginManager: Mounting plugin HTML5Networking
+LogPluginManager: Mounting plugin ProxyLODPlugin
+LogPluginManager: Mounting plugin MagicLeap
+LogPluginManager: Mounting plugin MagicLeapMedia
+LogPluginManager: Mounting plugin AndroidMedia
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin LinearTimecode
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin MediaPlayerEditor
+LogPluginManager: Mounting plugin WebMMedia
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin TcpMessaging
+LogPluginManager: Mounting plugin UdpMessaging
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin LevelSequenceEditor
+LogPluginManager: Mounting plugin MatineeToLevelSequence
+LogPluginManager: Mounting plugin NetcodeUnitTest
+LogPluginManager: Mounting plugin NUTUnrealEngine4
+LogPluginManager: Mounting plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting plugin OnlineSubsystemIOS
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin LauncherChunkInstaller
+LogPluginManager: Mounting plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting plugin AndroidMoviePlayer
+LogPluginManager: Mounting plugin AndroidPermission
+LogPluginManager: Mounting plugin AppleMoviePlayer
+LogPluginManager: Mounting plugin ArchVisCharacter
+LogPluginManager: Mounting plugin AudioCapture
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin CustomMeshComponent
+LogPluginManager: Mounting plugin EditableMesh
+LogPluginManager: Mounting plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting plugin Firebase
+LogPluginManager: Mounting plugin GoogleCloudMessaging
+LogPluginManager: Mounting plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting plugin LocationServicesBPLibrary
+LogPluginManager: Mounting plugin MobilePatchingUtils
+LogPluginManager: Mounting plugin OculusVR
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+LogPluginManager: Mounting plugin SteamVR
+LogPluginManager: Mounting plugin WebMMoviePlayer
+LogPluginManager: Mounting plugin WindowsMoviePlayer
+LogStreaming: Display: Took  0.383s to configure plugins.
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.0.2h
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogInit: Build: ++UE4+Release-4.21-CL-4753647
+LogInit: Engine Version: 4.21.2-4753647+++UE4+Release-4.21
+LogInit: Compatible Engine Version: 4.21.0-4541578+++UE4+Release-4.21
+LogInit: Net CL: 4541578
+LogInit: OS: Windows 10 (), CPU: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz, GPU: Intel(R) UHD Graphics 630
+LogInit: Compiled (64-bit): Jan 19 2019 02:07:31
+LogInit: Compiled with Visual C++: 19.13.26129.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.21
+LogInit: Command Line: 
+LogInit: Base Directory: D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/Win64/
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 22
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 2
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 26
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 34
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 2
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 0
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 27
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 9
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 2
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 2
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 17
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 4
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogStreaming: Display: Took  0.000s to delete old logs.
+LogInit: Presizing for max 8388607 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+[2020.02.01-08.37.26:879][  0]LogConfig: Setting CVar [[r.VSync:0]]
+[2020.02.01-08.37.26:879][  0]LogConfig: Setting CVar [[r.RHICmdBypass:0]]
+[2020.02.01-08.37.26:879][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[r.GPUCrashDebugging:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2020.02.01-08.37.26:880][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.SizeOfPermanentObjectPool:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.FlushStreamingOnGC:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.NumRetriesBeforeForcingGC:10]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.AllowParallelGC:1]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.MaxObjectsInEditor:8388607]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.CreateGCClusters:1]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.MergeGCClusters:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.MinGCClusterSize:5]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.ActorClusteringEnabled:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.BlueprintClusteringEnabled:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Setting CVar [[gc.UseDisregardForGCOnDedicatedServers:0]]
+[2020.02.01-08.37.26:880][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2020.02.01-08.37.26:880][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2020.02.01-08.37.26:944][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.26:944][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2020.02.01-08.37.26:944][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2020.02.01-08.37.26:944][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.26:944][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+[2020.02.01-08.37.26:944][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.26:944][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2020.02.01-08.37.26:944][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2020.02.01-08.37.26:944][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2020.02.01-08.37.26:944][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.BloomQuality:5]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.SSR.Quality:3]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2020.02.01-08.37.26:945][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2020.02.01-08.37.26:952][  0]LogInit: Selected Device Profile: [Windows]
+[2020.02.01-08.37.26:952][  0]LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+[2020.02.01-08.37.27:020][  0]LogHAL: Display: Platform has ~ 8 GB [8431169536 / 8589934592 / 8], which maps to Default [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2020.02.01-08.37.27:025][  0]LogConfig: Setting CVar [[r.Vulkan.UseRealUBs:1]]
+[2020.02.01-08.37.27:025][  0]LogInit: Going up to parent DeviceProfile []
+[2020.02.01-08.37.27:025][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.27:025][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2020.02.01-08.37.27:025][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2020.02.01-08.37.27:025][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.27:025][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+[2020.02.01-08.37.27:025][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.BloomQuality:5]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.SSR.Quality:3]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2020.02.01-08.37.27:026][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2020.02.01-08.37.27:027][  0]LogConfig: Setting CVar [[net.UseAdaptiveNetUpdateFrequency:0]]
+[2020.02.01-08.37.27:027][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2020.02.01-08.37.27:053][  0]LogInit: Computer: LAPTOP-CL2VGTEM
+[2020.02.01-08.37.27:053][  0]LogInit: User: Viktor
+[2020.02.01-08.37.27:053][  0]LogInit: CPU Page size=4096, Cores=4
+[2020.02.01-08.37.27:053][  0]LogInit: High frequency timer resolution =2.249998 MHz
+[2020.02.01-08.37.27:054][  0]LogMemory: Memory total: Physical=7.9GB (8GB approx)
+[2020.02.01-08.37.27:054][  0]LogMemory: Platform Memory Stats for Windows
+[2020.02.01-08.37.27:054][  0]LogMemory: Process Physical Memory: 103.93 MB used, 103.93 MB peak
+[2020.02.01-08.37.27:054][  0]LogMemory: Process Virtual Memory: 102.20 MB used, 102.20 MB peak
+[2020.02.01-08.37.27:054][  0]LogMemory: Physical Memory: 4979.11 MB used,  3061.48 MB free, 8040.59 MB total
+[2020.02.01-08.37.27:054][  0]LogMemory: Virtual Memory: 4658.91 MB used,  134213072.00 MB free, 134217728.00 MB total
+[2020.02.01-08.37.27:722][  0]LogInit: Using OS detected language (cs-CZ).
+[2020.02.01-08.37.27:723][  0]LogInit: Using OS detected locale (cs-CZ).
+[2020.02.01-08.37.27:783][  0]LogTextLocalizationManager: No localization for 'cs-CZ' exists, so 'en' will be used for the language.
+[2020.02.01-08.37.28:687][  0]LogStreaming: Display: Took  0.910s to InitEngineTextLocalization.
+[2020.02.01-08.37.28:687][  0]LogInit: Setting process to per monitor DPI aware
+[2020.02.01-08.37.29:982][  0]LogSlate: New Slate User Created.  User Index 0, Is Virtual User: 0
+[2020.02.01-08.37.29:982][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2020.02.01-08.37.30:971][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2020.02.01-08.37.30:971][  0]LogD3D11RHI: D3D11 adapters:
+[2020.02.01-08.37.31:122][  0]LogD3D11RHI:    0. 'NVIDIA GeForce GTX 1050' (Feature Level 11_0)
+[2020.02.01-08.37.31:122][  0]LogD3D11RHI:       4019/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x10de
+[2020.02.01-08.37.31:136][  0]LogD3D11RHI:    1. 'Intel(R) UHD Graphics 630' (Feature Level 11_0)
+[2020.02.01-08.37.31:136][  0]LogD3D11RHI:       128/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x8086
+[2020.02.01-08.37.31:139][  0]LogD3D11RHI:    2. 'Microsoft Basic Render Driver' (Feature Level 11_0)
+[2020.02.01-08.37.31:139][  0]LogD3D11RHI:       0/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1414
+[2020.02.01-08.37.31:139][  0]LogD3D11RHI: Chosen D3D11 Adapter: 0
+[2020.02.01-08.37.31:193][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2020.02.01-08.37.31:193][  0]LogD3D11RHI:     GPU DeviceId: 0x1c8d (for the marketing name, search the web for "GPU Device Id")
+[2020.02.01-08.37.31:193][  0]LogWindows: EnumDisplayDevices:
+[2020.02.01-08.37.31:193][  0]LogWindows:    0. 'Intel(R) UHD Graphics 630' (P:1 D:1)
+[2020.02.01-08.37.31:194][  0]LogWindows:    1. 'Intel(R) UHD Graphics 630' (P:0 D:0)
+[2020.02.01-08.37.31:194][  0]LogWindows:    2. 'Intel(R) UHD Graphics 630' (P:0 D:0)
+[2020.02.01-08.37.31:194][  0]LogWindows:    3. 'NVIDIA GeForce GTX 1050' (P:0 D:0)
+[2020.02.01-08.37.31:194][  0]LogWindows: DebugString: PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter 
+[2020.02.01-08.37.31:194][  0]LogD3D11RHI:     Adapter Name: NVIDIA GeForce GTX 1050
+[2020.02.01-08.37.31:194][  0]LogD3D11RHI:   Driver Version: 441.20 (internal:26.21.14.4120, unified:441.20)
+[2020.02.01-08.37.31:194][  0]LogD3D11RHI:      Driver Date: 11-6-2019
+[2020.02.01-08.37.31:195][  0]LogRHI: Texture pool is 2813 MB (70% of 4019 MB)
+[2020.02.01-08.37.31:285][  0]LogD3D11RHI: Async texture creation enabled
+[2020.02.01-08.37.31:651][  0]LogD3D11RHI: GPU Timing Frequency: 1000.000000 (Debug: 2 1)
+[2020.02.01-08.37.32:844][  0]LogTemp: Display: Loaded TP AllDesktopTargetPlatform
+[2020.02.01-08.37.32:880][  0]LogTemp: Display: Loaded TP MacClientTargetPlatform
+[2020.02.01-08.37.32:903][  0]LogTemp: Display: Loaded TP MacNoEditorTargetPlatform
+[2020.02.01-08.37.32:939][  0]LogTemp: Display: Loaded TP MacServerTargetPlatform
+[2020.02.01-08.37.32:986][  0]LogTemp: Display: Loaded TP MacTargetPlatform
+[2020.02.01-08.37.33:040][  0]LogTemp: Display: Loaded TP WindowsClientTargetPlatform
+[2020.02.01-08.37.33:067][  0]LogTemp: Display: Loaded TP WindowsNoEditorTargetPlatform
+[2020.02.01-08.37.33:106][  0]LogTemp: Display: Loaded TP WindowsServerTargetPlatform
+[2020.02.01-08.37.33:121][  0]LogTemp: Display: Loaded TP WindowsTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:237][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2020.02.01-08.37.33:265][  0]LogTemp: Display: Loaded TP HTML5TargetPlatform
+[2020.02.01-08.37.33:440][  0]LogTemp: Display: Loaded TP IOSTargetPlatform
+[2020.02.01-08.37.33:440][  0]LogTemp: Display: Loaded TP IOSTargetPlatform
+[2020.02.01-08.37.33:471][  0]LogTemp: Display: Loaded TP TVOSTargetPlatform
+[2020.02.01-08.37.33:471][  0]LogTemp: Display: Loaded TP TVOSTargetPlatform
+[2020.02.01-08.37.33:495][  0]LogTemp: Display: Loaded TP LinuxClientTargetPlatform
+[2020.02.01-08.37.33:524][  0]LogTemp: Display: Loaded TP LinuxNoEditorTargetPlatform
+[2020.02.01-08.37.33:548][  0]LogTemp: Display: Loaded TP LinuxServerTargetPlatform
+[2020.02.01-08.37.33:584][  0]LogTemp: Display: Loaded TP LinuxTargetPlatform
+[2020.02.01-08.37.33:667][  0]LogTemp: Display: Loaded TP LuminTargetPlatform
+[2020.02.01-08.37.33:667][  0]LogTemp: Display: Loaded TP LuminTargetPlatform
+[2020.02.01-08.37.33:667][  0]LogTargetPlatformManager: Display: Building Assets For Windows
+[2020.02.01-08.37.34:646][  0]LogShaderCompilers: Guid format shader working directory is -9 characters bigger than the processId version (../../../../../../Program_files/Unreal Projects/Gedaria/Intermediate/Shaders/WorkingDirectory/11056/).
+[2020.02.01-08.37.34:646][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Viktor/AppData/Local/Temp/UnrealShaderWorkingDir/FE45B5CB466208DE69EE9C8A5F428329/'.
+[2020.02.01-08.37.34:676][  0]LogXGEController: Cleaning working directory: C:/Users/Viktor/AppData/Local/Temp/UnrealXGEWorkingDir/
+[2020.02.01-08.37.34:676][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2020.02.01-08.37.34:676][  0]LogShaderCompilers: Cannot use XGE Shader Compiler as Incredibuild is not installed on this machine.
+[2020.02.01-08.37.34:676][  0]LogShaderCompilers: Display: Using Local Shader Compiler.
+[2020.02.01-08.37.36:545][  0]LogDerivedDataCache: Display: Max Cache Size: 512 MB
+[2020.02.01-08.37.36:839][  0]LogDerivedDataCache: Loaded boot cache 0.29s 71MB C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc.
+[2020.02.01-08.37.36:839][  0]LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc
+[2020.02.01-08.37.36:839][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file ../../../../../../Program_files/Unreal Projects/Gedaria/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2020.02.01-08.37.36:839][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2020.02.01-08.37.36:839][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file ../../../../../../Program_files/Unreal Projects/Gedaria/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2020.02.01-08.37.36:839][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+[2020.02.01-08.37.36:962][  0]LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+[2020.02.01-08.37.36:962][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2020.02.01-08.37.36:963][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchical cache Hierarchy.
+[2020.02.01-08.37.36:976][  0]LogDerivedDataCache: Using Local data cache path C:/Users/Viktor/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2020.02.01-08.37.36:976][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2020.02.01-08.37.36:976][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+[2020.02.01-08.37.37:019][  0]LogMaterial: Verifying Global Shaders for PCD3D_SM5
+[2020.02.01-08.37.37:123][  0]LogSlate: Using FreeType 2.6.0
+[2020.02.01-08.37.37:271][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2020.02.01-08.37.38:453][  0]LogAssetRegistry: FAssetRegistry took 0.0336 seconds to start up
+[2020.02.01-08.37.42:517][  0]LogInit: Selected Device Profile: [Windows]
+[2020.02.01-08.37.45:553][  0]LogSimplygon: Simplygon DLL not present - disabling.
+[2020.02.01-08.37.46:076][  0]LogMeshReduction: Using SimplygonSwarm for distributed automatic mesh merging
+[2020.02.01-08.37.46:085][  0]LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+[2020.02.01-08.37.46:086][  0]LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+[2020.02.01-08.37.46:086][  0]LogMeshReduction: No automatic skeletal mesh reduction module available
+[2020.02.01-08.37.47:072][  0]LogNetVersion: Gedaria 1.0.0, NetCL: 4541578, EngineNetVer: 5, GameNetVer: 0 (Checksum: 1762311512)
+[2020.02.01-08.37.51:977][  0]LogPackageLocalizationCache: Processed 11 localized package path(s) for 1 prioritized culture(s) in 0.141726 seconds
+[2020.02.01-08.37.51:983][  0]LogUObjectArray: 39775 objects as part of root set at end of initial load.
+[2020.02.01-08.37.51:983][  0]LogUObjectAllocator: 6914656 out of 0 bytes used by permanent object pool.
+[2020.02.01-08.37.51:983][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2020.02.01-08.38.04:107][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2020.02.01-08.38.04:144][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2020.02.01-08.38.06:391][  0]SourceControl: Source control is disabled
+[2020.02.01-08.38.06:391][  0]SourceControl: Source control is disabled
+[2020.02.01-08.38.06:509][  0]SourceControl: Source control is disabled
+[2020.02.01-08.38.06:545][  0]SourceControl: Source control is disabled
+[2020.02.01-08.38.08:189][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2020.02.01-08.38.08:378][  0]LogOcInput: OculusInput pre-init called
+[2020.02.01-08.38.09:508][  0]LogEngine: Initializing Engine...
+[2020.02.01-08.38.09:537][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2020.02.01-08.38.09:540][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI prefixes -  0.000 s
+[2020.02.01-08.38.09:540][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2020.02.01-08.38.09:540][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI -  0.000 s
+[2020.02.01-08.38.09:540][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2020.02.01-08.38.10:378][  0]LogInit: Initializing FReadOnlyCVARCache
+[2020.02.01-08.38.10:849][  0]LogAIModule: Creating AISystem for world Untitled
+[2020.02.01-08.38.10:938][  0]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2020.02.01-08.38.10:973][  0]LogInit: FAudioDevice initialized.
+[2020.02.01-08.38.10:973][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2020.02.01-08.38.11:144][  0]LogDerivedDataCache: Saved boot cache 0.17s 71MB C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc.
+[2020.02.01-08.38.11:149][  0]LogInit: Texture streaming: Enabled
+[2020.02.01-08.38.11:311][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2020.02.01-08.38.11:510][  0]LogInit: Transaction tracking system initialized
+[2020.02.01-08.38.12:109][  0]BlueprintLog: New page: Editor Load
+[2020.02.01-08.38.13:524][  0]LocalizationService: Localization service is disabled
+[2020.02.01-08.38.17:584][  0]LogCook: Display: Max memory allowance for cook 16384mb min free memory 0mb
+[2020.02.01-08.38.17:584][  0]LogCook: Display: Mobile HDR setting 1
+[2020.02.01-08.38.17:584][  0]LogGameplayTags: Display: UGameplayTagsManager::DoneAddingNativeTags. DelegateIsBound: 0
+[2020.02.01-08.38.17:584][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI prefixes -  0.000 s
+[2020.02.01-08.38.17:584][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2020.02.01-08.38.17:584][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI -  0.000 s
+[2020.02.01-08.38.17:584][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2020.02.01-08.38.17:880][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/' took 0.20s
+[2020.02.01-08.38.22:810][  0]SourceControl: Source control is disabled
+[2020.02.01-08.38.22:862][  0]Cmd: MAP LOAD FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/Level1/NewWorld.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2020.02.01-08.38.22:897][  0]LightingResults: New page: Lighting Build
+[2020.02.01-08.38.23:134][  0]MapCheck: New page: Map Check
+[2020.02.01-08.38.23:134][  0]LightingResults: New page: Lighting Build
+[2020.02.01-08.38.34:450][  0]LogAIModule: Creating AISystem for world NewWorld
+[2020.02.01-08.38.37:148][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2020.02.01-08.38.37:771][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2020.02.01-08.38.37:799][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0,622ms to complete.
+[2020.02.01-08.38.37:832][  0]LogFileHelpers: Loading map 'NewWorld' took 15.005
+[2020.02.01-08.38.43:203][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2020.02.01-08.38.43:817][  0]LogCollectionManager: Loaded 0 collections in 0.001025 seconds
+[2020.02.01-08.38.44:753][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Saved/Collections/' took 0.01s
+[2020.02.01-08.38.44:753][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/Developers/Viktor/Collections/' took 0.01s
+[2020.02.01-08.38.44:753][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/Collections/' took 0.01s
+[2020.02.01-08.38.44:753][  0]LogCollectionManager: Rebuilt the GUID cache for 0 collections in 0.000000 seconds
+[2020.02.01-08.38.44:844][  0]LogContentBrowser: Native class hierarchy populated in 0.0878 seconds. Added 2653 classes and 622 folders.
+[2020.02.01-08.38.45:107][  0]LogContentBrowser: Native class hierarchy updated for 'WidgetCarousel' in 0.0004 seconds. Added 0 classes and 0 folders.
+[2020.02.01-08.38.45:571][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:632][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:642][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:644][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:645][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:647][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:649][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:651][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:652][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:654][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:662][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:664][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:666][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:678][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:679][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:681][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:683][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:685][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:686][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:688][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:689][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:691][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:700][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:723][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:726][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.45:729][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2020.02.01-08.38.50:170][  0]LogContentBrowser: Native class hierarchy updated for 'AddContentDialog' in 0.0004 seconds. Added 0 classes and 0 folders.
+[2020.02.01-08.38.50:353][  0]LogContentBrowser: Native class hierarchy updated for 'SceneOutliner' in 0.0005 seconds. Added 1 classes and 2 folders.
+[2020.02.01-08.38.53:548][  0]LogSlate: Took 0.077635 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2020.02.01-08.38.53:614][  0]LogSlate: Took 0.016923 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2020.02.01-08.38.53:864][  0]LogSlate: Took 0.091726 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2020.02.01-08.38.55:237][  0]LogRenderer: Reallocating scene render targets to support 1120x648 Format 10 NumSamples 1 (Frame:1).
+[2020.02.01-08.38.56:416][  0]LogContentBrowser: Native class hierarchy updated for 'HierarchicalLODOutliner' in 0.0004 seconds. Added 0 classes and 0 folders.
+[2020.02.01-08.38.56:416][  0]LogLoad: (Engine Initialization) Total time: 124.19 seconds
+[2020.02.01-08.38.56:416][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.00 seconds
+[2020.02.01-08.38.57:001][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2020.02.01-08.38.57:129][  0]LogSlate: Took 0.023810 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2020.02.01-08.38.57:836][  7]LogAssetRegistry: Asset discovery search completed in 79.4052 seconds
+[2020.02.01-08.38.57:838][  7]LogCollectionManager: Rebuilt the object cache for 0 collections in 0.000000 seconds (found 0 objects)
+[2020.02.01-08.38.57:838][  7]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000083 seconds (updated 0 objects)
+[2020.02.01-08.39.46:516][254]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.02.01-08.42.30:520][853]LogSlate: Took 0.000218 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2020.02.01-08.42.30:551][853]LogAssetEditorManager: Opening Asset editor for Class /Script/Gedaria.MyPaperCharacter
+[2020.02.01-09.04.58:588][234]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/character/2DSideScrollerCharacter.2DSideScrollerCharacter
+[2020.02.01-09.05.06:060][234]LogContentBrowser: Native class hierarchy updated for 'BlueprintGraph' in 0.0091 seconds. Added 117 classes and 0 folders.
+[2020.02.01-09.05.14:927][234]LogSlate: Took 0.055124 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2020.02.01-09.05.16:925][235]LogSlate: Took 0.026601 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2020.02.01-09.05.22:068][419]LogRenderer: Reallocating scene render targets to support 1120x728 Format 10 NumSamples 1 (Frame:1).
+[2020.02.01-09.07.11:462][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.MyMyPaperCharacter:UserConstructionScript.K2Node_FunctionEntry_0' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:477][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.MyMyPaperCharacter_C' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:477][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.MyMyPaperCharacter:EventGraph.K2Node_Event_0' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:477][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.MyMyPaperCharacter:EventGraph.K2Node_Event_1' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:478][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.MyMyPaperCharacter:EventGraph.K2Node_Event_2' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:478][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.SKEL_MyMyPaperCharacter_C:ReceiveBeginPlay' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:478][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.SKEL_MyMyPaperCharacter_C:ReceiveActorBeginOverlap' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:478][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.SKEL_MyMyPaperCharacter_C:ReceiveTick' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:478][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.SKEL_MyMyPaperCharacter_C:UserConstructionScript' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:478][550]LogMetaData: Removing '/Game/Vladimir/MyMyPaperCharacter.SKEL_MyMyPaperCharacter_C' ref from Metadata '/Game/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.11:638][550]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/Vladimir/MyMyPaperCharacter" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/Vladimir/MyMyPaperCharacter.uasset" SILENT=true
+[2020.02.01-09.07.11:868][550]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/MyMyPaperCharacter4DB2B3CE4EF156A2845A2492BAEB24EA.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/Vladimir/MyMyPaperCharacter.uasset'
+[2020.02.01-09.07.24:147][483]LogMetaData: Removing '/Game/Vladimir/VladimirCharacter.VladimirCharacter_C' ref from Metadata '/Game/Vladimir/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.24:147][483]LogMetaData: Removing '/Game/Vladimir/VladimirCharacter.SKEL_VladimirCharacter_C' ref from Metadata '/Game/Vladimir/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.24:147][483]LogMetaData: Removing '/Game/Vladimir/VladimirCharacter.VladimirCharacter:EventGraph.K2Node_Event_0' ref from Metadata '/Game/Vladimir/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.24:147][483]LogMetaData: Removing '/Game/Vladimir/VladimirCharacter.VladimirCharacter:EventGraph.K2Node_Event_1' ref from Metadata '/Game/Vladimir/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.24:147][483]LogMetaData: Removing '/Game/Vladimir/VladimirCharacter.VladimirCharacter:EventGraph.K2Node_Event_2' ref from Metadata '/Game/Vladimir/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.24:147][483]LogMetaData: Removing '/Game/Vladimir/VladimirCharacter.VladimirCharacter:UserConstructionScript.K2Node_FunctionEntry_0' ref from Metadata '/Game/Vladimir/MyMyPaperCharacter.PackageMetaData'
+[2020.02.01-09.07.24:173][483]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/Vladimir/VladimirCharacter" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/Vladimir/VladimirCharacter.uasset" SILENT=true
+[2020.02.01-09.07.24:182][483]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/VladimirCharacterE10764CA4452E5769CA402904A0ABC71.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/Vladimir/VladimirCharacter.uasset'
+[2020.02.01-09.07.25:963][601]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/Vladimir/VladimirCharacter.VladimirCharacter
+[2020.02.01-09.07.31:112][672]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/Vladimir/VladimirCharacter.VladimirCharacter
+[2020.02.01-09.07.34:987][810]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.02.01-09.39.48:265][212]LogD3D11RHI: Timed out while waiting for GPU to catch up. (0.5 s)
+[2020.02.01-09.39.50:197][218]LogD3D11RHI: Timed out while waiting for GPU to catch up. (0.5 s)
+[2020.02.01-09.40.11:162][278]LogD3D11RHI: Timed out while waiting for GPU to catch up. (0.5 s)
+[2020.02.01-09.40.15:256][291]LogD3D11RHI: Timed out while waiting for GPU to catch up. (0.5 s)
+[2020.02.01-09.42.32:205][496]Running D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -projectfiles -project="D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -game -rocket -progress
+[2020.02.01-09.42.32:955][496]Discovering modules, targets and source code for project...
+[2020.02.01-09.42.39:098][496]Binding IntelliSense data...
+[2020.02.01-09.42.41:419][496]Binding IntelliSense data... 100%
+[2020.02.01-09.42.41:519][496]Writing project files...
+[2020.02.01-09.42.43:844][496]Writing project files... 100%
+[2020.02.01-09.42.44:650][496]LogVSAccessor: Warning: Couldn't access Visual Studio
+[2020.02.01-09.42.44:796][496]Candidate modules for hot reload:
+[2020.02.01-09.42.44:796][496]  Gedaria
+[2020.02.01-09.42.44:797][496]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,1976 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-09.46.00:427][496]CompilerResultsLog: New page: Compilation - 1. 2. 2020 11:46:00
+[2020.02.01-09.46.00:444][496]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-09.46.00:445][496]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-09.46.00:445][496]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-09.46.00:445][496]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-09.46.00:445][496]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-09.46.00:445][496]CompilerResultsLog: Reflection code generated for GedariaEditor in 9,6604294 seconds
+[2020.02.01-09.46.00:445][496]CompilerResultsLog: Building 5 actions with 8 processes...
+[2020.02.01-09.46.00:445][496]CompilerResultsLog:   [1/5] Gedaria.init.gen.cpp
+[2020.02.01-09.46.00:445][496]CompilerResultsLog:   [2/5] Vladimir.cpp
+[2020.02.01-09.46.00:445][496]CompilerResultsLog:   [3/5] Vladimir.gen.cpp
+[2020.02.01-09.46.00:445][496]CompilerResultsLog:   [4/5] UE4Editor-Gedaria-1976.lib
+[2020.02.01-09.46.00:445][496]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-1976.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-1976.exp.
+[2020.02.01-09.46.00:445][496]CompilerResultsLog:   [5/5] UE4Editor-Gedaria-1976.dll
+[2020.02.01-09.46.00:446][496]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-1976.suppressed.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-1976.suppressed.exp.
+[2020.02.01-09.46.00:446][496]CompilerResultsLog: Total build time: 195,27 seconds (Parallel executor: 153,17 seconds)
+[2020.02.01-09.46.00:458][496]LogMainFrame: MainFrame: Module compiling took 195.809 seconds
+[2020.02.01-09.46.01:360][496]LogClass: Could not find existing class Vladimir in package /Script/Gedaria for HotReload, assuming new class
+[2020.02.01-09.46.01:433][496]LogContentBrowser: Native class hierarchy updated for 'Gedaria' in 0.0012 seconds. Added 3 classes and 2 folders.
+[2020.02.01-09.46.01:463][496]Display: HotReload successful (1 functions remapped  0 scriptstructs remapped)
+[2020.02.01-09.46.03:676][496]LogContentBrowser: Native class hierarchy populated in 0.0893 seconds. Added 2655 classes and 624 folders.
+[2020.02.01-09.46.03:926][496]Display: HotReload took 199.3s.
+[2020.02.01-09.46.03:937][496]Warning: HotReload operation took 199.3s.
+[2020.02.01-09.46.03:982][496]LogSlate: Window 'Add C++ Class' being destroyed
+[2020.02.01-09.46.04:033][496]LogHotReload: New module detected: UE4Editor-Gedaria-1976.dll
+[2020.02.01-09.46.04:356][497]LogHotReload: Starting Hot-Reload from IDE
+[2020.02.01-09.46.04:484][497]LogContentBrowser: Native class hierarchy updated for 'Gedaria' in 0.0004 seconds. Added 3 classes and 2 folders.
+[2020.02.01-09.46.04:488][497]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2020.02.01-09.46.04:803][497]LogContentBrowser: Native class hierarchy populated in 0.0075 seconds. Added 2655 classes and 624 folders.
+[2020.02.01-09.46.04:806][497]Display: HotReload took  0.5s.
+[2020.02.01-09.46.04:810][497]LogUnrealEdMisc: Warning: Heartbeat event firing too frequently (0.000 sec). This should never happen. Something is wrong with the timer delegate!
+[2020.02.01-09.46.04:810][497]LogUnrealEdMisc: Warning: Heartbeat event firing too frequently (0.000 sec). This should never happen. Something is wrong with the timer delegate!
+[2020.02.01-09.46.04:811][497]LogUnrealEdMisc: Warning: Heartbeat event firing too frequently (0.000 sec). This should never happen. Something is wrong with the timer delegate!
+[2020.02.01-09.46.47:836][868]LogTemp: Executing iPhonePackager certificates Engine -bundlename com.YourCompany.Gedaria
+[2020.02.01-09.46.47:836][868]LogTemp: CWD: D:\Program Files\Epic Games\UE_4.21\Engine\Binaries\DotNET\IOS
+[2020.02.01-09.46.47:836][868]LogTemp: Initial Dir: D:\Program Files\Epic Games\UE_4.21
+[2020.02.01-09.46.47:836][868]LogTemp: Env CWD: D:\Program Files\Epic Games\UE_4.21\Engine\Binaries\DotNET\IOS
+[2020.02.01-09.46.47:836][868]LogTemp: BranchPath = LAPTOP-CL2VGTEM/D/Program Files/Epic Games/UE_4.21/Engine/Binaries --- GameBranchPath = LAPTOP-CL2VGTEM/D/Program Files/Epic Games/UE_4.21/Engine/Binaries
+[2020.02.01-09.46.47:836][868]LogTemp: IPP ERROR: Could not find provision directory 'C:\Users\Viktor\AppData\Local/Apple Computer/MobileDevice/Provisioning Profiles/'.
+[2020.02.01-09.46.47:837][868]LogSlate: Only BGRA pngs, bmps or icos are supported in by External Image Picker
+[2020.02.01-09.46.56:524][327]LogUnrealEdMisc: Warning: Heartbeat event firing too frequently (51.714 sec). This should never happen. Something is wrong with the timer delegate!
+[2020.02.01-09.47.54:115][853]LogSlate: Window 'Project Settings' being destroyed
+[2020.02.01-09.47.54:120][853]LogSlate: Window 'Project Settings' being destroyed
+[2020.02.01-09.49.08:657][583]LogSlate: Window 'Pick Parent Class' being destroyed
+[2020.02.01-09.49.27:470][546]Candidate modules for hot reload:
+[2020.02.01-09.49.27:470][546]  Gedaria
+[2020.02.01-09.49.27:470][546]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,8155 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-09.49.27:485][546]Warning: Starting HotReload took  0.9s.
+[2020.02.01-09.49.56:519][679]LogUnrealEdMisc: Warning: Heartbeat event firing too frequently (47.823 sec). This should never happen. Something is wrong with the timer delegate!
+[2020.02.01-09.52.30:570][135]CompilerResultsLog: New page: Compilation - 1. 2. 2020 11:52:30
+[2020.02.01-09.52.30:598][135]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-09.52.30:598][135]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-09.52.30:599][135]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-09.52.30:599][135]CompilerResultsLog: Building 3 actions with 8 processes...
+[2020.02.01-09.52.30:599][135]LogMainFrame: MainFrame: Module compiling took 183.152 seconds
+[2020.02.01-09.52.30:599][135]Warning: HotReload failed, recompile failed
+[2020.02.01-09.52.40:277][407]Candidate modules for hot reload:
+[2020.02.01-09.52.40:278][407]  Gedaria
+[2020.02.01-09.52.40:278][407]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,8927 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-09.52.40:279][407]Warning: Starting HotReload took  0.0s.
+[2020.02.01-09.55.02:246][418]CompilerResultsLog: New page: Compilation - 1. 2. 2020 11:55:02
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Performing full C++ include scan (no include cache file)
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-09.55.02:257][418]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Reflection code generated for GedariaEditor in 14,3721421 seconds
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Building 4 actions with 8 processes...
+[2020.02.01-09.55.02:257][418]CompilerResultsLog:   [1/4] Vladimir.cpp
+[2020.02.01-09.55.02:257][418]CompilerResultsLog:   [2/4] Vladimir.gen.cpp
+[2020.02.01-09.55.02:257][418]CompilerResultsLog:   [3/4] UE4Editor-Gedaria-8927.lib
+[2020.02.01-09.55.02:257][418]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-8927.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-8927.exp.
+[2020.02.01-09.55.02:257][418]CompilerResultsLog:   [4/4] UE4Editor-Gedaria-8927.dll
+[2020.02.01-09.55.02:257][418]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-8927.suppressed.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-8927.suppressed.exp.
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Error:   Vladimir.cpp.obj : error LNK2001: Nerozpoznan? extern? symbol "private: virtual void __cdecl AVladimir::BeginPlay(void)" (?BeginPlay@AVladimir@@EEAAXXZ)
+[2020.02.01-09.55.02:257][418]CompilerResultsLog: Error:   Vladimir.gen.cpp.obj : error LNK2001: Nerozpoznan? extern? symbol "private: virtual void __cdecl AVladimir::BeginPlay(void)" (?BeginPlay@AVladimir@@EEAAXXZ)
+[2020.02.01-09.55.02:258][418]CompilerResultsLog: Error:   D:\Program_files\Unreal Projects\Gedaria\Binaries\Win64\UE4Editor-Gedaria-8927.dll : fatal error LNK1120: Po?et nerozpoznan?ch extern?ch typ?: 1
+[2020.02.01-09.55.02:258][418]CompilerResultsLog: ERROR: UBT ERROR: Failed to produce item: D:\Program_files\Unreal Projects\Gedaria\Binaries\Win64\UE4Editor-Gedaria-8927.dll
+[2020.02.01-09.55.02:258][418]CompilerResultsLog:        (see ../Programs/UnrealBuildTool/Log.txt for full exception trace)
+[2020.02.01-09.55.02:258][418]CompilerResultsLog: Total build time: 141,53 seconds (Parallel executor: 0,00 seconds)
+[2020.02.01-09.55.02:258][418]LogMainFrame: MainFrame: Module compiling took 141.986 seconds
+[2020.02.01-09.55.02:258][418]Warning: HotReload failed, recompile failed
+[2020.02.01-09.55.23:642][681]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-09.55.23:647][681]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-09.55.45:855][856]Candidate modules for hot reload:
+[2020.02.01-09.55.45:855][856]  Gedaria
+[2020.02.01-09.55.45:855][856]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,6247 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-09.55.45:856][856]Warning: Starting HotReload took  0.1s.
+[2020.02.01-09.56.10:461][330]CompilerResultsLog: New page: Compilation - 1. 2. 2020 11:56:10
+[2020.02.01-09.56.10:461][330]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-09.56.10:461][330]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-09.56.10:461][330]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-09.56.10:461][330]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-09.56.10:462][330]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-09.56.10:462][330]CompilerResultsLog: Reflection code generated for GedariaEditor in 15,1542112 seconds
+[2020.02.01-09.56.10:462][330]CompilerResultsLog: Building 4 actions with 8 processes...
+[2020.02.01-09.56.10:462][330]CompilerResultsLog:   [1/4] Vladimir.cpp
+[2020.02.01-09.56.10:462][330]CompilerResultsLog:   [2/4] Vladimir.gen.cpp
+[2020.02.01-09.56.10:462][330]CompilerResultsLog:   [3/4] UE4Editor-Gedaria-6247.lib
+[2020.02.01-09.56.10:462][330]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-6247.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-6247.exp.
+[2020.02.01-09.56.10:462][330]CompilerResultsLog:   [4/4] UE4Editor-Gedaria-6247.dll
+[2020.02.01-09.56.10:462][330]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-6247.suppressed.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-6247.suppressed.exp.
+[2020.02.01-09.56.10:462][330]CompilerResultsLog: Error:   Vladimir.cpp.obj : error LNK2001: Nerozpoznan? extern? symbol "public: virtual void __cdecl AVladimir::BeginPlay(void)" (?BeginPlay@AVladimir@@UEAAXXZ)
+[2020.02.01-09.56.10:462][330]CompilerResultsLog: Error:   Vladimir.gen.cpp.obj : error LNK2001: Nerozpoznan? extern? symbol "public: virtual void __cdecl AVladimir::BeginPlay(void)" (?BeginPlay@AVladimir@@UEAAXXZ)
+[2020.02.01-09.56.10:462][330]CompilerResultsLog: Error:   D:\Program_files\Unreal Projects\Gedaria\Binaries\Win64\UE4Editor-Gedaria-6247.dll : fatal error LNK1120: Po?et nerozpoznan?ch extern?ch typ?: 1
+[2020.02.01-09.56.10:462][330]CompilerResultsLog: ERROR: UBT ERROR: Failed to produce item: D:\Program_files\Unreal Projects\Gedaria\Binaries\Win64\UE4Editor-Gedaria-6247.dll
+[2020.02.01-09.56.10:462][330]CompilerResultsLog:        (see ../Programs/UnrealBuildTool/Log.txt for full exception trace)
+[2020.02.01-09.56.10:462][330]CompilerResultsLog: Total build time: 24,16 seconds (Parallel executor: 0,00 seconds)
+[2020.02.01-09.56.10:462][330]LogMainFrame: MainFrame: Module compiling took 24.611 seconds
+[2020.02.01-09.56.10:463][330]Warning: HotReload failed, recompile failed
+[2020.02.01-09.56.28:799][428]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-09.56.28:804][428]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-09.56.45:184][549]Candidate modules for hot reload:
+[2020.02.01-09.56.45:184][549]  Gedaria
+[2020.02.01-09.56.45:184][549]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,7541 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-09.56.45:186][549]Warning: Starting HotReload took  0.0s.
+[2020.02.01-09.57.09:295][996]CompilerResultsLog: New page: Compilation - 1. 2. 2020 11:57:09
+[2020.02.01-09.57.09:295][996]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-09.57.09:296][996]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Reflection code generated for GedariaEditor in 14,7253086 seconds
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Building 4 actions with 8 processes...
+[2020.02.01-09.57.09:296][996]CompilerResultsLog:   [1/4] Vladimir.cpp
+[2020.02.01-09.57.09:296][996]CompilerResultsLog:   [2/4] Vladimir.gen.cpp
+[2020.02.01-09.57.09:296][996]CompilerResultsLog:   [3/4] UE4Editor-Gedaria-7541.lib
+[2020.02.01-09.57.09:296][996]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-7541.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-7541.exp.
+[2020.02.01-09.57.09:296][996]CompilerResultsLog:   [4/4] UE4Editor-Gedaria-7541.dll
+[2020.02.01-09.57.09:296][996]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-7541.suppressed.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-7541.suppressed.exp.
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Error:   Vladimir.cpp.obj : error LNK2001: Nerozpoznan? extern? symbol "public: virtual void __cdecl AVladimir::BeginPlay(void)" (?BeginPlay@AVladimir@@UEAAXXZ)
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Error:   Vladimir.gen.cpp.obj : error LNK2001: Nerozpoznan? extern? symbol "public: virtual void __cdecl AVladimir::BeginPlay(void)" (?BeginPlay@AVladimir@@UEAAXXZ)
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Error:   D:\Program_files\Unreal Projects\Gedaria\Binaries\Win64\UE4Editor-Gedaria-7541.dll : fatal error LNK1120: Po?et nerozpoznan?ch extern?ch typ?: 1
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: ERROR: UBT ERROR: Failed to produce item: D:\Program_files\Unreal Projects\Gedaria\Binaries\Win64\UE4Editor-Gedaria-7541.dll
+[2020.02.01-09.57.09:296][996]CompilerResultsLog:        (see ../Programs/UnrealBuildTool/Log.txt for full exception trace)
+[2020.02.01-09.57.09:296][996]CompilerResultsLog: Total build time: 23,84 seconds (Parallel executor: 0,00 seconds)
+[2020.02.01-09.57.09:296][996]LogMainFrame: MainFrame: Module compiling took 24.116 seconds
+[2020.02.01-09.57.09:296][996]Warning: HotReload failed, recompile failed
+[2020.02.01-09.57.34:055][478]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-09.57.34:061][478]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-09.59.22:644][391]Candidate modules for hot reload:
+[2020.02.01-09.59.22:644][391]  Gedaria
+[2020.02.01-09.59.22:644][391]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,2730 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-09.59.22:646][391]Warning: Starting HotReload took  0.0s.
+[2020.02.01-09.59.44:665][513]CompilerResultsLog: New page: Compilation - 1. 2. 2020 11:59:44
+[2020.02.01-09.59.44:665][513]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-09.59.44:665][513]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-09.59.44:665][513]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-09.59.44:665][513]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-09.59.44:665][513]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-09.59.44:665][513]CompilerResultsLog: Reflection code generated for GedariaEditor in 9,4030008 seconds
+[2020.02.01-09.59.44:665][513]CompilerResultsLog: Building 4 actions with 8 processes...
+[2020.02.01-09.59.44:665][513]CompilerResultsLog:   [1/4] Vladimir.cpp
+[2020.02.01-09.59.44:665][513]CompilerResultsLog:   [2/4] Vladimir.gen.cpp
+[2020.02.01-09.59.44:665][513]CompilerResultsLog:   [3/4] UE4Editor-Gedaria-2730.lib
+[2020.02.01-09.59.44:665][513]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-2730.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-2730.exp.
+[2020.02.01-09.59.44:666][513]CompilerResultsLog:   [4/4] UE4Editor-Gedaria-2730.dll
+[2020.02.01-09.59.44:666][513]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-2730.suppressed.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-2730.suppressed.exp.
+[2020.02.01-09.59.44:666][513]CompilerResultsLog: Total build time: 21,38 seconds (Parallel executor: 6,99 seconds)
+[2020.02.01-09.59.44:666][513]LogMainFrame: MainFrame: Module compiling took 22.027 seconds
+[2020.02.01-09.59.45:530][513]LogContentBrowser: Native class hierarchy updated for 'Gedaria' in 0.0334 seconds. Added 3 classes and 2 folders.
+[2020.02.01-09.59.45:534][513]Display: HotReload successful (1 functions remapped  0 scriptstructs remapped)
+[2020.02.01-09.59.46:751][513]LogContentBrowser: Native class hierarchy populated in 0.0314 seconds. Added 2655 classes and 624 folders.
+[2020.02.01-09.59.46:786][513]Display: HotReload took 24.2s.
+[2020.02.01-10.01.25:976][121]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/CH_Vladimir_BP.CH_Vladimir_BP
+[2020.02.01-10.01.29:931][121]LogSlate: Window 'Add Blueprint Class' being destroyed
+[2020.02.01-10.01.40:217][509]LogMetaData: Removing '/Game/Vladimir/CH_Vladimir_BP.CH_Vladimir_BP:UserConstructionScript.K2Node_FunctionEntry_0' ref from Metadata '/Game/CH_Vladimir_BP.PackageMetaData'
+[2020.02.01-10.01.40:217][509]LogMetaData: Removing '/Game/Vladimir/CH_Vladimir_BP.SKEL_CH_Vladimir_BP_C:UserConstructionScript' ref from Metadata '/Game/CH_Vladimir_BP.PackageMetaData'
+[2020.02.01-10.01.40:217][509]LogMetaData: Removing '/Game/Vladimir/CH_Vladimir_BP.SKEL_CH_Vladimir_BP_C' ref from Metadata '/Game/CH_Vladimir_BP.PackageMetaData'
+[2020.02.01-10.01.40:217][509]LogMetaData: Removing '/Game/Vladimir/CH_Vladimir_BP.CH_Vladimir_BP_C' ref from Metadata '/Game/CH_Vladimir_BP.PackageMetaData'
+[2020.02.01-10.01.40:217][509]LogMetaData: Removing '/Game/Vladimir/CH_Vladimir_BP.CH_Vladimir_BP:EventGraph.K2Node_Event_0' ref from Metadata '/Game/CH_Vladimir_BP.PackageMetaData'
+[2020.02.01-10.01.40:217][509]LogMetaData: Removing '/Game/Vladimir/CH_Vladimir_BP.CH_Vladimir_BP:EventGraph.K2Node_Event_1' ref from Metadata '/Game/CH_Vladimir_BP.PackageMetaData'
+[2020.02.01-10.01.40:217][509]LogMetaData: Removing '/Game/Vladimir/CH_Vladimir_BP.CH_Vladimir_BP:EventGraph.K2Node_Event_2' ref from Metadata '/Game/CH_Vladimir_BP.PackageMetaData'
+[2020.02.01-10.01.40:332][509]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/Vladimir/CH_Vladimir_BP" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/Vladimir/CH_Vladimir_BP.uasset" SILENT=true
+[2020.02.01-10.01.40:572][509]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/CH_Vladimir_BPFC273DA04EED47B5A5059E89880919D0.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/Vladimir/CH_Vladimir_BP.uasset'
+[2020.02.01-10.01.44:092][663]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/Vladimir/CH_Vladimir_BP.CH_Vladimir_BP
+[2020.02.01-10.01.46:400][721]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/Vladimir/CH_Vladimir_BP.CH_Vladimir_BP
+[2020.02.01-10.04.50:259][479]BlueprintLog: New page: Compile CH_Vladimir_BP
+[2020.02.01-10.04.52:089][514]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/Vladimir/CH_Vladimir_BP" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/Vladimir/CH_Vladimir_BP.uasset" SILENT=true
+[2020.02.01-10.04.54:006][514]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/CH_Vladimir_BP577B57BA48A3BEA1769933B53120BD71.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/Vladimir/CH_Vladimir_BP.uasset'
+[2020.02.01-10.05.33:432][309]BlueprintLog: New page: Compile 2DSideScrollerCharacter
+[2020.02.01-10.05.37:617][338]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/character/2DSideScrollerCharacter" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/character/2DSideScrollerCharacter.uasset" SILENT=true
+[2020.02.01-10.05.38:005][338]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/2DSideScrollerCharacterCD068D314653800CB4BD1BB8217FAEE1.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/character/2DSideScrollerCharacter.uasset'
+[2020.02.01-10.06.02:378][617]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.02.01-10.15.02:340][462]Candidate modules for hot reload:
+[2020.02.01-10.15.02:340][462]  Gedaria
+[2020.02.01-10.15.02:341][462]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,7523 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-10.15.02:373][462]Warning: Starting HotReload took  0.1s.
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: New page: Compilation - 1. 2. 2020 12:15:37
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-10.15.37:959][197]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Error: D:/Program_files/Unreal Projects/Gedaria/Source/Gedaria/Vladimir.h(33)  : LogCompile: Error: BlueprintReadOnly should not be used on private members
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Error: D:/Program_files/Unreal Projects/Gedaria/Source/Gedaria/Vladimir.h(36)  : LogCompile: Error: BlueprintReadOnly should not be used on private members
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Error: D:/Program_files/Unreal Projects/Gedaria/Source/Gedaria/Vladimir.h(39)  : LogCompile: Error: BlueprintReadOnly should not be used on private members
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Error: D:/Program_files/Unreal Projects/Gedaria/Source/Gedaria/Vladimir.h(42)  : LogCompile: Error: BlueprintReadOnly should not be used on private members
+[2020.02.01-10.15.37:959][197]CompilerResultsLog: Error: UnrealHeaderTool failed for target 'GedariaEditor' (platform: Win64, module info: D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest, exit code: OtherCompilationError (5)).
+[2020.02.01-10.15.37:959][197]LogMainFrame: MainFrame: Module compiling took 35.623 seconds
+[2020.02.01-10.15.37:959][197]Warning: HotReload failed, recompile failed
+[2020.02.01-10.15.51:992][815]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-10.15.51:998][815]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-10.16.16:056][974]Candidate modules for hot reload:
+[2020.02.01-10.16.16:056][974]  Gedaria
+[2020.02.01-10.16.16:056][974]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,205 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-10.16.16:057][974]Warning: Starting HotReload took  0.0s.
+[2020.02.01-10.16.32:062][ 79]CompilerResultsLog: New page: Compilation - 1. 2. 2020 12:16:32
+[2020.02.01-10.16.32:062][ 79]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-10.16.32:062][ 79]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-10.16.32:062][ 79]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-10.16.32:062][ 79]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-10.16.32:062][ 79]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-10.16.32:062][ 79]CompilerResultsLog: Reflection code generated for GedariaEditor in 9,5312351 seconds
+[2020.02.01-10.16.32:117][ 79]CompilerResultsLog: Error: D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria\Vladimir.cpp(1) : error: Expected Vladimir.h to be first header included.
+[2020.02.01-10.16.32:117][ 79]CompilerResultsLog: ERROR: Build canceled.
+[2020.02.01-10.16.32:117][ 79]LogMainFrame: MainFrame: Module compiling took 16.065 seconds
+[2020.02.01-10.16.32:117][ 79]Warning: HotReload failed, recompile failed
+[2020.02.01-10.16.50:715][731]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-10.16.50:722][731]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-10.17.07:498][845]Candidate modules for hot reload:
+[2020.02.01-10.17.07:498][845]  Gedaria
+[2020.02.01-10.17.07:499][845]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,782 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-10.17.07:500][845]Warning: Starting HotReload took  0.0s.
+[2020.02.01-10.21.13:811][167]CompilerResultsLog: New page: Compilation - 1. 2. 2020 12:21:13
+[2020.02.01-10.21.13:812][167]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-10.21.13:812][167]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-10.21.13:812][167]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-10.21.13:812][167]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-10.21.13:812][167]CompilerResultsLog: Reflection code generated for GedariaEditor in 9,7574353 seconds
+[2020.02.01-10.21.13:812][167]CompilerResultsLog: Building 5 actions with 8 processes...
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   [1/5] Vladimir.gen.cpp
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19) : error C2143: Chyba syntaxe: Chyb? ; p?ed <class-head>.
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19) : error C4430: Chyb?j?c? specifik?tor typu - p?edpokl?d? se typ int. Pozn?mka: C++ nepodporuje typ default-int.
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(21) : error C4430: Chyb?j?c? specifik?tor typu - p?edpokl?d? se typ int. Pozn?mka: C++ nepodporuje typ default-int.
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Inc\Gedaria\Vladimir.gen.cpp(25) : error C2039: StaticRegisterNativesAVladimir: Nen? ?lenem AVladimir.
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19): note: viz deklarace: AVladimir
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Inc\Gedaria\Vladimir.gen.cpp(76) : error C2248: AVladimir::BoxCollision: Nejde z?skat p??stup k: private ?len s deklarac? ve t??d? AVladimir.
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(45): note: viz deklarace: AVladimir::BoxCollision
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19): note: viz deklarace: AVladimir
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Inc\Gedaria\Vladimir.gen.cpp(84) : error C2248: AVladimir::Camera: Nejde z?skat p??stup k: private ?len s deklarac? ve t??d? AVladimir.
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(42): note: viz deklarace: AVladimir::Camera
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19): note: viz deklarace: AVladimir
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Inc\Gedaria\Vladimir.gen.cpp(92) : error C2248: AVladimir::SpringArm: Nejde z?skat p??stup k: private ?len s deklarac? ve t??d? AVladimir.
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(39): note: viz deklarace: AVladimir::SpringArm
+[2020.02.01-10.21.13:812][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19): note: viz deklarace: AVladimir
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Inc\Gedaria\Vladimir.gen.cpp(100) : error C2248: AVladimir::LookDirection: Nejde z?skat p??stup k: private ?len s deklarac? ve t??d? AVladimir.
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(36): note: viz deklarace: AVladimir::LookDirection
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19): note: viz deklarace: AVladimir
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Inc\Gedaria\Vladimir.gen.cpp(130) : error C2509: GetPrivateStaticClass: v: AVladimir nen? deklarovan? ?lensk? funkce.
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19): note: viz deklarace: AVladimir
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Inc\Gedaria\Vladimir.gen.cpp(132) : error C2511: AVladimir::AVladimir(FVTableHelper &): ?lensk? funkce p?et??en? se nena?la v: AVladimir.
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:   D:\Program_files\Unreal Projects\Gedaria\Source\Gedaria/Vladimir.h(19): note: viz deklarace: AVladimir
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:    D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Inc\Gedaria\Vladimir.gen.cpp(132) : error C2550: AVladimir::{ctor}: Seznamy inicializ?tor? konstruktor? jsou povolen? jenom pro definice konstruktor?.
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:   [2/5] Vladimir.cpp
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:    d:\program_files\unreal projects\gedaria\source\gedaria\Vladimir.h(19) : error C2143: Chyba syntaxe: Chyb? ; p?ed <class-head>.
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:    d:\program_files\unreal projects\gedaria\source\gedaria\Vladimir.h(19) : error C4430: Chyb?j?c? specifik?tor typu - p?edpokl?d? se typ int. Pozn?mka: C++ nepodporuje typ default-int.
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:    d:\program_files\unreal projects\gedaria\source\gedaria\Vladimir.h(21) : error C4430: Chyb?j?c? specifik?tor typu - p?edpokl?d? se typ int. Pozn?mka: C++ nepodporuje typ default-int.
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:   [3/5] Gedaria.init.gen.cpp
+[2020.02.01-10.21.13:813][167]CompilerResultsLog: ERROR: UBT ERROR: Failed to produce item: D:\Program_files\Unreal Projects\Gedaria\Binaries\Win64\UE4Editor-Gedaria-782.dll
+[2020.02.01-10.21.13:813][167]CompilerResultsLog:        (see ../Programs/UnrealBuildTool/Log.txt for full exception trace)
+[2020.02.01-10.21.13:813][167]CompilerResultsLog: Total build time: 245,78 seconds (Parallel executor: 0,00 seconds)
+[2020.02.01-10.21.13:813][167]LogMainFrame: MainFrame: Module compiling took 246.320 seconds
+[2020.02.01-10.21.13:813][167]Warning: HotReload failed, recompile failed
+[2020.02.01-10.22.51:133][305]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-10.22.51:137][305]LogSlate: Window 'Message Log' being destroyed
+[2020.02.01-10.22.51:863][347]Candidate modules for hot reload:
+[2020.02.01-10.22.51:863][347]  Gedaria
+[2020.02.01-10.22.51:863][347]Launching UnrealBuildTool... [D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/DotNET/UnrealBuildTool.exe  -ModuleWithSuffix=Gedaria,7552 Win64 Development -TargetType=Editor -Project="../../../../../../Program_files/Unreal Projects/Gedaria/Gedaria.uproject" -canskiplink "D:/Program_files/Unreal Projects/Gedaria/Gedaria.uproject" ]
+[2020.02.01-10.22.51:891][347]Warning: Starting HotReload took  0.0s.
+[2020.02.01-10.25.51:371][335]CompilerResultsLog: New page: Compilation - 1. 2. 2020 12:25:51
+[2020.02.01-10.25.51:371][335]CompilerResultsLog: Creating makefile for hot reloading GedariaEditor (source directory changed)
+[2020.02.01-10.25.51:371][335]CompilerResultsLog: Compiling game modules for hot reload
+[2020.02.01-10.25.51:371][335]CompilerResultsLog: Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2020.02.01-10.25.51:371][335]CompilerResultsLog: Parsing headers for GedariaEditor
+[2020.02.01-10.25.51:371][335]CompilerResultsLog:   Running UnrealHeaderTool "D:\Program_files\Unreal Projects\Gedaria\Gedaria.uproject" "D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\GedariaEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.02.01-10.25.51:371][335]CompilerResultsLog: Reflection code generated for GedariaEditor in 12,6740277 seconds
+[2020.02.01-10.25.51:371][335]CompilerResultsLog: Building 4 actions with 8 processes...
+[2020.02.01-10.25.51:371][335]CompilerResultsLog:   [1/4] Vladimir.cpp
+[2020.02.01-10.25.51:371][335]CompilerResultsLog:   [2/4] Vladimir.gen.cpp
+[2020.02.01-10.25.51:371][335]CompilerResultsLog:   [3/4] UE4Editor-Gedaria-7552.lib
+[2020.02.01-10.25.51:371][335]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-7552.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-7552.exp.
+[2020.02.01-10.25.51:371][335]CompilerResultsLog:   [4/4] UE4Editor-Gedaria-7552.dll
+[2020.02.01-10.25.51:371][335]CompilerResultsLog:      Vytv??? se knihovna D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-7552.suppressed.lib a objekt D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-7552.suppressed.exp.
+[2020.02.01-10.25.51:371][335]CompilerResultsLog: Total build time: 178,67 seconds (Parallel executor: 134,24 seconds)
+[2020.02.01-10.25.51:371][335]LogMainFrame: MainFrame: Module compiling took 179.512 seconds
+[2020.02.01-10.25.52:045][335]LogClass: Could not find existing class Vladimir in package /Script/Gedaria for HotReload, assuming new class
+[2020.02.01-10.25.52:174][335]LogHotReload: Re-instancing Vladimir after hot-reload.
+[2020.02.01-10.25.52:537][335]LogBlueprint: Error: [Compiler CH_Vladimir_BP] Internal Compiler Error: Tried to create a property LookDirection in scope SKEL_CH_Vladimir_BP_C, but another object (ObjectProperty /Script/Gedaria.Vladimir:LookDirection) already exists there.
+[2020.02.01-10.25.52:578][335]LogBlueprint: Error: [Compiler CH_Vladimir_BP] Internal Compiler Error: Tried to create a property SpringArm in scope SKEL_CH_Vladimir_BP_C, but another object (ObjectProperty /Script/Gedaria.Vladimir:SpringArm) already exists there.
+[2020.02.01-10.25.52:578][335]LogBlueprint: Error: [Compiler CH_Vladimir_BP] Internal Compiler Error: Tried to create a property Camera in scope SKEL_CH_Vladimir_BP_C, but another object (ObjectProperty /Script/Gedaria.Vladimir:Camera) already exists there.
+[2020.02.01-10.25.52:649][335]LogBlueprint: Error: [Compiler CH_Vladimir_BP] Internal Compiler Error: Tried to create a property LookDirection in scope CH_Vladimir_BP_C, but another object (ObjectProperty /Script/Gedaria.Vladimir:LookDirection) already exists there.
+[2020.02.01-10.25.52:649][335]LogBlueprint: Error: [Compiler CH_Vladimir_BP] Internal Compiler Error: Tried to create a property SpringArm in scope CH_Vladimir_BP_C, but another object (ObjectProperty /Script/Gedaria.Vladimir:SpringArm) already exists there.
+[2020.02.01-10.25.52:649][335]LogBlueprint: Error: [Compiler CH_Vladimir_BP] Internal Compiler Error: Tried to create a property Camera in scope CH_Vladimir_BP_C, but another object (ObjectProperty /Script/Gedaria.Vladimir:Camera) already exists there.
+[2020.02.01-10.25.52:667][335]LogBlueprint: Warning: [Compiler CH_Vladimir_BP] [6540,44] Compile of CH_Vladimir_BP failed. 6 Fatal Issue(s) 0 Warning(s) [in 222 ms] (/Game/Vladimir/CH_Vladimir_BP.CH_Vladimir_BP)

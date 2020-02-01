@@ -1,0 +1,1313 @@
+﻿Log file open, 06/08/19 09:18:19
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogInit: Display: Running engine for game: Gedaria
+LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+LogPlatformFile: Not using cached read wrapper
+LogTaskGraph: Started task graph with 5 named threads and 23 total threads with 3 sets of task threads.
+LogStats: Stats thread started at 0.268173
+LogD3D11RHI: Loaded GFSDK_Aftermath_Lib.x64.dll
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +1:00, Platform Override: ''
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin AISupport
+LogPluginManager: Mounting plugin LightPropagationVolume
+LogPluginManager: Mounting plugin ActorLayerUtilities
+LogPluginManager: Mounting plugin CLionSourceCodeAccess
+LogPluginManager: Mounting plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting plugin GitSourceControl
+LogPluginManager: Mounting plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting plugin NullSourceCodeAccess
+LogPluginManager: Mounting plugin PerforceSourceControl
+LogPluginManager: Mounting plugin SubversionSourceControl
+LogPluginManager: Mounting plugin UObjectPlugin
+LogPluginManager: Mounting plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting plugin AssetManagerEditor
+LogPluginManager: Mounting plugin CryptoKeys
+LogPluginManager: Mounting plugin DataValidation
+LogPluginManager: Mounting plugin FacialAnimation
+LogPluginManager: Mounting plugin GameplayTagsEditor
+LogPluginManager: Mounting plugin MacGraphicsSwitching
+LogPluginManager: Mounting plugin MeshEditor
+LogPluginManager: Mounting plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting plugin PluginBrowser
+LogPluginManager: Mounting plugin SpeedTreeImporter
+LogPluginManager: Mounting plugin DatasmithContent
+LogPluginManager: Mounting plugin VariantManagerContent
+LogPluginManager: Mounting plugin AlembicImporter
+LogPluginManager: Mounting plugin AppleImageUtils
+LogPluginManager: Mounting plugin AppleVision
+LogPluginManager: Mounting plugin BackChannel
+LogPluginManager: Mounting plugin CharacterAI
+LogPluginManager: Mounting plugin GeometryCache
+LogPluginManager: Mounting plugin HTML5Networking
+LogPluginManager: Mounting plugin ProxyLODPlugin
+LogPluginManager: Mounting plugin MagicLeap
+LogPluginManager: Mounting plugin MagicLeapMedia
+LogPluginManager: Mounting plugin AndroidMedia
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin LinearTimecode
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin MediaPlayerEditor
+LogPluginManager: Mounting plugin WebMMedia
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin TcpMessaging
+LogPluginManager: Mounting plugin UdpMessaging
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin LevelSequenceEditor
+LogPluginManager: Mounting plugin MatineeToLevelSequence
+LogPluginManager: Mounting plugin NetcodeUnitTest
+LogPluginManager: Mounting plugin NUTUnrealEngine4
+LogPluginManager: Mounting plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting plugin OnlineSubsystemIOS
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin LauncherChunkInstaller
+LogPluginManager: Mounting plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting plugin AndroidMoviePlayer
+LogPluginManager: Mounting plugin AndroidPermission
+LogPluginManager: Mounting plugin AppleMoviePlayer
+LogPluginManager: Mounting plugin ArchVisCharacter
+LogPluginManager: Mounting plugin AudioCapture
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin CustomMeshComponent
+LogPluginManager: Mounting plugin EditableMesh
+LogPluginManager: Mounting plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting plugin Firebase
+LogPluginManager: Mounting plugin GoogleCloudMessaging
+LogPluginManager: Mounting plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting plugin LocationServicesBPLibrary
+LogPluginManager: Mounting plugin MobilePatchingUtils
+LogPluginManager: Mounting plugin OculusVR
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+LogPluginManager: Mounting plugin SteamVR
+LogPluginManager: Mounting plugin WebMMoviePlayer
+LogPluginManager: Mounting plugin WindowsMoviePlayer
+LogStreaming: Display: Took  0.837s to configure plugins.
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.0.2h
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogInit: Build: ++UE4+Release-4.21-CL-4613538
+LogInit: Engine Version: 4.21.1-4613538+++UE4+Release-4.21
+LogInit: Compatible Engine Version: 4.21.0-4541578+++UE4+Release-4.21
+LogInit: Net CL: 4541578
+LogInit: OS: Windows 10 (), CPU: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz, GPU: Intel(R) UHD Graphics 630
+LogInit: Compiled (64-bit): Nov 30 2018 04:13:25
+LogInit: Compiled with Visual C++: 19.13.26129.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.21
+LogInit: Command Line: 
+LogInit: Base Directory: D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/Win64/
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 22
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 2
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 26
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 34
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 2
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 0
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 27
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 9
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 2
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 2
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 17
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 4
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogStreaming: Display: Took  0.031s to delete old logs.
+LogInit: Presizing for max 8388607 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+[2019.06.08-07.18.20:439][  0]LogConfig: Setting CVar [[r.VSync:0]]
+[2019.06.08-07.18.20:439][  0]LogConfig: Setting CVar [[r.RHICmdBypass:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.GPUCrashDebugging:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.MobileHDR:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.Mobile.DisableVertexFog:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxMobileCascades:2]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.MobileMSAA:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.Mobile.UseLegacyShadingModel:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.Mobile.AllowDitheredLODTransition:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.Mobile.AllowSoftwareOcclusion:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DiscardUnusedQuality:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.AllowOcclusionQueries:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.MinScreenRadiusForLights:0.030000]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.MinScreenRadiusForDepthPrepass:0.030000]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.MinScreenRadiusForCSMDepth:0.010000]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.PrecomputedVisibilityWarning:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.TextureStreaming:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[Compat.UseDXT5NormalMaps:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.ClearCoatNormal:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.ReflectionCaptureResolution:128]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.ReflectionEnvironmentLightmapMixBasedOnRoughness:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.ForwardShading:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.VertexFoggingForOpaque:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.AllowStaticLighting:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.NormalMapsForStaticLighting:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.GenerateMeshDistanceFields:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DistanceFieldBuild.EightBit:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.GenerateLandscapeGIData:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DistanceFieldBuild.Compress:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.TessellationAdaptivePixelsPerTriangle:48.000000]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.SeparateTranslucency:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.TranslucentSortPolicy:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.CustomDepth:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.CustomDepthTemporalAAJitter:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.PostProcessing.PropagateAlpha:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DOF.Algorithm:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.Bloom:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.AmbientOcclusion:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.AmbientOcclusionStaticFraction:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.AutoExposure:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.AutoExposure.Method:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.AutoExposure.ExtendDefaultLuminanceRange:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.UsePreExposure:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.MotionBlur:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.LensFlare:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.TemporalAA.Upsampling:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.AntiAliasing:2]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultFeature.LightUnits:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DefaultBackBufferPixelFormat:4]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.Shadow.UnbuiltPreviewInGame:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.StencilForLODDither:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.EarlyZPass:3]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.EarlyZPassMovable:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.EarlyZPassOnlyMaterialMasking:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.DBuffer:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.ClearSceneMethod:1]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.BasePassOutputsVelocity:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.SelectiveBasePassOutputs:0]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[fx.GPUSimulationTextureSizeX:1024]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[fx.GPUSimulationTextureSizeY:1024]]
+[2019.06.08-07.18.20:440][  0]LogConfig: Setting CVar [[r.AllowGlobalClipPlane:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.GBufferFormat:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.MorphTarget.Mode:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[vr.InstancedStereo:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[vr.MultiView:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[vr.MobileMultiView:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[vr.MobileMultiView.Direct:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[vr.MonoscopicFarField:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[vr.RoundRobinOcclusion:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[vr.ODSCapture:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.WireframeCullThreshold:5.000000]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SupportStationarySkylight:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SupportLowQualityLightmaps:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SupportPointLightWholeSceneShadows:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SupportAtmosphericFog:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SkinCache.CompileShaders:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.Mobile.EnableStaticAndCSMShadowReceivers:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.Mobile.EnableMovableLightCSMShaderCulling:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.Mobile.AllowDistanceFieldShadows:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.Mobile.AllowMovableDirectionalLights:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.MobileNumDynamicPointLights:4]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.MobileDynamicPointLightsUseStaticBranch:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SkinCache.SceneMemoryLimitInMB:128.000000]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.GPUSkin.Limit2BoneInfluences:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SupportDepthOnlyIndexBuffers:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SupportReversedIndexBuffers:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[r.SupportMaterialLayers:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.06.08-07.18.20:441][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.SizeOfPermanentObjectPool:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.FlushStreamingOnGC:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.NumRetriesBeforeForcingGC:10]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.AllowParallelGC:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.MaxObjectsInEditor:8388607]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.CreateGCClusters:1]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.MergeGCClusters:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.MinGCClusterSize:5]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.ActorClusteringEnabled:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.BlueprintClusteringEnabled:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Setting CVar [[gc.UseDisregardForGCOnDedicatedServers:0]]
+[2019.06.08-07.18.20:441][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.06.08-07.18.20:441][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.06.08-07.18.20:445][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2019.06.08-07.18.20:445][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.BloomQuality:5]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.SSR.Quality:3]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2019.06.08-07.18.20:446][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2019.06.08-07.18.20:447][  0]LogInit: Selected Device Profile: [Windows]
+[2019.06.08-07.18.20:447][  0]LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+[2019.06.08-07.18.20:499][  0]LogHAL: Display: Platform has ~ 8 GB [8431169536 / 8589934592 / 8], which maps to Default [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2019.06.08-07.18.20:499][  0]LogConfig: Setting CVar [[r.Vulkan.UseRealUBs:1]]
+[2019.06.08-07.18.20:499][  0]LogInit: Going up to parent DeviceProfile []
+[2019.06.08-07.18.20:499][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.BloomQuality:5]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.SSR.Quality:3]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+[2019.06.08-07.18.20:500][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2019.06.08-07.18.20:501][  0]LogConfig: Setting CVar [[net.UseAdaptiveNetUpdateFrequency:0]]
+[2019.06.08-07.18.20:501][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.06.08-07.18.20:501][  0]LogInit: Computer: LAPTOP-CL2VGTEM
+[2019.06.08-07.18.20:501][  0]LogInit: User: Viktor
+[2019.06.08-07.18.20:501][  0]LogInit: CPU Page size=4096, Cores=4
+[2019.06.08-07.18.20:501][  0]LogInit: High frequency timer resolution =2.250003 MHz
+[2019.06.08-07.18.20:501][  0]LogMemory: Memory total: Physical=7.9GB (8GB approx)
+[2019.06.08-07.18.20:501][  0]LogMemory: Platform Memory Stats for Windows
+[2019.06.08-07.18.20:501][  0]LogMemory: Process Physical Memory: 102.88 MB used, 102.88 MB peak
+[2019.06.08-07.18.20:501][  0]LogMemory: Process Virtual Memory: 89.89 MB used, 89.89 MB peak
+[2019.06.08-07.18.20:501][  0]LogMemory: Physical Memory: 4757.25 MB used,  3283.34 MB free, 8040.59 MB total
+[2019.06.08-07.18.20:501][  0]LogMemory: Virtual Memory: 4646.77 MB used,  134213080.00 MB free, 134217728.00 MB total
+[2019.06.08-07.18.20:522][  0]LogInit: Using OS detected language (cs-CZ).
+[2019.06.08-07.18.20:522][  0]LogInit: Using OS detected locale (cs-CZ).
+[2019.06.08-07.18.20:523][  0]LogTextLocalizationManager: No localization for 'cs-CZ' exists, so 'en' will be used for the language.
+[2019.06.08-07.18.20:849][  0]LogStreaming: Display: Took  0.326s to InitEngineTextLocalization.
+[2019.06.08-07.18.20:849][  0]LogInit: Setting process to per monitor DPI aware
+[2019.06.08-07.18.20:877][  0]LogSlate: New Slate User Created.  User Index 0, Is Virtual User: 0
+[2019.06.08-07.18.20:877][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2019.06.08-07.18.21:080][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2019.06.08-07.18.21:080][  0]LogD3D11RHI: D3D11 adapters:
+[2019.06.08-07.18.21:140][  0]LogD3D11RHI:    0. 'NVIDIA GeForce GTX 1050' (Feature Level 11_0)
+[2019.06.08-07.18.21:140][  0]LogD3D11RHI:       4019/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x10de
+[2019.06.08-07.18.21:150][  0]LogD3D11RHI:    1. 'Intel(R) UHD Graphics 630' (Feature Level 11_0)
+[2019.06.08-07.18.21:150][  0]LogD3D11RHI:       128/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x8086
+[2019.06.08-07.18.21:152][  0]LogD3D11RHI:    2. 'Microsoft Basic Render Driver' (Feature Level 11_0)
+[2019.06.08-07.18.21:152][  0]LogD3D11RHI:       0/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1414
+[2019.06.08-07.18.21:152][  0]LogD3D11RHI: Chosen D3D11 Adapter: 0
+[2019.06.08-07.18.21:176][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2019.06.08-07.18.21:176][  0]LogD3D11RHI:     GPU DeviceId: 0x1c8d (for the marketing name, search the web for "GPU Device Id")
+[2019.06.08-07.18.21:176][  0]LogWindows: EnumDisplayDevices:
+[2019.06.08-07.18.21:176][  0]LogWindows:    0. 'Intel(R) UHD Graphics 630' (P:1 D:1)
+[2019.06.08-07.18.21:177][  0]LogWindows:    1. 'Intel(R) UHD Graphics 630' (P:0 D:0)
+[2019.06.08-07.18.21:177][  0]LogWindows:    2. 'Intel(R) UHD Graphics 630' (P:0 D:0)
+[2019.06.08-07.18.21:177][  0]LogWindows:    3. 'NVIDIA GeForce GTX 1050' (P:0 D:0)
+[2019.06.08-07.18.21:177][  0]LogWindows: DebugString: PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter 
+[2019.06.08-07.18.21:177][  0]LogD3D11RHI:     Adapter Name: NVIDIA GeForce GTX 1050
+[2019.06.08-07.18.21:177][  0]LogD3D11RHI:   Driver Version: 417.35 (internal:25.21.14.1735, unified:417.35)
+[2019.06.08-07.18.21:177][  0]LogD3D11RHI:      Driver Date: 12-11-2018
+[2019.06.08-07.18.21:177][  0]LogRHI: Texture pool is 2813 MB (70% of 4019 MB)
+[2019.06.08-07.18.21:214][  0]LogD3D11RHI: Async texture creation enabled
+[2019.06.08-07.18.21:237][  0]LogD3D11RHI: GPU Timing Frequency: 1000.000000 (Debug: 2 2)
+[2019.06.08-07.18.21:483][  0]LogTemp: Display: Loaded TP AllDesktopTargetPlatform
+[2019.06.08-07.18.21:493][  0]LogTemp: Display: Loaded TP MacClientTargetPlatform
+[2019.06.08-07.18.21:503][  0]LogTemp: Display: Loaded TP MacNoEditorTargetPlatform
+[2019.06.08-07.18.21:513][  0]LogTemp: Display: Loaded TP MacServerTargetPlatform
+[2019.06.08-07.18.21:524][  0]LogTemp: Display: Loaded TP MacTargetPlatform
+[2019.06.08-07.18.21:534][  0]LogTemp: Display: Loaded TP WindowsClientTargetPlatform
+[2019.06.08-07.18.21:544][  0]LogTemp: Display: Loaded TP WindowsNoEditorTargetPlatform
+[2019.06.08-07.18.21:554][  0]LogTemp: Display: Loaded TP WindowsServerTargetPlatform
+[2019.06.08-07.18.21:558][  0]LogTemp: Display: Loaded TP WindowsTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:617][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.06.08-07.18.21:619][  0]LogTemp: Display: Loaded TP HTML5TargetPlatform
+[2019.06.08-07.18.21:674][  0]LogTemp: Display: Loaded TP IOSTargetPlatform
+[2019.06.08-07.18.21:674][  0]LogTemp: Display: Loaded TP IOSTargetPlatform
+[2019.06.08-07.18.21:696][  0]LogTemp: Display: Loaded TP TVOSTargetPlatform
+[2019.06.08-07.18.21:696][  0]LogTemp: Display: Loaded TP TVOSTargetPlatform
+[2019.06.08-07.18.21:707][  0]LogTemp: Display: Loaded TP LinuxClientTargetPlatform
+[2019.06.08-07.18.21:717][  0]LogTemp: Display: Loaded TP LinuxNoEditorTargetPlatform
+[2019.06.08-07.18.21:730][  0]LogTemp: Display: Loaded TP LinuxServerTargetPlatform
+[2019.06.08-07.18.21:740][  0]LogTemp: Display: Loaded TP LinuxTargetPlatform
+[2019.06.08-07.18.21:778][  0]LogTemp: Display: Loaded TP LuminTargetPlatform
+[2019.06.08-07.18.21:778][  0]LogTemp: Display: Loaded TP LuminTargetPlatform
+[2019.06.08-07.18.21:778][  0]LogTargetPlatformManager: Display: Building Assets For Windows
+[2019.06.08-07.18.21:813][  0]LogShaderCompilers: Guid format shader working directory is -8 characters bigger than the processId version (../../../../../../Program_files/Unreal Projects/Gedaria/Intermediate/Shaders/WorkingDirectory/9256/).
+[2019.06.08-07.18.21:813][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Viktor/AppData/Local/Temp/UnrealShaderWorkingDir/0D2886B144AF892B58B4CAA6C4115C1A/'.
+[2019.06.08-07.18.21:814][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2019.06.08-07.18.21:814][  0]LogShaderCompilers: Cannot use XGE Shader Compiler as Incredibuild is not installed on this machine.
+[2019.06.08-07.18.21:814][  0]LogShaderCompilers: Display: Using Local Shader Compiler.
+[2019.06.08-07.18.22:278][  0]LogDerivedDataCache: Display: Max Cache Size: 512 MB
+[2019.06.08-07.18.22:331][  0]LogDerivedDataCache: Loaded boot cache 0.05s 71MB C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc.
+[2019.06.08-07.18.22:331][  0]LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc
+[2019.06.08-07.18.22:331][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file ../../../../../../Program_files/Unreal Projects/Gedaria/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2019.06.08-07.18.22:331][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2019.06.08-07.18.22:331][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file ../../../../../../Program_files/Unreal Projects/Gedaria/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2019.06.08-07.18.22:331][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+[2019.06.08-07.18.22:345][  0]LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+[2019.06.08-07.18.22:345][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2019.06.08-07.18.22:345][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchical cache Hierarchy.
+[2019.06.08-07.18.22:357][  0]LogDerivedDataCache: Using Local data cache path C:/Users/Viktor/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2019.06.08-07.18.22:357][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2019.06.08-07.18.22:357][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+[2019.06.08-07.18.22:376][  0]LogMaterial: Verifying Global Shaders for PCD3D_SM5
+[2019.06.08-07.18.22:377][  0]LogSlate: Using FreeType 2.6.0
+[2019.06.08-07.18.22:378][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2019.06.08-07.18.22:468][  0]LogAssetRegistry: FAssetRegistry took 0.0313 seconds to start up
+[2019.06.08-07.18.22:712][  0]LogInit: Selected Device Profile: [Windows]
+[2019.06.08-07.18.22:835][  0]LogSimplygon: Simplygon DLL not present - disabling.
+[2019.06.08-07.18.22:837][  0]LogMeshReduction: Using SimplygonSwarm for distributed automatic mesh merging
+[2019.06.08-07.18.22:837][  0]LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+[2019.06.08-07.18.22:837][  0]LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+[2019.06.08-07.18.22:837][  0]LogMeshReduction: No automatic skeletal mesh reduction module available
+[2019.06.08-07.18.22:848][  0]LogNetVersion: Gedaria 1.0.0, NetCL: 4541578, EngineNetVer: 5, GameNetVer: 0 (Checksum: 1762311512)
+[2019.06.08-07.18.23:402][  0]LogPackageLocalizationCache: Processed 11 localized package path(s) for 1 prioritized culture(s) in 0.154438 seconds
+[2019.06.08-07.18.23:408][  0]LogUObjectArray: 39775 objects as part of root set at end of initial load.
+[2019.06.08-07.18.23:408][  0]LogUObjectAllocator: 6914656 out of 0 bytes used by permanent object pool.
+[2019.06.08-07.18.23:408][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2019.06.08-07.18.24:184][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2019.06.08-07.18.24:199][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2019.06.08-07.18.24:802][  0]SourceControl: Source control is disabled
+[2019.06.08-07.18.24:802][  0]SourceControl: Source control is disabled
+[2019.06.08-07.18.24:807][  0]SourceControl: Source control is disabled
+[2019.06.08-07.18.24:810][  0]SourceControl: Source control is disabled
+[2019.06.08-07.18.24:980][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2019.06.08-07.18.25:035][  0]LogOcInput: OculusInput pre-init called
+[2019.06.08-07.18.25:172][  0]LogEngine: Initializing Engine...
+[2019.06.08-07.18.25:173][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2019.06.08-07.18.25:174][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI prefixes -  0.000 s
+[2019.06.08-07.18.25:174][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2019.06.08-07.18.25:174][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI -  0.000 s
+[2019.06.08-07.18.25:174][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2019.06.08-07.18.25:398][  0]LogInit: Initializing FReadOnlyCVARCache
+[2019.06.08-07.18.25:412][  0]LogAIModule: Creating AISystem for world Untitled
+[2019.06.08-07.18.25:423][  0]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.06.08-07.18.25:441][  0]LogInit: FAudioDevice initialized.
+[2019.06.08-07.18.25:441][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2019.06.08-07.18.25:566][  0]LogDerivedDataCache: Saved boot cache 0.12s 71MB C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc.
+[2019.06.08-07.18.25:566][  0]LogInit: Texture streaming: Enabled
+[2019.06.08-07.18.25:577][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2019.06.08-07.18.25:743][  0]LogInit: Transaction tracking system initialized
+[2019.06.08-07.18.25:757][  0]BlueprintLog: New page: Editor Load
+[2019.06.08-07.18.25:799][  0]LocalizationService: Localization service is disabled
+[2019.06.08-07.18.26:281][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/' took 0.01s
+[2019.06.08-07.18.26:281][  0]LogCook: Display: Max memory allowance for cook 16384mb min free memory 0mb
+[2019.06.08-07.18.26:281][  0]LogCook: Display: Mobile HDR setting 1
+[2019.06.08-07.18.26:281][  0]LogGameplayTags: Display: UGameplayTagsManager::DoneAddingNativeTags. DelegateIsBound: 0
+[2019.06.08-07.18.26:282][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI prefixes -  0.000 s
+[2019.06.08-07.18.26:282][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2019.06.08-07.18.26:282][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI -  0.000 s
+[2019.06.08-07.18.26:282][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2019.06.08-07.18.26:371][  0]SourceControl: Source control is disabled
+[2019.06.08-07.18.26:371][  0]Cmd: MAP LOAD FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/NewWorld.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2019.06.08-07.18.26:371][  0]LightingResults: New page: Lighting Build
+[2019.06.08-07.18.26:371][  0]MapCheck: New page: Map Check
+[2019.06.08-07.18.26:371][  0]LightingResults: New page: Lighting Build
+[2019.06.08-07.18.31:036][  0]LogAIModule: Creating AISystem for world NewWorld
+[2019.06.08-07.18.31:243][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2019.06.08-07.18.31:264][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2019.06.08-07.18.31:264][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0,084ms to complete.
+[2019.06.08-07.18.31:264][  0]LogFileHelpers: Loading map 'NewWorld' took 4.894
+[2019.06.08-07.18.31:790][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.06.08-07.18.31:799][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.06.08-07.18.31:807][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.06.08-07.18.31:813][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.06.08-07.18.31:886][  0]LogCollectionManager: Loaded 0 collections in 0.001445 seconds
+[2019.06.08-07.18.32:005][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Saved/Collections/' took 0.01s
+[2019.06.08-07.18.32:005][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/Developers/Viktor/Collections/' took 0.01s
+[2019.06.08-07.18.32:005][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/Collections/' took 0.01s
+[2019.06.08-07.18.32:005][  0]LogCollectionManager: Rebuilt the GUID cache for 0 collections in 0.000001 seconds
+[2019.06.08-07.18.32:050][  0]LogContentBrowser: Native class hierarchy populated in 0.0444 seconds. Added 2651 classes and 620 folders.
+[2019.06.08-07.18.32:157][  0]LogContentBrowser: Native class hierarchy updated for 'WidgetCarousel' in 0.0006 seconds. Added 0 classes and 0 folders.
+[2019.06.08-07.18.32:214][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:244][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:245][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:260][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:266][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:268][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:270][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:278][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:279][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:294][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:296][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:298][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:299][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:301][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:302][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:303][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:304][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:306][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:307][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:308][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:309][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:310][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:312][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:314][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:316][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.32:317][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.06.08-07.18.33:605][  0]LogContentBrowser: Native class hierarchy updated for 'AddContentDialog' in 0.0002 seconds. Added 0 classes and 0 folders.
+[2019.06.08-07.18.33:653][  0]LogContentBrowser: Native class hierarchy updated for 'SceneOutliner' in 0.0002 seconds. Added 1 classes and 2 folders.
+[2019.06.08-07.18.34:091][  0]LogSlate: Took 0.000445 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2019.06.08-07.18.34:098][  0]LogSlate: Took 0.000354 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2019.06.08-07.18.34:135][  0]LogSlate: Took 0.008157 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2019.06.08-07.18.34:539][  0]LogRenderer: Reallocating scene render targets to support 1228x672 Format 10 NumSamples 1 (Frame:1).
+[2019.06.08-07.18.34:865][  0]LogContentBrowser: Native class hierarchy updated for 'HierarchicalLODOutliner' in 0.0005 seconds. Added 0 classes and 0 folders.
+[2019.06.08-07.18.34:865][  0]LogLoad: (Engine Initialization) Total time: 17.41 seconds
+[2019.06.08-07.18.34:865][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.00 seconds
+[2019.06.08-07.18.34:887][  0]LogWindowsTextInputMethodSystem: Display: IME system now deactivated.
+[2019.06.08-07.18.35:135][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2019.06.08-07.18.35:210][  0]LogSlate: Took 0.018424 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2019.06.08-07.18.35:273][  1]LogAssetRegistry: Asset discovery search completed in 12.8278 seconds
+[2019.06.08-07.18.35:275][  1]LogCollectionManager: Rebuilt the object cache for 0 collections in 0.000000 seconds (found 0 objects)
+[2019.06.08-07.18.35:275][  1]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000052 seconds (updated 0 objects)
+[2019.06.08-07.23.12:036][122]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-07.23.49:377][305]LogSlate: Took 0.000152 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2019.06.08-07.23.51:690][305]LogSlate: Window 'Pick Parent Class' being destroyed
+[2019.06.08-07.24.53:800][135]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_ATTACK\ATTACK_007.png)
+[2019.06.08-07.24.53:858][135]LogTexture: Display: Building textures: ATTACK_007 (BGRA8, 1635X1104)
+[2019.06.08-07.24.53:957][135]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_ATTACK\ATTACK_000.png)
+[2019.06.08-07.24.53:988][135]LogTexture: Display: Building textures: ATTACK_000 (BGRA8, 1635X1104)
+[2019.06.08-07.24.54:035][135]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_ATTACK\ATTACK_001.png)
+[2019.06.08-07.24.54:067][135]LogTexture: Display: Building textures: ATTACK_001 (BGRA8, 1635X1104)
+[2019.06.08-07.24.54:114][135]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_ATTACK\ATTACK_002.png)
+[2019.06.08-07.24.54:147][135]LogTexture: Display: Building textures: ATTACK_002 (BGRA8, 1635X1104)
+[2019.06.08-07.24.54:196][135]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_ATTACK\ATTACK_003.png)
+[2019.06.08-07.24.54:227][135]LogTexture: Display: Building textures: ATTACK_003 (BGRA8, 1635X1104)
+[2019.06.08-07.24.54:274][135]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_ATTACK\ATTACK_004.png)
+[2019.06.08-07.24.54:307][135]LogTexture: Display: Building textures: ATTACK_004 (BGRA8, 1635X1104)
+[2019.06.08-07.24.54:350][135]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_ATTACK\ATTACK_005.png)
+[2019.06.08-07.24.54:382][135]LogTexture: Display: Building textures: ATTACK_005 (BGRA8, 1635X1104)
+[2019.06.08-07.24.54:425][135]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_ATTACK\ATTACK_006.png)
+[2019.06.08-07.24.54:458][135]LogTexture: Display: Building textures: ATTACK_006 (BGRA8, 1635X1104)
+[2019.06.08-07.25.11:113][  5]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK1815AD38434B351B60A83EB608ED6E59.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/ATTACK.uasset'
+[2019.06.08-07.25.33:153][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_0008607783740C35C84E344B58A0D1C6B9B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_000.uasset'
+[2019.06.08-07.25.33:182][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_000_SpriteF50C54C842C3E5E2D48E178EFE6C8655.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_000_Sprite.uasset'
+[2019.06.08-07.25.33:258][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_001D1297BE4470E3DF2EAFCA2B3F6905DE4.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_001.uasset'
+[2019.06.08-07.25.33:275][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_001_Sprite29A980D944C59F1757962B8995EFC8B9.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_001_Sprite.uasset'
+[2019.06.08-07.25.33:355][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_002BCCC58FA4A6540A335CFA98718885645.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_002.uasset'
+[2019.06.08-07.25.33:372][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_002_Sprite70BA172B44BFE149D8B8DDB6195D723E.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_002_Sprite.uasset'
+[2019.06.08-07.25.33:449][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_0037F660CCF40431CEDC26FFA9130BA23B6.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_003.uasset'
+[2019.06.08-07.25.33:466][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_003_SpriteF460DF5D47F2A295F63E45A3E97469EF.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_003_Sprite.uasset'
+[2019.06.08-07.25.33:545][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_004BF10933A4CD99224C0C527BB720EE4C8.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_004.uasset'
+[2019.06.08-07.25.33:561][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_004_SpriteE305280C4DD4B4C93746EFB93D83565F.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_004_Sprite.uasset'
+[2019.06.08-07.25.33:641][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_0053E39B47B4F96FB987BA112A64692F11E.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_005.uasset'
+[2019.06.08-07.25.33:657][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_005_Sprite2B7D1FFF4682CDFB71ABB2A0FAE83F68.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_005_Sprite.uasset'
+[2019.06.08-07.25.33:738][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_006D6977CB74521D7EF894CDB860580C65D.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_006.uasset'
+[2019.06.08-07.25.33:755][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_006_SpriteF28A7B2E44BE3E5186E3768226321078.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_006_Sprite.uasset'
+[2019.06.08-07.25.33:835][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_007657ABE704D8249263BB2D7BAC9B18064.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_007.uasset'
+[2019.06.08-07.25.33:851][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK_007_Sprite4A13CA264506182D6E821EB96DBBE909.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/sprites/attack/ATTACK_007_Sprite.uasset'
+[2019.06.08-07.25.35:212][282]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/ATTACK9C7D82FE41EB325F3C98188B8E2C7942.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/ATTACK.uasset'
+[2019.06.08-07.25.52:824][873]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_DIE\_DIE_006.png)
+[2019.06.08-07.25.52:862][873]LogTexture: Display: Building textures: _DIE_006 (BGRA8, 1841X1369)
+[2019.06.08-07.25.52:957][873]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_DIE\_DIE_000.png)
+[2019.06.08-07.25.52:995][873]LogTexture: Display: Building textures: _DIE_000 (BGRA8, 1841X1369)
+[2019.06.08-07.25.53:062][873]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_DIE\_DIE_001.png)
+[2019.06.08-07.25.53:100][873]LogTexture: Display: Building textures: _DIE_001 (BGRA8, 1841X1369)
+[2019.06.08-07.25.53:161][873]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_DIE\_DIE_002.png)
+[2019.06.08-07.25.53:198][873]LogTexture: Display: Building textures: _DIE_002 (BGRA8, 1841X1369)
+[2019.06.08-07.25.53:261][873]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_DIE\_DIE_003.png)
+[2019.06.08-07.25.53:296][873]LogTexture: Display: Building textures: _DIE_003 (BGRA8, 1841X1369)
+[2019.06.08-07.25.53:356][873]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_DIE\_DIE_004.png)
+[2019.06.08-07.25.53:393][873]LogTexture: Display: Building textures: _DIE_004 (BGRA8, 1841X1369)
+[2019.06.08-07.25.53:460][873]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_DIE\_DIE_005.png)
+[2019.06.08-07.25.53:496][873]LogTexture: Display: Building textures: _DIE_005 (BGRA8, 1841X1369)
+[2019.06.08-07.26.06:745][578]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIEF38B53B04D195DBD9D0CF7A93298F86A.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/_DIE.uasset'
+[2019.06.08-07.26.31:013][367]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_HURT\_HURT_006.png)
+[2019.06.08-07.26.31:051][367]LogTexture: Display: Building textures: _HURT_006 (BGRA8, 1567X1116)
+[2019.06.08-07.26.31:093][367]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_HURT\_HURT_000.png)
+[2019.06.08-07.26.31:123][367]LogTexture: Display: Building textures: _HURT_000 (BGRA8, 1567X1116)
+[2019.06.08-07.26.31:166][367]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_HURT\_HURT_001.png)
+[2019.06.08-07.26.31:196][367]LogTexture: Display: Building textures: _HURT_001 (BGRA8, 1567X1116)
+[2019.06.08-07.26.31:243][367]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_HURT\_HURT_002.png)
+[2019.06.08-07.26.31:272][367]LogTexture: Display: Building textures: _HURT_002 (BGRA8, 1567X1116)
+[2019.06.08-07.26.31:314][367]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_HURT\_HURT_003.png)
+[2019.06.08-07.26.31:345][367]LogTexture: Display: Building textures: _HURT_003 (BGRA8, 1567X1116)
+[2019.06.08-07.26.31:387][367]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_HURT\_HURT_004.png)
+[2019.06.08-07.26.31:416][367]LogTexture: Display: Building textures: _HURT_004 (BGRA8, 1567X1116)
+[2019.06.08-07.26.31:459][367]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_HURT\_HURT_005.png)
+[2019.06.08-07.26.31:489][367]LogTexture: Display: Building textures: _HURT_005 (BGRA8, 1567X1116)
+[2019.06.08-07.26.41:280][866]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURTF83BC0114D174D92EDC52097B0222B5B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/_HURT.uasset'
+[2019.06.08-07.27.03:275][596]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_IDLE\_IDLE_006.png)
+[2019.06.08-07.27.03:305][596]LogTexture: Display: Building textures: _IDLE_006 (AutoDXT, 1464X1028)
+[2019.06.08-07.27.03:686][596]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_IDLE\_IDLE_000.png)
+[2019.06.08-07.27.03:715][596]LogTexture: Display: Building textures: _IDLE_000 (AutoDXT, 1464X1028)
+[2019.06.08-07.27.03:971][596]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_IDLE\_IDLE_001.png)
+[2019.06.08-07.27.03:999][596]LogTexture: Display: Building textures: _IDLE_001 (AutoDXT, 1464X1028)
+[2019.06.08-07.27.04:257][596]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_IDLE\_IDLE_002.png)
+[2019.06.08-07.27.04:283][596]LogTexture: Display: Building textures: _IDLE_002 (AutoDXT, 1464X1028)
+[2019.06.08-07.27.04:546][596]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_IDLE\_IDLE_003.png)
+[2019.06.08-07.27.04:574][596]LogTexture: Display: Building textures: _IDLE_003 (AutoDXT, 1464X1028)
+[2019.06.08-07.27.04:836][596]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_IDLE\_IDLE_004.png)
+[2019.06.08-07.27.04:862][596]LogTexture: Display: Building textures: _IDLE_004 (AutoDXT, 1464X1028)
+[2019.06.08-07.27.05:125][596]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_IDLE\_IDLE_005.png)
+[2019.06.08-07.27.05:154][596]LogTexture: Display: Building textures: _IDLE_005 (AutoDXT, 1464X1028)
+[2019.06.08-07.27.14:147][ 63]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE26FCB63D4C3FAE6F6080F1A8E9C62D96.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/_IDLE.uasset'
+[2019.06.08-07.27.30:186][520]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_JUMP\_JUMP_006.png)
+[2019.06.08-07.27.30:226][520]LogTexture: Display: Building textures: _JUMP_006 (BGRA8, 1586X1375)
+[2019.06.08-07.27.30:307][520]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_JUMP\_JUMP_000.png)
+[2019.06.08-07.27.30:340][520]LogTexture: Display: Building textures: _JUMP_000 (BGRA8, 1586X1375)
+[2019.06.08-07.27.30:406][520]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_JUMP\_JUMP_001.png)
+[2019.06.08-07.27.30:442][520]LogTexture: Display: Building textures: _JUMP_001 (BGRA8, 1586X1375)
+[2019.06.08-07.27.30:495][520]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_JUMP\_JUMP_002.png)
+[2019.06.08-07.27.30:532][520]LogTexture: Display: Building textures: _JUMP_002 (BGRA8, 1586X1375)
+[2019.06.08-07.27.30:586][520]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_JUMP\_JUMP_003.png)
+[2019.06.08-07.27.30:624][520]LogTexture: Display: Building textures: _JUMP_003 (BGRA8, 1586X1375)
+[2019.06.08-07.27.30:679][520]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_JUMP\_JUMP_004.png)
+[2019.06.08-07.27.30:713][520]LogTexture: Display: Building textures: _JUMP_004 (BGRA8, 1586X1375)
+[2019.06.08-07.27.30:769][520]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_JUMP\_JUMP_005.png)
+[2019.06.08-07.27.30:805][520]LogTexture: Display: Building textures: _JUMP_005 (BGRA8, 1586X1375)
+[2019.06.08-07.27.40:653][ 23]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMPF1750D3F4D6D4ADF09081D86C85C0091.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/_JUMP.uasset'
+[2019.06.08-07.27.53:114][322]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_RUN\_RUN_006.png)
+[2019.06.08-07.27.53:149][322]LogTexture: Display: Building textures: _RUN_006 (BGRA8, 1593X1118)
+[2019.06.08-07.27.53:211][322]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_RUN\_RUN_000.png)
+[2019.06.08-07.27.53:246][322]LogTexture: Display: Building textures: _RUN_000 (BGRA8, 1593X1118)
+[2019.06.08-07.27.53:294][322]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_RUN\_RUN_001.png)
+[2019.06.08-07.27.53:327][322]LogTexture: Display: Building textures: _RUN_001 (BGRA8, 1593X1118)
+[2019.06.08-07.27.53:377][322]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_RUN\_RUN_002.png)
+[2019.06.08-07.27.53:409][322]LogTexture: Display: Building textures: _RUN_002 (BGRA8, 1593X1118)
+[2019.06.08-07.27.53:454][322]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_RUN\_RUN_003.png)
+[2019.06.08-07.27.53:485][322]LogTexture: Display: Building textures: _RUN_003 (BGRA8, 1593X1118)
+[2019.06.08-07.27.53:531][322]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_RUN\_RUN_004.png)
+[2019.06.08-07.27.53:562][322]LogTexture: Display: Building textures: _RUN_004 (BGRA8, 1593X1118)
+[2019.06.08-07.27.53:606][322]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_RUN\_RUN_005.png)
+[2019.06.08-07.27.53:637][322]LogTexture: Display: Building textures: _RUN_005 (BGRA8, 1593X1118)
+[2019.06.08-07.28.05:169][977]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUNE0C1C62E4EC995578A01DAB4263771F0.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/_RUN.uasset'
+[2019.06.08-07.28.22:058][438]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_WALK\_WALK_000.png)
+[2019.06.08-07.28.22:091][438]LogTexture: Display: Building textures: _WALK_000 (BGRA8, 1478X1057)
+[2019.06.08-07.28.22:156][438]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_WALK\_WALK_001.png)
+[2019.06.08-07.28.22:187][438]LogTexture: Display: Building textures: _WALK_001 (BGRA8, 1478X1057)
+[2019.06.08-07.28.22:225][438]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_WALK\_WALK_002.png)
+[2019.06.08-07.28.22:252][438]LogTexture: Display: Building textures: _WALK_002 (BGRA8, 1478X1057)
+[2019.06.08-07.28.22:293][438]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_WALK\_WALK_003.png)
+[2019.06.08-07.28.22:319][438]LogTexture: Display: Building textures: _WALK_003 (BGRA8, 1478X1057)
+[2019.06.08-07.28.22:360][438]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_WALK\_WALK_004.png)
+[2019.06.08-07.28.22:389][438]LogTexture: Display: Building textures: _WALK_004 (BGRA8, 1478X1057)
+[2019.06.08-07.28.22:431][438]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_WALK\_WALK_005.png)
+[2019.06.08-07.28.22:459][438]LogTexture: Display: Building textures: _WALK_005 (BGRA8, 1478X1057)
+[2019.06.08-07.28.22:502][438]LogFactory: FactoryCreateFile: Texture with ReimportTextureFactory (0 0 D:\Program_files\Unreal Projects\Gedaria\enemies\_PNG\1_KNIGHT\_WALK\_WALK_006.png)
+[2019.06.08-07.28.22:531][438]LogTexture: Display: Building textures: _WALK_006 (BGRA8, 1478X1057)
+[2019.06.08-07.28.38:798][340]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALKA707F6A04FE1E1E7F3A3AD930C105C77.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/_WALK.uasset'
+[2019.06.08-07.29.04:788][864]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/level/NewWorld' took 0.019
+[2019.06.08-07.29.04:900][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_006] ([1] browsable assets)...
+[2019.06.08-07.29.04:906][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/die/_DIE_006._DIE_006]
+[2019.06.08-07.29.04:906][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_006]
+[2019.06.08-07.29.04:919][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_006_Auto1BBD98CFB4F4A57DE278945AA0E578A98.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_006_Auto1.uasset'
+[2019.06.08-07.29.04:920][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_000] ([1] browsable assets)...
+[2019.06.08-07.29.04:927][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/die/_DIE_000._DIE_000]
+[2019.06.08-07.29.04:927][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_000]
+[2019.06.08-07.29.04:937][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_000_Auto1556910FC4D4D7148A651B284CFAE6CE6.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_000_Auto1.uasset'
+[2019.06.08-07.29.04:938][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_001] ([1] browsable assets)...
+[2019.06.08-07.29.04:944][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/die/_DIE_001._DIE_001]
+[2019.06.08-07.29.04:944][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_001]
+[2019.06.08-07.29.04:953][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_001_Auto1DCAB0CF848C377FCC24B23AE112A6AE4.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_001_Auto1.uasset'
+[2019.06.08-07.29.04:953][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_002] ([1] browsable assets)...
+[2019.06.08-07.29.04:957][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/die/_DIE_002._DIE_002]
+[2019.06.08-07.29.04:957][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_002]
+[2019.06.08-07.29.04:973][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_002_Auto1D437C4D2489B8CE59CF394B7F053F66B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_002_Auto1.uasset'
+[2019.06.08-07.29.04:974][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_003] ([1] browsable assets)...
+[2019.06.08-07.29.04:978][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/die/_DIE_003._DIE_003]
+[2019.06.08-07.29.04:978][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_003]
+[2019.06.08-07.29.04:985][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_003_Auto1E0930C304FD011EBDB8815BC602EB733.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_003_Auto1.uasset'
+[2019.06.08-07.29.04:986][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_004] ([1] browsable assets)...
+[2019.06.08-07.29.04:990][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/die/_DIE_004._DIE_004]
+[2019.06.08-07.29.04:990][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_004]
+[2019.06.08-07.29.04:998][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_004_Auto16FB273364C3F6793E3C0BC82DE3E57FB.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_004_Auto1.uasset'
+[2019.06.08-07.29.04:999][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_005] ([1] browsable assets)...
+[2019.06.08-07.29.05:003][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/die/_DIE_005._DIE_005]
+[2019.06.08-07.29.05:003][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_005]
+[2019.06.08-07.29.05:010][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_005_Auto17DDFDF8643F86EE0FAEEF4BA919CD444.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_005_Auto1.uasset'
+[2019.06.08-07.29.05:011][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_000_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:020][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/die/_DIE_000_Sprite._DIE_000_Sprite]
+[2019.06.08-07.29.05:020][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_000_Sprite]
+[2019.06.08-07.29.05:026][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_000_Sprite_Auto112AD05EA4A73C187C03570B4BD57D65E.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_000_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:027][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_001_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:034][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/die/_DIE_001_Sprite._DIE_001_Sprite]
+[2019.06.08-07.29.05:034][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_001_Sprite]
+[2019.06.08-07.29.05:040][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_001_Sprite_Auto1BC077083472186F1BFA93197BFE5E61A.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_001_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:041][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_002_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:048][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/die/_DIE_002_Sprite._DIE_002_Sprite]
+[2019.06.08-07.29.05:048][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_002_Sprite]
+[2019.06.08-07.29.05:053][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_002_Sprite_Auto151225EBE4800CADDF464B89A0C6169FF.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_002_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:054][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_003_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:061][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/die/_DIE_003_Sprite._DIE_003_Sprite]
+[2019.06.08-07.29.05:061][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_003_Sprite]
+[2019.06.08-07.29.05:066][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_003_Sprite_Auto1F1A7470043109C603CE5FCA9D16896B4.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_003_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:067][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_004_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:074][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/die/_DIE_004_Sprite._DIE_004_Sprite]
+[2019.06.08-07.29.05:074][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_004_Sprite]
+[2019.06.08-07.29.05:079][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_004_Sprite_Auto1047111EF48A7A9C04FF241A4A2CBF1FA.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_004_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:079][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_005_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:086][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/die/_DIE_005_Sprite._DIE_005_Sprite]
+[2019.06.08-07.29.05:086][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_005_Sprite]
+[2019.06.08-07.29.05:092][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_005_Sprite_Auto17ACCE4874918D6B3F078E78F4F39B1B7.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_005_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:092][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/die/_DIE_006_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:099][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/die/_DIE_006_Sprite._DIE_006_Sprite]
+[2019.06.08-07.29.05:099][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/die/_DIE_006_Sprite]
+[2019.06.08-07.29.05:105][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_006_Sprite_Auto1E222DE6A4BC3625B4D9C64AAEEBCD96A.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/die/_DIE_006_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:105][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_006] ([1] browsable assets)...
+[2019.06.08-07.29.05:110][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/hurt/_HURT_006._HURT_006]
+[2019.06.08-07.29.05:110][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_006]
+[2019.06.08-07.29.05:116][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_006_Auto1AA8953904F544A3E79FC6DB067D75926.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_006_Auto1.uasset'
+[2019.06.08-07.29.05:116][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_000] ([1] browsable assets)...
+[2019.06.08-07.29.05:121][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/hurt/_HURT_000._HURT_000]
+[2019.06.08-07.29.05:121][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_000]
+[2019.06.08-07.29.05:127][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_000_Auto1ECCCBF624F02549F801D219AD455A91E.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_000_Auto1.uasset'
+[2019.06.08-07.29.05:128][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_001] ([1] browsable assets)...
+[2019.06.08-07.29.05:132][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/hurt/_HURT_001._HURT_001]
+[2019.06.08-07.29.05:132][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_001]
+[2019.06.08-07.29.05:138][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_001_Auto141BF639644E6A293E7754F9C7A3E780D.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_001_Auto1.uasset'
+[2019.06.08-07.29.05:138][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_002] ([1] browsable assets)...
+[2019.06.08-07.29.05:143][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/hurt/_HURT_002._HURT_002]
+[2019.06.08-07.29.05:143][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_002]
+[2019.06.08-07.29.05:149][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_002_Auto1DF39868F40079542CA07E885A8A3E52D.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_002_Auto1.uasset'
+[2019.06.08-07.29.05:149][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_003] ([1] browsable assets)...
+[2019.06.08-07.29.05:153][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/hurt/_HURT_003._HURT_003]
+[2019.06.08-07.29.05:153][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_003]
+[2019.06.08-07.29.05:160][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_003_Auto1F4C57CCC4AF77542145002BE1B8C9827.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_003_Auto1.uasset'
+[2019.06.08-07.29.05:161][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_004] ([1] browsable assets)...
+[2019.06.08-07.29.05:165][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/hurt/_HURT_004._HURT_004]
+[2019.06.08-07.29.05:165][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_004]
+[2019.06.08-07.29.05:171][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_004_Auto122D7A0494F21513CB25CCB8C564361C6.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_004_Auto1.uasset'
+[2019.06.08-07.29.05:172][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_005] ([1] browsable assets)...
+[2019.06.08-07.29.05:176][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/hurt/_HURT_005._HURT_005]
+[2019.06.08-07.29.05:176][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_005]
+[2019.06.08-07.29.05:182][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_005_Auto12FAC71534CCD3634E8183C90511BE0D8.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_005_Auto1.uasset'
+[2019.06.08-07.29.05:183][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_000_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:190][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/hurt/_HURT_000_Sprite._HURT_000_Sprite]
+[2019.06.08-07.29.05:190][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_000_Sprite]
+[2019.06.08-07.29.05:196][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_000_Sprite_Auto18B1CEBE04DCFAD59C421D08739E98FB1.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_000_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:197][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_001_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:204][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/hurt/_HURT_001_Sprite._HURT_001_Sprite]
+[2019.06.08-07.29.05:204][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_001_Sprite]
+[2019.06.08-07.29.05:222][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_001_Sprite_Auto159C6109C44D7946C6272CF87F8C7AA2B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_001_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:223][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_002_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:230][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/hurt/_HURT_002_Sprite._HURT_002_Sprite]
+[2019.06.08-07.29.05:230][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_002_Sprite]
+[2019.06.08-07.29.05:235][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_002_Sprite_Auto16C32FEAD46DC6092674DD1A796B3CD5B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_002_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:236][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_003_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:243][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/hurt/_HURT_003_Sprite._HURT_003_Sprite]
+[2019.06.08-07.29.05:243][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_003_Sprite]
+[2019.06.08-07.29.05:249][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_003_Sprite_Auto12FF13584417C4D2C02AB81BEABBE2CF8.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_003_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:249][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_004_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:256][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/hurt/_HURT_004_Sprite._HURT_004_Sprite]
+[2019.06.08-07.29.05:256][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_004_Sprite]
+[2019.06.08-07.29.05:262][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_004_Sprite_Auto181B68D894ED7D804F991FD8525798955.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_004_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:262][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_005_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:269][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/hurt/_HURT_005_Sprite._HURT_005_Sprite]
+[2019.06.08-07.29.05:269][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_005_Sprite]
+[2019.06.08-07.29.05:275][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_005_Sprite_Auto177CD113B4798B0033DF2BD88BCDBFB1A.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_005_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:276][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_006_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:283][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/hurt/_HURT_006_Sprite._HURT_006_Sprite]
+[2019.06.08-07.29.05:283][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/hurt/_HURT_006_Sprite]
+[2019.06.08-07.29.05:288][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_HURT_006_Sprite_Auto15AA273F945B2232FD54F84A65F27D9FC.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/hurt/_HURT_006_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:289][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_006] ([1] browsable assets)...
+[2019.06.08-07.29.05:293][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/idle/_IDLE_006._IDLE_006]
+[2019.06.08-07.29.05:293][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_006]
+[2019.06.08-07.29.05:299][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_006_Auto1D93A57A947391DFFF0C1E6A9F530FFDE.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_006_Auto1.uasset'
+[2019.06.08-07.29.05:300][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_000] ([1] browsable assets)...
+[2019.06.08-07.29.05:304][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/idle/_IDLE_000._IDLE_000]
+[2019.06.08-07.29.05:304][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_000]
+[2019.06.08-07.29.05:311][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_000_Auto13B46E7A041212E8D8AE46BAA3A1607F0.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_000_Auto1.uasset'
+[2019.06.08-07.29.05:312][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_001] ([1] browsable assets)...
+[2019.06.08-07.29.05:316][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/idle/_IDLE_001._IDLE_001]
+[2019.06.08-07.29.05:316][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_001]
+[2019.06.08-07.29.05:322][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_001_Auto1ADCF09A74B749F70D1CADFA41E497ECA.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_001_Auto1.uasset'
+[2019.06.08-07.29.05:323][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_002] ([1] browsable assets)...
+[2019.06.08-07.29.05:327][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/idle/_IDLE_002._IDLE_002]
+[2019.06.08-07.29.05:327][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_002]
+[2019.06.08-07.29.05:333][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_002_Auto1DB53326346EF12731740AEA0B5C3CBB0.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_002_Auto1.uasset'
+[2019.06.08-07.29.05:334][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_003] ([1] browsable assets)...
+[2019.06.08-07.29.05:338][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/idle/_IDLE_003._IDLE_003]
+[2019.06.08-07.29.05:338][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_003]
+[2019.06.08-07.29.05:345][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_003_Auto1CFE0684E46D029D605BD8AACAFB5977C.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_003_Auto1.uasset'
+[2019.06.08-07.29.05:345][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_004] ([1] browsable assets)...
+[2019.06.08-07.29.05:349][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/idle/_IDLE_004._IDLE_004]
+[2019.06.08-07.29.05:349][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_004]
+[2019.06.08-07.29.05:356][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_004_Auto1514E05CC46B4DDD5BDB30B978352D333.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_004_Auto1.uasset'
+[2019.06.08-07.29.05:357][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_005] ([1] browsable assets)...
+[2019.06.08-07.29.05:361][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/idle/_IDLE_005._IDLE_005]
+[2019.06.08-07.29.05:361][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_005]
+[2019.06.08-07.29.05:367][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_005_Auto16D6232984C77090A2B0D5D8A67FC326F.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_005_Auto1.uasset'
+[2019.06.08-07.29.05:368][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_000_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:375][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/idle/_IDLE_000_Sprite._IDLE_000_Sprite]
+[2019.06.08-07.29.05:375][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_000_Sprite]
+[2019.06.08-07.29.05:381][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_000_Sprite_Auto124BBA8344B516AB3EA8B0787C4F1FFE3.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_000_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:381][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_001_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:388][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/idle/_IDLE_001_Sprite._IDLE_001_Sprite]
+[2019.06.08-07.29.05:388][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_001_Sprite]
+[2019.06.08-07.29.05:395][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_001_Sprite_Auto1972AABD3498725E27891B4B7507B1C16.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_001_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:395][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_002_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:402][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/idle/_IDLE_002_Sprite._IDLE_002_Sprite]
+[2019.06.08-07.29.05:402][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_002_Sprite]
+[2019.06.08-07.29.05:409][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_002_Sprite_Auto1DFEE3C8D41D2C6ACDC5FCDA28ACB0E13.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_002_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:409][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_003_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:416][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/idle/_IDLE_003_Sprite._IDLE_003_Sprite]
+[2019.06.08-07.29.05:416][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_003_Sprite]
+[2019.06.08-07.29.05:422][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_003_Sprite_Auto15D03D8214F67F82246E767B000F2DFFB.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_003_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:423][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_004_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:430][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/idle/_IDLE_004_Sprite._IDLE_004_Sprite]
+[2019.06.08-07.29.05:430][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_004_Sprite]
+[2019.06.08-07.29.05:436][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_004_Sprite_Auto1B2156DFB4947377682BCD092B0DDE972.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_004_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:436][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_005_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:443][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/idle/_IDLE_005_Sprite._IDLE_005_Sprite]
+[2019.06.08-07.29.05:443][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_005_Sprite]
+[2019.06.08-07.29.05:449][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_005_Sprite_Auto11E50AD9F469F79FF9376B5A623556C58.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_005_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:450][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_006_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:457][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/idle/_IDLE_006_Sprite._IDLE_006_Sprite]
+[2019.06.08-07.29.05:457][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/idle/_IDLE_006_Sprite]
+[2019.06.08-07.29.05:464][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_IDLE_006_Sprite_Auto1505D342D4F044DC16A8CCD908351D860.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/idle/_IDLE_006_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:464][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_006] ([1] browsable assets)...
+[2019.06.08-07.29.05:472][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/jump/_JUMP_006._JUMP_006]
+[2019.06.08-07.29.05:472][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_006]
+[2019.06.08-07.29.05:479][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_006_Auto107C064704B952BE428D9A3B1782B2FE5.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_006_Auto1.uasset'
+[2019.06.08-07.29.05:480][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_000] ([1] browsable assets)...
+[2019.06.08-07.29.05:484][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/jump/_JUMP_000._JUMP_000]
+[2019.06.08-07.29.05:484][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_000]
+[2019.06.08-07.29.05:492][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_000_Auto1098361864A8C64AEEEFC27AA083181A6.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_000_Auto1.uasset'
+[2019.06.08-07.29.05:492][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_001] ([1] browsable assets)...
+[2019.06.08-07.29.05:497][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/jump/_JUMP_001._JUMP_001]
+[2019.06.08-07.29.05:497][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_001]
+[2019.06.08-07.29.05:505][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_001_Auto1E203B6914984B71D69412DA2F66A4DCB.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_001_Auto1.uasset'
+[2019.06.08-07.29.05:505][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_002] ([1] browsable assets)...
+[2019.06.08-07.29.05:510][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/jump/_JUMP_002._JUMP_002]
+[2019.06.08-07.29.05:510][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_002]
+[2019.06.08-07.29.05:517][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_002_Auto1D051634D48AB5E5CF142C1A6DCAAD596.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_002_Auto1.uasset'
+[2019.06.08-07.29.05:518][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_003] ([1] browsable assets)...
+[2019.06.08-07.29.05:522][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/jump/_JUMP_003._JUMP_003]
+[2019.06.08-07.29.05:522][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_003]
+[2019.06.08-07.29.05:535][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_003_Auto1D1F77BEC4014909575A9FB893484C642.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_003_Auto1.uasset'
+[2019.06.08-07.29.05:535][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_004] ([1] browsable assets)...
+[2019.06.08-07.29.05:540][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/jump/_JUMP_004._JUMP_004]
+[2019.06.08-07.29.05:540][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_004]
+[2019.06.08-07.29.05:547][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_004_Auto140928B054C1B7F5684D8BB99093F0700.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_004_Auto1.uasset'
+[2019.06.08-07.29.05:548][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_005] ([1] browsable assets)...
+[2019.06.08-07.29.05:552][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/jump/_JUMP_005._JUMP_005]
+[2019.06.08-07.29.05:552][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_005]
+[2019.06.08-07.29.05:561][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_005_Auto1F7749524423A8B6921CCFDAE50C86005.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_005_Auto1.uasset'
+[2019.06.08-07.29.05:561][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_000_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:568][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/jump/_JUMP_000_Sprite._JUMP_000_Sprite]
+[2019.06.08-07.29.05:568][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_000_Sprite]
+[2019.06.08-07.29.05:574][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_000_Sprite_Auto15178B52A4C8D353F541861B8DB5ED0CB.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_000_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:574][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_001_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:581][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/jump/_JUMP_001_Sprite._JUMP_001_Sprite]
+[2019.06.08-07.29.05:581][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_001_Sprite]
+[2019.06.08-07.29.05:587][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_001_Sprite_Auto1CDB2817E4B18E8F955998984435FC6F1.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_001_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:588][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_002_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:595][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/jump/_JUMP_002_Sprite._JUMP_002_Sprite]
+[2019.06.08-07.29.05:595][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_002_Sprite]
+[2019.06.08-07.29.05:602][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_002_Sprite_Auto179F723824144907A7CF557A11BFCC25B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_002_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:603][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_003_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:610][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/jump/_JUMP_003_Sprite._JUMP_003_Sprite]
+[2019.06.08-07.29.05:610][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_003_Sprite]
+[2019.06.08-07.29.05:617][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_003_Sprite_Auto1C8C000D64821D91676B27A9DA427ECAD.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_003_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:617][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_004_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:624][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/jump/_JUMP_004_Sprite._JUMP_004_Sprite]
+[2019.06.08-07.29.05:625][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_004_Sprite]
+[2019.06.08-07.29.05:631][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_004_Sprite_Auto1357343A643C5FCC86E6D8B89DA378011.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_004_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:631][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_005_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:638][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/jump/_JUMP_005_Sprite._JUMP_005_Sprite]
+[2019.06.08-07.29.05:638][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_005_Sprite]
+[2019.06.08-07.29.05:645][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_005_Sprite_Auto1B3D0F181420B2D259A45B89283740DC4.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_005_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:645][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_006_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:652][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/jump/_JUMP_006_Sprite._JUMP_006_Sprite]
+[2019.06.08-07.29.05:652][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/jump/_JUMP_006_Sprite]
+[2019.06.08-07.29.05:658][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_JUMP_006_Sprite_Auto15CFF933845BA65D7318850AED9144480.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/jump/_JUMP_006_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:659][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_006] ([1] browsable assets)...
+[2019.06.08-07.29.05:663][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/run/_RUN_006._RUN_006]
+[2019.06.08-07.29.05:663][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_006]
+[2019.06.08-07.29.05:670][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_006_Auto188A57D464F99B9E206576D84DA51821F.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_006_Auto1.uasset'
+[2019.06.08-07.29.05:670][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_000] ([1] browsable assets)...
+[2019.06.08-07.29.05:674][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/run/_RUN_000._RUN_000]
+[2019.06.08-07.29.05:674][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_000]
+[2019.06.08-07.29.05:681][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_000_Auto18622A533422B883B39B46F8A152173AF.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_000_Auto1.uasset'
+[2019.06.08-07.29.05:681][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_001] ([1] browsable assets)...
+[2019.06.08-07.29.05:685][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/run/_RUN_001._RUN_001]
+[2019.06.08-07.29.05:685][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_001]
+[2019.06.08-07.29.05:692][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_001_Auto1F76F614C4BF6B12260B633BA1840D2EE.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_001_Auto1.uasset'
+[2019.06.08-07.29.05:692][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_002] ([1] browsable assets)...
+[2019.06.08-07.29.05:696][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/run/_RUN_002._RUN_002]
+[2019.06.08-07.29.05:696][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_002]
+[2019.06.08-07.29.05:703][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_002_Auto17FCDBF7D4C4944087A2F4FB2C812AD1B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_002_Auto1.uasset'
+[2019.06.08-07.29.05:703][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_003] ([1] browsable assets)...
+[2019.06.08-07.29.05:707][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/run/_RUN_003._RUN_003]
+[2019.06.08-07.29.05:707][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_003]
+[2019.06.08-07.29.05:714][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_003_Auto1EFB28E8E4AD609F5BA1248B4BF622CF6.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_003_Auto1.uasset'
+[2019.06.08-07.29.05:714][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_004] ([1] browsable assets)...
+[2019.06.08-07.29.05:718][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/run/_RUN_004._RUN_004]
+[2019.06.08-07.29.05:718][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_004]
+[2019.06.08-07.29.05:724][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_004_Auto144719CB342AF3E4C475B8B8C5C0F4317.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_004_Auto1.uasset'
+[2019.06.08-07.29.05:725][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_005] ([1] browsable assets)...
+[2019.06.08-07.29.05:729][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/run/_RUN_005._RUN_005]
+[2019.06.08-07.29.05:729][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_005]
+[2019.06.08-07.29.05:735][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_005_Auto124F19C6640B89232766BB1912B99CCAE.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_005_Auto1.uasset'
+[2019.06.08-07.29.05:736][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_000_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:743][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/run/_RUN_000_Sprite._RUN_000_Sprite]
+[2019.06.08-07.29.05:743][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_000_Sprite]
+[2019.06.08-07.29.05:749][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_000_Sprite_Auto168BE39FB4B25A16BA0D997A4EE2FC945.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_000_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:750][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_001_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:757][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/run/_RUN_001_Sprite._RUN_001_Sprite]
+[2019.06.08-07.29.05:757][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_001_Sprite]
+[2019.06.08-07.29.05:763][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_001_Sprite_Auto17DB5CA374CE28C8B142D88B2898FCB3C.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_001_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:763][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_002_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:770][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/run/_RUN_002_Sprite._RUN_002_Sprite]
+[2019.06.08-07.29.05:770][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_002_Sprite]
+[2019.06.08-07.29.05:776][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_002_Sprite_Auto1534B621049C0683A1C8AFE9DE874E689.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_002_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:776][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_003_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:783][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/run/_RUN_003_Sprite._RUN_003_Sprite]
+[2019.06.08-07.29.05:783][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_003_Sprite]
+[2019.06.08-07.29.05:789][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_003_Sprite_Auto1263D9A244D59460F09931D83319D017B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_003_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:790][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_004_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:797][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/run/_RUN_004_Sprite._RUN_004_Sprite]
+[2019.06.08-07.29.05:797][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_004_Sprite]
+[2019.06.08-07.29.05:805][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_004_Sprite_Auto17D0FA07E4C4D05C020E13BAC056D686A.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_004_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:806][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_005_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:813][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/run/_RUN_005_Sprite._RUN_005_Sprite]
+[2019.06.08-07.29.05:813][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_005_Sprite]
+[2019.06.08-07.29.05:818][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_005_Sprite_Auto1714588564D0D3072AB51BD929ECF73E5.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_005_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:818][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/run/_RUN_006_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:825][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/run/_RUN_006_Sprite._RUN_006_Sprite]
+[2019.06.08-07.29.05:825][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/run/_RUN_006_Sprite]
+[2019.06.08-07.29.05:832][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_RUN_006_Sprite_Auto1AA46444B42DF5EB6A84E26B219BD39D6.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/run/_RUN_006_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:833][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_000] ([1] browsable assets)...
+[2019.06.08-07.29.05:837][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/walk/_WALK_000._WALK_000]
+[2019.06.08-07.29.05:837][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_000]
+[2019.06.08-07.29.05:845][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_000_Auto17E4BCEA24358A1B4FF7244AC93750B98.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_000_Auto1.uasset'
+[2019.06.08-07.29.05:846][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_001] ([1] browsable assets)...
+[2019.06.08-07.29.05:850][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/walk/_WALK_001._WALK_001]
+[2019.06.08-07.29.05:850][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_001]
+[2019.06.08-07.29.05:856][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_001_Auto113D5119F456F5B9DBDC497B469F50C13.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_001_Auto1.uasset'
+[2019.06.08-07.29.05:857][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_002] ([1] browsable assets)...
+[2019.06.08-07.29.05:861][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/walk/_WALK_002._WALK_002]
+[2019.06.08-07.29.05:861][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_002]
+[2019.06.08-07.29.05:867][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_002_Auto12DD57C83468FC73B63F45290DFE8083B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_002_Auto1.uasset'
+[2019.06.08-07.29.05:868][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_003] ([1] browsable assets)...
+[2019.06.08-07.29.05:872][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/walk/_WALK_003._WALK_003]
+[2019.06.08-07.29.05:872][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_003]
+[2019.06.08-07.29.05:879][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_003_Auto10A12D9124AA3FA633DFCCF91F9877B34.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_003_Auto1.uasset'
+[2019.06.08-07.29.05:879][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_004] ([1] browsable assets)...
+[2019.06.08-07.29.05:883][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/walk/_WALK_004._WALK_004]
+[2019.06.08-07.29.05:883][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_004]
+[2019.06.08-07.29.05:890][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_004_Auto17215FE194DE26881BA2796BF78F75BD7.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_004_Auto1.uasset'
+[2019.06.08-07.29.05:891][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_005] ([1] browsable assets)...
+[2019.06.08-07.29.05:895][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/walk/_WALK_005._WALK_005]
+[2019.06.08-07.29.05:895][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_005]
+[2019.06.08-07.29.05:902][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_005_Auto14B671F1B4F672BB47339BA8E26715111.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_005_Auto1.uasset'
+[2019.06.08-07.29.05:902][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_006] ([1] browsable assets)...
+[2019.06.08-07.29.05:906][864]OBJ SavePackage:     Rendered thumbnail for [Texture2D /Game/enemies/knight1/animations/sprites/walk/_WALK_006._WALK_006]
+[2019.06.08-07.29.05:906][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_006]
+[2019.06.08-07.29.05:913][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_006_Auto1620DE3864E06DE6AFD6BB2A3B9FAA555.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_006_Auto1.uasset'
+[2019.06.08-07.29.05:914][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_000_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:921][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/walk/_WALK_000_Sprite._WALK_000_Sprite]
+[2019.06.08-07.29.05:921][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_000_Sprite]
+[2019.06.08-07.29.05:927][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_000_Sprite_Auto1B88F001047CB5FCA18E44F9833162884.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_000_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:927][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_001_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:934][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/walk/_WALK_001_Sprite._WALK_001_Sprite]
+[2019.06.08-07.29.05:934][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_001_Sprite]
+[2019.06.08-07.29.05:940][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_001_Sprite_Auto1F095B26242DAE809986A1BADF72D5345.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_001_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:941][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_002_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:948][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/walk/_WALK_002_Sprite._WALK_002_Sprite]
+[2019.06.08-07.29.05:948][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_002_Sprite]
+[2019.06.08-07.29.05:954][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_002_Sprite_Auto18E7FD91D4917E3B352B59C94ADFF1075.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_002_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:955][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_003_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:963][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/walk/_WALK_003_Sprite._WALK_003_Sprite]
+[2019.06.08-07.29.05:963][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_003_Sprite]
+[2019.06.08-07.29.05:969][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_003_Sprite_Auto1A12196FD4A2EEB3AE3767B8AF599E8E2.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_003_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:969][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_004_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:977][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/walk/_WALK_004_Sprite._WALK_004_Sprite]
+[2019.06.08-07.29.05:977][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_004_Sprite]
+[2019.06.08-07.29.05:983][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_004_Sprite_Auto171CF1E594D6A5BED4E6A74971C00ABA2.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_004_Sprite_Auto1.uasset'
+[2019.06.08-07.29.05:984][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_005_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.05:991][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/walk/_WALK_005_Sprite._WALK_005_Sprite]
+[2019.06.08-07.29.05:991][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_005_Sprite]
+[2019.06.08-07.29.06:000][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_005_Sprite_Auto1084AB6F342DB7913167B52A955DB86C5.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_005_Sprite_Auto1.uasset'
+[2019.06.08-07.29.06:001][864]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/enemies/knight1/animations/sprites/walk/_WALK_006_Sprite] ([1] browsable assets)...
+[2019.06.08-07.29.06:008][864]OBJ SavePackage:     Rendered thumbnail for [PaperSprite /Game/enemies/knight1/animations/sprites/walk/_WALK_006_Sprite._WALK_006_Sprite]
+[2019.06.08-07.29.06:008][864]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/animations/sprites/walk/_WALK_006_Sprite]
+[2019.06.08-07.29.06:015][864]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_WALK_006_Sprite_Auto1E55B620B44280FEB87BB5FB857B7EDB5.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/animations/sprites/walk/_WALK_006_Sprite_Auto1.uasset'
+[2019.06.08-07.29.06:016][864]LogFileHelpers: Auto-saving content packages took 1.128
+[2019.06.08-07.29.36:770][643]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/enemies/knight1/2DSideScrollerCharacter.2DSideScrollerCharacter
+[2019.06.08-07.29.38:272][643]LogContentBrowser: Native class hierarchy updated for 'BlueprintGraph' in 0.0019 seconds. Added 117 classes and 0 folders.
+[2019.06.08-07.29.40:793][643]LogSlate: Took 0.029370 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2019.06.08-07.29.41:569][644]LogSlate: Took 0.020890 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2019.06.08-07.29.43:158][719]LogSlate: Window '2DSideScrollerCharacter*' being destroyed
+[2019.06.08-07.29.43:162][719]LogSlate: Window '2DSideScrollerCharacter*' being destroyed
+[2019.06.08-07.29.50:969][141]LogMetaData: Removing '/Game/enemies/knight1/knight1.SKEL_knight1_C' ref from Metadata '/Game/enemies/knight1/2DSideScrollerCharacter.PackageMetaData'
+[2019.06.08-07.29.50:969][141]LogMetaData: Removing '/Game/enemies/knight1/knight1.knight1_C' ref from Metadata '/Game/enemies/knight1/2DSideScrollerCharacter.PackageMetaData'
+[2019.06.08-07.29.51:009][141]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.29.51:157][141]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight13B12020B44AB446DFC442B84E266A2DE.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.30.00:367][677]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/enemies/knight1/knight1.knight1
+[2019.06.08-07.30.52:425][565]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.30.53:835][581]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.30.53:903][581]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1E5CE76E5408D4A75CB59CD9BE5E9FE96.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.32.00:995][511]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.32.01:784][536]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.32.01:840][536]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight10202E35F4D91267070C0BDB42F287146.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.32.42:401][937]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.32.43:490][980]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.32.43:549][980]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight163B3B7784DA91720239F5FA5A7092ACB.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.33.45:762][692]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.33.46:535][716]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.33.46:591][716]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight15E2E842240AB2D0483FA149CF266C405.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.34.09:163][ 60]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/_DIE_LOOP0AC022F24C2171DAB8B2B7840715F455.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/animations/flipbook/_DIE_LOOP.uasset'
+[2019.06.08-07.34.12:363][225]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/level/NewWorld" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/NewWorld.umap" SILENT=true AUTOSAVING=false KEEPDIRTY=false
+[2019.06.08-07.34.12:528][225]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/NewWorld4D05FBE6414FFFD83ECAF7B40270CE02.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/NewWorld.umap'
+[2019.06.08-07.34.26:885][995]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.34.27:658][ 19]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.34.27:715][ 19]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1F31AF8C5480775078C88B3BC1BBD6DC0.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.35.07:336][344]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.35.08:053][352]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.35.08:109][352]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight165A75FFC4283ED8F9D6696AD08796866.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.36.26:129][876]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.36.26:660][885]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.36.26:717][885]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight18210F8644C3AB5FF14E1A9B5BE506B81.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.36.32:594][227]LogRenderer: Reallocating scene render targets to support 1228x756 Format 10 NumSamples 1 (Frame:1).
+[2019.06.08-07.36.39:142][557]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.06.08-07.36.59:351][729]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-07.37.52:959][898]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-07.37.53:008][901]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.37.53:498][915]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.37.53:557][915]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight185AB1D6247855B6F9A47D5BA69F1CDE7.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.38.16:061][256]LogRenderer: Reallocating scene render targets to support 1228x940 Format 10 NumSamples 1 (Frame:5415).
+[2019.06.08-07.39.18:060][908]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.39.18:464][912]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.39.18:522][912]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1FBA1E01F41992822409A2CBBA5F38428.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.39.45:883][540]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.06.08-07.39.53:679][  0]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.06.08-07.40.18:190][433]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-07.41.01:147][936]LogEditorTransaction: Undo Modify Component(s)
+[2019.06.08-07.42.18:573][450]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.06.08-07.43.10:295][522]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-07.43.10:361][526]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.43.11:598][546]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.43.11:777][546]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight183EDAE074A3A2AB1B0FA6A949792A87C.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.43.17:108][846]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.06.08-07.43.29:770][599]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-07.43.29:836][603]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.43.30:335][617]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.43.30:395][617]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight152DC281040C79D11541474B24C715932.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.44.44:997][919]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.44.45:612][934]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.44.45:672][934]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight18DA329C54329AEBC1455848DD212C1A2.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.47.22:403][966]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.47.22:810][969]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.47.22:872][969]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight14C5F797147D47362C68914BD6BDA5C15.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.48.44:518][783]LogEditorTransaction: Undo Move Nodes
+[2019.06.08-07.48.45:787][848]LogEditorTransaction: Undo Add Node
+[2019.06.08-07.49.17:230][706]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/level/NewWorld' took 0.028
+[2019.06.08-07.49.17:232][706]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/enemies/knight1/knight1] ([1] browsable assets)...
+[2019.06.08-07.49.17:232][706]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/knight1]
+[2019.06.08-07.49.17:296][706]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1_Auto2D34FF32B4B34A2A84F1F10A643D8A74E.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/knight1_Auto2.uasset'
+[2019.06.08-07.49.17:297][706]LogFileHelpers: Auto-saving content packages took 0.065
+[2019.06.08-07.53.57:336][287]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.53.57:843][296]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.53.57:912][296]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1DD14D18740503E8F7E8A6F855B8EB294.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.56.22:170][532]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.56.22:688][537]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.56.22:757][537]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight160D9840F48FD4886F837F18DDEF2387B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-07.59.26:479][871]BlueprintLog: New page: Compile knight1
+[2019.06.08-07.59.26:955][878]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-07.59.27:024][878]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight13CDC77F74AB2990A7F3E93B693366FE8.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-08.00.42:532][179]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/level/NewWorld' took 0.032
+[2019.06.08-08.00.42:533][179]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/enemies/knight1/knight1] ([1] browsable assets)...
+[2019.06.08-08.00.42:533][179]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/knight1]
+[2019.06.08-08.00.42:601][179]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1_Auto3987F2C4B434190241DA508A039BDC8EE.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/knight1_Auto3.uasset'
+[2019.06.08-08.00.42:601][179]LogFileHelpers: Auto-saving content packages took 0.068
+[2019.06.08-08.00.46:770][424]BlueprintLog: New page: Compile knight1
+[2019.06.08-08.00.47:305][436]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-08.00.47:486][436]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1E9E0E1484FEAB7A3F593B8A39666CC27.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-08.00.58:485][ 95]LogSlate: Window 'knight1' being destroyed
+[2019.06.08-08.00.58:490][ 95]LogSlate: Window 'knight1' being destroyed
+[2019.06.08-08.01.14:874][996]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-08.01.50:214][ 41]LogEditorViewport: Clicking on Actor (LMB): trap_C (trap2)
+[2019.06.08-08.01.52:228][128]Cmd: DELETE
+[2019.06.08-08.01.52:228][128]Cmd: ACTOR DELETE
+[2019.06.08-08.01.52:560][128]LogEditorActor: Deleted Actor: trap_C
+[2019.06.08-08.01.52:615][128]LogEditorActor: Deleted 1 Actors (0.111 secs)
+[2019.06.08-08.01.53:217][157]LogEditorViewport: Clicking on Actor (LMB): trap_C (trap)
+[2019.06.08-08.01.56:116][312]LogEditorViewport: Clicking on Actor (LMB): basefloor_C (basefloor3)
+[2019.06.08-08.01.58:320][442]Cmd: EDIT COPY
+[2019.06.08-08.01.58:643][447]Cmd: EDIT PASTE
+[2019.06.08-08.02.12:299][212]LogEditorViewport: Clicking on Actor (LMB): trap_C (trap)
+[2019.06.08-08.02.18:183][548]LogEditorViewport: Clicking on Actor (LMB): knight1_C (knight1)
+[2019.06.08-08.02.25:636][984]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-08.02.25:745][989]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/level/NewWorld" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/NewWorld.umap" SILENT=true AUTOSAVING=false KEEPDIRTY=false
+[2019.06.08-08.02.25:900][989]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/NewWorld4D2E15CA4E4BBD44CE1CFE90E4D159C2.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/NewWorld.umap'
+[2019.06.08-08.02.26:786][ 31]LogTemp: Repeating last play command: New Editor Window (PIE)
+[2019.06.08-08.02.26:918][ 31]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.06.08-08.02.26:949][ 31]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.06.08-08.02.27:034][ 31]PIE: New page: PIE session: NewWorld (8. 6. 2019 12:02:26)
+[2019.06.08-08.02.27:139][ 31]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.06.08-08.02.27:220][ 31]LogPlayLevel: PIE: StaticDuplicateObject took: (0.079723s)
+[2019.06.08-08.02.27:222][ 31]LogAIModule: Creating AISystem for world NewWorld
+[2019.06.08-08.02.27:232][ 31]LogPlayLevel: PIE: World Init took: (0.012220s)
+[2019.06.08-08.02.27:233][ 31]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.092659s)
+[2019.06.08-08.02.27:333][ 31]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.06.08-08.02.27:345][ 31]LogInit: FAudioDevice initialized.
+[2019.06.08-08.02.27:372][ 31]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.06.08-08.02.27:465][ 31]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.06.08-08.02.27:567][ 31]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.06.08-10.02.27
+[2019.06.08-08.02.27:739][ 31]LogWorld: Bringing up level for play took: 0.179069
+[2019.06.08-08.02.27:878][ 31]LogContentBrowser: Native class hierarchy updated for 'MovieSceneCapture' in 0.0009 seconds. Added 20 classes and 0 folders.
+[2019.06.08-08.02.28:050][ 31]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 2,005
+[2019.06.08-08.02.28:051][ 31]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.06.08-08.02.28:208][ 31]LogRenderer: Reallocating scene render targets to support 1292x940 Format 10 NumSamples 1 (Frame:1).
+[2019.06.08-08.02.49:340][178]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-08.02.49:444][180]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.06.08-08.02.49:446][180]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.06.08-08.02.49:583][180]LogSlate: Window 'Gedaria Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.06.08-08.02.49:632][180]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.06.08-08.02.49:633][180]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.06.08-08.02.49:782][181]LogPlayLevel: Display: Destroying online subsystem :Context_4
+[2019.06.08-08.02.55:165][501]LogEditorViewport: Clicking on Actor (LMB): knight1_C (knight1)
+[2019.06.08-08.02.56:062][548]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-08.02.56:246][558]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/enemies/knight1/knight1.knight1
+[2019.06.08-08.03.33:001][276]BlueprintLog: New page: Compile knight1
+[2019.06.08-08.03.33:809][293]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-08.03.33:881][293]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1B1AC713E413E886D3B88C398242DC9CD.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-08.03.34:533][322]LogTemp: Repeating last play command: New Editor Window (PIE)
+[2019.06.08-08.03.34:549][322]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.06.08-08.03.34:549][322]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.06.08-08.03.34:549][322]PIE: New page: PIE session: NewWorld (8. 6. 2019 12:03:34)
+[2019.06.08-08.03.34:550][322]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.06.08-08.03.34:553][322]LogPlayLevel: PIE: StaticDuplicateObject took: (0.003671s)
+[2019.06.08-08.03.34:554][322]LogAIModule: Creating AISystem for world NewWorld
+[2019.06.08-08.03.34:555][322]LogPlayLevel: PIE: World Init took: (0.001043s)
+[2019.06.08-08.03.34:555][322]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.004938s)
+[2019.06.08-08.03.34:614][322]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.06.08-08.03.34:629][322]LogInit: FAudioDevice initialized.
+[2019.06.08-08.03.34:636][322]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.06.08-08.03.34:674][322]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.06.08-08.03.34:676][322]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.06.08-10.03.34
+[2019.06.08-08.03.34:676][322]LogWorld: Bringing up level for play took: 0.001876
+[2019.06.08-08.03.34:708][322]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,662
+[2019.06.08-08.03.34:710][322]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.06.08-08.03.54:043][395]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.06.08-08.03.54:240][395]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.06.08-08.03.54:240][395]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.06.08-08.03.54:252][395]LogSlate: Window 'Gedaria Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.06.08-08.03.54:287][395]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.06.08-08.03.54:288][395]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.06.08-08.03.54:361][396]LogPlayLevel: Display: Destroying online subsystem :Context_6
+[2019.06.08-08.06.45:454][199]BlueprintLog: New page: Compile knight1
+[2019.06.08-08.06.46:241][225]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.06.08-08.06.46:318][225]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1EE3A98AA4DFD20B298A78389EE109561.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.06.08-08.07.39:528][314]LogOutputDevice: Warning: 
+
+Script Stack (0 frames):
+
+[2019.06.08-08.07.42:048][314]LogStats: FPlatformStackWalk::StackWalkAndDump -  2.520 s
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: === Handled ensure: ===
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: 
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: Ensure condition failed: !InputKeys.Contains(Key) [File:D:\Build\++UE4\Sync\Engine\Source\Runtime\InputCore\Private\InputCoreTypes.cpp] [Line: 718]
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: Adding duplicate key 'UnknownCharCode_352'
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: Stack: 
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff8f2c496e8 UE4Editor-InputCore.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff8f2c4d5e5 UE4Editor-InputCore.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff8cceb9b99 UE4Editor-Slate.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff8d327dc35 UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff8d3270de0 UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff8d32801eb UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff8d326ca19 UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff9151f6d41 USER32.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff9151f6713 USER32.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff8d3281746 UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff74df45546 UE4Editor.exe!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff74df5596c UE4Editor.exe!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff74df559ea UE4Editor.exe!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff74df648da UE4Editor.exe!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff74df6659a UE4Editor.exe!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff916d84034 KERNEL32.DLL!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: [Callstack] 0x00007ff917b93691 ntdll.dll!UnknownFunction []
+[2019.06.08-08.07.42:068][314]LogOutputDevice: Error: 
+[2019.06.08-08.07.42:075][314]LogStats:                SubmitErrorReport -  0.000 s

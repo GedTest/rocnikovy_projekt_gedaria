@@ -1,0 +1,21 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-Gedaria-6305.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\GedariaEditor\Development\Engine\SharedPCH.Engine.h.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\Gedaria.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\MyPaperCharacter.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\MyPawn.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\Vladimir.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\VladSpringArmComponent.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\Gedaria.init.gen.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\MyPaperCharacter.gen.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\MyPawn.gen.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\Vladimir.gen.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\VladSpringArmComponent.gen.cpp.obj"
+"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\PCLaunch.rc.res"
+/OUT:"D:\Program_files\Unreal Projects\Gedaria\Intermediate\Build\Win64\UE4Editor\Development\Gedaria\UE4Editor-Gedaria-6305.lib"

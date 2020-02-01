@@ -1,0 +1,1384 @@
+﻿Log file open, 09/16/19 18:33:38
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogInit: Display: Running engine for game: Gedaria
+LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+LogPlatformFile: Not using cached read wrapper
+LogTaskGraph: Started task graph with 5 named threads and 23 total threads with 3 sets of task threads.
+LogStats: Stats thread started at 1.494853
+LogD3D11RHI: Loaded GFSDK_Aftermath_Lib.x64.dll
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +1:00, Platform Override: ''
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin AISupport
+LogPluginManager: Mounting plugin LightPropagationVolume
+LogPluginManager: Mounting plugin ActorLayerUtilities
+LogPluginManager: Mounting plugin CLionSourceCodeAccess
+LogPluginManager: Mounting plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting plugin GitSourceControl
+LogPluginManager: Mounting plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting plugin NullSourceCodeAccess
+LogPluginManager: Mounting plugin PerforceSourceControl
+LogPluginManager: Mounting plugin SubversionSourceControl
+LogPluginManager: Mounting plugin UObjectPlugin
+LogPluginManager: Mounting plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting plugin AssetManagerEditor
+LogPluginManager: Mounting plugin CryptoKeys
+LogPluginManager: Mounting plugin DataValidation
+LogPluginManager: Mounting plugin FacialAnimation
+LogPluginManager: Mounting plugin GameplayTagsEditor
+LogPluginManager: Mounting plugin MacGraphicsSwitching
+LogPluginManager: Mounting plugin MeshEditor
+LogPluginManager: Mounting plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting plugin PluginBrowser
+LogPluginManager: Mounting plugin SpeedTreeImporter
+LogPluginManager: Mounting plugin DatasmithContent
+LogPluginManager: Mounting plugin VariantManagerContent
+LogPluginManager: Mounting plugin AlembicImporter
+LogPluginManager: Mounting plugin AppleImageUtils
+LogPluginManager: Mounting plugin AppleVision
+LogPluginManager: Mounting plugin BackChannel
+LogPluginManager: Mounting plugin CharacterAI
+LogPluginManager: Mounting plugin GeometryCache
+LogPluginManager: Mounting plugin HTML5Networking
+LogPluginManager: Mounting plugin ProxyLODPlugin
+LogPluginManager: Mounting plugin MagicLeap
+LogPluginManager: Mounting plugin MagicLeapMedia
+LogPluginManager: Mounting plugin AndroidMedia
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin LinearTimecode
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin MediaPlayerEditor
+LogPluginManager: Mounting plugin WebMMedia
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin TcpMessaging
+LogPluginManager: Mounting plugin UdpMessaging
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin LevelSequenceEditor
+LogPluginManager: Mounting plugin MatineeToLevelSequence
+LogPluginManager: Mounting plugin NetcodeUnitTest
+LogPluginManager: Mounting plugin NUTUnrealEngine4
+LogPluginManager: Mounting plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting plugin OnlineSubsystemIOS
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin LauncherChunkInstaller
+LogPluginManager: Mounting plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting plugin AndroidMoviePlayer
+LogPluginManager: Mounting plugin AndroidPermission
+LogPluginManager: Mounting plugin AppleMoviePlayer
+LogPluginManager: Mounting plugin ArchVisCharacter
+LogPluginManager: Mounting plugin AudioCapture
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin CustomMeshComponent
+LogPluginManager: Mounting plugin EditableMesh
+LogPluginManager: Mounting plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting plugin Firebase
+LogPluginManager: Mounting plugin GoogleCloudMessaging
+LogPluginManager: Mounting plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting plugin LocationServicesBPLibrary
+LogPluginManager: Mounting plugin MobilePatchingUtils
+LogPluginManager: Mounting plugin OculusVR
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+LogPluginManager: Mounting plugin SteamVR
+LogPluginManager: Mounting plugin WebMMoviePlayer
+LogPluginManager: Mounting plugin WindowsMoviePlayer
+LogStreaming: Display: Took  0.117s to configure plugins.
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.0.2h
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogInit: Build: ++UE4+Release-4.21-CL-4753647
+LogInit: Engine Version: 4.21.2-4753647+++UE4+Release-4.21
+LogInit: Compatible Engine Version: 4.21.0-4541578+++UE4+Release-4.21
+LogInit: Net CL: 4541578
+LogInit: OS: Windows 10 (), CPU: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz, GPU: Intel(R) UHD Graphics 630
+LogInit: Compiled (64-bit): Jan 19 2019 02:07:31
+LogInit: Compiled with Visual C++: 19.13.26129.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.21
+LogInit: Command Line: 
+LogInit: Base Directory: D:/Program Files/Epic Games/UE_4.21/Engine/Binaries/Win64/
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 22
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 2
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 26
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 34
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 2
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 0
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 27
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 9
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 2
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 2
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 17
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 4
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogStreaming: Display: Took  0.030s to delete old logs.
+LogInit: Presizing for max 8388607 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+[2019.09.16-16.33.39:736][  0]LogConfig: Setting CVar [[r.VSync:0]]
+[2019.09.16-16.33.39:736][  0]LogConfig: Setting CVar [[r.RHICmdBypass:0]]
+[2019.09.16-16.33.39:736][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.09.16-16.33.39:736][  0]LogConfig: Setting CVar [[r.GPUCrashDebugging:0]]
+[2019.09.16-16.33.39:736][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.09.16-16.33.39:736][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.09.16-16.33.39:736][  0]LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+[2019.09.16-16.33.39:736][  0]LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.SizeOfPermanentObjectPool:0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.FlushStreamingOnGC:0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.NumRetriesBeforeForcingGC:10]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.AllowParallelGC:1]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.MaxObjectsInEditor:8388607]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.CreateGCClusters:1]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.MergeGCClusters:0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.MinGCClusterSize:5]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.ActorClusteringEnabled:0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.BlueprintClusteringEnabled:0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Setting CVar [[gc.UseDisregardForGCOnDedicatedServers:0]]
+[2019.09.16-16.33.39:737][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.09.16-16.33.39:737][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.09.16-16.33.39:739][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.BloomQuality:5]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2019.09.16-16.33.39:739][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.SSR.Quality:3]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2019.09.16-16.33.39:740][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2019.09.16-16.33.39:745][  0]LogInit: Selected Device Profile: [Windows]
+[2019.09.16-16.33.39:745][  0]LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+[2019.09.16-16.33.39:764][  0]LogHAL: Display: Platform has ~ 8 GB [8431169536 / 8589934592 / 8], which maps to Default [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Vulkan.UseRealUBs:1]]
+[2019.09.16-16.33.39:780][  0]LogInit: Going up to parent DeviceProfile []
+[2019.09.16-16.33.39:780][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:4]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:4]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:-1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:2]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.LensFlareQuality:2]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.BloomQuality:5]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:100]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2019.09.16-16.33.39:780][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:780][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:64]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.SSR.Quality:3]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.SceneColorFormat:4]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:1]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Scalability.ini]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2019.09.16-16.33.39:781][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2019.09.16-16.33.39:782][  0]LogConfig: Setting CVar [[net.UseAdaptiveNetUpdateFrequency:0]]
+[2019.09.16-16.33.39:782][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [D:/Program_files/Unreal Projects/Gedaria/Saved/Config/Windows/Engine.ini]
+[2019.09.16-16.33.39:782][  0]LogInit: Computer: LAPTOP-CL2VGTEM
+[2019.09.16-16.33.39:782][  0]LogInit: User: Viktor
+[2019.09.16-16.33.39:782][  0]LogInit: CPU Page size=4096, Cores=4
+[2019.09.16-16.33.39:782][  0]LogInit: High frequency timer resolution =2.249997 MHz
+[2019.09.16-16.33.39:782][  0]LogMemory: Memory total: Physical=7.9GB (8GB approx)
+[2019.09.16-16.33.39:782][  0]LogMemory: Platform Memory Stats for Windows
+[2019.09.16-16.33.39:782][  0]LogMemory: Process Physical Memory: 105.07 MB used, 105.07 MB peak
+[2019.09.16-16.33.39:782][  0]LogMemory: Process Virtual Memory: 96.89 MB used, 96.89 MB peak
+[2019.09.16-16.33.39:782][  0]LogMemory: Physical Memory: 5025.09 MB used,  3015.50 MB free, 8040.59 MB total
+[2019.09.16-16.33.39:782][  0]LogMemory: Virtual Memory: 4653.89 MB used,  134213072.00 MB free, 134217728.00 MB total
+[2019.09.16-16.33.40:073][  0]LogInit: Using OS detected language (cs-CZ).
+[2019.09.16-16.33.40:073][  0]LogInit: Using OS detected locale (cs-CZ).
+[2019.09.16-16.33.40:074][  0]LogTextLocalizationManager: No localization for 'cs-CZ' exists, so 'en' will be used for the language.
+[2019.09.16-16.33.40:666][  0]LogStreaming: Display: Took  0.593s to InitEngineTextLocalization.
+[2019.09.16-16.33.40:666][  0]LogInit: Setting process to per monitor DPI aware
+[2019.09.16-16.33.40:943][  0]LogSlate: New Slate User Created.  User Index 0, Is Virtual User: 0
+[2019.09.16-16.33.40:943][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2019.09.16-16.33.41:576][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2019.09.16-16.33.41:576][  0]LogD3D11RHI: D3D11 adapters:
+[2019.09.16-16.33.41:658][  0]LogD3D11RHI:    0. 'NVIDIA GeForce GTX 1050' (Feature Level 11_0)
+[2019.09.16-16.33.41:658][  0]LogD3D11RHI:       4019/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x10de
+[2019.09.16-16.33.41:674][  0]LogD3D11RHI:    1. 'Intel(R) UHD Graphics 630' (Feature Level 11_0)
+[2019.09.16-16.33.41:674][  0]LogD3D11RHI:       128/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x8086
+[2019.09.16-16.33.41:679][  0]LogD3D11RHI:    2. 'Microsoft Basic Render Driver' (Feature Level 11_0)
+[2019.09.16-16.33.41:679][  0]LogD3D11RHI:       0/0/4020 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1414
+[2019.09.16-16.33.41:679][  0]LogD3D11RHI: Chosen D3D11 Adapter: 0
+[2019.09.16-16.33.41:705][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2019.09.16-16.33.41:705][  0]LogD3D11RHI:     GPU DeviceId: 0x1c8d (for the marketing name, search the web for "GPU Device Id")
+[2019.09.16-16.33.41:705][  0]LogWindows: EnumDisplayDevices:
+[2019.09.16-16.33.41:705][  0]LogWindows:    0. 'Intel(R) UHD Graphics 630' (P:1 D:1)
+[2019.09.16-16.33.41:705][  0]LogWindows:    1. 'Intel(R) UHD Graphics 630' (P:0 D:0)
+[2019.09.16-16.33.41:705][  0]LogWindows:    2. 'Intel(R) UHD Graphics 630' (P:0 D:0)
+[2019.09.16-16.33.41:706][  0]LogWindows:    3. 'NVIDIA GeForce GTX 1050' (P:0 D:0)
+[2019.09.16-16.33.41:706][  0]LogWindows: DebugString: PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter PrimaryIsNotTheChoosenAdapter 
+[2019.09.16-16.33.41:706][  0]LogD3D11RHI:     Adapter Name: NVIDIA GeForce GTX 1050
+[2019.09.16-16.33.41:706][  0]LogD3D11RHI:   Driver Version: 417.35 (internal:25.21.14.1735, unified:417.35)
+[2019.09.16-16.33.41:706][  0]LogD3D11RHI:      Driver Date: 12-11-2018
+[2019.09.16-16.33.41:706][  0]LogRHI: Texture pool is 2813 MB (70% of 4019 MB)
+[2019.09.16-16.33.41:754][  0]LogD3D11RHI: Async texture creation enabled
+[2019.09.16-16.33.41:826][  0]LogD3D11RHI: GPU Timing Frequency: 1000.000000 (Debug: 2 2)
+[2019.09.16-16.33.42:555][  0]LogTemp: Display: Loaded TP AllDesktopTargetPlatform
+[2019.09.16-16.33.42:570][  0]LogTemp: Display: Loaded TP MacClientTargetPlatform
+[2019.09.16-16.33.42:590][  0]LogTemp: Display: Loaded TP MacNoEditorTargetPlatform
+[2019.09.16-16.33.42:623][  0]LogTemp: Display: Loaded TP MacServerTargetPlatform
+[2019.09.16-16.33.42:650][  0]LogTemp: Display: Loaded TP MacTargetPlatform
+[2019.09.16-16.33.42:663][  0]LogTemp: Display: Loaded TP WindowsClientTargetPlatform
+[2019.09.16-16.33.42:697][  0]LogTemp: Display: Loaded TP WindowsNoEditorTargetPlatform
+[2019.09.16-16.33.42:721][  0]LogTemp: Display: Loaded TP WindowsServerTargetPlatform
+[2019.09.16-16.33.42:736][  0]LogTemp: Display: Loaded TP WindowsTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:849][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.09.16-16.33.42:906][  0]LogTemp: Display: Loaded TP HTML5TargetPlatform
+[2019.09.16-16.33.43:040][  0]LogTemp: Display: Loaded TP IOSTargetPlatform
+[2019.09.16-16.33.43:040][  0]LogTemp: Display: Loaded TP IOSTargetPlatform
+[2019.09.16-16.33.43:069][  0]LogTemp: Display: Loaded TP TVOSTargetPlatform
+[2019.09.16-16.33.43:069][  0]LogTemp: Display: Loaded TP TVOSTargetPlatform
+[2019.09.16-16.33.43:086][  0]LogTemp: Display: Loaded TP LinuxClientTargetPlatform
+[2019.09.16-16.33.43:103][  0]LogTemp: Display: Loaded TP LinuxNoEditorTargetPlatform
+[2019.09.16-16.33.43:127][  0]LogTemp: Display: Loaded TP LinuxServerTargetPlatform
+[2019.09.16-16.33.43:146][  0]LogTemp: Display: Loaded TP LinuxTargetPlatform
+[2019.09.16-16.33.43:196][  0]LogTemp: Display: Loaded TP LuminTargetPlatform
+[2019.09.16-16.33.43:196][  0]LogTemp: Display: Loaded TP LuminTargetPlatform
+[2019.09.16-16.33.43:196][  0]LogTargetPlatformManager: Display: Building Assets For Windows
+[2019.09.16-16.33.43:654][  0]LogShaderCompilers: Guid format shader working directory is -9 characters bigger than the processId version (../../../../../../Program_files/Unreal Projects/Gedaria/Intermediate/Shaders/WorkingDirectory/11804/).
+[2019.09.16-16.33.43:654][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Viktor/AppData/Local/Temp/UnrealShaderWorkingDir/D801FCA24DE3546E0F5F22A908ED26AF/'.
+[2019.09.16-16.33.43:670][  0]LogXGEController: Cleaning working directory: C:/Users/Viktor/AppData/Local/Temp/UnrealXGEWorkingDir/
+[2019.09.16-16.33.43:670][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2019.09.16-16.33.43:670][  0]LogShaderCompilers: Cannot use XGE Shader Compiler as Incredibuild is not installed on this machine.
+[2019.09.16-16.33.43:670][  0]LogShaderCompilers: Display: Using Local Shader Compiler.
+[2019.09.16-16.33.44:690][  0]LogDerivedDataCache: Display: Max Cache Size: 512 MB
+[2019.09.16-16.33.45:053][  0]LogDerivedDataCache: Loaded boot cache 0.36s 71MB C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc.
+[2019.09.16-16.33.45:053][  0]LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc
+[2019.09.16-16.33.45:053][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file ../../../../../../Program_files/Unreal Projects/Gedaria/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2019.09.16-16.33.45:053][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2019.09.16-16.33.45:054][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file ../../../../../../Program_files/Unreal Projects/Gedaria/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2019.09.16-16.33.45:054][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+[2019.09.16-16.33.45:125][  0]LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+[2019.09.16-16.33.45:125][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2019.09.16-16.33.45:125][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchical cache Hierarchy.
+[2019.09.16-16.33.45:137][  0]LogDerivedDataCache: Using Local data cache path C:/Users/Viktor/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2019.09.16-16.33.45:137][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2019.09.16-16.33.45:137][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+[2019.09.16-16.33.45:156][  0]LogMaterial: Verifying Global Shaders for PCD3D_SM5
+[2019.09.16-16.33.45:158][  0]LogSlate: Using FreeType 2.6.0
+[2019.09.16-16.33.45:170][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2019.09.16-16.33.46:041][  0]LogAssetRegistry: FAssetRegistry took 0.0394 seconds to start up
+[2019.09.16-16.33.46:815][  0]LogInit: Selected Device Profile: [Windows]
+[2019.09.16-16.33.47:588][  0]LogSimplygon: Simplygon DLL not present - disabling.
+[2019.09.16-16.33.47:691][  0]LogMeshReduction: Using SimplygonSwarm for distributed automatic mesh merging
+[2019.09.16-16.33.47:691][  0]LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+[2019.09.16-16.33.47:691][  0]LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+[2019.09.16-16.33.47:691][  0]LogMeshReduction: No automatic skeletal mesh reduction module available
+[2019.09.16-16.33.47:705][  0]LogNetVersion: Gedaria 1.0.0, NetCL: 4541578, EngineNetVer: 5, GameNetVer: 0 (Checksum: 1762311512)
+[2019.09.16-16.33.49:168][  0]LogPackageLocalizationCache: Processed 11 localized package path(s) for 1 prioritized culture(s) in 0.090814 seconds
+[2019.09.16-16.33.49:173][  0]LogUObjectArray: 39775 objects as part of root set at end of initial load.
+[2019.09.16-16.33.49:173][  0]LogUObjectAllocator: 6914656 out of 0 bytes used by permanent object pool.
+[2019.09.16-16.33.49:173][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2019.09.16-16.33.55:486][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2019.09.16-16.33.55:521][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2019.09.16-16.33.56:970][  0]SourceControl: Source control is disabled
+[2019.09.16-16.33.56:970][  0]SourceControl: Source control is disabled
+[2019.09.16-16.33.57:198][  0]SourceControl: Source control is disabled
+[2019.09.16-16.33.57:216][  0]SourceControl: Source control is disabled
+[2019.09.16-16.33.58:223][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2019.09.16-16.33.58:402][  0]LogOcInput: OculusInput pre-init called
+[2019.09.16-16.33.58:816][  0]LogEngine: Initializing Engine...
+[2019.09.16-16.33.58:817][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2019.09.16-16.33.58:818][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI prefixes -  0.000 s
+[2019.09.16-16.33.58:818][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2019.09.16-16.33.58:818][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI -  0.000 s
+[2019.09.16-16.33.58:818][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2019.09.16-16.33.59:430][  0]LogInit: Initializing FReadOnlyCVARCache
+[2019.09.16-16.33.59:584][  0]LogAIModule: Creating AISystem for world Untitled
+[2019.09.16-16.33.59:601][  0]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-16.34.00:990][  0]LogInit: FAudioDevice initialized.
+[2019.09.16-16.34.00:990][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2019.09.16-16.34.01:131][  0]LogDerivedDataCache: Saved boot cache 0.14s 71MB C:/Users/Viktor/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc.
+[2019.09.16-16.34.01:144][  0]LogInit: Texture streaming: Enabled
+[2019.09.16-16.34.01:272][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2019.09.16-16.34.01:407][  0]LogInit: Transaction tracking system initialized
+[2019.09.16-16.34.01:733][  0]BlueprintLog: New page: Editor Load
+[2019.09.16-16.34.02:757][  0]LocalizationService: Localization service is disabled
+[2019.09.16-16.34.06:038][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/' took 0.02s
+[2019.09.16-16.34.06:038][  0]LogCook: Display: Max memory allowance for cook 16384mb min free memory 0mb
+[2019.09.16-16.34.06:038][  0]LogCook: Display: Mobile HDR setting 1
+[2019.09.16-16.34.06:038][  0]LogGameplayTags: Display: UGameplayTagsManager::DoneAddingNativeTags. DelegateIsBound: 0
+[2019.09.16-16.34.06:038][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI prefixes -  0.000 s
+[2019.09.16-16.34.06:038][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2019.09.16-16.34.06:038][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI -  0.000 s
+[2019.09.16-16.34.06:038][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2019.09.16-16.34.09:503][  0]SourceControl: Source control is disabled
+[2019.09.16-16.34.09:503][  0]Cmd: MAP LOAD FILE="../../../Engine/Content/Maps/Templates/Template_Default.umap" TEMPLATE=1 SHOWPROGRESS=1 FEATURELEVEL=3
+[2019.09.16-16.34.09:521][  0]LightingResults: New page: Lighting Build
+[2019.09.16-16.34.09:533][  0]MapCheck: New page: Map Check
+[2019.09.16-16.34.09:533][  0]LightingResults: New page: Lighting Build
+[2019.09.16-16.34.10:012][  0]LogAIModule: Creating AISystem for world Untitled_1
+[2019.09.16-16.34.10:084][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2019.09.16-16.34.10:107][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2019.09.16-16.34.10:107][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0,153ms to complete.
+[2019.09.16-16.34.10:107][  0]LogFileHelpers: Loading map 'Template_Default' took 0.604
+[2019.09.16-16.34.10:748][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-16.34.10:961][  0]LogCollectionManager: Loaded 0 collections in 0.003173 seconds
+[2019.09.16-16.34.11:033][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Saved/Collections/' took 0.01s
+[2019.09.16-16.34.11:033][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/Developers/Viktor/Collections/' took 0.01s
+[2019.09.16-16.34.11:033][  0]LogFileCache: Scanning file cache for directory 'D:/Program_files/Unreal Projects/Gedaria/Content/Collections/' took 0.00s
+[2019.09.16-16.34.11:033][  0]LogCollectionManager: Rebuilt the GUID cache for 0 collections in 0.000000 seconds
+[2019.09.16-16.34.11:049][  0]LogContentBrowser: Native class hierarchy populated in 0.0159 seconds. Added 2651 classes and 620 folders.
+[2019.09.16-16.34.11:099][  0]LogContentBrowser: Native class hierarchy updated for 'WidgetCarousel' in 0.0003 seconds. Added 0 classes and 0 folders.
+[2019.09.16-16.34.11:131][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:172][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:174][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:175][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:176][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:178][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:180][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:182][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:184][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:185][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:192][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:193][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:195][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:198][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:199][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:201][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:203][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:204][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:205][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:207][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:208][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:209][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:210][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:213][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:215][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.11:216][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.09.16-16.34.12:377][  0]LogContentBrowser: Native class hierarchy updated for 'AddContentDialog' in 0.0003 seconds. Added 0 classes and 0 folders.
+[2019.09.16-16.34.12:406][  0]LogContentBrowser: Native class hierarchy updated for 'SceneOutliner' in 0.0002 seconds. Added 1 classes and 2 folders.
+[2019.09.16-16.34.12:607][  0]LogSlate: Took 0.013995 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2019.09.16-16.34.12:626][  0]LogSlate: Took 0.017119 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2019.09.16-16.34.12:650][  0]LogSlate: Took 0.019867 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2019.09.16-16.34.12:802][  0]LogRenderer: Reallocating scene render targets to support 1120x648 Format 10 NumSamples 1 (Frame:1).
+[2019.09.16-16.34.13:235][  0]LogContentBrowser: Native class hierarchy updated for 'HierarchicalLODOutliner' in 0.0002 seconds. Added 0 classes and 0 folders.
+[2019.09.16-16.34.13:235][  0]LogLoad: (Engine Initialization) Total time: 51.41 seconds
+[2019.09.16-16.34.13:235][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.00 seconds
+[2019.09.16-16.34.13:317][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2019.09.16-16.34.13:395][  1]LogAssetRegistry: Asset discovery search completed in 27.3764 seconds
+[2019.09.16-16.34.13:397][  1]LogCollectionManager: Rebuilt the object cache for 0 collections in 0.000000 seconds (found 0 objects)
+[2019.09.16-16.34.13:397][  1]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000047 seconds (updated 0 objects)
+[2019.09.16-16.34.13:431][  1]LogSlate: Took 0.020069 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2019.09.16-16.48.22:859][644]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-16.48.23:179][663]LogSlate: Took 0.000236 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2019.09.16-16.48.33:635][663]LogAIModule: Creating AISystem for world endless_Chase
+[2019.09.16-16.48.34:595][663]LogAssetEditorManager: Opening Asset editor for World /Game/level/endless_Chase.endless_Chase
+[2019.09.16-16.48.36:120][663]Cmd: MAP LOAD FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/endless_Chase.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2019.09.16-16.48.36:121][663]LightingResults: New page: Lighting Build
+[2019.09.16-16.48.36:258][663]LoadErrors: New page: Loading map: endless_Chase.umap
+[2019.09.16-16.48.36:407][663]MapCheck: New page: Map Check
+[2019.09.16-16.48.36:407][663]LightingResults: New page: Lighting Build
+[2019.09.16-16.48.37:555][663]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2019.09.16-16.48.37:762][663]Cmd: MAP CHECKDEP NOCLEARLOG
+[2019.09.16-16.48.37:776][663]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 5,052ms to complete.
+[2019.09.16-16.48.37:776][663]LogFileHelpers: Loading map 'endless_Chase' took 2.271
+[2019.09.16-17.11.23:845][642]LogEditorViewport: Clicking on Actor (LMB): Runner_Overseer2_C (Runner_Overseer2)
+[2019.09.16-17.11.40:438][511]LogSlate: Took 0.026904 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2019.09.16-17.11.41:091][547]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.12.48:980][525]LogEditorViewport: Clicking on Actor (LMB): PaperSpriteActor (BG_Sprite)
+[2019.09.16-17.13.00:985][194]LogEditorViewport: Clicking on Actor (LMB): PlayerStart (PlayerStart)
+[2019.09.16-17.13.03:920][354]LogEditorViewport: Clicking on Actor (LMB): Runner_Overseer2_C (Runner_Overseer2)
+[2019.09.16-17.13.04:834][405]LogEditorViewport: Clicking on Actor (LMB): PlayerStart (PlayerStart)
+[2019.09.16-17.13.05:612][449]LogEditorViewport: Clicking on Actor (LMB): Runner_Overseer2_C (Runner_Overseer2)
+[2019.09.16-17.13.06:774][514]LogEditorViewport: Clicking on Actor (LMB): AtmosphericFog (AtmosphericFog)
+[2019.09.16-17.13.07:546][558]LogEditorViewport: Clicking on Actor (LMB): DirectionalLight (DirectionalLight)
+[2019.09.16-17.13.08:353][593]LogEditorViewport: Clicking on Actor (LMB): AtmosphericFog (AtmosphericFog)
+[2019.09.16-17.13.09:237][644]LogEditorViewport: Clicking on Actor (LMB): DirectionalLight (DirectionalLight)
+[2019.09.16-17.13.09:943][684]LogEditorViewport: Clicking on Actor (LMB): Runner_Overseer2_C (Runner_Overseer2)
+[2019.09.16-17.13.10:755][729]LogEditorViewport: Clicking on Actor (LMB): AtmosphericFog (AtmosphericFog)
+[2019.09.16-17.13.11:134][749]LogEditorViewport: Clicking on Actor (LMB): DirectionalLight (DirectionalLight)
+[2019.09.16-17.13.11:935][795]LogEditorViewport: Clicking on Actor (LMB): AtmosphericFog (AtmosphericFog)
+[2019.09.16-17.13.12:792][844]LogEditorViewport: Clicking on Actor (LMB): PlayerStart (PlayerStart)
+[2019.09.16-17.13.49:814][ 46]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-17.13.52:035][ 46]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/endless_Chase_Auto18A1857C64E915313DDE127AA77EE7D23.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/level/endless_Chase_Auto1.umap'
+[2019.09.16-17.13.52:114][ 46]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/level/endless_Chase' took 1.955
+[2019.09.16-17.13.52:114][ 46]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 1.955
+[2019.09.16-17.14.37:476][760]LogEditorViewport: Clicking on Actor (LMB): PaperSpriteActor (BG_Sprite)
+[2019.09.16-17.14.39:060][851]LogEditorViewport: Clicking Background
+[2019.09.16-17.14.55:464][834]LogEditorViewport: Clicking on Actor (LMB): Runner_Overseer2_C (Runner_Overseer2)
+[2019.09.16-17.14.56:309][881]LogEditorViewport: Clicking on Actor (LMB): Runner_Overseer2_C (Runner_Overseer2)
+[2019.09.16-17.14.57:955][978]LogEditorViewport: Clicking Background
+[2019.09.16-17.15.00:907][153]LogEditorViewport: Clicking on Actor (LMB): Runner_Overseer2_C (Runner_Overseer2)
+[2019.09.16-17.15.05:729][438]LogEditorViewport: Clicking Background
+[2019.09.16-17.15.12:873][865]LogEditorViewport: Clicking Background
+[2019.09.16-17.15.15:660][ 32]LogEditorViewport: Clicking Background
+[2019.09.16-17.15.17:766][158]LogEditorViewport: Clicking Background
+[2019.09.16-17.15.22:739][445]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.15.22:873][453]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-17.15.22:983][453]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/endless_Chase.endless_Chase:PersistentLevel' has LevelScriptBlueprint '/Game/level/endless_Chase.endless_Chase:PersistentLevel.endless_Chase' with GeneratedClass '/Game/level/endless_Chase.endless_Chase_C' with ClassGeneratedBy '/Game/level/endless_Chase.endless_Chase:PersistentLevel.endless_Chase'
+[2019.09.16-17.15.23:022][453]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-17.15.23:063][453]PIE: New page: PIE session: endless_Chase (16. 9. 2019 21:15:23)
+[2019.09.16-17.15.23:151][453]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_endless_Chase
+[2019.09.16-17.15.23:171][453]LogPlayLevel: PIE: StaticDuplicateObject took: (0.019317s)
+[2019.09.16-17.15.23:171][453]LogAIModule: Creating AISystem for world endless_Chase
+[2019.09.16-17.15.23:171][453]LogPlayLevel: PIE: World Init took: (0.000842s)
+[2019.09.16-17.15.23:172][453]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/endless_Chase.endless_Chase to /Game/level/UEDPIE_0_endless_Chase.endless_Chase (0.020800s)
+[2019.09.16-17.15.23:225][453]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-17.15.23:255][453]LogInit: FAudioDevice initialized.
+[2019.09.16-17.15.23:341][453]LogLoad: Game class is 'GameModeEndlessRunner_C'
+[2019.09.16-17.15.23:421][453]LogWorld: Bringing World /Game/level/UEDPIE_0_endless_Chase.endless_Chase up for play (max tick rate 60) at 2019.09.16-19.15.23
+[2019.09.16-17.15.23:497][453]LogWorld: Bringing up level for play took: 0.077017
+[2019.09.16-17.15.23:633][453]LogContentBrowser: Native class hierarchy updated for 'MovieSceneCapture' in 0.0004 seconds. Added 20 classes and 0 folders.
+[2019.09.16-17.15.23:843][453]PIE: Play in editor start time for /Game/level/UEDPIE_0_endless_Chase 1,799
+[2019.09.16-17.15.23:844][453]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/endless_Chase.endless_Chase:PersistentLevel' has LevelScriptBlueprint '/Game/level/endless_Chase.endless_Chase:PersistentLevel.endless_Chase' with GeneratedClass '/Game/level/endless_Chase.endless_Chase_C' with ClassGeneratedBy '/Game/level/endless_Chase.endless_Chase:PersistentLevel.endless_Chase'
+[2019.09.16-17.15.24:395][454]LogCharacterMovement: Warning: GetSimulationTimeStep() - Max iterations 8 hit while remaining time 0.084032 > MaxSimulationTimeStep (0.050) for '2D_Runner_C_0', movement 'Walking'
+[2019.09.16-17.15.24:395][454]LogCharacterMovement: Warning: GetSimulationTimeStep() - Max iterations 8 hit while remaining time 0.066219 > MaxSimulationTimeStep (0.050) for 'Runner_Overseer2_2', movement 'Walking'
+[2019.09.16-17.15.29:335][723]LogCharacterMovement: 2D_Runner_C_0 is stuck and failed to move! Velocity: X=443.72 Y=0.00 Z=0.00 Location: X=3003.47 Y=194.86 Z=-181.85 Normal: X=-0.00 Y=1.00 Z=-0.00 PenetrationDepth:5.610 Actor:NODE_AddChildActorComponent-1_BP_Obstacle2_C_CAT_2 Component:StaticMesh BoneName:None (0 other events since notify)
+[2019.09.16-17.15.40:535][375]LogNet: Browse: /Game/level/NewWorld
+[2019.09.16-17.15.40:536][375]LogLoad: LoadMap: /Game/level/NewWorld
+[2019.09.16-17.15.41:952][375]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-17.15.41:952][375]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-17.15.41:992][375]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-19.15.41
+[2019.09.16-17.15.42:178][375]LogWorld: Bringing up level for play took: 0.223243
+[2019.09.16-17.15.42:194][375]LogLoad: Took 1.657733 seconds to LoadMap(/Game/level/NewWorld)
+[2019.09.16-17.15.44:136][468]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/endless_Chase.endless_Chase:PersistentLevel' has LevelScriptBlueprint '/Game/level/endless_Chase.endless_Chase:PersistentLevel.endless_Chase' with GeneratedClass '/Game/level/endless_Chase.endless_Chase_C' with ClassGeneratedBy '/Game/level/endless_Chase.endless_Chase:PersistentLevel.endless_Chase'
+[2019.09.16-17.15.44:137][468]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-17.15.44:246][468]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-17.15.44:247][468]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/endless_Chase.endless_Chase:PersistentLevel' has LevelScriptBlueprint '/Game/level/endless_Chase.endless_Chase:PersistentLevel.endless_Chase' with GeneratedClass '/Game/level/endless_Chase.endless_Chase_C' with ClassGeneratedBy '/Game/level/endless_Chase.endless_Chase:PersistentLevel.endless_Chase'
+[2019.09.16-17.15.44:280][468]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-17.15.44:350][469]LogPlayLevel: Display: Destroying online subsystem :Context_2
+[2019.09.16-17.16.40:535][830]LogEditorViewport: Clicking Background
+[2019.09.16-17.16.44:642][ 76]LogEditorViewport: Clicking Background
+[2019.09.16-17.16.54:716][680]LogEditorViewport: Clicking Background
+[2019.09.16-17.18.05:862][947]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.18.42:403][106]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.18.46:987][380]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.18.50:785][607]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.18.55:301][877]LogEditorViewport: Clicking on Actor (LMB): PaperSpriteActor (BG_Sprite)
+[2019.09.16-17.18.55:837][907]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.19.01:739][260]LogEditorViewport: Clicking on Actor (LMB): Runner_Overseer2_C (Runner_Overseer2)
+[2019.09.16-17.19.10:695][792]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.19.17:667][208]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.19.21:358][427]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.20.34:075][783]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-17.20.34:294][792]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-17.20.34:625][792]LogAssetEditorManager: Opening Asset editor for World /Game/level/NewWorld.NewWorld
+[2019.09.16-17.20.36:167][792]LogSlate: Window 'Save Content' being destroyed
+[2019.09.16-17.20.36:314][792]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/level/endless_Chase" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/endless_Chase.umap" SILENT=true AUTOSAVING=false KEEPDIRTY=false
+[2019.09.16-17.20.36:438][792]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/endless_Chase9314068648C016E29F167CAAA2256DD6.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/endless_Chase.umap'
+[2019.09.16-17.20.36:556][792]LogFileHelpers: Saving map 'endless_Chase' took 0.242
+[2019.09.16-17.20.36:557][792]Cmd: MAP LOAD FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/level/NewWorld.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2019.09.16-17.20.36:557][792]LightingResults: New page: Lighting Build
+[2019.09.16-17.20.36:557][792]LoadErrors: New page: Loading map: NewWorld.umap
+[2019.09.16-17.20.36:565][792]MapCheck: New page: Map Check
+[2019.09.16-17.20.36:565][792]LightingResults: New page: Lighting Build
+[2019.09.16-17.20.36:682][792]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2019.09.16-17.20.36:731][792]Cmd: MAP CHECKDEP NOCLEARLOG
+[2019.09.16-17.20.36:734][792]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 2,571ms to complete.
+[2019.09.16-17.20.36:734][792]LogFileHelpers: Loading map 'NewWorld' took 0.177
+[2019.09.16-17.20.36:819][792]LogAIModule: Creating AISystem for world endless_Chase
+[2019.09.16-17.34.18:905][780]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-17.34.22:669][870]LogEditorViewport: Clicking on Actor (LMB): trap_C (trap)
+[2019.09.16-17.34.23:764][931]LogEditorViewport: Clicking on Actor (CTRL LMB): trap_C (trap2)
+[2019.09.16-17.34.27:941][175]LogEditorViewport: Clicking on Actor (LMB): trap_C (trap2)
+[2019.09.16-17.34.30:095][299]LogEditorViewport: Clicking on Actor (LMB): knight2_C (knight2)
+[2019.09.16-17.40.35:183][553]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/NewWorld_Auto2E9C7329644ED71B0D0573B9C17069B3C.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/level/NewWorld_Auto2.umap'
+[2019.09.16-17.40.35:185][553]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/level/NewWorld' took 0.558
+[2019.09.16-17.40.35:185][553]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.558
+[2019.09.16-18.12.30:072][266]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.13.00:740][ 53]LogEditorViewport: Clicking on Actor (LMB): PaperSpriteActor (BG_Sprite)
+[2019.09.16-18.13.01:567][ 74]LogEditorViewport: Clicking on Actor (context menu): knight1_C (knight1)
+[2019.09.16-18.13.02:042][ 74]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.13.02:052][ 74]LogEditorViewport: Clicking on Actor (LMB): knight1_C (knight1)
+[2019.09.16-18.13.06:285][294]LogEditorViewport: Clicking on Actor (LMB): knight2_C (knight2)
+[2019.09.16-18.13.09:808][496]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.13.20:204][ 83]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/enemies/knight1/knight2.knight2
+[2019.09.16-18.13.21:722][ 83]LogContentBrowser: Native class hierarchy updated for 'BlueprintGraph' in 0.0007 seconds. Added 117 classes and 0 folders.
+[2019.09.16-18.13.24:058][ 83]LogSlate: Took 0.007255 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2019.09.16-18.13.56:191][427]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.14.54:318][137]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.14.54:613][137]LogBlueprint: Error: [Compiler knight2] Could not find a function named "atkThrow" in 'knight2_C'.
+Make sure 'knight2_C' has been compiled for  Atk Throw
+[2019.09.16-18.14.54:883][137]LogBlueprint: Warning: [Compiler knight2] [6093,06] Compile of knight2 failed. 1 Fatal Issue(s) 0 Warning(s) [in 564 ms] (/Game/enemies/knight1/knight2.knight2)
+[2019.09.16-18.15.08:735][888]LogEditorTransaction: Undo Delete current selection
+[2019.09.16-18.15.09:525][912]LogEditorTransaction: Undo Delete current selection
+[2019.09.16-18.15.10:207][931]LogEditorTransaction: Undo Delete current selection
+[2019.09.16-18.15.10:776][950]LogEditorTransaction: Undo Delete current selection
+[2019.09.16-18.15.11:338][966]LogEditorTransaction: Undo Delete current selection
+[2019.09.16-18.15.12:182][997]LogEditorTransaction: Undo Delete current selection
+[2019.09.16-18.15.13:481][ 46]LogEditorTransaction: Redo Delete current selection
+[2019.09.16-18.15.14:047][ 59]LogEditorTransaction: Redo Delete current selection
+[2019.09.16-18.15.14:432][ 66]LogEditorTransaction: Redo Delete current selection
+[2019.09.16-18.15.14:453][ 66]LogActorComponent: ~FComponentReregisterContext: (/Game/level/NewWorld.NewWorld:PersistentLevel.knight2_2.Sprite0) Component already registered.
+[2019.09.16-18.15.14:454][ 66]LogActorComponent: ~FComponentReregisterContext: (/Engine/Transient.World_1:PersistentLevel.knight2_C_0.CollisionCylinder) Component already registered.
+[2019.09.16-18.15.14:455][ 66]LogActorComponent: ~FComponentReregisterContext: (/Engine/Transient.World_1:PersistentLevel.knight2_C_0.Sprite0) Component already registered.
+[2019.09.16-18.15.14:732][ 69]LogEditorTransaction: Redo Delete current selection
+[2019.09.16-18.15.15:070][ 76]LogEditorTransaction: Redo Delete current selection
+[2019.09.16-18.15.15:081][ 76]LogActorComponent: ~FComponentReregisterContext: (/Engine/Transient.World_1:PersistentLevel.knight2_C_0.CollisionCylinder) Component already registered.
+[2019.09.16-18.15.15:082][ 76]LogActorComponent: ~FComponentReregisterContext: (/Engine/Transient.World_1:PersistentLevel.knight2_C_0.Sprite0) Component already registered.
+[2019.09.16-18.15.15:086][ 76]LogActorComponent: ~FComponentReregisterContext: (/Game/level/NewWorld.NewWorld:PersistentLevel.knight2_2.CollisionCylinder) Component already registered.
+[2019.09.16-18.15.16:700][147]LogEditorTransaction: Redo Delete current selection
+[2019.09.16-18.15.46:497][663]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/NewWorld_Auto3C46B827B4C5ED0E5FE75BFAC199BB56B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/level/NewWorld_Auto3.umap'
+[2019.09.16-18.15.46:499][663]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/level/NewWorld' took 0.269
+[2019.09.16-18.15.46:499][663]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.269
+[2019.09.16-18.15.46:825][663]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/enemies/knight1/knight2] ([1] browsable assets)...
+[2019.09.16-18.15.46:826][663]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/knight2]
+[2019.09.16-18.15.46:989][663]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2_Auto35153AD874A06E685CF7FC19BC20F6A34.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/knight2_Auto3.uasset'
+[2019.09.16-18.15.47:035][663]LogFileHelpers: Auto-saving content packages took 0.533
+[2019.09.16-18.16.14:689][101]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.16.14:788][106]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.16.14:849][106]LogBlueprint: Error: [Compiler knight2] Could not find a function named "atkThrow" in 'knight2_C'.
+Make sure 'knight2_C' has been compiled for  Atk Throw
+[2019.09.16-18.16.15:096][106]LogBlueprint: Warning: [Compiler knight2] [6173,27] Compile of knight2 failed. 1 Fatal Issue(s) 0 Warning(s) [in 308 ms] (/Game/enemies/knight1/knight2.knight2)
+[2019.09.16-18.17.12:540][ 11]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.17.21:515][306]LogSlate: Window 'Delete Variable' being destroyed
+[2019.09.16-18.17.22:953][352]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.17.23:051][356]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.17.25:450][431]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.17.25:536][431]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2CB431F1F458F79FDC4D8ED86FB7A19A5.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.17.42:253][163]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.18.09:796][521]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.18.10:845][547]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.18.10:931][547]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight286E798124001E054AE96E38516033958.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.18.11:764][594]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.18.15:111][793]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.18.15:214][799]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.18.15:244][799]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.18.15:244][799]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.18.15:244][799]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:18:15)
+[2019.09.16-18.18.15:244][799]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.18.15:254][799]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009622s)
+[2019.09.16-18.18.15:280][799]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.18.15:280][799]LogPlayLevel: PIE: World Init took: (0.026207s)
+[2019.09.16-18.18.15:280][799]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.036068s)
+[2019.09.16-18.18.15:339][799]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.18.15:353][799]LogInit: FAudioDevice initialized.
+[2019.09.16-18.18.15:383][799]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.18.15:388][799]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.18.15
+[2019.09.16-18.18.15:389][799]LogWorld: Bringing up level for play took: 0.005821
+[2019.09.16-18.18.15:404][799]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld -0,639
+[2019.09.16-18.18.15:404][799]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.18.18:209][951]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.18.18:209][951]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.18.18:243][951]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.18.18:243][951]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.18.18:287][951]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.18.18:336][952]LogPlayLevel: Display: Destroying online subsystem :Context_4
+[2019.09.16-18.18.20:186][ 27]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.18.33:925][804]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.18.36:769][948]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.18.36:852][953]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.18.36:883][953]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.18.36:883][953]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.18.36:883][953]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:18:36)
+[2019.09.16-18.18.36:883][953]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.18.36:893][953]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009491s)
+[2019.09.16-18.18.36:893][953]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.18.36:893][953]LogPlayLevel: PIE: World Init took: (0.000485s)
+[2019.09.16-18.18.36:893][953]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010075s)
+[2019.09.16-18.18.36:921][953]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.18.36:932][953]LogInit: FAudioDevice initialized.
+[2019.09.16-18.18.36:961][953]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.18.36:965][953]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.18.36
+[2019.09.16-18.18.36:967][953]LogWorld: Bringing up level for play took: 0.005448
+[2019.09.16-18.18.36:981][953]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,938
+[2019.09.16-18.18.36:981][953]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.19.15:011][209]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.19.15:011][209]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.19.15:056][209]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.19.15:056][209]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.19.15:082][209]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.19.15:119][210]LogPlayLevel: Display: Destroying online subsystem :Context_5
+[2019.09.16-18.19.16:869][273]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.20.47:280][370]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.23.10:773][871]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.23.11:954][914]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.23.12:029][914]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight210AC978D43A2B34EE6DE0A8C3877901B.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.23.12:448][930]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.23.17:298][201]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.23.18:135][224]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.23.18:210][224]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight27B7A8F5546A365AE1F9EA3BEED7415F5.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.23.18:383][229]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.23.22:614][468]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.23.23:047][494]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.23.23:075][494]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.23.23:076][494]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.23.23:076][494]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:23:23)
+[2019.09.16-18.23.23:076][494]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.23.23:085][494]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009558s)
+[2019.09.16-18.23.23:086][494]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.23.23:086][494]LogPlayLevel: PIE: World Init took: (0.000474s)
+[2019.09.16-18.23.23:086][494]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010136s)
+[2019.09.16-18.23.23:113][494]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.23.23:125][494]LogInit: FAudioDevice initialized.
+[2019.09.16-18.23.23:155][494]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.23.23:160][494]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.23.23
+[2019.09.16-18.23.23:162][494]LogWorld: Bringing up level for play took: 0.005141
+[2019.09.16-18.23.23:175][494]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld -0,868
+[2019.09.16-18.23.23:176][494]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.23.38:584][408]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.23.38:584][408]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.23.38:621][408]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.23.38:621][408]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.23.38:650][408]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.23.38:691][410]LogPlayLevel: Display: Destroying online subsystem :Context_6
+[2019.09.16-18.23.41:271][475]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.23.45:775][667]LogEditorViewport: Clicking on Actor (LMB): knight2_C (knight2)
+[2019.09.16-18.23.45:876][668]LogEditorViewport: Clicking on Component (LMB): PaperFlipbookComponent (Sprite0)
+[2019.09.16-18.23.48:431][750]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.23.49:357][778]LogRenderer: Reallocating scene render targets to support 1124x728 Format 10 NumSamples 1 (Frame:1).
+[2019.09.16-18.23.52:596][940]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.24.11:268][ 40]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.24.11:402][ 48]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.24.11:418][ 48]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.24.11:418][ 48]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.24.11:418][ 48]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:24:11)
+[2019.09.16-18.24.11:418][ 48]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.24.11:428][ 48]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009919s)
+[2019.09.16-18.24.11:429][ 48]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.24.11:429][ 48]LogPlayLevel: PIE: World Init took: (0.000488s)
+[2019.09.16-18.24.11:429][ 48]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010508s)
+[2019.09.16-18.24.11:482][ 48]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.24.11:496][ 48]LogInit: FAudioDevice initialized.
+[2019.09.16-18.24.11:536][ 48]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.24.11:540][ 48]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.24.11
+[2019.09.16-18.24.11:541][ 48]LogWorld: Bringing up level for play took: 0.005455
+[2019.09.16-18.24.11:555][ 48]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld -0,488
+[2019.09.16-18.24.11:555][ 48]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.24.24:941][838]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.24.24:942][838]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.24.24:993][838]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.24.24:993][838]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.24.25:019][838]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.24.25:068][839]LogPlayLevel: Display: Destroying online subsystem :Context_7
+[2019.09.16-18.24.27:268][891]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.24.30:507][ 55]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.24.31:494][114]LogEditorViewport: Clicking on Actor (LMB): knight2_C (knight2)
+[2019.09.16-18.24.33:173][210]Cmd: TRANSACTION UNDO
+[2019.09.16-18.24.33:173][210]LogEditorTransaction: Undo Clicking on Actors
+[2019.09.16-18.24.33:866][250]Cmd: TRANSACTION UNDO
+[2019.09.16-18.24.33:867][250]LogEditorTransaction: Undo Rotate Components
+[2019.09.16-18.24.33:869][250]LogActorComponent: ~FComponentReregisterContext: (/Game/level/NewWorld.NewWorld:PersistentLevel.knight2_2.Sprite0) Component already registered.
+[2019.09.16-18.24.36:523][368]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.24.39:238][518]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.24.54:406][392]LogEditorTransaction: Undo Modify Component(s)
+[2019.09.16-18.25.07:756][150]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.25.07:839][155]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.25.08:659][182]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.25.08:733][182]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2F5C37806493FA729A001659EDDD1227E.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.25.10:378][280]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.25.10:444][284]LogSlate: Window 'knight2' being destroyed
+[2019.09.16-18.25.10:448][284]LogSlate: Window 'knight2' being destroyed
+[2019.09.16-18.25.12:386][384]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.25.12:468][389]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.25.12:484][389]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.25.12:484][389]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.25.12:485][389]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:25:12)
+[2019.09.16-18.25.12:485][389]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.25.12:494][389]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009794s)
+[2019.09.16-18.25.12:495][389]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.25.12:495][389]LogPlayLevel: PIE: World Init took: (0.000522s)
+[2019.09.16-18.25.12:495][389]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010427s)
+[2019.09.16-18.25.12:634][389]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.25.12:649][389]LogInit: FAudioDevice initialized.
+[2019.09.16-18.25.12:681][389]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.25.12:686][389]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.25.12
+[2019.09.16-18.25.12:688][389]LogWorld: Bringing up level for play took: 0.006092
+[2019.09.16-18.25.12:701][389]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,658
+[2019.09.16-18.25.12:702][389]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.27.18:452][837]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.27.18:453][837]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.27.18:493][837]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.27.18:493][837]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.27.18:527][837]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.27.18:573][838]LogPlayLevel: Display: Destroying online subsystem :Context_8
+[2019.09.16-18.28.42:201][827]LogEditorViewport: Clicking on Actor (LMB): trap_C (trap)
+[2019.09.16-18.29.06:536][281]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.29.06:832][281]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/NewWorld_Auto4676415804B61D05D21A4E69998515981.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/level/NewWorld_Auto4.umap'
+[2019.09.16-18.29.06:834][281]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/level/NewWorld' took 0.286
+[2019.09.16-18.29.06:834][281]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.286
+[2019.09.16-18.30.04:765][741]LogEditorViewport: Clicking on Actor (LMB): knight1_C (knight1)
+[2019.09.16-18.30.05:301][761]Cmd: DELETE
+[2019.09.16-18.30.05:302][761]Cmd: ACTOR DELETE
+[2019.09.16-18.30.05:677][761]LogEditorActor: Deleted Actor: knight1_C
+[2019.09.16-18.30.05:730][761]LogEditorActor: Deleted 1 Actors (0.104 secs)
+[2019.09.16-18.30.12:794][171]LogEditorViewport: Clicking on Actor (LMB): level1Load_C (level1Load)
+[2019.09.16-18.30.24:706][864]LogEditorViewport: Clicking on Actor (LMB): knight2_C (knight2)
+[2019.09.16-18.30.32:277][280]LogEditorViewport: Clicking on Actor (LMB): PickUP_rake_C (PickUP_rake)
+[2019.09.16-18.30.35:084][444]LogEditorViewport: Clicking on Actor (CTRL LMB): PaperSpriteActor (Rake_Sprite)
+[2019.09.16-18.30.35:949][494]LogEditorViewport: Clicking on Actor (CTRL LMB): PaperSpriteActor (Stone_Sprite)
+[2019.09.16-18.30.43:326][902]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor5)
+[2019.09.16-18.30.49:071][242]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor3)
+[2019.09.16-18.30.52:219][427]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor2)
+[2019.09.16-18.30.55:651][629]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor4)
+[2019.09.16-18.31.08:172][357]LogEditorViewport: Clicking on Actor (LMB): PaperSpriteActor (BG_Sprite)
+[2019.09.16-18.31.11:608][552]LogEditorViewport: Clicking on Actor (CTRL LMB): PaperSpriteActor (BG_Sprite2)
+[2019.09.16-18.31.17:436][855]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor5)
+[2019.09.16-18.31.19:638][982]LogEditorViewport: Clicking on Actor (CTRL LMB): flactor_C (flactor3)
+[2019.09.16-18.31.20:207][ 14]LogEditorViewport: Clicking on Actor (CTRL LMB): flactor_C (flactor2)
+[2019.09.16-18.31.20:658][ 39]LogEditorViewport: Clicking on Actor (CTRL LMB): flactor_C (flactor4)
+[2019.09.16-18.31.27:314][434]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor4)
+[2019.09.16-18.31.29:152][542]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.31.34:006][833]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor2)
+[2019.09.16-18.31.34:765][877]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.31.40:483][220]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor3)
+[2019.09.16-18.31.41:377][272]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.31.45:553][522]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor5)
+[2019.09.16-18.31.46:379][570]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.31.50:417][812]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor3)
+[2019.09.16-18.31.52:420][930]LogEditorViewport: Clicking on Actor (LMB): flactor_C (flactor4)
+[2019.09.16-18.31.57:133][197]LogEditorViewport: Clicking on Actor (CTRL LMB): flactor_C (flactor5)
+[2019.09.16-18.31.57:699][229]LogEditorViewport: Clicking on Actor (CTRL LMB): flactor_C (flactor3)
+[2019.09.16-18.31.58:131][253]LogEditorViewport: Clicking on Actor (CTRL LMB): flactor_C (flactor2)
+[2019.09.16-18.32.01:929][473]LogEditorViewport: Clicking on Actor (LMB): basefloor_C (basefloor6)
+[2019.09.16-18.32.06:855][737]LogEditorViewport: Clicking on Actor (LMB): basefloor_C (basefloor7)
+[2019.09.16-18.32.11:023][973]LogEditorViewport: Clicking on Actor (LMB): basefloor_C (basefloor8)
+[2019.09.16-18.32.13:492][117]LogEditorViewport: Clicking on Actor (LMB): level1Load_C (level1Load)
+[2019.09.16-18.32.18:610][404]LogEditorViewport: Clicking on Actor (LMB): knight2_C (knight2)
+[2019.09.16-18.32.27:682][934]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.32.30:404][ 79]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.32.42:369][754]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.33.10:826][454]LogEditorViewport: Clicking on Actor (LMB): knight2_C (knight2)
+[2019.09.16-18.33.12:400][540]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.33.12:608][552]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/enemies/knight1/knight2.knight2
+[2019.09.16-18.33.50:908][379]LogEditorViewport: Clicking on Actor (LMB): knight1_C (knight1)
+[2019.09.16-18.33.53:113][504]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.34.07:116][192]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.34.07:257][200]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/enemies/knight1/knight1.knight1
+[2019.09.16-18.35.30:510][475]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.35.31:138][488]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.35.31:232][488]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2E10F21F748CF75759980F184657CC649.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.35.31:583][506]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.35.50:612][319]BlueprintLog: New page: Compile knight1
+[2019.09.16-18.35.51:540][331]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.09.16-18.35.51:630][331]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1623D42624B138EC93ECA848F554DAF22.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.09.16-18.35.52:880][383]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.35.57:946][681]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.35.58:013][685]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.35.58:050][685]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.35.58:050][685]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.35.58:050][685]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:35:58)
+[2019.09.16-18.35.58:050][685]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.35.58:059][685]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009416s)
+[2019.09.16-18.35.58:060][685]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.35.58:060][685]LogPlayLevel: PIE: World Init took: (0.000512s)
+[2019.09.16-18.35.58:060][685]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010028s)
+[2019.09.16-18.35.58:128][685]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.35.58:146][685]LogInit: FAudioDevice initialized.
+[2019.09.16-18.35.58:180][685]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.35.58:185][685]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.35.58
+[2019.09.16-18.35.58:186][685]LogWorld: Bringing up level for play took: 0.005396
+[2019.09.16-18.35.58:200][685]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,157
+[2019.09.16-18.35.58:200][685]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.36.11:249][459]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.36.11:249][459]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.36.11:293][459]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.36.11:293][459]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.36.11:325][459]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.36.11:373][460]LogPlayLevel: Display: Destroying online subsystem :Context_11
+[2019.09.16-18.36.14:296][549]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.36.20:909][905]BlueprintLog: New page: Compile knight1
+[2019.09.16-18.36.24:051][ 58]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.36.24:117][ 62]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.36.24:150][ 62]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.36.24:150][ 62]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.36.24:150][ 62]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:36:24)
+[2019.09.16-18.36.24:150][ 62]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.36.24:160][ 62]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009499s)
+[2019.09.16-18.36.24:160][ 62]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.36.24:161][ 62]LogPlayLevel: PIE: World Init took: (0.000453s)
+[2019.09.16-18.36.24:161][ 62]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010060s)
+[2019.09.16-18.36.24:194][ 62]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.36.24:206][ 62]LogInit: FAudioDevice initialized.
+[2019.09.16-18.36.24:238][ 62]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.36.24:242][ 62]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.36.24
+[2019.09.16-18.36.24:244][ 62]LogWorld: Bringing up level for play took: 0.005335
+[2019.09.16-18.36.24:258][ 62]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,215
+[2019.09.16-18.36.24:258][ 62]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.36.42:922][167]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.36.42:922][167]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.36.42:966][167]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.36.42:966][167]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.36.42:997][167]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.36.43:042][168]LogPlayLevel: Display: Destroying online subsystem :Context_12
+[2019.09.16-18.36.46:404][296]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.36.57:183][864]BlueprintLog: New page: Compile knight1
+[2019.09.16-18.37.34:587][798]BlueprintLog: New page: Compile knight1
+[2019.09.16-18.37.35:392][820]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.09.16-18.37.35:483][820]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight1122932FE4FFD86D91B7DB5A57691CB11.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.09.16-18.37.35:870][841]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.39.39:869][827]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/NewWorld_Auto52F0D53C946694139F82F5BA4ED2B4C07.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/level/NewWorld_Auto5.umap'
+[2019.09.16-18.39.39:871][827]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/level/NewWorld' took 0.455
+[2019.09.16-18.39.39:871][827]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.455
+[2019.09.16-18.39.39:873][827]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/enemies/knight1/knight2] ([1] browsable assets)...
+[2019.09.16-18.39.39:873][827]OBJ SavePackage: Finished generating thumbnails for package [/Game/enemies/knight1/knight2]
+[2019.09.16-18.39.39:943][827]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2_Auto545F214F3444B264070982FAEB5EE9256.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/Autosaves/Game/enemies/knight1/knight2_Auto5.uasset'
+[2019.09.16-18.39.39:944][827]LogFileHelpers: Auto-saving content packages took 0.071
+[2019.09.16-18.40.31:981][661]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.40.32:778][689]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.40.32:974][689]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2D35B8B9040FEF2A7761FB98BF6D1D167.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.40.34:513][781]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.40.35:551][843]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.40.35:617][847]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.40.35:670][847]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.40.35:670][847]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.40.35:670][847]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:40:35)
+[2019.09.16-18.40.35:670][847]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.40.35:679][847]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009436s)
+[2019.09.16-18.40.35:680][847]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.40.35:680][847]LogPlayLevel: PIE: World Init took: (0.000493s)
+[2019.09.16-18.40.35:680][847]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010028s)
+[2019.09.16-18.40.35:709][847]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.40.35:722][847]LogInit: FAudioDevice initialized.
+[2019.09.16-18.40.35:751][847]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.40.35:755][847]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.40.35
+[2019.09.16-18.40.35:757][847]LogWorld: Bringing up level for play took: 0.005259
+[2019.09.16-18.40.35:771][847]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld -0,272
+[2019.09.16-18.40.35:771][847]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.40.56:473][ 81]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.40.56:473][ 81]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.40.56:513][ 81]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.40.56:513][ 81]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.40.56:544][ 81]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.40.56:591][ 82]LogPlayLevel: Display: Destroying online subsystem :Context_13
+[2019.09.16-18.40.58:578][167]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.41.17:519][258]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.41.18:242][278]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.41.18:313][278]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight26930180048D0DE6C3E84EC997D69521A.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.41.19:390][342]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.41.20:353][400]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.41.20:418][404]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.41.20:451][404]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.41.20:451][404]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.41.20:451][404]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:41:20)
+[2019.09.16-18.41.20:451][404]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.41.20:461][404]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009398s)
+[2019.09.16-18.41.20:461][404]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.41.20:461][404]LogPlayLevel: PIE: World Init took: (0.000461s)
+[2019.09.16-18.41.20:461][404]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.009955s)
+[2019.09.16-18.41.20:493][404]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.41.20:505][404]LogInit: FAudioDevice initialized.
+[2019.09.16-18.41.20:532][404]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.41.20:537][404]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.41.20
+[2019.09.16-18.41.20:538][404]LogWorld: Bringing up level for play took: 0.005277
+[2019.09.16-18.41.20:552][404]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,509
+[2019.09.16-18.41.20:552][404]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.41.44:116][800]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.41.44:116][800]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.41.44:159][800]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.41.44:159][800]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.41.44:190][800]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.41.44:235][801]LogPlayLevel: Display: Destroying online subsystem :Context_14
+[2019.09.16-18.41.46:187][887]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.42.00:292][703]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.42.00:354][703]LogBlueprint: Error: [Compiler knight2] The type of  Object  is undetermined.  Connect something to  Cast To knight1  to imply a specific type.
+[2019.09.16-18.42.00:354][703]LogBlueprint: Error: [Compiler knight2] The current value of the ' Object ' pin is invalid: Unsupported type Wildcard on pin Object
+[2019.09.16-18.42.00:531][703]LogBlueprint: Warning: [Compiler knight2] [7718,70] Compile of knight2 failed. 2 Fatal Issue(s) 0 Warning(s) [in 239 ms] (/Game/enemies/knight1/knight2.knight2)
+[2019.09.16-18.42.31:604][527]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.42.49:382][535]LogEditorTransaction: Undo Delete current selection
+[2019.09.16-18.42.58:487][ 55]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.42.59:076][ 68]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.42.59:155][ 68]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2B24250974773A42D90A6D7855B4DF091.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.42.59:830][105]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.43.00:630][153]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.43.00:697][157]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.43.00:730][157]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.43.00:730][157]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.43.00:730][157]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:43:00)
+[2019.09.16-18.43.00:730][157]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.43.00:740][157]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009517s)
+[2019.09.16-18.43.00:740][157]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.43.00:740][157]LogPlayLevel: PIE: World Init took: (0.000510s)
+[2019.09.16-18.43.00:740][157]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010129s)
+[2019.09.16-18.43.00:771][157]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.43.00:783][157]LogInit: FAudioDevice initialized.
+[2019.09.16-18.43.00:815][157]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.43.00:819][157]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.43.00
+[2019.09.16-18.43.00:821][157]LogWorld: Bringing up level for play took: 0.005364
+[2019.09.16-18.43.00:835][157]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,792
+[2019.09.16-18.43.00:836][157]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.43.15:991][ 65]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.43.15:991][ 65]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.43.16:034][ 65]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.43.16:034][ 65]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.43.16:063][ 65]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.43.16:108][ 66]LogPlayLevel: Display: Destroying online subsystem :Context_15
+[2019.09.16-18.43.17:556][112]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.45.29:098][664]BlueprintLog: New page: Compile knight1
+[2019.09.16-18.45.30:184][697]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight1" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset" SILENT=true
+[2019.09.16-18.45.30:278][697]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight101813221444623BDD349A683FDA9B14A.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight1.uasset'
+[2019.09.16-18.45.31:235][749]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.45.33:209][863]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.45.33:308][869]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.45.33:363][869]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.45.33:363][869]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.45.33:363][869]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:45:33)
+[2019.09.16-18.45.33:363][869]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.45.33:372][869]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009401s)
+[2019.09.16-18.45.33:373][869]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.45.33:373][869]LogPlayLevel: PIE: World Init took: (0.000454s)
+[2019.09.16-18.45.33:373][869]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.009963s)
+[2019.09.16-18.45.33:406][869]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.45.33:419][869]LogInit: FAudioDevice initialized.
+[2019.09.16-18.45.33:447][869]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.45.33:451][869]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.45.33
+[2019.09.16-18.45.33:453][869]LogWorld: Bringing up level for play took: 0.005230
+[2019.09.16-18.45.33:467][869]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld -0,577
+[2019.09.16-18.45.33:467][869]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.45.48:083][746]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.45.48:084][746]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.45.48:127][746]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.45.48:128][746]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.45.48:160][746]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.45.48:205][747]LogPlayLevel: Display: Destroying online subsystem :Context_16
+[2019.09.16-18.45.53:540][ 16]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.46.00:574][405]LogEditorViewport: Clicking on Actor (LMB): PaperSpriteActor (BG_Sprite)
+[2019.09.16-18.46.01:768][473]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.46.02:168][497]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.46.02:204][497]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.02:204][497]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.46.02:204][497]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:46:02)
+[2019.09.16-18.46.02:204][497]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.46.02:214][497]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009457s)
+[2019.09.16-18.46.02:214][497]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.46.02:214][497]LogPlayLevel: PIE: World Init took: (0.000470s)
+[2019.09.16-18.46.02:214][497]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010023s)
+[2019.09.16-18.46.02:246][497]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.46.02:258][497]LogInit: FAudioDevice initialized.
+[2019.09.16-18.46.02:284][497]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.46.02:288][497]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.46.02
+[2019.09.16-18.46.02:290][497]LogWorld: Bringing up level for play took: 0.005341
+[2019.09.16-18.46.02:304][497]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,261
+[2019.09.16-18.46.02:304][497]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.20:274][555]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.20:274][555]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.46.20:334][555]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.46.20:335][555]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.20:384][555]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.46.20:516][556]LogPlayLevel: Display: Destroying online subsystem :Context_17
+[2019.09.16-18.46.21:689][618]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.46.26:740][917]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.46.26:776][917]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.26:776][917]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.46.26:777][917]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:46:26)
+[2019.09.16-18.46.26:777][917]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.46.26:786][917]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009489s)
+[2019.09.16-18.46.26:787][917]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.46.26:787][917]LogPlayLevel: PIE: World Init took: (0.000471s)
+[2019.09.16-18.46.26:787][917]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010131s)
+[2019.09.16-18.46.26:816][917]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.46.26:828][917]LogInit: FAudioDevice initialized.
+[2019.09.16-18.46.26:860][917]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.46.26:864][917]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.46.26
+[2019.09.16-18.46.26:866][917]LogWorld: Bringing up level for play took: 0.005272
+[2019.09.16-18.46.26:879][917]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,836
+[2019.09.16-18.46.26:879][917]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.39:695][666]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.39:696][666]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.46.39:770][666]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.46.39:770][666]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.39:802][666]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.46.39:908][667]LogPlayLevel: Display: Destroying online subsystem :Context_18
+[2019.09.16-18.46.41:853][776]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.46.47:020][ 84]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.46.47:037][ 84]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.47:037][ 84]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.46.47:038][ 84]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:46:47)
+[2019.09.16-18.46.47:038][ 84]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.46.47:047][ 84]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009778s)
+[2019.09.16-18.46.47:048][ 84]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.46.47:048][ 84]LogPlayLevel: PIE: World Init took: (0.000429s)
+[2019.09.16-18.46.47:048][ 84]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010312s)
+[2019.09.16-18.46.47:083][ 84]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.46.47:095][ 84]LogInit: FAudioDevice initialized.
+[2019.09.16-18.46.47:122][ 84]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.46.47:126][ 84]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.46.47
+[2019.09.16-18.46.47:128][ 84]LogWorld: Bringing up level for play took: 0.005446
+[2019.09.16-18.46.47:142][ 84]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 1,099
+[2019.09.16-18.46.47:142][ 84]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.58:791][775]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.58:792][775]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.46.58:853][775]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.46.58:853][775]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.46.58:887][775]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.46.58:992][776]LogPlayLevel: Display: Destroying online subsystem :Context_19
+[2019.09.16-18.47.00:709][871]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.47.15:692][760]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.47.16:432][778]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.47.16:504][778]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight26AA8C98B4F87B7AC0E3E0688EDC4F750.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.47.17:689][840]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.47.17:756][844]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.47.17:793][844]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.47.17:793][844]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.47.17:793][844]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:47:17)
+[2019.09.16-18.47.17:794][844]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.47.17:803][844]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009567s)
+[2019.09.16-18.47.17:803][844]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.47.17:804][844]LogPlayLevel: PIE: World Init took: (0.000437s)
+[2019.09.16-18.47.17:804][844]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010111s)
+[2019.09.16-18.47.17:835][844]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.47.17:847][844]LogInit: FAudioDevice initialized.
+[2019.09.16-18.47.17:878][844]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.47.17:882][844]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.47.17
+[2019.09.16-18.47.17:884][844]LogWorld: Bringing up level for play took: 0.005226
+[2019.09.16-18.47.17:898][844]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld -0,146
+[2019.09.16-18.47.17:898][844]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.47.30:182][577]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.47.30:183][577]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.47.30:242][577]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.47.30:242][577]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.47.30:273][577]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.47.30:349][578]LogPlayLevel: Display: Destroying online subsystem :Context_20
+[2019.09.16-18.47.31:357][635]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.48.24:924][817]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.48.25:775][843]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.48.25:810][843]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.48.25:811][843]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.48.25:811][843]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:48:25)
+[2019.09.16-18.48.25:811][843]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.48.25:820][843]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009701s)
+[2019.09.16-18.48.25:821][843]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.48.25:821][843]LogPlayLevel: PIE: World Init took: (0.000544s)
+[2019.09.16-18.48.25:821][843]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010345s)
+[2019.09.16-18.48.25:852][843]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.48.25:864][843]LogInit: FAudioDevice initialized.
+[2019.09.16-18.48.25:896][843]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.48.25:900][843]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.48.25
+[2019.09.16-18.48.25:902][843]LogWorld: Bringing up level for play took: 0.005377
+[2019.09.16-18.48.25:916][843]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld -0,127
+[2019.09.16-18.48.25:917][843]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.48.32:525][226]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.48.32:525][226]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.48.32:591][226]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.48.32:592][226]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.48.32:627][226]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.48.32:715][227]LogPlayLevel: Display: Destroying online subsystem :Context_21
+[2019.09.16-18.48.33:415][269]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.48.34:085][309]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.48.34:101][309]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.48.34:101][309]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.48.34:101][309]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:48:34)
+[2019.09.16-18.48.34:101][309]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.48.34:112][309]LogPlayLevel: PIE: StaticDuplicateObject took: (0.011012s)
+[2019.09.16-18.48.34:112][309]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.48.34:113][309]LogPlayLevel: PIE: World Init took: (0.000456s)
+[2019.09.16-18.48.34:113][309]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.011582s)
+[2019.09.16-18.48.34:147][309]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.48.34:159][309]LogInit: FAudioDevice initialized.
+[2019.09.16-18.48.34:187][309]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.48.34:191][309]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.48.34
+[2019.09.16-18.48.34:193][309]LogWorld: Bringing up level for play took: 0.005171
+[2019.09.16-18.48.34:207][309]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,164
+[2019.09.16-18.48.34:207][309]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.48.49:556][224]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.48.49:557][224]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.48.49:614][224]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.48.49:615][224]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.48.49:664][224]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.48.49:740][225]LogPlayLevel: Display: Destroying online subsystem :Context_22
+[2019.09.16-18.48.50:128][244]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.49.06:665][232]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.49.08:108][298]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.49.08:142][298]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.49.08:142][298]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.49.08:142][298]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:49:08)
+[2019.09.16-18.49.08:142][298]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.49.08:152][298]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009706s)
+[2019.09.16-18.49.08:152][298]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.49.08:152][298]LogPlayLevel: PIE: World Init took: (0.000444s)
+[2019.09.16-18.49.08:152][298]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.010261s)
+[2019.09.16-18.49.08:188][298]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.49.08:200][298]LogInit: FAudioDevice initialized.
+[2019.09.16-18.49.08:230][298]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.49.08:234][298]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.49.08
+[2019.09.16-18.49.08:236][298]LogWorld: Bringing up level for play took: 0.005134
+[2019.09.16-18.49.08:249][298]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,206
+[2019.09.16-18.49.08:250][298]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.49.16:795][800]LogScript: Warning: Accessed None trying to read property Knight1
+	knight2_C /Game/level/UEDPIE_0_NewWorld.NewWorld:PersistentLevel.knight2_2
+	Function /Game/enemies/knight1/knight2.knight2_C:ExecuteUbergraph_knight2:024C
+[2019.09.16-18.49.16:808][800]PIE: Error: Blueprint Runtime Error: "Accessed None trying to read property Knight1". Blueprint:  knight2 Function:  Execute Ubergraph Knight 2 Graph:  EventGraph Node:  Add Movement Input
+[2019.09.16-18.49.20:562][ 22]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.49.20:562][ 22]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.49.20:620][ 22]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.49.20:620][ 22]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.49.20:652][ 22]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.49.20:663][ 22]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.49.20:940][ 23]LogPlayLevel: Display: Destroying online subsystem :Context_23
+[2019.09.16-18.49.24:176][210]LogSlate: Window 'Message Log' being destroyed
+[2019.09.16-18.49.24:185][210]LogSlate: Window 'Message Log' being destroyed
+[2019.09.16-18.49.25:602][294]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.49.50:723][782]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.49.51:427][798]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.49.51:499][798]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2A9A9296849008FBB043A06B9CEFAB2E5.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.49.52:539][853]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.49.52:639][859]LogTemp: Repeating last play command: Selected Viewport
+[2019.09.16-18.49.52:672][859]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.49.52:672][859]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.09.16-18.49.52:673][859]PIE: New page: PIE session: NewWorld (16. 9. 2019 22:49:52)
+[2019.09.16-18.49.52:673][859]LogPlayLevel: Creating play world package: /Game/level/UEDPIE_0_NewWorld
+[2019.09.16-18.49.52:682][859]LogPlayLevel: PIE: StaticDuplicateObject took: (0.009446s)
+[2019.09.16-18.49.52:683][859]LogAIModule: Creating AISystem for world NewWorld
+[2019.09.16-18.49.52:683][859]LogPlayLevel: PIE: World Init took: (0.000437s)
+[2019.09.16-18.49.52:683][859]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/level/NewWorld.NewWorld to /Game/level/UEDPIE_0_NewWorld.NewWorld (0.009996s)
+[2019.09.16-18.49.52:714][859]LogInit: XAudio2 using 'Reproduktor/HP (Realtek High Definition Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2019.09.16-18.49.52:726][859]LogInit: FAudioDevice initialized.
+[2019.09.16-18.49.52:755][859]LogLoad: Game class is '2DSideScrollerGameMode_C'
+[2019.09.16-18.49.52:760][859]LogWorld: Bringing World /Game/level/UEDPIE_0_NewWorld.NewWorld up for play (max tick rate 60) at 2019.09.16-20.49.52
+[2019.09.16-18.49.52:761][859]LogWorld: Bringing up level for play took: 0.005415
+[2019.09.16-18.49.52:775][859]PIE: Play in editor start time for /Game/level/UEDPIE_0_NewWorld 0,732
+[2019.09.16-18.49.52:776][859]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.50.01:879][380]LogScript: Warning: Accessed None trying to read property Knight1
+	knight2_C /Game/level/UEDPIE_0_NewWorld.NewWorld:PersistentLevel.knight2_2
+	Function /Game/enemies/knight1/knight2.knight2_C:ExecuteUbergraph_knight2:024D
+[2019.09.16-18.50.01:879][380]PIE: Error: Blueprint Runtime Error: "Accessed None trying to read property Knight1". Blueprint:  knight2 Function:  Execute Ubergraph Knight 2 Graph:  EventGraph Node:  Set Movement Mode
+[2019.09.16-18.50.01:879][380]LogScript: Warning: Accessed None
+	knight2_C /Game/level/UEDPIE_0_NewWorld.NewWorld:PersistentLevel.knight2_2
+	Function /Game/enemies/knight1/knight2.knight2_C:ExecuteUbergraph_knight2:0262
+[2019.09.16-18.50.01:879][380]PIE: Error: Blueprint Runtime Error: "Accessed None". Blueprint:  knight2 Function:  Execute Ubergraph Knight 2 Graph:  EventGraph Node:  Set Movement Mode
+[2019.09.16-18.50.04:504][537]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.50.04:505][537]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.50.04:563][537]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.09.16-18.50.04:564][537]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/level/NewWorld.NewWorld:PersistentLevel' has LevelScriptBlueprint '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld' with GeneratedClass '/Game/level/NewWorld.NewWorld_C' with ClassGeneratedBy '/Game/level/NewWorld.NewWorld:PersistentLevel.NewWorld'
+[2019.09.16-18.50.04:608][537]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.09.16-18.50.04:619][537]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.09.16-18.50.04:735][538]LogPlayLevel: Display: Destroying online subsystem :Context_24
+[2019.09.16-18.50.06:220][626]LogSlate: Window 'Message Log' being destroyed
+[2019.09.16-18.50.06:227][626]LogSlate: Window 'Message Log' being destroyed
+[2019.09.16-18.50.07:858][723]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.50.46:964][983]BlueprintLog: New page: Compile knight2
+[2019.09.16-18.50.47:918][ 15]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/enemies/knight1/knight2" FILE="../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset" SILENT=true
+[2019.09.16-18.50.47:992][ 15]LogSavePackage: Moving '../../../../../../Program_files/Unreal Projects/Gedaria/Saved/knight2F2E595C14EC7C2EF5A1958AE4A808510.tmp' to '../../../../../../Program_files/Unreal Projects/Gedaria/Content/enemies/knight1/knight2.uasset'
+[2019.09.16-18.50.49:262][ 87]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.09.16-18.50.56:093][477]LogUObjectBase: Warning: Object is not registered
+[2019.09.16-18.50.56:093][477]LogOutputDevice: Warning: 
+
+Script Stack (0 frames):
+
+[2019.09.16-18.51.00:341][477]LogStats: FPlatformStackWalk::StackWalkAndDump -  4.121 s
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: === Handled ensure: ===
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: 
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: Ensure condition failed: false [File:D:\Build\++UE4\Sync\Engine\Source\Editor\UnrealEd\Private\Kismet2\KismetDebugUtilities.cpp] [Line: 1154]
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: Error: Invalid (but non-null) property associated with pin; cannot get variable value
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: Stack: 
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff89aa68304 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff89aa781ce UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff89892bcba UE4Editor-BlueprintGraph.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff89798769a UE4Editor-GraphEditor.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff897940917 UE4Editor-GraphEditor.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8ace67c74 UE4Editor-Slate.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8ad0b4393 UE4Editor-Slate.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8acec2d7a UE4Editor-Slate.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8ace98a70 UE4Editor-Slate.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8ace8b263 UE4Editor-Slate.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8b90edc66 UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8b90e0de0 UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8b90f01eb UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8b90dca19 UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8fa406d41 USER32.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8fa406713 USER32.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8b90f1746 UE4Editor-ApplicationCore.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff720a85546 UE4Editor.exe!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff720a9596c UE4Editor.exe!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff720a959ea UE4Editor.exe!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff720aa48da UE4Editor.exe!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff720aa659a UE4Editor.exe!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8fa764034 KERNEL32.DLL!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: [Callstack] 0x00007ff8fb013691 ntdll.dll!UnknownFunction []
+[2019.09.16-18.51.00:350][477]LogOutputDevice: Error: 
+[2019.09.16-18.51.00:358][477]LogStats:                SubmitErrorReport -  0.000 s
