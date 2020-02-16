@@ -1,9 +1,7 @@
 // Viktor Zwinger ©2020
 
-#include "Vladimir.h"
-
-#include "UObject/ConstructorHelpers.h" 
-
+#include "Vladimir.h" 
+#include "UObject/ConstructorHelpers.h"
 #include "PaperFlipbook.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -14,6 +12,8 @@
 #include "Components/CapsuleComponent.h"
 
 AVladimir::AVladimir() {
+	PrimaryActorTick.bCanEverTick = true;
+
 	// Capsule properties
 	GetCapsuleComponent()->SetCapsuleHalfHeight(96.0f);
 	GetCapsuleComponent()->SetCapsuleRadius(40.0f);
@@ -36,6 +36,10 @@ AVladimir::AVladimir() {
 	if (Camera) {
 		Camera->SetupAttachment(SpringArm);
 		Camera->SetFieldOfView(110.0f);
+		//second dimension axis lock
+		bUseControllerRotationPitch = false;
+		bUseControllerRotationRoll = false;
+		bUseControllerRotationYaw = true;
 	}
 
 	// Box Collision properties
@@ -47,12 +51,20 @@ AVladimir::AVladimir() {
 	}
 
 	//Character movement properties
-	GetCharacterMovement()->GravityScale = 2.0f;
-	GetCharacterMovement()->MaxStepHeight = 700.0f;
-	GetCharacterMovement()->JumpZVelocity = 1000.0f;
-	GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch = true;		//Crouching, ! important !
-	CrouchedEyeHeight = GetCharacterMovement()->CrouchedHalfHeight * 0.80f;		//Crouching
-	GetCharacterMovement()->MaxWalkSpeedCrouched = 200.0f;
+	CharacterMovement = GetCharacterMovement();
+	if (CharacterMovement) {
+		CharacterMovement->GravityScale = 2.0f;
+		CharacterMovement->AirControl = 1.f;
+		CharacterMovement->MaxStepHeight = 700.0f;
+		CharacterMovement->JumpZVelocity = 1000.0f;
+		CharacterMovement->GetNavAgentPropertiesRef().bCanCrouch = true;		//Crouching, ! important !
+		CrouchedEyeHeight = CharacterMovement->CrouchedHalfHeight * 0.80f;		//Crouching
+		CharacterMovement->MaxWalkSpeedCrouched = 200.0f;
+		CharacterMovement->bUseFlatBaseForFloorChecks = true;
+		// Lock Player into XZ axis, that he can't fall of the 2D World
+		CharacterMovement->bConstrainToPlane = true;
+		CharacterMovement->SetPlaneConstraintNormal(FVector(0.0f, 1.0f, 0.0f));
+	}
 
 	// Flipbook references
 	static ConstructorHelpers::FObjectFinder<UPaperFlipbook>RunObj(TEXT("PaperFlipbook'/Game/Vladimir/animations/flipbook/Run.Run'"));
@@ -69,27 +81,43 @@ void AVladimir::BeginPlay()
 void AVladimir::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	DeltaTime = DeltaSeconds;
+	Position = GetActorLocation();
+
 	UpdateCharacter();
+	UE_LOG(LogTemp, Warning, TEXT("Position: %s DeltaTime: %f"),*Position.ToString(), DeltaTime);
 }
 
-void AVladimir::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) {
+/*
+void AVladimir::SetupPlayerInputComponent(class UInputComponent* InputComponent) {
+	Super::SetupPlayerInputComponent(InputComponent);
 
-	if (PlayerInputComponent)
+	if (InputComponent)
 	{
-		PlayerInputComponent->BindAxis("MoveRight", this, &AVladimir::Move);
+		InputComponent->BindAxis("MoveRight", this, &AVladimir::Move);
+		InputComponent->BindAction("Jump", EInputEvent::IE_Pressed, this, &AVladimir::JumP);
+		// InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	}		
-}
-
+}*/
 
 void AVladimir::Move(float value)
 {
-	auto MovingVelocity = GetCharacterMovement()->GetLastUpdateVelocity();
-	auto CurrentFlipbok = GetSprite();
+	auto MovingVelocity = CharacterMovement->GetLastUpdateVelocity();
 	APawn::ControlInputVector += FVector::ForwardVector * value;
-	if (MovingVelocity.X != 0.0f) {
-		CurrentFlipbok->SetFlipbook(Run);
+
+	UPaperFlipbookComponent* CurrentFlipbook = GetSprite();
+	UPaperFlipbook* Animation = (MovingVelocity.X != 0.0f) ? Run : Idle;
+	if (CurrentFlipbook->GetFlipbook() != Animation) {
+		CurrentFlipbook->SetFlipbook(Animation);
 	}
-	else if(MovingVelocity.X == 0.0f){CurrentFlipbok->SetFlipbook(Idle);}
+}
+
+void AVladimir::JumpZ() 
+{
+	if (CharacterMovement && CanJumppp) {
+		CharacterMovement->Velocity.Z = CharacterMovement->JumpZVelocity;
+		CharacterMovement->SetMovementMode(MOVE_Falling);
+	}
 }
 
 void AVladimir::UpdateCharacter()

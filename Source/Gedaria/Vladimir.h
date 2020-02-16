@@ -12,7 +12,6 @@ class USpringArmComponent;
 class UBoxComponent;
 class UPaperFlipbook;
 
-
 /**
  * 
  */
@@ -27,13 +26,25 @@ public:
 
 	// Called when the game starts or when spawned
 	void BeginPlay() override;
+
+	UFUNCTION(BlueprintCallable, Category = "Movement")
+	void Move(float value);
+
+	UFUNCTION(BlueprintCallable, Category = "Movement")
+	void JumpZ();
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jump")
+	bool CanJumppp = true;
+	
+	float DeltaTime = 0;		//Delta Time, Elapsed Time, difference between last frame
+
 private:
 	// Called every frame
 	void Tick(float DeltaSeconds) override;
 
 	// Axis mapping function
-	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	void Move(float value);
+
+	// void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	void UpdateCharacter();
 
 	USpringArmComponent* SpringArm = nullptr;
@@ -42,4 +53,7 @@ private:
 
 	UPaperFlipbook* Run = nullptr;
 	UPaperFlipbook* Idle = nullptr;
+
+	FVector Position;	// Find PlayerPosition
+	UCharacterMovementComponent* CharacterMovement = nullptr;
 };
