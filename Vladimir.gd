@@ -1,28 +1,39 @@
 extends KinematicBody2D
 
-export var speed = 374.14
+export var speed = 375
 export var jump_strength = 500
 var Direction = Vector2(0,0)
 var Velocity = Vector2(0,0)
-const Gravity = 25
+const Gravity = Vector2(0,1)
 const FloorVector = Vector2(0,-1)
+
+var bCanJump = true
 
 func _ready():
 	pass
 
 #	# Called every frame. Delta is time since last frame.	
 func _process(delta):
+	# CAMERA
+	
 	# GRAVITY
-	Velocity.y += Gravity
+	Velocity.y += 25 * Gravity.y
 	
 	Jump()
 	Move()
 	
-	Velocity = move_and_slide(Velocity,FloorVector)
+	Velocity = move_and_slide(Velocity,FloorVector) # I don't like this method
 
 func Jump(): # JUMP
 	if Input.is_action_just_pressed("jump"):
-		Velocity.y = -jump_strength
+		if bCanJump:
+			Velocity.y = -jump_strength
+			#$AnimatedSprite.play(animation)
+	
+	if is_on_floor():
+		bCanJump = true
+	else:
+		bCanJump = false
 
 func Move(): # MOVE
 	if Input.is_action_pressed("right"):
