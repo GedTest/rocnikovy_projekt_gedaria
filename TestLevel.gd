@@ -7,3 +7,5 @@ func _ready():
 
 func _process(delta):
 	$Enemy.Move($Enemy.from, $Enemy.to, $Enemy.position)
+	$Enemy2.Move($Enemy2.from, $Enemy2.to, $Enemy2.position)
+	$Enemy4.Move($Enemy4.from, $Enemy4.to, $Enemy4.position)
