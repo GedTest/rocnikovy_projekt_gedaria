@@ -4,7 +4,7 @@ This game is my **first PROJECT**
 
 Gedaria is 2D platformer *"Mario like"* game, it takes place in *Medieval Europe*. You play as the main character **Vladimir** a simple villager and farmer.
 
-*Once upon a time, there was a **farmer** named **Vladimir**, he was working day after day on count farmland, everything was just fine, but **something terrible was about to happen**. His **family was kidnapped** by local **earl**, for unknown purposes. Help Vladimir defies the power of the nobility, reveal the mystery and save the family.*
+*Once upon a time, there was a **farmer** named **Vladimir**, he was working day after day on count farmland, everything was just fine, but **something terrible was about to happen**. His **family was kidnapped** by local **earl**, for unknown purposes. Help Vladimir defy the power of the nobility, reveal the mystery and save the family.*
 
 > This game is developed with [**Godot Engine**](https://godotengine.org/)
 
