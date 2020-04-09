@@ -12,74 +12,90 @@ export var health = 15
 var bIsDead = false
 var bPlayer = false
 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
+var PlayerPositionX
+var timer = null
 
-func _process(delta):
+func _ready():
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(3)
+	timer.connect("timeout", self, "on_timeout")
+	add_child(timer)
+# ------------------------------------------------------------------------------
+func _physics_process(delta):
 	if !bIsDead:
 		# GRAVITY
 		Velocity.y += 25 * Gravity.y
-		#Move(from, to, position)
+		
 		if health <= 0:
 			Death()
 		
-		if $HitRay.is_colliding():
-			#print($HitRay.get_collider().name)
+		if $HitRay.is_colliding() && $HitRay.get_collider().name == "Vladimir":
+			PlayerPositionX = $HitRay.get_collider().position.x
 			bPlayer = true
 		else:
 			bPlayer = false
 		
+			
 		move_and_slide(Velocity, Vector2(0,-1))
-
+# ------------------------------------------------------------------------------
 func Move(var from, var to, var Pos): # MOVE
 	if !bIsDead:
 		if !bPlayer:
 			#if (from - Pos.x) > 0:
 			if Pos.x > to:
 				direction = -1
-				$AnimatedSprite.flip_h = true
-				$AnimatedSprite/Area2D/EnemyHitBox.position.x *= -1
-				$CollisionShape2D.position.x *= -1
+				Turn(true)
+				$HitRay.cast_to.x = -$HitRay.cast_to.x
 				
 			#if (to - Pos.x) < 0:
 			elif Pos.x < from:
 				direction = 1
-				$AnimatedSprite.flip_h = false
-				$AnimatedSprite/Area2D/EnemyHitBox.position.x *= -1
-				$CollisionShape2D.position.x *= -1
-		#else:
-			#print("I see Vlad")
+				Turn(false)
+				$HitRay.cast_to.x = $HitRay.cast_to.x
+				
+	# MOVE TOWARDS PLAYER
+		if bPlayer:
+			if PlayerPositionX <= position.x+100 && PlayerPositionX > position.x:
+				direction = 1
+				Turn(false)
+				$HitRay.cast_to.x = 300
+				
+			if PlayerPositionX >= position.x-100 && PlayerPositionX < position.x:
+				direction = -1
+				Turn(true)
+				$HitRay.cast_to.x = -300
+				
 		$AnimatedSprite.play("idle")
 		Velocity.x = speed * direction
-
-func Death():
+# ------------------------------------------------------------------------------
+func Death(): # CHARACTER DIES
 	bIsDead = true
 	Velocity = Vector2(0,0)
 	$AnimatedSprite.play("dead")
+	$AnimatedSprite/Area2D/EnemyHitBox.disabled = true
 	$CollisionShape2D.disabled = true
-	$Timer.start()
-	$HitRay.queue_free()
-
-func _on_Timer_timeout():
-	pass
-#	queue_free()
+# ------------------------------------------------------------------------------
+# TODO: remove frozen timer 2:20
 
 func TakeDamage():
 	health -= 5
 	print("-5")
-
-#func _on_Area2D_body_entered(body):
-#	if !bIsDead:
-#		# collision_layer_bit 1 = Player
-#		if body.get_collision_layer_bit(1):
-#			if body.position.x - position.x >= 0:
-#				print("Jdu za nim")
-
-
-#func _on_Area2D_body_exited(body):
-#	if !bIsDead:
-#		# collision_layer_bit 1 = Player
-#		if body.get_collision_layer_bit(1):
-#			print("ztratil se")
+# ------------------------------------------------------------------------------
+func Turn(var event): # FLIP CHARACTER AND IT'S COMPONENTS
+	$AnimatedSprite.flip_h = event
+	$AnimatedSprite/Area2D/EnemyHitBox.position.x *= -1
+	$CollisionShape2D.position.x *= -1
+# ------------------------------------------------------------------------------
+#func on_timeout():
+#	print("I am on!")
+	# WALKING BACKWARDS
+#	if bPlayer:
+#		if PlayerPositionX <= position.x+100 && PlayerPositionX >= position.x:
+#			print("On Right")
+#			direction = -1
+#			$HitRay.cast_to.x *= -$HitRay.cast_to.x
+#		if PlayerPositionX >= position.x-100 && PlayerPositionX <= position.x:
+#			print("On Left")
+#			direction = 1
+#			$HitRay.cast_to.x = $HitRay.cast_to.x
