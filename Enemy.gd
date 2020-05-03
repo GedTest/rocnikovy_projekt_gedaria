@@ -1,101 +1,177 @@
 extends KinematicBody2D
 
-export var speed = 325
+class_name Enemy, "res://Enemy/sprites/_IDLE/_IDLE_000.png"
+
+var FoV = 250
 var direction = 1
 var Velocity = Vector2(0,0)
-const Gravity = Vector2(0,1)
-
-export var from = 0
-export var to = 0
+const Gravity = Vector2(0,25)
 
 export var health = 15
+export var speed = 250
+export(int) var from
+export(int) var to
+var damage = 2
+
 var bIsDead = false
 var bPlayer = false
+var bCanAttack = false
+var bAttacking = false
+var bTimeout = false
+var bOnGround = false
 
-var PlayerPositionX
-var timer = null
+var Player = null
+var AttackTimer = null
 
 func _ready():
-	timer = Timer.new()
-	timer.set_one_shot(true)
-	timer.set_wait_time(3)
-	timer.connect("timeout", self, "on_timeout")
-	add_child(timer)
+	AttackTimer = Timer.new()
+	AttackTimer.set_one_shot(true)
+	AttackTimer.set_wait_time(1.5)
+	AttackTimer.connect("timeout", self, "on_AttackTimeout")
+	add_child(AttackTimer)
 # ------------------------------------------------------------------------------
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if !bIsDead:
-		# GRAVITY
-		Velocity.y += 25 * Gravity.y
-		
+		$CollisionShape2D.disabled = false
+	# GRAVITY
+		Velocity.y += Gravity.y
+	# IS IT ALIVE ?
 		if health <= 0:
 			Death()
-		
+	
 		if $HitRay.is_colliding() && $HitRay.get_collider().name == "Vladimir":
-			PlayerPositionX = $HitRay.get_collider().position.x
+			Player = $HitRay.get_collider()
 			bPlayer = true
+			$AnimatedSprite/WeaponHitbox/CollisionShape2D.disabled = false # in anim frames
 		else:
 			bPlayer = false
-		
+			$AnimatedSprite/WeaponHitbox/CollisionShape2D.disabled = true # in anim frames
 			
-		move_and_slide(Velocity, Vector2(0,-1))
+		if bCanAttack:
+			Attack()
+	
+		Velocity = move_and_slide(Velocity)
 # ------------------------------------------------------------------------------
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
 func Move(var from, var to, var Pos): # MOVE
 	if !bIsDead:
+		
+		bOnGround = true if $GroundRay.is_colliding() else false
+		if !bOnGround:
+			position.x = ((to - from) / 2) + from
+		if !bCanAttack:
+			$AnimatedSprite.play("run")
+	# MOVE FROM 'A' TO 'B'
 		if !bPlayer:
-			#if (from - Pos.x) > 0:
 			if Pos.x > to:
 				direction = -1
 				Turn(true)
-				$HitRay.cast_to.x = -$HitRay.cast_to.x
-				
-			#if (to - Pos.x) < 0:
+				$HitRay.cast_to.x = -FoV
+		
 			elif Pos.x < from:
 				direction = 1
 				Turn(false)
-				$HitRay.cast_to.x = $HitRay.cast_to.x
-				
-	# MOVE TOWARDS PLAYER
+				$HitRay.cast_to.x = FoV
+	# FOLLOW PLAYER OR NOT
 		if bPlayer:
-			if PlayerPositionX <= position.x+100 && PlayerPositionX > position.x:
-				direction = 1
-				Turn(false)
-				$HitRay.cast_to.x = 300
-				
-			if PlayerPositionX >= position.x-100 && PlayerPositionX < position.x:
-				direction = -1
-				Turn(true)
-				$HitRay.cast_to.x = -300
-				
-		$AnimatedSprite.play("idle")
+			if Player.position.x <= position.x+FoV && Player.position.x > position.x:
+			# MOVE TOWARDS PLAYER (RIGHT)
+				if !bCanAttack:
+					direction = 1
+					Turn(false)
+					$HitRay.cast_to.x = FoV
+			# WALKING BACKWARDS
+				else:
+					yield(get_tree().create_timer(2.5),"timeout")
+					direction = -1
+					$HitRay.enabled = false
+		
+			elif Player.position.x >= position.x-FoV && Player.position.x < position.x:
+				# MOVE TOWARDS PLAYER (LEFT)
+				if !bCanAttack:
+					direction = -1
+					Turn(true)
+					$HitRay.cast_to.x = -FoV
+				# WALKING BACKWARDS
+				else:
+					yield(get_tree().create_timer(2.5),"timeout")
+					direction = 1
+					$HitRay.enabled = false
+			
+			yield(get_tree().create_timer(1),"timeout")
+			$HitRay.enabled = true
+			
+		# WALKING BACKWARDS
+		#	if bCanAttack:
+		#		yield(get_tree().create_timer(2),"timeout")
+		#		if Player.position.x <= position.x+FoV && Player.position.x >= position.x:
+		#			print("On Right")
+		#			$HitRay.enabled = false
+		#			direction = -1
+		#
+		#		elif Player.position.x >= position.x-FoV && Player.position.x <= position.x:
+		#			print("On Left")
+		#			direction = 1
+		#			$HitRay.enabled = false
+		#			
+		#	yield(get_tree().create_timer(1),"timeout")
+		#	$HitRay.enabled = true
+	
 		Velocity.x = speed * direction
 # ------------------------------------------------------------------------------
 func Death(): # CHARACTER DIES
+	bCanAttack = false
 	bIsDead = true
-	Velocity = Vector2(0,0)
+	Velocity = Gravity
 	$AnimatedSprite.play("dead")
-	$AnimatedSprite/Area2D/EnemyHitBox.disabled = true
 	$CollisionShape2D.disabled = true
+	$AnimatedSprite/WeaponHitbox/CollisionShape2D.disabled = true
+	AttackTimer.stop()
+# ------------------------------------------------------------------------------
+func Save(): # SAVE POSITION AND VARIABLES IN JSON
+	var savedData = {
+		"bIsDead":bIsDead,
+		"health":health,
+		pos = {
+			"x":position.x,
+			"y":position.y
+		},
+		"from":from,
+		"to":to
+	}
+	return savedData
 # ------------------------------------------------------------------------------
 # TODO: remove frozen timer 2:20
-
-func TakeDamage():
-	health -= 5
-	print("-5")
 # ------------------------------------------------------------------------------
 func Turn(var event): # FLIP CHARACTER AND IT'S COMPONENTS
 	$AnimatedSprite.flip_h = event
-	$AnimatedSprite/Area2D/EnemyHitBox.position.x *= -1
+	$AnimatedSprite/WeaponHitbox.position.x *= -1
 	$CollisionShape2D.position.x *= -1
 # ------------------------------------------------------------------------------
-#func on_timeout():
-#	print("I am on!")
-	# WALKING BACKWARDS
-#	if bPlayer:
-#		if PlayerPositionX <= position.x+100 && PlayerPositionX >= position.x:
-#			print("On Right")
-#			direction = -1
-#			$HitRay.cast_to.x *= -$HitRay.cast_to.x
-#		if PlayerPositionX >= position.x-100 && PlayerPositionX <= position.x:
-#			print("On Left")
-#			direction = 1
-#			$HitRay.cast_to.x = $HitRay.cast_to.x
+func Attack(): # DO ATTACK
+	Velocity.x = 0
+	$AnimatedSprite.play("attack")
+	# if it can attack and Player is within a range
+	if bAttacking && Player && bPlayer:
+		bAttacking = false
+		Player.health -= damage
+		print("Vladimir's health: ", Player.health)
+# ------------------------------------------------------------------------------
+func on_AttackTimeout(): # SET COOLDOWN
+	bAttacking = true
+	AttackTimer.start()
+# ------------------------------------------------------------------------------
+# NEED BETTER ANIMATIONS
+func _on_WeaponHitbox_body_entered(body):
+	# collision_layer_bit 1 = Player
+	if body.get_collision_layer_bit(1):
+		bCanAttack = true
+		AttackTimer.start()
+# ------------------------------------------------------------------------------
+func _on_WeaponHitbox_body_exited(body):
+	# collision_layer_bit 1 = Player
+	if body.get_collision_layer_bit(1):
+		bCanAttack = false
+# ------------------------------------------------------------------------------
