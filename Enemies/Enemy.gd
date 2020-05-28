@@ -11,6 +11,7 @@ export var health = 15
 export var speed = 250
 export(int) var from
 export(int) var to
+var hitInRow = 0
 var damage = 2
 
 var bIsDead = false
@@ -60,7 +61,8 @@ func Move(var from, var to, var Pos): # MOVE
 		
 		bOnGround = true if $GroundRay.is_colliding() else false
 		if !bOnGround:
-			position.x = ((to - from) / 2) + from
+			print(name," is not on ground")
+			position.x = (to + from) / 2
 		if !bCanAttack:
 			$AnimatedSprite.play("run")
 	# MOVE FROM 'A' TO 'B'
@@ -146,9 +148,10 @@ func Save(): # SAVE POSITION AND VARIABLES IN JSON
 # TODO: remove frozen timer 2:20
 # ------------------------------------------------------------------------------
 func Turn(var event): # FLIP CHARACTER AND IT'S COMPONENTS
+	var turn = 1 if event else -1
 	$AnimatedSprite.flip_h = event
-	$AnimatedSprite/WeaponHitbox.position.x *= -1
-	$CollisionShape2D.position.x *= -1
+	$AnimatedSprite/WeaponHitbox.position.x *= turn
+	$CollisionShape2D.position.x *= turn
 # ------------------------------------------------------------------------------
 func Attack(): # DO ATTACK
 	Velocity.x = 0

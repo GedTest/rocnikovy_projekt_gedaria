@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name Vladimir, "res://Vladimir/animations/sprites/vladimir.png"
 
 export var speed = 375
-export var jumpStrength = 450
+export var jumpStrength = 500
 var damage = 5
 var health = 20
 
@@ -15,19 +15,18 @@ const FloorVector = Vector2(0,-1)
 var bIsDead = false
 var bCanJump = true
 var bCanAttack = false
-var bSwording = true
+var bSwording = false
+var bBlocking = false
 
 var Enemy = null
 var animation = ""
 
 var AttackTimer = null
+var BlockTimer = null
 
 func _ready():
-	AttackTimer = Timer.new()
-	AttackTimer.set_one_shot(true)
-	AttackTimer.set_wait_time(0.8)
-	AttackTimer.connect("timeout", self, "on_AttackTimeout")
-	add_child(AttackTimer)
+	BlockTimer = get_tree().create_timer(0.0)
+	AttackTimer = get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------	
 # warning-ignore:unused_argument
 func _process(delta):
@@ -37,11 +36,12 @@ func _process(delta):
 	# IS HE ALIVE ?
 		if health <= 0:
 			Death()
-			
+		
 		Jump()
 		Move()
 		Crouch()
 		Attack()
+		Block()
 		
 	Velocity = move_and_slide(Velocity,FloorVector) # I don't like this method, it already multiply by delta
 # ------------------------------------------------------------------------------
@@ -72,7 +72,6 @@ func Move(): # MOVE
 	animation = "run" if Velocity.x != 0  else "idle"
 	
 	$AnimatedSprite.flip_v = false
-	#$AnimatedSprite.flip_h = Direction.x < 0
 	$AnimatedSprite.play(animation)
 # ------------------------------------------------------------------------------
 func Crouch(): # CROUCH
@@ -89,21 +88,38 @@ func Crouch(): # CROUCH
 		$AnimatedSprite.scale.y = 0.4
 # ------------------------------------------------------------------------------
 func Attack(): # ATTACK
-	if Input.is_action_just_pressed("attack") && bSwording:
+	if Input.is_action_just_pressed("attack") && !bSwording && !bBlocking:
 	
 		$AnimatedSprite.play("attack")
-		AttackTimer.start()
-	
+		bSwording = true
+		
 		if bCanAttack && Enemy:
 			Enemy.health -= damage
+			Enemy.hitInRow += 1
 			print("Enemy health: ", Enemy.health)
+			
+		if AttackTimer.time_left <= 0.0:
+			AttackTimer = get_tree().create_timer(0.8)
+			yield(AttackTimer, "timeout")
+		
 		bSwording = false
+# ------------------------------------------------------------------------------
+func Block():
+	if Input.is_action_just_pressed("block"):
+		$Label.show()                                 # TEMPORARY
+		bBlocking = true
+		
+		if BlockTimer.time_left <= 0.0:
+			BlockTimer = get_tree().create_timer(1.0)
+			yield(BlockTimer, "timeout")
+			bBlocking = false
+			$Label.hide()                              # TEMPORARY
 # ------------------------------------------------------------------------------
 func Death(): # CHARACTER DIES
 	bIsDead = true
 	Velocity = Gravity
 	#$AnimatedSprite.play("dead")
-	self.queue_free()
+	self.hide()
 # ------------------------------------------------------------------------------
 func Save(): # SAVE POSITION AND VARIABLES IN JSON
 	var savedData = {
@@ -115,9 +131,6 @@ func Save(): # SAVE POSITION AND VARIABLES IN JSON
 		#"scene":get_tree().get_current_scene().filename
 	}
 	return savedData
-# ------------------------------------------------------------------------------
-func on_AttackTimeout(): # SET COOLDOWN
-	bSwording = true
 # ------------------------------------------------------------------------------
 func _on_WeaponHitbox_body_entered(body):
 	# collision_layer_bit 2 = Enemy

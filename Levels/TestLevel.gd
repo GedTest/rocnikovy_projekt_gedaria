@@ -18,6 +18,7 @@ func _process(delta):
 	$Enemy2.Move($Enemy2.from, $Enemy2.to, $Enemy2.position)
 	$Enemy3.Move($Enemy3.from, $Enemy3.to, $Enemy3.position)
 	$Enemy4.Move($Enemy4.from, $Enemy4.to, $Enemy4.position)
+	$E.Move_children($E.from,$E.to)
 # ------------------------------------------------------------------------------
 # warning-ignore:unused_argument
 func _on_Checkpoint_body_entered(body):
