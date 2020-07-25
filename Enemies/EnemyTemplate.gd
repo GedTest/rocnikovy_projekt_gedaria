@@ -3,65 +3,67 @@ extends KinematicBody2D
 # class_name Enemy, "res://Enemy/sprites/_IDLE/_IDLE_000.png"
 class_name E, "res://Enemy/sprites/_IDLE/_IDLE_000.png"
 
-var FoV = 250
 var direction = 1
 var Velocity = Vector2(0,0)
-const Gravity = Vector2(0,25)
+var Gravity = Vector2(0,98)
 
+export(int) var FoV = 250
 export(int) var health
 export(int) var speed
 export(int) var from
 export(int) var to
 export(int) var damage
+var distance
+var movementSpeed
 
 var bIsDead = false
 var bPlayer = false
 var bCanAttack = false
 var bAttacking = false
+var bBlocking = false
 var bTimeout = false
-var bOnGround = false
 var hitInRow = 0
 
 var Player = null
 var AttackTimer = null
+var HitTimer = null
+var StateMachine = null
 
 func _ready():
-	AttackTimer = get_tree().create_timer(0.0) # BETTER TIMER
-	#AttackTimer = Timer.new()
-	#AttackTimer.set_one_shot(true)
-	#AttackTimer.set_wait_time(1.5)
-	#AttackTimer.connect("timeout", self, "on_AttackTimeout")
-	#add_child(AttackTimer)
+	movementSpeed = speed
+	AttackTimer = get_tree().create_timer(0.0)
+	HitTimer = get_tree().create_timer(0.0)
+	StateMachine = $AnimationTree.get("parameters/playback")
 # ------------------------------------------------------------------------------
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	if !bIsDead:
-		$CollisionShape2D.disabled = false
 	# GRAVITY
 		Velocity.y += Gravity.y
 	# IS IT ALIVE ?
 		if health <= 0:
 			Death()
-	
+	# does he see the player ?
 		if $HitRay.is_colliding() && $HitRay.get_collider().name == "Vladimir":
 			Player = $HitRay.get_collider()
 			bPlayer = true
-			$AnimatedSprite/WeaponHitbox/CollisionShape2D.disabled = false # in anim frames
 		else:
 			Player = null
 			bPlayer = false
-			$AnimatedSprite/WeaponHitbox/CollisionShape2D.disabled = true # in anim frames
+			
+		if bPlayer && !Player.bIsDead:
+			distance = abs(position.x - Player.position.x)
 	
 		Velocity = move_and_slide(Velocity)
 # ------------------------------------------------------------------------------
 func Death(): # CHARACTER DIES
+	health = 0
 	bCanAttack = false
 	bIsDead = true
 	Velocity = Gravity
-	$AnimatedSprite.play("dead")
+	StateMachine.travel('DEATH') # play dying animation
 	$CollisionShape2D.disabled = true
-	$AnimatedSprite/WeaponHitbox/CollisionShape2D.disabled = true
-	AttackTimer.stop()
+	$Weapon/CollisionShape2D.disabled = true
 # ------------------------------------------------------------------------------
 func Save(): # SAVE POSITION AND VARIABLES IN JSON
 	var savedData = {
@@ -76,22 +78,21 @@ func Save(): # SAVE POSITION AND VARIABLES IN JSON
 	}
 	return savedData
 # ------------------------------------------------------------------------------
-func Turn(var event): # FLIP CHARACTER AND IT'S COMPONENTS
-	var turn = -1 if event else 1
-	$AnimatedSprite.flip_h = event
-	$AnimatedSprite/WeaponHitbox.position.x *= -1
-	$CollisionShape2D.scale.x = turn
-	$HitRay.cast_to.x = FoV * turn
+func Hit(dmg):
+	speed = 0
+	health -= dmg
+	StateMachine.travel('HIT')
+	if HitTimer.time_left <= 0.0:
+		HitTimer = get_tree().create_timer(0.75)
+		yield(HitTimer, "timeout")
+		speed = movementSpeed
 # ------------------------------------------------------------------------------
-# NEED BETTER ANIMATIONS
-func _on_WeaponHitbox_body_entered(body):
+func _on_Weapon_body_entered(body):
 	# collision_layer_bit 1 = Player
 	if body.get_collision_layer_bit(1) && bPlayer:
 		bCanAttack = true
-		#AttackTimer.start()
-		#print("Vladimir's health: ", Player.health)
 # ------------------------------------------------------------------------------
-func _on_WeaponHitbox_body_exited(body):
+func _on_Weapon_body_exited(body):
 	# collision_layer_bit 1 = Player
 	if body.get_collision_layer_bit(1):
 		bCanAttack = false

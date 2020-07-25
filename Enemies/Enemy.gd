@@ -18,6 +18,7 @@ var bIsDead = false
 var bPlayer = false
 var bCanAttack = false
 var bAttacking = false
+var bBlocking = false
 var bTimeout = false
 var bOnGround = false
 
@@ -61,7 +62,7 @@ func Move(var from, var to, var Pos): # MOVE
 		
 		bOnGround = true if $GroundRay.is_colliding() else false
 		if !bOnGround:
-			print(name," is not on ground")
+			#print(name," is not on ground")
 			position.x = (to + from) / 2
 		if !bCanAttack:
 			$AnimatedSprite.play("run")
@@ -124,6 +125,7 @@ func Move(var from, var to, var Pos): # MOVE
 		Velocity.x = speed * direction
 # ------------------------------------------------------------------------------
 func Death(): # CHARACTER DIES
+	health = 0
 	bCanAttack = false
 	bIsDead = true
 	Velocity = Gravity

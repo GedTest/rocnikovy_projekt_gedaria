@@ -15,15 +15,17 @@ func AddFloorTile():
 	NextPlatform.position.x = pos.x
 	call_deferred("add_child",NextPlatform)
 	count+=1
-	if count >= 15:
+	if count >= 10:
 		get_tree().change_scene("res://Level/Prologue/TutorialLevel.tscn")
 # ------------------------------------------------------------------------------
 func _on_Area2D_body_entered(body):
 	$StartingPlatform2/Label.show()
 	$StartingPlatform3/Label.show()
+	
 	yield(get_tree().create_timer(0.2),"timeout")
 	$WardenRunner.bSlowMotion = true
 	$VladRunner.bSlowMotion = true
+	
 	yield(get_tree().create_timer(2.5),"timeout")
 	$StartingPlatform2/Label.text = ""
 	$StartingPlatform3/Label.hide()

@@ -1,19 +1,36 @@
 extends StaticBody2D
 
-var cracks = 0
-func _process(delta):
-	if cracks == 3:
-		# animation falling
-		# stun enenmy
-		# branch destroys
-		pass
+class_name Branch, "res://Level/Prologue/branch.png"
+onready var leaf_path = preload("res://Level/Prologue/Leaves.tscn")
+var cracks : int = 0
+var bOnce = false
+var timer = null
 
+func _ready():
+	timer = get_tree().create_timer(0.0)
+# ------------------------------------------------------------------------------
+func _process(delta):
+	var leaf = leaf_path.instance()
+	
+	if cracks >= 3:
+		cracks = 0
+	# animation falling
+	# spawn leaf
+		add_child(leaf)
+		
+	# branch destroys
+		$Area2D/CollisionShape2D.disabled = true
+		$Area2D2/CollisionShape2D.disabled = true
+		$CollisionShape2D.disabled = true
+		$Sprite.hide()
+
+# ------------------------------------------------------------------------------
 func _on_Branch_body_entered(body):
-	print("Křup křup větvička")
 	cracks += 1
-	yield(get_tree().create_timer(2),"timeout")
-	$CollisionShape2D.disabled = true
-	hide()
-	yield(get_tree().create_timer(5),"timeout")
-	$CollisionShape2D.disabled = false
-	show()
+	if timer.time_left <= 0.0:
+		timer = get_tree().create_timer(3.5)
+		yield(timer, "timeout")
+		$Area2D/CollisionShape2D.disabled = false
+		$Area2D2/CollisionShape2D.disabled = false
+		$CollisionShape2D.disabled = false
+		$Sprite.show()
