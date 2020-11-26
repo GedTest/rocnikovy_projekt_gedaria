@@ -1,0 +1,203 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Sprite",
+"class": "Acorn",
+"language": "GDScript",
+"path": "res://Vladimir/Acorn.gd"
+}, {
+"base": "E",
+"class": "BOSS_Warden",
+"language": "GDScript",
+"path": "res://Enemy/BOSS_Warden/BOSS_Warden.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Branch",
+"language": "GDScript",
+"path": "res://Level/Prologue/Branch.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "E",
+"language": "GDScript",
+"path": "res://Enemy/E-Test/EnemyTemplate.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemy/Enemy.gd"
+}, {
+"base": "Sprite",
+"class": "Mushroom",
+"language": "GDScript",
+"path": "res://Level/Mushroom.gd"
+}, {
+"base": "Area2D",
+"class": "MushroomSpring",
+"language": "GDScript",
+"path": "res://Level/MushroomSpring.gd"
+}, {
+"base": "RigidBody2D",
+"class": "PileOfLeaves",
+"language": "GDScript",
+"path": "res://Level/PileOfLeaves.gd"
+}, {
+"base": "E",
+"class": "Scarecrow",
+"language": "GDScript",
+"path": "res://Level/Prologue/Scarecrow.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Vladimir",
+"language": "GDScript",
+"path": "res://Vladimir/Vladimir.gd"
+}, {
+"base": "Sprite",
+"class": "clouds",
+"language": "GDScript",
+"path": "res://Level/Cloud.gd"
+} ]
+_global_script_class_icons={
+"Acorn": "res://UI/zalud.png",
+"BOSS_Warden": "res://Enemy/BOSS_Warden/BOSS_Warden.png",
+"Branch": "res://Level/Prologue/branch.png",
+"E": "res://Enemy/sprites/_IDLE/_IDLE_000.png",
+"Enemy": "res://Enemy/sprites/_IDLE/_IDLE_000.png",
+"Mushroom": "res://Level/Mushroom+.png",
+"MushroomSpring": "res://Level/Mushroom3.png",
+"PileOfLeaves": "",
+"Scarecrow": "res://Level/Prologue/scarecrow.png",
+"Vladimir": "res://Vladimir/animations/sprites/vladimir.png",
+"clouds": "res://Level/Prologue/cloud1.png"
+}
+
+[application]
+
+config/name="Gedaria"
+run/main_scene="res://Level/MainMenu/MainMenu.tscn"
+config/use_custom_user_dir=true
+config/icon="res://icon.png"
+
+[autoload]
+
+Save_Load="*res://Level/SavedData/Save.gd"
+Fullscreen="*res://Level/MainMenu/Fullscreen.gd"
+Global="*res://Level/SavedData/globals.gd"
+SaveLoad="*res://Level/SavedData/save_load.gd"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+crouch={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+block={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+rake={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
+rake_out={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
+ ]
+}
+fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"Left Arrow"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"Right Arrow"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"Up Arrow"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"Down Arrow"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"heavy attack"={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Ground"
+3d_physics/layer_1="Ground"
+2d_physics/layer_2="Player"
+3d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+3d_physics/layer_3="Enemy"
+2d_physics/layer_4="Leaves"
+2d_physics/layer_5="BeeHive"
+2d_physics/layer_6="PileOfLeaves"
+2d_physics/layer_7="Tree"
+2d_physics/layer_20="Extra"
