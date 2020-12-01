@@ -1,25 +1,34 @@
-extends Area2D
+extends Sprite
+
+class_name Bush, "res://Level/LightGreenBush2.png"
 
 var Player = null
+var CollisionSize = ["res://Level/SmallBush.tres",
+					 "res://Level/MediumBush.tres",
+					 "res://Level/LargeBush.tres"]
+
+func _ready():
+	var index = int(self.texture.load_path.split(".")[1][-1])
+	$Area2D/CollisionShape2D.shape = load(CollisionSize[index - 1])
 
 # warning-ignore:unused_argument
 func _process(delta):
 	if Player:
 		if Player.bCrouching:
-			$Sprite.modulate = Color(0.19,1,0,0.8)
+			#self.modulate = Color(1,1,1,0.8)
 			Player.bHidden = true
 		else:
-			$Sprite.modulate = Color(0.19,1,0,1)
+			#self.modulate = Color(1,1,1,1)
 			Player.bHidden = false
 
-func _on_Bush_body_entered(body):
+func _on_Area2D_body_entered(body):
 	# collision_layer_bit 1 = Player
 	if body.get_collision_layer_bit(1):
 		Player = body
 
-func _on_Bush_body_exited(body):
+func _on_Area2D_body_exited(body):
 	# collision_layer_bit 1 = Player
 	if body.get_collision_layer_bit(1):
 		Player = null
 		body.bHidden = false
-		$Sprite.modulate = Color(0.19,1,0,1)
+		#self.modulate = Color(1,1,1,1)

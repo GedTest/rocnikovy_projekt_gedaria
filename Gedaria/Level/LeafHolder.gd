@@ -9,11 +9,15 @@ var LeafReference = null
 var bPartOfPile = false
 export (Vector2) var initialPosition = Vector2(0,0)
 
+export(String, "res://UI/list_ořech.png","res://UI/list_buk.png",
+		"res://UI/list_kopřiva.png") var predefinedLeaf
+
 func _ready():
 	timer = get_tree().create_timer(0.0)
 	bPartOfPile = true if get_parent().get_class() == "RigidBody2D" else false
-	#if !bPartOfPile:
-	#	add_to_group("persistant")
+	if !bPartOfPile:
+	#	self.add_to_group("persistant")
+		print(name," bCanLeaf: ",bCanLeaf)
 # ------------------------------------------------------------------------------
 func _process(delta):
 	if position != initialPosition:
@@ -49,7 +53,7 @@ func _on_Area2D_body_entered(body):
 # ------------------------------------------------------------------------------
 func Save():
 	var savedData = {
-		"bCanLeaf":bCanLeaf,
+		"bCanLeaf":!bCanLeaf,
 		"bLeaf":bLeaf,
 		"Leaf":Leaf,
 		#"LeafReference":LeafReference

@@ -20,6 +20,9 @@ const arrSAVE_PATH = ['user://ss1.json','user://ss2.json','user://ss3.json','use
 var strSaveLoadAction = ""
 
 func _ready():
+	for node in $Leaves.get_children():
+		node.add_to_group("persistant")
+		
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
 	#if Save_Load.bLoad:
@@ -27,8 +30,10 @@ func _ready():
 	#if Save_Load.checkpoint && !Save_Load.bLoad:
 	#	$Vladimir.position = Save_Load.checkpoint
 	
+	#for child in get_tree().get_nodes_in_group("persistant"):
+	#	print(child.name)
+	
 	$Vladimir/Camera.current = true
-	#######$CanvasLayer/UserInterface.LoadUiIcons()
 	#currentScene = Save_Load.GetScene()
 # ------------------------------------------------------------------------------
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
@@ -36,6 +41,7 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	yield(get_tree().create_timer(0.1), "timeout")
 	get_tree().set_pause(false)
 	Global.bYieldStop = false
+	$CanvasLayer/UserInterface.LoadUiIcons()
 # ------------------------------------------------------------------------------
 # warning-ignore:unused_argument
 func _process(delta):

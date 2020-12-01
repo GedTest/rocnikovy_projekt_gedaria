@@ -5,6 +5,10 @@ extends RigidBody2D
 #var savedPosition : Vector2
 onready var texture = $Sprite.texture
 
+#func _ready():
+#	if "Leaves" == get_parent().name:
+#		self.add_to_group("persistant")
+
 #func _process(delta):
 #	linear_damp = 9999999999999 if linear_velocity.length() > 1000 else -1
 

@@ -23,6 +23,7 @@ func _process(delta):
 		bLoad = false
 		
 		for i in range(leaves):
+			print("adding leave ",i)
 			var Leaf = leafPath.instance()
 			get_parent().get_parent().find_node("Leaves").add_child(Leaf)
 			Leaf.position = Vector2(position.x-250+(i*100),position.y)

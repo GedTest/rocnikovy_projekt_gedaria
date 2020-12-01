@@ -94,7 +94,7 @@ func load_map():
 	if visited_maps.has(level_root().filename):
 		# DELETE OBJECTS
 		for key in keys_in_map:
-			print(str(key[0])," is in c_d: ",current_data.has( str(key[0]) ))
+			#print(str(key[0])," is in c_d: ",current_data.has( str(key[0]) ))
 			if !(current_data.has( str(key[0]) )): # if c_d doesn't have key
 				print(key[1],".queue_free()")
 				key[1].queue_free()                # free it from memory
@@ -125,7 +125,6 @@ func load_map():
 		update_node(node)
 # ------------------------------------------------------------------------------
 func update_node(node):
-
 	if current_data.has( str([level_root().filename, node.name] )):
 		var data = current_data[ str([level_root().filename, node.name] )]
 		#print("")

@@ -20,17 +20,17 @@ func _ready():
 	timer = get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------
 func _process(delta):
-	#var vladimir = get_parent().get_parent().find_node('Vladimir')
+	var vladimir = get_parent().get_parent().find_node('Vladimir')
 	
-	#acornCounter = vladimir.acornCounter
-	#$AcornCounter.text = str(acornCounter) + "x"
+	acornCounter = vladimir.acornCounter
+	$AcornCounter.text = str(acornCounter) + "x"
 	
-	#maxHealth = vladimir.maxHealth
-	#currentHealth = vladimir.health
+	maxHealth = vladimir.maxHealth
+	currentHealth = vladimir.health
 	
-	#pebbleCounter = vladimir.pebbleCounter
+	pebbleCounter = vladimir.pebbleCounter
 	
-	#$Slingshot.visible = vladimir.bHasSlingshot
+	$Slingshot.visible = vladimir.bHasSlingshot
 	bYieldStop = get_parent().get_parent().bYieldStop
 # ------------------------------------------------------------------------------
 func UpdateHealth(var value, var condition : String, var currentHealth,var maxHealth = 12):
@@ -40,7 +40,7 @@ func UpdateHealth(var value, var condition : String, var currentHealth,var maxHe
 			if currentHealth >= 0:
 				for i in range(value):
 					currentHealth -= 1
-					
+					print("currentHealth: ",currentHealth)
 					arrMaxHealth[currentHealth].find_node('Leaf').hide()
 					arrMaxHealth[currentHealth].emitting = true
 					arrMaxHealth[currentHealth].one_shot = false
@@ -73,14 +73,14 @@ func UpdatePebbles(var num, var condition : String, var pebbleCounter):
 					arrPebbles[pebbleCounter-1].show()
 					pebbleCounter += 1
 # ------------------------------------------------------------------------------
-#func Save():
-#	var savedData = {
-#		"UI":"UI",
-#		#"savedHealth":currentHealth,
-#		#"maxHealth":maxHealth,
-#		#"acornCounter":acornCounter
-#	}
-#	return savedData
+func Save():
+	var savedData = {
+		"UI":"UI",
+		"savedHealth":currentHealth,
+		"maxHealth":maxHealth,
+		"acornCounter":acornCounter
+	}
+	return savedData
 # ------------------------------------------------------------------------------
 func LoadUiIcons():
 	yield(get_tree().create_timer(0.25),"timeout")
