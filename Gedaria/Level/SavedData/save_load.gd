@@ -38,8 +38,8 @@ func update_current_data():
 			node_data = save_node(node).duplicate()
 
 			# save custom variables
-			if node.has_method("Save"):
-				var dict = node.Save()
+			if node.has_method("save"):
+				var dict = node.save()
 				for y in dict:
 					node_data[y] = dict[y]
 			
@@ -72,8 +72,8 @@ func update_map_data():
 			node_data = save_node(node).duplicate()
 
 			# save custom variables
-			if node.has_method("Save"):
-				var dict = node.Save()
+			if node.has_method("save"):
+				var dict = node.save()
 				for y in dict:
 					node_data[y] = dict[y]
 
@@ -222,7 +222,7 @@ func load_from_slot(slot_name):
 	#for x in slots[slot_name]["globals"].keys():
 	#	Global.set(x, slots[slot_name]["globals"][x])
 	
-	bYieldStop = true
+	is_yield_paused = true
 	
 	yield(get_tree().create_timer(5.0), "timeout")
 	print('# = = = = = = = = = = #')

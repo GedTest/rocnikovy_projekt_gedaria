@@ -1,16 +1,24 @@
 extends Control
 
-var strSaveLoadAction = "load"
-var bYieldStop = true
-onready var arrSaveSlots = [$CanvasLayer/SaveSlot1,$CanvasLayer/SaveSlot2,
-						$CanvasLayer/SaveSlot3,$CanvasLayer/CheckpointSaveSlot]
+
+var str_save_load_action = "load"
+var is_yield_paused = true
+onready var arr_save_slots = [
+	$CanvasLayer/SaveSlot1,$CanvasLayer/SaveSlot2,
+	$CanvasLayer/SaveSlot3,$CanvasLayer/CheckpointSaveSlot,
+]
+
+
 func _ready():
 	get_tree().paused = false
+# ------------------------------------------------------------------------------
+
 func _on_StartButton_pressed():
 	get_tree().change_scene("res://Level/Chase/ChaseLevel.tscn")
 # ------------------------------------------------------------------------------
+
 func _on_LoadButton_pressed():
-	for SaveSlot in arrSaveSlots:
+	for SaveSlot in arr_save_slots:
 		SaveSlot.visible = !SaveSlot.visible
 		
 		if !Save_Load.SaveSlot1[3]:
@@ -26,6 +34,7 @@ func _on_LoadButton_pressed():
 			$CanvasLayer/SaveSlot3/Label2.text = Save_Load.SaveSlot3[1]
 			$CanvasLayer/SaveSlot3/Label3.text = Save_Load.SaveSlot3[2]
 # ------------------------------------------------------------------------------
+
 func _on_QuitButton_pressed():
 	get_tree().quit()
 # ------------------------------------------------------------------------------

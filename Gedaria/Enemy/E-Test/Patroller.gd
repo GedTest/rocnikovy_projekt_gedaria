@@ -1,181 +1,188 @@
 extends E
 
-var TurnAroundTimer = null
-var JumpTimer = null
-var DoABarrelRollTimer = null
-var CooldownRollTimer = null
 
-var bWasPlayer = false
-var bCanJump = false
-var bReverse = false
-var bCanMove = true
-var bCanRoll = false
+export (bool) var can_turn_around = true
+export (bool) var is_able_to_roll = true
+export (bool) var is_able_to_jump = true   # is_able_to_jump
+export (int) var height_level
 
-export (bool) var bCanTurnAround = true
-export (bool) var bRolling = true
-export (bool) var bJumping = true
-export (int) var heightLevel
+var turn_around_timer = null
+var jump_timer = null
+var do_barrel_roll_timer = null
+var cooldown_roll_timer = null
+
+var has_player_before = false
+var can_jump = false
+var is_reversed = false
+var is_moving = true
+var can_roll = false
+
 
 func _ready():
-	DeathAnimTime = 3.0
-	TurnAroundTimer = get_tree().create_timer(0.0,false)
-	JumpTimer = get_tree().create_timer(0.0,false)
-	DoABarrelRollTimer = get_tree().create_timer(0.0,false)
-	CooldownRollTimer = get_tree().create_timer(0.0,false)
+	death_anim_time = 3.0
+	turn_around_timer = get_tree().create_timer(0.0, false)
+	jump_timer = get_tree().create_timer(0.0, false)
+	do_barrel_roll_timer = get_tree().create_timer(0.0, false)
+	cooldown_roll_timer = get_tree().create_timer(0.0, false)
 # ------------------------------------------------------------------------------
+
 # warning-ignore:unused_argument
 func _physics_process(delta):
-	if !bIsDead:
-		bReverse = true if direction == -1 else false
+	if !is_dead:
+		is_reversed = true if direction == -1 else false
 		
-		if bPlayer && distance <= 135:
-			if CooldownTimer.time_left <= 0.0:
-				CooldownTimer = get_tree().create_timer(1.0,false)
-				if !bYieldStop:
-					yield(CooldownTimer,"timeout")
-					Attack()
+		if has_player and distance <= 135:
+			if cooldown_timer.time_left <= 0.0:
+				cooldown_timer = get_tree().create_timer(1.0, false)
+				if !is_yield_paused:
+					yield(cooldown_timer, "timeout")
+					attack()
 				
-		if CooldownRollTimer.time_left <= 0.0 && !bCanAttack && bRolling:
-			CooldownRollTimer = get_tree().create_timer(4.0,false)
-			if !bYieldStop:
-				yield(CooldownRollTimer,"timeout")
-				bCanRoll = true
+		if cooldown_roll_timer.time_left <= 0.0 and !can_attack and is_able_to_roll:
+			cooldown_roll_timer = get_tree().create_timer(4.0, false)
+			if !is_yield_paused:
+				yield(cooldown_roll_timer, "timeout")
+				can_roll = true
 		
 		# DO A BARREL ROLL
-		if bRolling:
-			if bWasPlayer && !bAttacking && distance <= 300 && bCanRoll:
+		if is_able_to_roll:
+			if has_player_before and !is_attacking and distance <= 300 and can_roll:
 				position.x += 10 * direction
 				$HitRay.enabled = false
 			
-				if DoABarrelRollTimer.time_left <= 0.0:
-					DoABarrelRollTimer = get_tree().create_timer(0.4,false)
-					if !bYieldStop:
-						yield(DoABarrelRollTimer,"timeout")
+				if do_barrel_roll_timer.time_left <= 0.0:
+					do_barrel_roll_timer = get_tree().create_timer(0.4, false)
+					if !is_yield_paused:
+						yield(do_barrel_roll_timer, "timeout")
 						$HitRay.enabled = true
-						bWasPlayer = false
+						has_player_before = false
 						$Sprite.flip_h = !$Sprite.flip_h 
 						$HitRay.cast_to.x = -$HitRay.cast_to.x
-						bCanRoll = false
+						can_roll = false
 # ------------------------------------------------------------------------------
+
 # warning-ignore:shadowed_variable
 # warning-ignore:shadowed_variable
-func Move(var from, var to): # MOVE
-	if !bIsDead:
+func move(var from, var to): # MOVE
+	if !is_dead:
 	# MOVE FROM 'A' TO 'B'
-		if !bPlayer && !bWasPlayer:
+		if !has_player and !has_player_before:
 			
 			if position.x > to:
 				direction = -1
 				$Sprite.flip_h = false
 				$HitRay.cast_to.x = -FoV
-		
 			elif position.x < from:
 				direction = 1
 				$Sprite.flip_h = true
 				$HitRay.cast_to.x = FoV
 			
 			# LOOK AROUND FOR PLAYER
-			if TurnAroundTimer.time_left <= 0.0 && !bPlayer:
-				TurnAroundTimer = get_tree().create_timer(5.0,false)
-				if !bYieldStop:
-					yield(TurnAroundTimer,"timeout")
-					TurnAround()
+			if turn_around_timer.time_left <= 0.0 and !has_player:
+				turn_around_timer = get_tree().create_timer(5.0, false)
+				if !is_yield_paused:
+					yield(turn_around_timer, "timeout")
+					turn_around()
 			
-			if bJumping:
+			if is_able_to_jump:
 				 # IF HE FALLS OFF THE PLATFORM, HE JUMPS BACK
-				if int(position.y) != heightLevel:
-					Jump()
+				if int(position.y) != height_level:
+					jump()
 				else:
-					bCanJump = true
+					can_jump = true
 				
 	# FOLLOW PLAYER OR NOT
-		if bPlayer:
-			if Player.bHidden:
-				bPlayer = false
-				Player = null
-				speed = movementSpeed
+		if has_player:
+			if player.is_hidden:
+				has_player = false
+				player = null
+				speed = movement_speed
 				return
 				
-			if bRolling:
-				bWasPlayer = true
-			if !bCanRoll || !bRolling:
-				bCanMove = true if distance > 125 else false
-				bCanJump = bCanMove
+			if is_able_to_roll:
+				has_player_before = true
+			if !can_roll or !is_able_to_roll:
+				is_moving = true if distance > 125 else false
+				can_jump = is_moving
 			
 			# MOVE TOWARDS PLAYER (RIGHT)
-			if Player.position.x <= position.x+FoV && Player.position.x > position.x:
-				if !bCanAttack:
+			if player.position.x <= position.x+FoV and player.position.x > position.x:
+				if !can_attack:
 					direction = 1
 					$Sprite.flip_h = true
 					$HitRay.cast_to.x = FoV
 			
 			# MOVE TOWARDS PLAYER (LEFT)
-			elif Player.position.x >= position.x-FoV && Player.position.x < position.x:
-				if !bCanAttack:
+			elif player.position.x >= position.x-FoV and player.position.x < position.x:
+				if !can_attack:
 					direction = -1
 					$Sprite.flip_h = false
 					$HitRay.cast_to.x = -FoV
 					
 			# IF RUNNING FOR TOO MUCH LONG
-			if position.x < from || position.x > to:
-				if TurnAroundTimer.time_left <= 0.0:
-					TurnAroundTimer = get_tree().create_timer(2.0,false)
-					if !bYieldStop:
-						yield(TurnAroundTimer,"timeout")
+			if position.x < from or position.x > to:
+				if turn_around_timer.time_left <= 0.0:
+					turn_around_timer = get_tree().create_timer(2.0, false)
+					if !is_yield_paused:
+						yield(turn_around_timer, "timeout")
 						$Sprite.flip_h = !$Sprite.flip_h 
 						$HitRay.cast_to.x = -$HitRay.cast_to.x 
 			
-		Velocity.x = speed * direction * int(bCanMove)
+		velocity.x = speed * direction * int(is_moving)
 # ------------------------------------------------------------------------------
-func Attack(): # DO ATTACK
-	if !bIsDead:
-		bCanMove = false
+
+func attack(): # DO ATTACK
+	if !is_dead:
+		is_moving = false
 		$AnimationTree.set("parameters/ATTACK/blend_position",direction)
-		StateMachine.travel('ATTACK')
+		state_machine.travel('ATTACK')
 		
-		if bPlayer:
-			if !Player.bIsDead && bCanAttack && !bAttacking:
-				bAttacking = true
-				if !Player.bBlocking:
-					Player.Hit(damage)
-					print("Vladimir's health: ", Player.health)
+		if has_player:
+			if !player.is_dead and can_attack and !is_attacking:
+				is_attacking = true
+				if !player.is_blocking:
+					player.hit(damage)
+					print("Vladimir's health: ", player.health)
 					
-		if AttackTimer.time_left <= 0.0:
-			AttackTimer = get_tree().create_timer(1.2,false)
-			if !bYieldStop:
-				yield(AttackTimer, "timeout")
-				bAttacking = false
-				bCanMove = true
+		if attack_timer.time_left <= 0.0:
+			attack_timer = get_tree().create_timer(1.2, false)
+			if !is_yield_paused:
+				yield(attack_timer, "timeout")
+				is_attacking = false
+				is_moving = true
 # ------------------------------------------------------------------------------
-func TurnAround(): # LOOK BACK AND FORTH
-	if !bIsDead && bCanTurnAround:
-		StateMachine.travel('STANDING')
+
+func turn_around(): # LOOK BACK AND FORTH
+	if !is_dead and can_turn_around:
+		state_machine.travel('STANDING')
 		$Sprite.flip_h = !$Sprite.flip_h
 		speed = 0
 		$HitRay.cast_to.x = -$HitRay.cast_to.x
 		
-		if TurnAroundTimer.time_left <= 0.0:
-			TurnAroundTimer = get_tree().create_timer(0.75,false)
-			if !bYieldStop:
-				yield(TurnAroundTimer,"timeout")
-				speed = movementSpeed
-				if !bPlayer:
+		if turn_around_timer.time_left <= 0.0:
+			turn_around_timer = get_tree().create_timer(0.75, false)
+			if !is_yield_paused:
+				yield(turn_around_timer, "timeout")
+				speed = movement_speed
+				if !has_player:
 					$Sprite.flip_h = !$Sprite.flip_h
 					$HitRay.cast_to.x = -$HitRay.cast_to.x
-				StateMachine.travel('run')
+				state_machine.travel('run')
 # ------------------------------------------------------------------------------
-func Jump(): # JUMP BACK ONTO PLATFORM
-	if JumpTimer.time_left <= 0.0:
-		if bCanJump:
-			JumpTimer = get_tree().create_timer(2.5,false)
-		if !bYieldStop:
-			yield(JumpTimer,"timeout")
-			if !bPlayer:
-				bCanJump = false
-				Velocity.y -= (position.y + heightLevel) * 1.15
+
+func jump(): # JUMP BACK ONTO PLATFORM
+	if jump_timer.time_left <= 0.0:
+		if can_jump:
+			jump_timer = get_tree().create_timer(2.5, false)
+		if !is_yield_paused:
+			yield(jump_timer, "timeout")
+			if !has_player:
+				can_jump = false
+				velocity.y -= (position.y + height_level) * 1.15
 # ------------------------------------------------------------------------------
-func Save():
-	things2Save.bFocused = self.bFocused
-	.Save()
-	return things2Save
+
+func save():
+	things_to_save.is_focused = self.is_focused
+	.save()
+	return things_to_save
 # ------------------------------------------------------------------------------

@@ -1,14 +1,17 @@
+class_name Scarecrow, "res://Level/Prologue/scarecrow.png"
 extends E
 
-class_name Scarecrow, "res://Level/Prologue/scarecrow.png"
-var previousHP = 0
-var bOnce = true
+
+var previous_hp = 0
+var is_done_once = true
+
 
 func _ready():
-	previousHP = health
+	previous_hp = health
 	speed = 0
-	StateMachine = $AnimationTree.get("parameters/playback")
+	state_machine = $AnimationTree.get("parameters/playback")
 # ------------------------------------------------------------------------------
+
 func _process(delta):
 	if is_instance_valid(self):
 		if health <= 0:
@@ -16,9 +19,9 @@ func _process(delta):
 			$CollisionShape2D.disabled = true
 			emit_signal("tree_exiting")
 			set_process(false)
-			disconnect("tree_exiting",get_parent(),"_on_Scarecrow_tree_exiting")
+			disconnect("tree_exiting",get_parent(), "_on_Scarecrow_tree_exiting")
 		
-		if health != previousHP:
+		if health != previous_hp:
 			$Particles2D.emitting = true
-		previousHP = health
+		previous_hp = health
 # ------------------------------------------------------------------------------

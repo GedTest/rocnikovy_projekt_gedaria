@@ -1,15 +1,19 @@
+class_name Branch, "res://Level/Prologue/branch.png"
 extends StaticBody2D
 
-class_name Branch, "res://Level/Prologue/branch.png"
-onready var leaf_path = preload("res://Level/Prologue/Leaves.tscn")
+
+onready var LeafPath = preload("res://Level/Prologue/Leaves.tscn")
+
 var cracks : int = 0
 var timer = null
+
 
 func _ready():
 	timer = get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------
+
 func _process(delta):
-	var leaf = leaf_path.instance()
+	var leaf = LeafPath.instance()
 	
 	if cracks >= 3:
 		cracks = 0
@@ -31,5 +35,6 @@ func _process(delta):
 			$CollisionShape2D.disabled = false
 			$Sprite.show()
 # ------------------------------------------------------------------------------
+
 func _on_Branch_body_entered(body):
 	cracks += 1

@@ -1,34 +1,42 @@
 extends KinematicBody2D
 
-export var speed = 400
-export var jumpStrength = 1200
 
-var Velocity = Vector2()
-const Gravity = Vector2(0,70)
-var bCanJump = false
-var bSlowMotion = false
+const GRAVITY = Vector2(0, 70)
+
+export var speed = 400
+export var jump_strength = 1200
+
+var velocity = Vector2(0, 0)
+
+var is_on_ground = true
+var is_slow_motion = false
+
 
 func _process(delta):
-	Velocity.x = speed if !bSlowMotion else speed / 1.5
-	Velocity.y += Gravity.y if !bSlowMotion else Gravity.y / 4
-	Jump()
-	Crouch()
-	Velocity = move_and_slide(Velocity)
+	velocity.x = speed if !is_slow_motion else speed / 1.5
+	velocity.y += GRAVITY.y if !is_slow_motion else GRAVITY.y / 4
+	
+	jump()
+	crouch()
+	
+	velocity = move_and_slide(velocity)
 # ------------------------------------------------------------------------------
-func Jump(): # JUMP
+
+func jump(): # JUMP
 	if Input.is_action_just_pressed("jump"):
-		bCanJump = true if $GroundRay.is_colliding() else false
+		is_on_ground = true if $GroundRay.is_colliding() else false
 			
-		if bCanJump:
-			Velocity.y = -jumpStrength if !bSlowMotion else -jumpStrength / 2
+		if is_on_ground:
+			velocity.y = -jump_strength if !is_slow_motion else -jump_strength / 2
 # ------------------------------------------------------------------------------
-func Crouch():
+
+func crouch():
 	if Input.is_action_pressed("crouch"):
 		$CollisionShape2D.position.y = 50
 		$CollisionShape2D.scale.y = 0.5
 		$AnimatedSprite.position.y = 50
 		$AnimatedSprite.scale.y = 0.25
-		Velocity.x = speed / 1.3 if !bSlowMotion else speed / 3.5
+		velocity.x = speed / 1.3 if !is_slow_motion else speed / 3.5
 	else:
 		$CollisionShape2D.position.y = 0
 		$CollisionShape2D.scale.y = 1

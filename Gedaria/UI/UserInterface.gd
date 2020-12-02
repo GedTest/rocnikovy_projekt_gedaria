@@ -1,96 +1,108 @@
 extends Control
 
+
 var timer = null
-var bYieldStop = false
-var currentHealth = 12
-var pebbleCounter = 0
-var maxHealth = 0
-var savedHealth = 0
-var acornCounter = 0
-onready var arrMaxHealth = [$leaves/FallingLeaves1,$leaves/FallingLeaves2,
-							$leaves/FallingLeaves3,$leaves/FallingLeaves4,
-							$leaves/FallingLeaves5,$leaves/FallingLeaves6,
-							$leaves/FallingLeaves7,$leaves/FallingLeaves8,
-							$leaves/FallingLeaves9,$leaves/FallingLeaves10,
-							$leaves/FallingLeaves11,$leaves/FallingLeaves12]
-onready var arrPebbles = [$Pebbles/Pebble1,$Pebbles/Pebble2,$Pebbles/Pebble3,
-						$Pebbles/Pebble4,$Pebbles/Pebble5]
+var is_yield_paused = false
+var current_health = 12
+var pebble_counter = 0
+var max_health = 0
+var saved_health = 0
+var acorn_counter = 0
+
+onready var arr_max_health = [
+	$leaves/FallingLeaves1,$leaves/FallingLeaves2,
+	$leaves/FallingLeaves3,$leaves/FallingLeaves4,
+	$leaves/FallingLeaves5,$leaves/FallingLeaves6,
+	$leaves/FallingLeaves7,$leaves/FallingLeaves8,
+	$leaves/FallingLeaves9,$leaves/FallingLeaves10,
+	$leaves/FallingLeaves11,$leaves/FallingLeaves12,
+]
+onready var arr_pebbles = [
+	$Pebbles/Pebble1,$Pebbles/Pebble2,$Pebbles/Pebble3,
+	$Pebbles/Pebble4,$Pebbles/Pebble5,
+]
+
 
 func _ready():
 	timer = get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------
+
 func _process(delta):
 	var vladimir = get_parent().get_parent().find_node('Vladimir')
 	
-	acornCounter = vladimir.acornCounter
-	$AcornCounter.text = str(acornCounter) + "x"
+	acorn_counter = vladimir.acorn_counter
+	$AcornCounter.text = str(acorn_counter) + "x"
 	
-	maxHealth = vladimir.maxHealth
-	currentHealth = vladimir.health
+	max_health = vladimir.max_health
+	current_health = vladimir.health
 	
-	pebbleCounter = vladimir.pebbleCounter
+	pebble_counter = vladimir.pebble_counter
 	
-	$Slingshot.visible = vladimir.bHasSlingshot
-	bYieldStop = get_parent().get_parent().bYieldStop
+	$Slingshot.visible = vladimir.has_slingshot
+	is_yield_paused = get_parent().get_parent().is_yield_paused
 # ------------------------------------------------------------------------------
-func UpdateHealth(var value, var condition : String, var currentHealth,var maxHealth = 12):
+
+func update_health(var value, var condition : String, var current_health,var max_health = 12):
 	match condition:
 		"minus":
 		# warning-ignore:unused_variable
-			if currentHealth >= 0:
+			if current_health >= 0:
 				for i in range(value):
-					currentHealth -= 1
-					print("currentHealth: ",currentHealth)
-					arrMaxHealth[currentHealth].find_node('Leaf').hide()
-					arrMaxHealth[currentHealth].emitting = true
-					arrMaxHealth[currentHealth].one_shot = false
+					current_health -= 1
+					
+					arr_max_health[current_health].find_node('Leaf').hide()
+					arr_max_health[current_health].emitting = true
+					arr_max_health[current_health].one_shot = false
 					
 					if timer.time_left <= 0.0:
 						timer = get_tree().create_timer(0.1)
-						if !bYieldStop:
-							yield(timer,"timeout")
-							arrMaxHealth[currentHealth].one_shot = true
+						if !is_yield_paused:
+							yield(timer, "timeout")
+							arr_max_health[current_health].one_shot = true
 		
 		"plus":
-			if currentHealth >= 0 && currentHealth < maxHealth:
+			if current_health >= 0 and current_health < max_health:
 				for i in range(value):
-					arrMaxHealth[currentHealth].find_node('Leaf').show()
-					currentHealth += 1
+					arr_max_health[current_health].find_node('Leaf').show()
+					current_health += 1
 # ------------------------------------------------------------------------------
-func UpdatePebbles(var num, var condition : String, var pebbleCounter):
+
+func update_pebbles(var num, var condition : String, var pebble_counter):
 	match condition:
 		"minus":
-			if pebbleCounter >= 0:
+			if pebble_counter >= 0:
 			# warning-ignore:unused_variable
 				for pebble in range(num):
-					arrPebbles[pebbleCounter].hide()
-					pebbleCounter -= 1
+					arr_pebbles[pebble_counter].hide()
+					pebble_counter -= 1
 		
 		"plus":
-			if pebbleCounter >= 0 && pebbleCounter <= 5:
+			if pebble_counter >= 0 and pebble_counter <= 5:
 			# warning-ignore:unused_variable
 				for pebble in range(num):
-					arrPebbles[pebbleCounter-1].show()
-					pebbleCounter += 1
+					arr_pebbles[pebble_counter-1].show()
+					pebble_counter += 1
 # ------------------------------------------------------------------------------
-func Save():
-	var savedData = {
+
+func save():
+	var saved_data = {
 		"UI":"UI",
-		"savedHealth":currentHealth,
-		"maxHealth":maxHealth,
-		"acornCounter":acornCounter
+		"saved_health":current_health,
+		"max_health":max_health,
+		"acorn_counter":acorn_counter
 	}
-	return savedData
+	return saved_data
 # ------------------------------------------------------------------------------
-func LoadUiIcons():
-	yield(get_tree().create_timer(0.25),"timeout")
-	for leaf in arrMaxHealth:
+
+func load_ui_icons():
+	yield(get_tree().create_timer(0.25), "timeout")
+	for leaf in arr_max_health:
 		leaf.find_node('Leaf').hide()
 	
-	for leaf in range(currentHealth):
-		arrMaxHealth[leaf].find_node('Leaf').show()
+	for leaf in range(current_health):
+		arr_max_health[leaf].find_node('Leaf').show()
 
-	for pebble in arrPebbles:
+	for pebble in arr_pebbles:
 		pebble.hide()
-	for i in range(pebbleCounter):
-		arrPebbles[i].show()
+	for i in range(pebble_counter):
+		arr_pebbles[i].show()

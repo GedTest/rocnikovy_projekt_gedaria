@@ -1,76 +1,80 @@
 extends E
 
-var TurnAroundTimer = null
-var JumpTimer = null
 
-var bCanJump = false
-var bCanMove = true
-
-export (bool) var bJumping = true
+export (bool) var is_able_to_jump = true   # bJumping
 export (int) var dir
-export (int) var startingPosition
-export (int) var heightLevel
+export (int) var starting_position
+export (int) var height_level
+
+var turn_around_timer = null
+var jump_timer = null
+
+var can_jump = false      # bCanJump
+var is_moving = true        # bCanMove
+
 
 func _ready():
-	DeathAnimTime = 3.0
+	death_anim_time = 3.0
 	$HitRay.cast_to.x *= dir
-	bBlocking = true
-	TurnAroundTimer = get_tree().create_timer(0.0,false)
-	JumpTimer = get_tree().create_timer(0.0,false)
+	is_blocking = true
+	turn_around_timer = get_tree().create_timer(0.0, false)
+	jump_timer = get_tree().create_timer(0.0, false)
 	direction = 0
 # ------------------------------------------------------------------------------
+
 # warning-ignore:unused_argument
 func _physics_process(delta):
-	if !bIsDead:
-		if bPlayer && distance <= 150 && !bBlocking:
-			if CooldownTimer.time_left <= 0.0:
-				CooldownTimer = get_tree().create_timer(1.0,false)
-				if !bYieldStop:
-					yield(CooldownTimer,"timeout")
-					Attack()
+	if !is_dead:
+		if has_player and distance <= 150 and !is_blocking:
+			if cooldown_timer.time_left <= 0.0:
+				cooldown_timer = get_tree().create_timer(1.0, false)
+				if !is_yield_paused:
+					yield(cooldown_timer, "timeout")
+					attack()
 	
 		# BLOCKING DAMAGE; ONLY HEAVY ATTACKS CAN BREAK BLOCKING
-		if bHeavyAttack:
+		if is_heavy_attacked:
 			$Shield.hide()
 			$Shield/CollisionShape2D.disabled = true
-			bBlocking = false
+			is_blocking = false
 	else:
 		$Shield.hide()
 		$Shield/CollisionShape2D.disabled = true
-		bBlocking = false
+		is_blocking = false
 # ------------------------------------------------------------------------------
+
 # warning-ignore:shadowed_variable
 # warning-ignore:shadowed_variable
-func Move(): # MOVE
-	if !bIsDead:
+func move(): # MOVE
+	if !is_dead:
 		
 		# IF THERE ISN'T PLAYER GUARD POSITION
-		if !bPlayer:
+		if !has_player:
 			# HE LOST PLAYER FROM SIGH, HE GOES TO THE GUARD POSITION
-			if int(position.x) > startingPosition:
+			if int(position.x) > starting_position:
 				direction = -1
-				StateMachine.travel('run')
-			elif int(position.x) < startingPosition:
+				state_machine.travel('run')
+			elif int(position.x) < starting_position:
 				direction = 1
-				StateMachine.travel('run')
+				state_machine.travel('run')
 			else:
-				StateMachine.travel('standing')
+				state_machine.travel('standing')
 				speed = 0
 				
 			 # IF HE FALLS OFF THE PLATFORM, HE JUMPS BACK
-			if int(position.y) != heightLevel && bJumping:
-				Jump()
+			if int(position.y) != height_level and is_able_to_jump:
+				jump()
 			else:
-				bCanJump = true
+				can_jump = true
 				
 		# FOLLOW PLAYER OR NOT
-		if bPlayer:
-			bCanMove = true if distance > 125 else false
-			bCanJump = bCanMove
+		if has_player:
+			is_moving = true if distance > 125 else false
+			can_jump = is_moving
 			# MOVE TOWARDS PLAYER (RIGHT)
-			if Player.position.x <= position.x+FoV && Player.position.x > position.x:
-				if !bCanAttack:
-					speed = movementSpeed
+			if player.position.x <= position.x+FoV and player.position.x > position.x:
+				if !can_attack:
+					speed = movement_speed
 					direction = 1
 					$Shield.position.x = 75
 					$Sprite.flip_h = true
@@ -78,9 +82,9 @@ func Move(): # MOVE
 					$BackwardRay.cast_to.x = -110
 			
 			# MOVE TOWARDS PLAYER (LEFT)
-			elif Player.position.x >= position.x-FoV && Player.position.x < position.x:
-				if !bCanAttack:
-					speed = movementSpeed
+			elif player.position.x >= position.x-FoV and player.position.x < position.x:
+				if !can_attack:
+					speed = movement_speed
 					direction = -1
 					$Shield.position.x = -75
 					$Sprite.flip_h = false
@@ -88,55 +92,58 @@ func Move(): # MOVE
 					$BackwardRay.cast_to.x = 110
 					
 			# IF RUNNING FOR TOO MUCH LONG GO BACKWARDS
-			if position.x < startingPosition || position.x > startingPosition:
-				if TurnAroundTimer.time_left <= 0.0:
-					TurnAroundTimer = get_tree().create_timer(6.0,false)
-					if !bYieldStop:
-						yield(TurnAroundTimer,"timeout")
+			if position.x < starting_position or position.x > starting_position:
+				if turn_around_timer.time_left <= 0.0:
+					turn_around_timer = get_tree().create_timer(6.0, false)
+					if !is_yield_paused:
+						yield(turn_around_timer, "timeout")
 		
-		Velocity.x = speed * direction * int(bCanMove)
+		velocity.x = speed * direction * int(is_moving)
 # ------------------------------------------------------------------------------
-func Jump(): # JUMP BACK ONTO PLATFORM
-	if JumpTimer.time_left <= 0.0:
-		if bCanJump:
-			JumpTimer = get_tree().create_timer(2.5,false)
-			if !bYieldStop:
-				yield(JumpTimer,"timeout")
-				if !bPlayer:
-					bCanJump = false
-					Velocity.y -= (position.y + heightLevel) / 1.5
+
+func jump(): # JUMP BACK ONTO PLATFORM
+	if jump_timer.time_left <= 0.0:
+		if can_jump:
+			jump_timer = get_tree().create_timer(2.5, false)
+			if !is_yield_paused:
+				yield(jump_timer, "timeout")
+				if !has_player:
+					can_jump = false
+					velocity.y -= (position.y + height_level) / 1.5
 # ------------------------------------------------------------------------------
-func Hit(dmg):
-	if !bBlocking:
+
+func hit(dmg):
+	if !is_blocking:
 		# CALLING THE "BASE FUNTCION" FIRST
-		.Hit(dmg)
+		.hit(dmg)
 	
 	
 	var knockbackDistance = 0
 	# KNOCKBACK WHILE BLOCKING
-	if bBlocking && int(position.x) != startingPosition:
-		if $BackwardRay.is_colliding() || $BackwardRay2.is_colliding():
+	if is_blocking and int(position.x) != starting_position:
+		if $BackwardRay.is_colliding() or $BackwardRay2.is_colliding():
 			var ray = $BackwardRay if $BackwardRay.is_colliding() else $BackwardRay2
 			knockbackDistance = abs(position.x - ray.get_collision_point().x)
 		position.x -= (100 - knockbackDistance) * direction
 # ------------------------------------------------------------------------------
-func Attack(): # DO ATTACK
-	if !bIsDead:
-		bCanMove = false
+
+func attack(): # DO ATTACK
+	if !is_dead:
+		is_moving = false
 		$AnimationTree.set("parameters/ATTACK/blend_position",direction)
-		StateMachine.travel('ATTACK')
+		state_machine.travel('ATTACK')
 		
-		if bPlayer:
-			if !Player.bIsDead && bCanAttack && !bAttacking:
-				bAttacking = true
-				if !Player.bBlocking:
-					Player.Hit(damage)
-					print("Vladimir's health: ", Player.health)
+		if has_player:
+			if !player.is_dead and can_attack and !is_attacking:
+				is_attacking = true
+				if !player.is_blocking:
+					player.hit(damage)
+					print("Vladimir's health: ", player.health)
 					
-		if AttackTimer.time_left <= 0.0:
-			AttackTimer = get_tree().create_timer(1.2,false)
-			if !bYieldStop:
-				yield(AttackTimer, "timeout")
-				speed = movementSpeed
-				bAttacking = false
-				bCanMove = true
+		if attack_timer.time_left <= 0.0:
+			attack_timer = get_tree().create_timer(1.2, false)
+			if !is_yield_paused:
+				yield(attack_timer, "timeout")
+				speed = movement_speed
+				is_attacking = false
+				is_moving = true

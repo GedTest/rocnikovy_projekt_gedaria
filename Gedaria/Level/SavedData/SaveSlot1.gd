@@ -1,5 +1,7 @@
 extends Button
 
+
+
 var strAction = ""
 var bEmpty = true
 var currentScene = null

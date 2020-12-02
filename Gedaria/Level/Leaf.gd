@@ -12,7 +12,7 @@ onready var texture = $Sprite.texture
 #func _process(delta):
 #	linear_damp = 9999999999999 if linear_velocity.length() > 1000 else -1
 
-#func Save(): # SAVE POSITION AND VARIABLES IN JSON
+#func save(): # SAVE POSITION AND VARIABLES IN JSON
 #	savedPosition = position
 #	var savedData = {
 #		savedPosition = {

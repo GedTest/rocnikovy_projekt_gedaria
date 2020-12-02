@@ -1,18 +1,23 @@
 extends Button
 
+
 const SAVE_PATH = 'user://checkpoint.json'
-var bYieldStop = false
+
+var is_yield_paused = false
+
 
 func _process(delta):
-	bYieldStop = get_parent().get_parent().bYieldStop
+	is_yield_paused = get_parent().get_parent().is_yield_paused
 # ------------------------------------------------------------------------------
+
 func _on_CheckpointSaveSlot_pressed():
-	if !bYieldStop:
-		yield(get_tree().create_timer(0.5),"timeout")
+	if !is_yield_paused:
+		yield(get_tree().create_timer(0.5), "timeout")
+		
 		# Check if the file exists otherwise return
 		var saveFile = File.new()
 		if !saveFile.file_exists(SAVE_PATH):
-			print('Error 1 the file %s doesn´t exist.',saveFile)
+			print('Error 1 the file %s doesn´t exist.', saveFile)
 			return
 		
 		# Open a file and convert JSON into an object
@@ -23,7 +28,6 @@ func _on_CheckpointSaveSlot_pressed():
 		#print(data)
 		
 		# Set saved values
-		
 		for nodePath in data.keys():
 			var node
 			node = get_node(nodePath)
@@ -33,7 +37,7 @@ func _on_CheckpointSaveSlot_pressed():
 					node.resetState = true
 					
 				elif attribute == 'UI':
-					node.LoadUiIcons()
+					node.load_ui_icons()
 				
 				elif attribute == 'collision':
 					var collision = data[nodePath]['collision']

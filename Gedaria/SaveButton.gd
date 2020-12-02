@@ -1,11 +1,14 @@
 extends Button
 
+
 export (int, 1, 3) var slot = 1
 export (String, "SAVE", "LOAD") var type = "SAVE"
+
 
 func _ready():
 	connect("pressed", self, "on_pressed")
 	update()
+# ------------------------------------------------------------------------------
 
 func update():
 	if type == "SAVE":
@@ -18,6 +21,7 @@ func update():
 			text = "EMPTY"
 		else:
 			text = "load slot " + str(slot)
+# ------------------------------------------------------------------------------
 
 func on_pressed():
 	match type:
@@ -27,7 +31,7 @@ func on_pressed():
 			SaveLoad.save_to_file(slot)
 		"LOAD":
 			if !SaveLoad.slots["slot_"+str(slot)].empty():
-				Global.bYieldStop = true
+				Global.is_yield_paused = true
 				#SaveLoad.load_from_slot("slot_"+str(slot))
 				SaveLoad.load_from_file(slot)
 			

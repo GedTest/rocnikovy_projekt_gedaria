@@ -50,6 +50,11 @@ _global_script_classes=[ {
 "path": "res://Level/MushroomSpring.gd"
 }, {
 "base": "RigidBody2D",
+"class": "Pebble",
+"language": "GDScript",
+"path": "res://Vladimir/PebbleOnGround.gd"
+}, {
+"base": "RigidBody2D",
 "class": "PileOfLeaves",
 "language": "GDScript",
 "path": "res://Level/PileOfLeaves.gd"
@@ -78,6 +83,7 @@ _global_script_class_icons={
 "Enemy": "res://Enemy/sprites/_IDLE/_IDLE_000.png",
 "Mushroom": "res://Level/Mushroom+.png",
 "MushroomSpring": "res://Level/Mushroom3.png",
+"Pebble": "res://UI/kamen.png",
 "PileOfLeaves": "",
 "Scarecrow": "res://Level/Prologue/scarecrow.png",
 "Vladimir": "res://Vladimir/animations/sprites/vladimir.png",

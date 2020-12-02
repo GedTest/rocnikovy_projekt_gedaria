@@ -1,23 +1,33 @@
 extends Node2D
 
+
+const ARR_SAVE_PATH = ['user://ss1.json','user://ss2.json','user://ss3.json','user://checkpoint.json']
+
+var PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
+
 var checkpoint = null
-var currentScene = null
-var bOnce = true
-var bYieldStop = false
-var pebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
-
-onready var arrPatrollers = [$Patroller,$Patroller2,$Patroller3,$Patroller4,
-							$Patroller5,$Patroller6,$Patroller7,$Patroller9,
-							$Patroller10]
-onready var arrGuardians = [$Guardian,$Guardian2,$Guardian3,$Guardian4,
-							$Guardian5]
-
-onready var arrSaveSlots = [$CanvasLayer/SaveSlot1,$CanvasLayer/SaveSlot2,
-							$CanvasLayer/SaveSlot3,$CanvasLayer/Close]
-onready var arrButtons = [$CanvasLayer/SaveButton,$CanvasLayer/LoadButton,
-						$CanvasLayer/RestartButton,$CanvasLayer/MainMenuButton,]
-const arrSAVE_PATH = ['user://ss1.json','user://ss2.json','user://ss3.json','user://checkpoint.json']
+var current_scene = null
+var is_done_once = true
+var is_yield_paused = false
 var strSaveLoadAction = ""
+
+onready var arr_patrollers = [
+	$Patroller,$Patroller2,$Patroller3,$Patroller4,$Patroller5,
+	$Patroller6,$Patroller7,$Patroller9,$Patroller10,
+]
+onready var arr_guardians = [
+	$Guardian,$Guardian2,$Guardian3,$Guardian4,$Guardian5,
+]
+
+onready var arr_save_slots = [
+	$CanvasLayer/SaveSlot1,$CanvasLayer/SaveSlot2,
+	$CanvasLayer/SaveSlot3,$CanvasLayer/Close,
+]
+onready var arr_buttons = [
+	$CanvasLayer/SaveButton,$CanvasLayer/LoadButton,
+	$CanvasLayer/RestartButton,$CanvasLayer/MainMenuButton,
+]
+
 
 func _ready():
 	for node in $Leaves.get_children():
@@ -36,73 +46,87 @@ func _ready():
 	$Vladimir/Camera.current = true
 	#currentScene = Save_Load.GetScene()
 # ------------------------------------------------------------------------------
+
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
 	SaveLoad.update_current_data()
 	yield(get_tree().create_timer(0.1), "timeout")
+	
 	get_tree().set_pause(false)
-	Global.bYieldStop = false
-	$CanvasLayer/UserInterface.LoadUiIcons()
+	Global.is_yield_paused = false
+	$CanvasLayer/UserInterface.load_ui_icons()
 # ------------------------------------------------------------------------------
+
 # warning-ignore:unused_argument
 func _process(delta):
-	for i in arrPatrollers:
-		i.Move(i.from,i.to)
+	for i in arr_patrollers:
+		i.move(i.from, i.to)
 		
-	for i in arrGuardians:
-		i.Move()
+	for i in arr_guardians:
+		i.move()
 
-	if $Patroller8.bFocused:
-		$Patroller8.Move($Patroller8.from,$Patroller8.to)
+	if $Patroller8.is_focused:
+		$Patroller8.move($Patroller8.from, $Patroller8.to)
 		
-	if $PilesOfLeaves/PileOfLeaves1.bComplete:
-		$Wind.position = Vector2(35500,7000)
+	if $PilesOfLeaves/PileOfLeaves1.is_complete:
+		$Wind.position = Vector2(35500, 7000)
 	
 # ------------------------------------------------------------------------------
+
 func _on_SaveButton_pressed(): # Show save slots and save game
 	strSaveLoadAction = "save"
-	for SaveSlot in arrSaveSlots:
+	for SaveSlot in arr_save_slots:
 		SaveSlot.show()
-	for button in arrButtons:
+		
+	for button in arr_buttons:
 		button.hide()
 	$CanvasLayer/SaveButton.release_focus()
 # ------------------------------------------------------------------------------
+
 func _on_LoadButton_pressed(): # Show save slots and load game
 	strSaveLoadAction = "load"
-	for SaveSlot in arrSaveSlots:
+	for SaveSlot in arr_save_slots:
 		SaveSlot.show()
 		$CanvasLayer/CheckpointSaveSlot.show()
-	for button in arrButtons:
+		
+	for button in arr_buttons:
 		button.hide()
 	$CanvasLayer/LoadButton.release_focus()
 # ------------------------------------------------------------------------------
+
 func _on_RestartButton_pressed(): # Restart the level from beginning
-	bYieldStop = true
-	$CanvasLayer/UserInterface.bYieldStop = bYieldStop
+	is_yield_paused = true
+	$CanvasLayer/UserInterface.is_yield_paused = is_yield_paused
 	get_tree().paused = true
-	yield(get_tree().create_timer(5.0),"timeout")
-	Save_Load.set_checkpoint($Checkpoint2.position.x,$Checkpoint2.position.y)
-	get_tree().change_scene(currentScene)
+	yield(get_tree().create_timer(5.0), "timeout")
+	
+	Save_Load.set_checkpoint($Checkpoint2.position.x, $Checkpoint2.position.y)
+	get_tree().change_scene(current_scene)
 # ------------------------------------------------------------------------------
+
 func _on_MainMenuButton_pressed(): # Go to Main Menu
-	bYieldStop = true
-	$CanvasLayer/UserInterface.bYieldStop = bYieldStop
+	is_yield_paused = true
+	$CanvasLayer/UserInterface.is_yield_paused = is_yield_paused
 	get_tree().paused = true
-	yield(get_tree().create_timer(5.0),"timeout")
+	yield(get_tree().create_timer(5.0), "timeout")
+	
 	get_tree().change_scene("res://Level/MainMenu/MainMenu.tscn")
 # ------------------------------------------------------------------------------
+
 func _on_Close_pressed(): # Show / hide buttons
-	for SaveSlot in arrSaveSlots:
+	for SaveSlot in arr_save_slots:
 		SaveSlot.hide()
 		$CanvasLayer/CheckpointSaveSlot.hide()
 		$CanvasLayer/Close.hide()
-	for button in arrButtons:
+		
+	for button in arr_buttons:
 		button.show()
 	$CanvasLayer/Close.release_focus()
 # ------------------------------------------------------------------------------
+
 func _on_KillZone_body_entered(body): # Kills player if he fall into
 	if body.get_collision_layer_bit(1):
-		yield(get_tree().create_timer(0.5),"timeout")
-		$Vladimir.Death()
+		yield(get_tree().create_timer(0.5), "timeout")
+		$Vladimir.die()
 # ------------------------------------------------------------------------------
 #func _on_LOAD(): # Load previous saved game if it was any
 #	# Check if the file exists otherwise return
@@ -139,10 +163,10 @@ func _on_KillZone_body_entered(body): # Kills player if he fall into
 #	# # # #
 
 func _on_SlingshotButton_pressed():
-	$Vladimir.bHasSlingshot = !$Vladimir.bHasSlingshot
+	$Vladimir.has_slingshot = !$Vladimir.has_slingshot
 	$CanvasLayer/SlingshotButton.release_focus()
 	
-func AddPebble(oldPebblePosition):
-	var newPebble = pebblePath.instance()
-	$Pebbles.call_deferred("add_child",newPebble)
-	newPebble.position = oldPebblePosition
+func _on_added_pebble(old_pebble_position):
+	var new_pebble = PebblePath.instance()
+	$Pebbles.call_deferred("add_child", new_pebble)
+	new_pebble.position = old_pebble_position

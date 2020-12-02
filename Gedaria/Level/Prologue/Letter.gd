@@ -1,11 +1,14 @@
 extends Area2D
 
-var bCanInteract = false
+
+var is_interactable = false
+
 
 func _on_Letter_body_entered(body):
 	$Interact.show()
-	bCanInteract = true
+	is_interactable = true
+# ------------------------------------------------------------------------------
 
 func _on_Letter_body_exited(body):
-	bCanInteract = false
+	is_interactable = false
 	$Interact.hide()

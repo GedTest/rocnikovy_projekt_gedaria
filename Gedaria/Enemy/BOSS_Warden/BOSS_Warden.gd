@@ -1,113 +1,117 @@
+class_name BOSS_Warden, "res://Enemy/BOSS_Warden/BOSS_Warden.png"
 extends E
 
-class_name BOSS_Warden, "res://Enemy/BOSS_Warden/BOSS_Warden.png"
 
-var rakePath = preload("res://Enemy/BOSS_Warden/Rake.tscn")
-var Bird = preload("res://Level/Prologue/Bird.tscn").instance()
+var StickPath = preload("res://Enemy/BOSS_Warden/Stick.tscn")
+var BirdPath = preload("res://Level/Prologue/Bird.tscn").instance()
 
-var bCanThrow = false
-var bThrowing = false
-var bDoOnce = true
-var bCanJump = true
-var bWasInAir = false
-var bStop = false
-var bHit = false
-var bMicroHit = false
+var can_throw = false     # bCanThrow
+var is_throwing = false   # bThrowing
+var is_done_once = true   # bDoOnce
+var is_jumping = true     # bCanJump
+var is_in_air = false     # bWasInAir
+var is_moving = false     # bStop
+var is_hitted = false     # bHit
+# var is_hit_in_row = false # bMicroHit
 
 var boost = 1
-var maxHealth
+var max_health
 
-var ThrowTimer = null
-var HitInRowTimer = null
+var throw_timer = null
+var hit_in_row_timer = null
+
 
 func _ready():
 	FoV = 1000
-	StateMachine = $AnimationTree.get("parameters/playback")
-	maxHealth = health
-	bBlocking = true
+	state_machine = $AnimationTree.get("parameters/playback")
+	max_health = health
+	is_blocking = true
 	
-	CooldownTimer = get_tree().create_timer(0.0)
-	HitInRowTimer = get_tree().create_timer(0.0)
-	ThrowTimer = get_tree().create_timer(0.0)
-	yield(get_tree().create_timer(10.0),"timeout")
+	cooldown_timer = get_tree().create_timer(0.0)
+	hit_in_row_timer = get_tree().create_timer(0.0)
+	throw_timer = get_tree().create_timer(0.0)
+	
+	yield(get_tree().create_timer(10.0), "timeout")
 	$Dialog.show()
-	yield(get_tree().create_timer(4.0),"timeout")
+	yield(get_tree().create_timer(4.0), "timeout")
 	$Dialog.queue_free()
 # ------------------------------------------------------------------------------
+
 func _process(delta):
-	if !bIsDead:
+	if !is_dead:
 		# DAMPING VELOCITY FROM JUMP IMPULSE
-		if !bCanJump && bWasInAir:
+		if !is_jumping and is_in_air:
 			speed += 35
-			Velocity.y += 12
+			velocity.y += 12
 		
 		# if he reach ground and have 0 speed then reset the speed
-		elif bCanJump && bWasInAir:
+		elif is_jumping and is_in_air:
 			speed = 200
-			bWasInAir = false
+			is_in_air = false
 	
 		# 2ND PHASE OF BOSSFIGHT
-		if health == maxHealth / 2 && bDoOnce:
-			get_parent().add_child(Bird)
-			Bird.position = Vector2(1920,400)
-			Jump()
-			bDoOnce = false
-			bCanThrow = true
+		if health == max_health / 2 and is_done_once:
+			get_parent().add_child(BirdPath)
+			BirdPath.position = Vector2(1920,400)
+			jump()
+			is_done_once = false
+			can_throw = true
 			
 		# is he in the air or on the ground ?
-		bCanJump = true if $GroundRay.is_colliding() else false
+		is_jumping = true if $GroundRay.is_colliding() else false
 		
 		# does he see the player ?
-		if $HitRay.is_colliding() && $HitRay.get_collider().name == "Vladimir" || $HitRay2.is_colliding() && $HitRay2.get_collider().name == "Vladimir":
-			Player = $HitRay.get_collider() if $HitRay.get_collider() != null else $HitRay2.get_collider()
-			bPlayer = true
+		if $HitRay.is_colliding() and $HitRay.get_collider().name == "Vladimir" or $HitRay2.is_colliding() and $HitRay2.get_collider().name == "Vladimir":
+			player = $HitRay.get_collider() if $HitRay.get_collider() != null else $HitRay2.get_collider()
+			has_player = true
 		else:
-			Player = null
-			bPlayer = false
+			player = null
+			has_player = false
 		
-		if health > maxHealth / 2:
+		if health > max_health / 2:
 		# When he got 2 hits in row he is vulnerable to take damage
-			if hitInRow == 2:
-				bBlocking = false
-				if HitInRowTimer.time_left <= 0.0:
-					HitInRowTimer = get_tree().create_timer(1.0)
-					yield(HitInRowTimer,"timeout")
-					hitInRow = 0
+			if hit_in_row == 2:
+				is_blocking = false
+				if hit_in_row_timer.time_left <= 0.0:
+					hit_in_row_timer = get_tree().create_timer(1.0)
+					yield(hit_in_row_timer, "timeout")
+					hit_in_row = 0
 				
-			if hitInRow > 0 && hitInRow < 2:
-				bBlocking = true
-				if HitInRowTimer.time_left <= 0.0:
-					HitInRowTimer = get_tree().create_timer(2.5)
-					yield(HitInRowTimer,"timeout")
-					hitInRow = 0
+			if hit_in_row > 0 and hit_in_row < 2:
+				is_blocking = true
+				if hit_in_row_timer.time_left <= 0.0:
+					hit_in_row_timer = get_tree().create_timer(2.5)
+					yield(hit_in_row_timer, "timeout")
+					hit_in_row = 0
 		# If there weren't 2 hits in a row, he is in blocking state
-			elif hitInRow != 2 && bAttacking:
-				bBlocking = true
-		elif !bHit:
-			bBlocking = true
+			elif hit_in_row != 2 and is_attacking:
+				is_blocking = true
+		elif !is_hitted:
+			is_blocking = true
 			
-		Velocity = move_and_slide(Velocity)
+		velocity = move_and_slide(velocity)
 # ------------------------------------------------------------------------------
-func Move_children(): # HANDLE MOVEMENT
-	if !bIsDead:
-		$AnimationTree.set("parameters/JUMP/blend_position",direction)
+
+func move_children(): # HANDLE MOVEMENT
+	if !is_dead:
+		$AnimationTree.set("parameters/JUMP/blend_position", direction)
 		
-		if bPlayer && !Player.bIsDead:
-			#distance = abs(position.x - Player.position.x)
-			if distance <= 135 && !bAttacking && !(bCanThrow || bThrowing):
-				Attack()
+		if has_player and !player.is_dead:
+			#distance = abs(position.x - player.position.x)
+			if distance <= 135 and !is_attacking and !(can_throw or is_throwing):
+				attack()
 				
-			if health <= maxHealth / 2:
-				if distance < 350 && bCanThrow:
-					Jump()
+			if health <= max_health / 2:
+				if distance < 350 and can_throw:
+					jump()
 					
-				if distance > 350 && distance < 700 && bCanThrow:
-					Throw()
+				if distance > 350 and distance < 700 and can_throw:
+					throw()
 			else:
-				Dash()
+				dash()
 		
 		# MOVE FROM 'A' TO 'B'
-		if !bPlayer && !bStop:
+		if !has_player and !is_moving:
 			if position.x > to:
 				direction = -1
 				$Sprite.flip_h = false
@@ -120,86 +124,91 @@ func Move_children(): # HANDLE MOVEMENT
 				$HitRay.cast_to.x = FoV
 				$HitRay2.cast_to.x = FoV
 		
-		Velocity.x = speed * direction * boost
+		velocity.x = speed * direction * boost
 # ------------------------------------------------------------------------------		
-func Attack(): # PRIMARY ATTACK - THRESH
+
+func attack(): # PRIMARY ATTACK - THRESH
 	speed = 0 # Stop moving
-	bStop = true # Stop moving
-	$AnimationTree.set("parameters/ATTACK/blend_position",direction)
-	StateMachine.travel('ATTACK')
+	is_moving = true # Stop moving
+	$AnimationTree.set("parameters/ATTACK/blend_position", direction)
+	state_machine.travel('ATTACK')
 	
-	if !Player.bIsDead:
-		if Player && bPlayer && bCanAttack:
-			bAttacking = true
-			if !Player.bBlocking:
-				Player.Hit(damage)
-				print("Vladimir's health: ", Player.health)
+	if !player.is_dead:
+		if player and has_player and can_attack:
+			is_attacking = true
+			if !player.is_blocking:
+				player.hit(damage)
+				print("Vladimir's health: ", player.health)
 			
-		if AttackTimer.time_left <= 0.0:
-			AttackTimer = get_tree().create_timer(1.2)
-			yield(AttackTimer, "timeout")
-			if !bPlayer:
-				bStop = false
+		if attack_timer.time_left <= 0.0:
+			attack_timer = get_tree().create_timer(1.2)
+			yield(attack_timer, "timeout")
+			if !has_player:
+				is_moving = false
 				speed = 200
 			
-		if CooldownTimer.time_left <= 0.0:
-			CooldownTimer = get_tree().create_timer(3.0)
-			yield(CooldownTimer, "timeout")
-			bStop = false
+		if cooldown_timer.time_left <= 0.0:
+			cooldown_timer = get_tree().create_timer(3.0)
+			yield(cooldown_timer, "timeout")
+			is_moving = false
 			speed = 200
-			bAttacking = false
+			is_attacking = false
 # ------------------------------------------------------------------------------
-func Dash(): # SPEEDS UP AND DASHes TOWARD THE PLAYER
-	if !bAttacking:
+
+func dash(): # SPEEDS UP AND DASHes TOWARD THE PLAYER
+	if !is_attacking:
 		if distance > 450:
 			boost = 2
 		else:
 			boost = 1
 # ------------------------------------------------------------------------------
-func Jump(): # JUMP IN DISTANCE SO HE CAN THROW
+
+func jump(): # JUMP IN DISTANCE SO HE CAN THROW
 	# ensure the he can't jump out of screen
-	if position.x > from -200 && position.x < to +200:
-		bStop = true
+	if position.x > from -200 and position.x < to +200:
+		is_moving = true
 		speed = 200
 		
 		speed -= 900
-		Velocity.y = -1200
-		yield(get_tree().create_timer(0.5),"timeout")
-		bWasInAir = true
-		if bCanJump:
-			bStop = false
+		velocity.y = -1200
+		yield(get_tree().create_timer(0.5), "timeout")
+		is_in_air = true
+		if is_jumping:
+			is_moving = false
 # ------------------------------------------------------------------------------
-func Throw(): # SECONDARY ATTACK - THROW
-	bCanThrow = false
-	bThrowing = true
-	bStop = true
+
+func throw(): # SECONDARY ATTACK - THROW
+	can_throw = false
+	is_throwing = true
+	is_moving = true
 	speed = 0
 	
-	$AnimationTree.set("parameters/THROW_CATCH/blend_position",direction)
-	StateMachine.travel('THROW_CATCH')
-	if ThrowTimer.time_left <= 0.0:
-		ThrowTimer = get_tree().create_timer(0.6)
-		yield(ThrowTimer, "timeout")
+	$AnimationTree.set("parameters/THROW_CATCH/blend_position", direction)
+	state_machine.travel('THROW_CATCH')
+	if throw_timer.time_left <= 0.0:
+		throw_timer = get_tree().create_timer(0.6)
+		yield(throw_timer, "timeout")
 	
 	# deal the damage by projektil
-	ThrowTimer.time_left = 0.0
-	add_child(rakePath.instance())
+	throw_timer.time_left = 0.0
+	add_child(StickPath.instance())
 	
-	StateMachine.travel('THROW_WAIT')
-	if ThrowTimer.time_left <= 0.0:
-		ThrowTimer = get_tree().create_timer(3.3)
-		yield(ThrowTimer, "timeout")
-		if !bIsDead:
-			StateMachine.travel('THROW_CATCH')
-		bCanThrow = true
-		bThrowing = false
-		bStop = false
+	state_machine.travel('THROW_WAIT')
+	if throw_timer.time_left <= 0.0:
+		throw_timer = get_tree().create_timer(3.3)
+		yield(throw_timer, "timeout")
+		if !is_dead:
+			state_machine.travel('THROW_CATCH')
+		can_throw = true
+		is_throwing = false
+		is_moving = false
 		speed = 200
 # ------------------------------------------------------------------------------
-func Hit(dmg):
-	if bBlocking:
-		hitInRow += 1
-		StateMachine.travel('HIT_UNBLOCKABLE')
+
+func hit(dmg):
+	if is_blocking:
+		hit_in_row += 1
+		state_machine.travel('HIT_UNBLOCKABLE')
 	
-	if !bBlocking:
+	if !is_blocking:
 		.Hit(dmg)
