@@ -7,11 +7,12 @@ onready var arr_position = [
 ]
 
 onready var Obstacle = preload("res://Level/Chase/Obstacle.tscn")
-#var UpperObstacle = preload("res://Level/Chase/Obstacle.tscn").instance()
 onready var UpperObstacle = preload("res://Level/Chase/UpperObstacle.tscn")
+onready var Mud = preload("res://Level/Mud.tscn")
 
 var arr_texture = []
 var obstacle = null
+var mud = null
 var upper_obstacle = null
 
 
@@ -23,6 +24,12 @@ func _ready():
 	add_child(obstacle)
 	obstacle.find_node("Sprite").texture = arr_texture[randi() % 2]
 	
+	if randi()%2 + 1 == 1:
+		mud = Mud.instance()
+		mud.force = 0.75
+		mud.speed = 0.625
+		add_child(mud)
+	
 	upper_obstacle = UpperObstacle.instance()
 	add_child(upper_obstacle)
 	
@@ -33,6 +40,9 @@ func rand_spawn():
 	# Pick random number and spawn obstacle on SpawnPoint
 	obstacle.position = arr_position[randi() % 4].position
 	upper_obstacle.position = arr_position[randi() % 4 + 4].position
+	if mud:
+		var pos = arr_position[randi() % 4].position
+		mud.position = Vector2(pos.x -250, pos.y)
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):  # Spawn next Platform

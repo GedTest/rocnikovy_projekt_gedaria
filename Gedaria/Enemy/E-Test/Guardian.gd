@@ -1,4 +1,4 @@
-extends E
+extends Enemy
 
 
 export (bool) var is_able_to_jump = true   # bJumping

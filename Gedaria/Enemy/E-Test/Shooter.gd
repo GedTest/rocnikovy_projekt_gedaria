@@ -1,4 +1,4 @@
-extends E
+extends Enemy
 
 
 var ProjectilePath = preload("res://Enemy/E-Test/Projectile.tscn")

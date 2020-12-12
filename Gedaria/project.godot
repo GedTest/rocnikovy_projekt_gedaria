@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Vladimir/Acorn.gd"
 }, {
-"base": "E",
+"base": "Enemy",
 "class": "BOSS_Warden",
 "language": "GDScript",
 "path": "res://Enemy/BOSS_Warden/BOSS_Warden.gd"
@@ -30,14 +30,9 @@ _global_script_classes=[ {
 "path": "res://Level/Bush.gd"
 }, {
 "base": "KinematicBody2D",
-"class": "E",
-"language": "GDScript",
-"path": "res://Enemy/E-Test/EnemyTemplate.gd"
-}, {
-"base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Enemy/Enemy.gd"
+"path": "res://Enemy/E-Test/EnemyTemplate.gd"
 }, {
 "base": "Sprite",
 "class": "Mushroom",
@@ -59,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Level/PileOfLeaves.gd"
 }, {
-"base": "E",
+"base": "Enemy",
 "class": "Scarecrow",
 "language": "GDScript",
 "path": "res://Level/Prologue/Scarecrow.gd"
@@ -79,7 +74,6 @@ _global_script_class_icons={
 "BOSS_Warden": "res://Enemy/BOSS_Warden/BOSS_Warden.png",
 "Branch": "res://Level/Prologue/branch.png",
 "Bush": "res://Level/LightGreenBush2.png",
-"E": "res://Enemy/sprites/_IDLE/_IDLE_000.png",
 "Enemy": "res://Enemy/sprites/_IDLE/_IDLE_000.png",
 "Mushroom": "res://Level/Mushroom+.png",
 "MushroomSpring": "res://Level/Mushroom3.png",
@@ -99,7 +93,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Save_Load="*res://Level/SavedData/Save.gd"
 Fullscreen="*res://Level/MainMenu/Fullscreen.gd"
 Global="*res://Level/SavedData/globals.gd"
 SaveLoad="*res://Level/SavedData/save_load.gd"

@@ -3,14 +3,17 @@ extends "res://Level/SavedData/globals.gd"
 # ------------------------------------------------------------------------------
 #         A D V A N C E     S A V E     A N D     L O A D     S Y S T E M
 # ------------------------------------------------------------------------------
-var paths = ["user://slot_1.json", "user://slot_2.json", "user://slot_3.json"]
+var paths = [
+	"user://slot_1.json", "user://slot_2.json",
+	"user://slot_3.json", "user://slot_4.json",
+]
 var last_saved_slot = 0
 
 var slots = {
 	"slot_1":{},
 	"slot_2":{},
 	"slot_3":{},
-	"checkpoint":{},
+	"slot_4":{},
 }
 
 # UPDATED REGULARLY
@@ -28,6 +31,11 @@ func reset_data():
 	map_data = {}
 	visited_maps = []
 # ------------------------------------------------------------------------------
+
+func restart_level():
+	get_tree().change_scene(get_tree().get_current_scene().filename)
+# ------------------------------------------------------------------------------
+
 func update_current_data():
 	if level_root() != null:
 

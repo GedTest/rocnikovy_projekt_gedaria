@@ -1,5 +1,4 @@
-# class_name Enemy, "res://Enemy/sprites/_IDLE/_IDLE_000.png"
-class_name E, "res://Enemy/sprites/_IDLE/_IDLE_000.png"
+class_name Enemy, "res://Enemy/sprites/_IDLE/_IDLE_000.png"
 extends KinematicBody2D
 
 
@@ -19,7 +18,8 @@ export(int) var damage
 var distance
 var movement_speed
 var hit_in_row = 0                # hitInRow
-var death_anim_time = 1.0        # DeathAnimTime
+var death_anim_time = 3.0        # DeathAnimTime
+var hit_anim_time = 0.75
 var things_to_save = {}
 
 var is_dead = false            # bIsDead
@@ -109,7 +109,7 @@ func hit(dmg):
 	if health > 0:
 		state_machine.travel('HIT')
 		if hit_timer.time_left <= 0.0:
-			hit_timer = get_tree().create_timer(0.75)
+			hit_timer = get_tree().create_timer(hit_anim_time)
 			if !is_yield_paused:
 				yield(hit_timer, "timeout")
 				speed = movement_speed

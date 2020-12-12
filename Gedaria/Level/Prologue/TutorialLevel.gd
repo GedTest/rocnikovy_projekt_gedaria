@@ -17,6 +17,9 @@ var Boss = null
 
 
 func _ready():
+	$Vladimir/AnimationTree.active = false
+	$Vladimir.state_machine = $Vladimir/AnimationTree2.get("parameters/playback")
+	$Vladimir/Sprite.hide()
 	yield(get_tree().create_timer(3.0), "timeout")
 	if $Vladimir.position.x == 150:
 		$MovementTutorial.show()
@@ -29,7 +32,12 @@ func _process(delta):
 		is_rake_picked_up = false
 		
 		if find_node("Rake"):
-			$Rake.queue_free()
+			$Vladimir/Sprite.show()
+			$Vladimir/AnimationTree.active = true
+			$Vladimir.state_machine = $Vladimir/AnimationTree.get("parameters/playback")
+			$Vladimir.remove_child($Vladimir/AnimationTree2)
+			$Vladimir.remove_child($Vladimir/Sprite2)
+			$Rake.call_deferred("queue_free")
 			$Vladimir.has_learned_attack = true
 			$InteractTutorial.queue_free()
 			$Tree.show()
@@ -58,10 +66,10 @@ func _process(delta):
 		$BossHPBar/Label.text = 'Warden: ' + str($Boss.health) 
 		$BossHPBar/Health.rect_size.x = 60 * $Boss.health
 		
-		Boss.move_children()
+		$Boss.move_children()
 		
 		# BOSSES SECOND PHASE
-		if Boss.health <= Boss.max_health / 2:
+		if $Boss.health <= $Boss.max_health / 2:
 			$StaticBody2D.show()
 			$StaticBody2D/CollisionShape2D.disabled = false
 			$Branch/Area2D/CollisionShape2D.disabled = false
@@ -69,11 +77,11 @@ func _process(delta):
 				$StaticBody2D/Branch.play('Grow')
 			
 		# IF BOSS IS NO MORE SHOW A LETTER
-		if Boss.is_dead and is_boss_on_map:
+		if $Boss.is_dead and is_boss_on_map:
 			is_boss_on_map = false
 			is_letter_on_map = true
 			add_child(Letter.instance())
-			Letter.position = Vector2($Boss.position.x, $Boss.position.y+100)
+			$Letter.position = Vector2($Boss.position.x, $Boss.position.y+100)
 # ------------------------------------------------------------------------------
 
 func _on_InteractTutorial_body_entered(body):
@@ -105,7 +113,7 @@ func _on_Scarecrow_tree_exiting():
 	Boss = Boss_Warden.instance()
 	add_child(Boss)
 	Boss.name = "Boss"
-	Boss.position = Vector2(5, 910)
+	$Boss.position = Vector2(5, 910)
 	yield(get_tree().create_timer(0.2), "timeout")
 	
 	is_boss_on_map = true

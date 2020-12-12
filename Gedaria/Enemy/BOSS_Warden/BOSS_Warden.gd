@@ -1,5 +1,5 @@
 class_name BOSS_Warden, "res://Enemy/BOSS_Warden/BOSS_Warden.png"
-extends E
+extends Enemy
 
 
 var StickPath = preload("res://Enemy/BOSS_Warden/Stick.tscn")
@@ -10,9 +10,8 @@ var is_throwing = false   # bThrowing
 var is_done_once = true   # bDoOnce
 var is_jumping = true     # bCanJump
 var is_in_air = false     # bWasInAir
-var is_moving = false     # bStop
+var is_moving = true      # bStop
 var is_hitted = false     # bHit
-# var is_hit_in_row = false # bMicroHit
 
 var boost = 1
 var max_health
@@ -38,7 +37,7 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _process(delta):
-	if !is_dead:
+	if !is_dead and !is_throwing:
 		# DAMPING VELOCITY FROM JUMP IMPULSE
 		if !is_jumping and is_in_air:
 			speed += 35
@@ -72,20 +71,20 @@ func _process(delta):
 		# When he got 2 hits in row he is vulnerable to take damage
 			if hit_in_row == 2:
 				is_blocking = false
-				if hit_in_row_timer.time_left <= 0.0:
-					hit_in_row_timer = get_tree().create_timer(1.0)
-					yield(hit_in_row_timer, "timeout")
-					hit_in_row = 0
-				
+			#	if hit_in_row_timer.time_left <= 0.0:
+			#		hit_in_row_timer = get_tree().create_timer(1.0)
+			#		yield(hit_in_row_timer, "timeout")
+			#		hit_in_row = 0
 			if hit_in_row > 0 and hit_in_row < 2:
-				is_blocking = true
+			#	is_blocking = true
 				if hit_in_row_timer.time_left <= 0.0:
-					hit_in_row_timer = get_tree().create_timer(2.5)
+					hit_in_row_timer = get_tree().create_timer(3.5)
 					yield(hit_in_row_timer, "timeout")
 					hit_in_row = 0
 		# If there weren't 2 hits in a row, he is in blocking state
 			elif hit_in_row != 2 and is_attacking:
 				is_blocking = true
+				
 		elif !is_hitted:
 			is_blocking = true
 			
@@ -111,7 +110,7 @@ func move_children(): # HANDLE MOVEMENT
 				dash()
 		
 		# MOVE FROM 'A' TO 'B'
-		if !has_player and !is_moving:
+		if !has_player and is_moving:
 			if position.x > to:
 				direction = -1
 				$Sprite.flip_h = false
@@ -129,7 +128,7 @@ func move_children(): # HANDLE MOVEMENT
 
 func attack(): # PRIMARY ATTACK - THRESH
 	speed = 0 # Stop moving
-	is_moving = true # Stop moving
+	is_moving = false # Stop moving
 	$AnimationTree.set("parameters/ATTACK/blend_position", direction)
 	state_machine.travel('ATTACK')
 	
@@ -140,17 +139,17 @@ func attack(): # PRIMARY ATTACK - THRESH
 				player.hit(damage)
 				print("Vladimir's health: ", player.health)
 			
-		if attack_timer.time_left <= 0.0:
+		if attack_timer.time_left <= 0.0 and !is_throwing:
 			attack_timer = get_tree().create_timer(1.2)
 			yield(attack_timer, "timeout")
 			if !has_player:
-				is_moving = false
+				is_moving = true
 				speed = 200
 			
-		if cooldown_timer.time_left <= 0.0:
-			cooldown_timer = get_tree().create_timer(3.0)
+		if cooldown_timer.time_left <= 0.0 and !is_throwing:
+			cooldown_timer = get_tree().create_timer(2.5)
 			yield(cooldown_timer, "timeout")
-			is_moving = false
+			is_moving = true
 			speed = 200
 			is_attacking = false
 # ------------------------------------------------------------------------------
@@ -165,27 +164,28 @@ func dash(): # SPEEDS UP AND DASHes TOWARD THE PLAYER
 
 func jump(): # JUMP IN DISTANCE SO HE CAN THROW
 	# ensure the he can't jump out of screen
-	if position.x > from -200 and position.x < to +200:
-		is_moving = true
-		speed = 200
-		
-		speed -= 900
-		velocity.y = -1200
-		yield(get_tree().create_timer(0.5), "timeout")
-		is_in_air = true
-		if is_jumping:
+	if !is_hitted:
+		if position.x > from -200 and position.x < to +200:
 			is_moving = false
+			speed = 200
+			
+			speed -= 900
+			velocity.y = -1200
+			yield(get_tree().create_timer(0.5), "timeout")
+			is_in_air = true
+			if is_jumping:
+				is_moving = true
 # ------------------------------------------------------------------------------
 
 func throw(): # SECONDARY ATTACK - THROW
 	can_throw = false
 	is_throwing = true
-	is_moving = true
+	is_moving = false
 	speed = 0
 	
 	$AnimationTree.set("parameters/THROW_CATCH/blend_position", direction)
 	state_machine.travel('THROW_CATCH')
-	if throw_timer.time_left <= 0.0:
+	if throw_timer.time_left <= 0.0 and !is_attacking:
 		throw_timer = get_tree().create_timer(0.6)
 		yield(throw_timer, "timeout")
 	
@@ -194,21 +194,25 @@ func throw(): # SECONDARY ATTACK - THROW
 	add_child(StickPath.instance())
 	
 	state_machine.travel('THROW_WAIT')
-	if throw_timer.time_left <= 0.0:
+	if throw_timer.time_left <= 0.0 and !is_attacking:
 		throw_timer = get_tree().create_timer(3.3)
 		yield(throw_timer, "timeout")
 		if !is_dead:
 			state_machine.travel('THROW_CATCH')
 		can_throw = true
 		is_throwing = false
-		is_moving = false
+		is_moving = true
 		speed = 200
 # ------------------------------------------------------------------------------
 
 func hit(dmg):
+	is_moving = false
+	
 	if is_blocking:
 		hit_in_row += 1
 		state_machine.travel('HIT_UNBLOCKABLE')
 	
 	if !is_blocking:
-		.Hit(dmg)
+		is_blocking = true
+		hit_in_row = 0
+		.hit(dmg)

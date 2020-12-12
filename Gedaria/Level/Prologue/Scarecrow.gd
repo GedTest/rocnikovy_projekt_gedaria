@@ -1,5 +1,5 @@
 class_name Scarecrow, "res://Level/Prologue/scarecrow.png"
-extends E
+extends Enemy
 
 
 var previous_hp = 0

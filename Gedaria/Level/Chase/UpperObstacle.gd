@@ -13,4 +13,4 @@ func _on_Area2D_body_entered(body):
 # ------------------------------------------------------------------------------
 
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
-	speed = 1.25
+	speed = 1.5

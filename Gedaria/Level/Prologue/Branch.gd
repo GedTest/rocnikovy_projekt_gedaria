@@ -34,6 +34,7 @@ func _process(delta):
 			$Area2D2/CollisionShape2D.disabled = false
 			$CollisionShape2D.disabled = false
 			$Sprite.show()
+			cracks = 0
 # ------------------------------------------------------------------------------
 
 func _on_Branch_body_entered(body):

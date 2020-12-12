@@ -42,12 +42,12 @@ var is_raking = false       # bRake
 var is_yield_paused = false # bYieldStop
 var has_slingshot = false   # bHasSlingshot
 
-var has_learned_attack = true       # bAttackLearned
-var has_learned_heavy_attack = true # bHeavyAttackLearned
-var has_learned_raking = true       # bRakingLearned
-var has_learned_blocking = true     # bBlockingLearned
+var has_learned_attack = false       # bAttackLearned
+var has_learned_heavy_attack = false # bHeavyAttackLearned
+var has_learned_raking = false       # bRakingLearned
+var has_learned_blocking = false     # bBlockingLearned
 
-var enemy : E = null
+var enemy : Enemy = null
 var attack_timer = null
 var heavy_attack_timer = null
 var block_timer = null
@@ -80,18 +80,11 @@ func _physics_process(delta):
 			jump()
 			move()
 			crouch()
-			if has_learned_attack:
-				attack()
-				
-			if has_learned_heavy_attack:
-				heavy_attack()
-				
+			attack()
+			heavy_attack()
 			shoot()
-			if has_learned_blocking:
-				block()
-				
-			if has_learned_raking:
-				rake()
+			block()
+			rake()
 		
 			# I don't like this method, it already multiply by delta
 			velocity = move_and_slide(velocity, FLOOR_NORMAL, \
@@ -144,38 +137,40 @@ func crouch(): # CROUCH
 # ------------------------------------------------------------------------------
 
 func attack(): # LIGHT ATTACK, fast but low dmg,
-	if Input.is_action_just_pressed("attack") and !is_attacking and !is_blocking:
-		is_attacking = true
-		can_move = false
-		$AnimationTree.set("parameters/ATTACK/blend_position", attack_direction)
-		state_machine.travel('ATTACK')
-		
-		if attack_timer.time_left <= 0.0:
-			attack_timer = get_tree().create_timer(0.656)
-			if !is_yield_paused:
-				yield(attack_timer, "timeout")
-				if enemy and can_attack:
-					enemy.hit(damage)
-					print("Enemy health: ", enemy.health)
-				
-				can_move = true
-				is_attacking = false
+	if has_learned_attack:
+		if Input.is_action_just_pressed("attack") and !is_attacking and !is_blocking:
+			is_attacking = true
+			can_move = false
+			$AnimationTree.set("parameters/ATTACK/blend_position", attack_direction)
+			state_machine.travel('ATTACK')
+			
+			if attack_timer.time_left <= 0.0:
+				attack_timer = get_tree().create_timer(0.656)
+				if !is_yield_paused:
+					yield(attack_timer, "timeout")
+					if enemy and can_attack:
+						enemy.hit(damage)
+						print("Enemy health: ", enemy.health)
+					
+					can_move = true
+					is_attacking = false
 # ------------------------------------------------------------------------------
 
 func heavy_attack(): # HEAVY ATTACK, slow but high dmg
-	if Input.is_action_just_pressed("heavy attack") and !is_attacking and !is_blocking:
-		$AnimationTree.set("parameters/HEAVY_ATTACK/blend_position", attack_direction)
-		state_machine.travel('HEAVY_ATTACK')
-		
-		if heavy_attack_timer.time_left <= 0.0:
-			heavy_attack_timer = get_tree().create_timer(1.25)
-			if !is_yield_paused:
-				yield(heavy_attack_timer, "timeout")
-				
-				if enemy and can_attack:
-					enemy.is_heavy_attacked = true
-					enemy.hit(damage)
-					#enemy.position.x -= 200 * enemy.direction
+	if has_learned_heavy_attack:
+		if Input.is_action_just_pressed("heavy attack") and !is_attacking and !is_blocking:
+			$AnimationTree.set("parameters/HEAVY_ATTACK/blend_position", attack_direction)
+			state_machine.travel('HEAVY_ATTACK')
+			
+			if heavy_attack_timer.time_left <= 0.0:
+				heavy_attack_timer = get_tree().create_timer(1.25)
+				if !is_yield_paused:
+					yield(heavy_attack_timer, "timeout")
+					
+					if enemy and can_attack:
+						enemy.is_heavy_attacked = true
+						enemy.hit(damage)
+						#enemy.position.x -= 200 * enemy.direction
 # ------------------------------------------------------------------------------
 
 func shoot():
@@ -206,38 +201,42 @@ func shoot():
 # ------------------------------------------------------------------------------
 
 func block(): # BLOCK INCOMING DAMAGE
-	if Input.is_action_just_pressed("block"):
-		state_machine.travel('BLOCKING')
-		is_blocking = true
-		
-		if block_timer.time_left <= 0.0:
-			block_timer = get_tree().create_timer(0.7)
-			if !is_yield_paused:
-				yield(block_timer, "timeout")
-				is_blocking = false
+	if has_learned_blocking:
+		if Input.is_action_just_pressed("block"):
+			state_machine.travel('BLOCKING')
+			is_moving = false
+			is_blocking = true
+			
+			if block_timer.time_left <= 0.0:
+				block_timer = get_tree().create_timer(0.7)
+				if !is_yield_paused:
+					yield(block_timer, "timeout")
+					is_moving = true
+					is_blocking = false
 # ------------------------------------------------------------------------------
 
 func rake(): # RAKE LEAVES TO CREATE PILE OF LEAVES
-	if Input.is_action_just_released("rake"):
-		is_raking = false
-		$AnimationTree.active = false
-		$AnimationTree.active = true
-		
-	if Input.is_action_pressed("rake") and !is_crouching:
-		is_raking = true
-		velocity.x = -direction * speed / 2
-		$AnimationTree.set("parameters/RAKING/blend_position", attack_direction)
-		state_machine.travel('RAKING')
-		for index in $LeavesCollector.get_slide_count():
-			var collision = $LeavesCollector.get_slide_collision(index)
-			if collision.collider.is_in_group("leaves"):
-				collision.collider.apply_central_impulse(collision.normal * 20)
-		yield(get_tree().create_timer(1.35,false), "timeout")
-		is_raking = false
-		
-	# DESTROY A PILE OF LEAVES
-	elif Input.is_action_just_pressed("attack") and !is_crouching:
-		state_machine.travel('ATTACK')
+	if has_learned_raking:
+		if Input.is_action_just_released("rake"):
+			is_raking = false
+			$AnimationTree.active = false
+			$AnimationTree.active = true
+			
+		if Input.is_action_pressed("rake") and !is_crouching:
+			is_raking = true
+			velocity.x = -direction * speed / 2
+			$AnimationTree.set("parameters/RAKING/blend_position", attack_direction)
+			state_machine.travel('RAKING')
+			for index in $LeavesCollector.get_slide_count():
+				var collision = $LeavesCollector.get_slide_collision(index)
+				if collision.collider.is_in_group("leaves"):
+					collision.collider.apply_central_impulse(collision.normal * 20)
+			yield(get_tree().create_timer(1.35,false), "timeout")
+			is_raking = false
+			
+		# DESTROY A PILE OF LEAVES
+		elif Input.is_action_just_pressed("attack") and !is_crouching:
+			state_machine.travel('ATTACK')
 # ------------------------------------------------------------------------------
 
 func hit(var dmg):
@@ -260,7 +259,7 @@ func die(): # CHARACTER DIES
 	state_machine.travel('DEATH')
 	Global.is_yield_paused = true
 	# Load checkpoint
-	SaveLoad.load_from_slot("checkpoint")
+	SaveLoad.load_from_slot("slot_4")
 	yield(get_tree().create_timer(2.2, false), "timeout")
 	$AnimationTree.active = false
 # ------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-extends E
+extends Enemy
 
 
 export (bool) var can_turn_around = true

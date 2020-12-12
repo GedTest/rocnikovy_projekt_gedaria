@@ -3,9 +3,15 @@ extends RigidBody2D
 #var resetState = false
 #var physics = true
 #var savedPosition : Vector2
-onready var texture = $Sprite.texture
+export(String, "res://UI/list_buk.png",
+	"res://UI/list_břečťan.png", "res://UI/list_dub.png",
+	"res://UI/list_ginko_biloba.png", "res://UI/list_kopřiva.png",
+	"res://UI/list_lipa.png", "res://UI/list_olše.png",
+	"res://UI/list_ořech.png", "res://UI/4.png", "res://UI/8.png"
+) var texture = "res://UI/list_olše.png"
 
-#func _ready():
+func _ready():
+	$Sprite.texture = load(texture)
 #	if "Leaves" == get_parent().name:
 #		self.add_to_group("persistant")
 
