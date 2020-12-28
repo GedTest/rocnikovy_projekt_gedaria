@@ -1,18 +1,18 @@
 extends RigidBody2D
 
-
+var arr_enemy = []
 var damage = 2
-var direction
-var closest_enemy
+var closest_enemy = Vector2(99999, 0)
 
 
-func _ready():
-	closest_enemy = get_parent().closest_enemy
-# ------------------------------------------------------------------------------
-	
 func _physics_process(delta):
-	direction = position - closest_enemy
-	add_central_force(-direction / Vector2(10000,10000))
+	if !arr_enemy.empty():
+		for enemy in arr_enemy:
+			if abs(enemy.position.x - global_position.x) < closest_enemy.x:
+				closest_enemy = enemy.global_position
+	
+	self.fly(closest_enemy)
+
 #-------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
@@ -22,5 +22,26 @@ func _on_Area2D_body_entered(body):
 		$Timer.start()
 # ------------------------------------------------------------------------------
 
+func fly(closest_enemy):
+	var direction = (closest_enemy - global_position)
+	direction /= direction.length()
+
+	if $GroundRay.is_colliding():
+		self.apply_central_impulse(Vector2(0, -25))
+	
+	direction *= Vector2(0.5, 2)
+	self.add_central_force(direction)
+# ------------------------------------------------------------------------------
+
 func _on_Timer_timeout():
 	queue_free()
+# ------------------------------------------------------------------------------
+
+func _on_DetectionArea_body_entered(body):
+	if body.get_collision_layer_bit(2):
+		arr_enemy.append(body)
+# ------------------------------------------------------------------------------
+
+func _on_DetectionArea_body_exited(body):
+	if body.get_collision_layer_bit(2):
+		arr_enemy.erase(body)

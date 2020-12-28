@@ -5,8 +5,7 @@ extends KinematicBody2D
 const GRAVITY = Vector2(0, 98)
 
 var direction = 1
-var velocity = Vector2(0,0)
-var InitialPosition = Vector2()    # get rid of that
+var velocity = Vector2(0, 0)
 
 export(int) var FoV = 250
 export(int) var health
@@ -14,23 +13,25 @@ export(int) var speed
 export(int) var from
 export(int) var to
 export(int) var damage
+export(int) var jump_strength = 1500
+export(bool) var is_jumping = false
 
 var distance
 var movement_speed
-var hit_in_row = 0                # hitInRow
-var death_anim_time = 3.0        # DeathAnimTime
+var hit_in_row = 0
+var death_anim_time = 3.0
 var hit_anim_time = 0.75
 var things_to_save = {}
 
-var is_dead = false            # bIsDead
-var has_player = false         # bPlayer
-var can_attack = false         # bCanAttack
-var is_attacking = false       # bAttacking
-var is_heavy_attacked = false # bHeavyAttack
-var is_blocking = false        # bBlocking
-var is_timeout = false         # bTimeout
-var is_yield_paused = false    # bYieldStop
-var is_focused = false         # bFocused
+var is_dead = false
+var has_player = false
+var can_attack = false
+var is_attacking = false
+var is_heavy_attacked = false
+var is_blocking = false
+var is_timeout = false
+var is_yield_paused = false
+var is_focused = false
 
 var player = null
 var attack_timer = null
@@ -40,7 +41,7 @@ var state_machine = null
 
 
 func _ready():
-	InitialPosition = position
+	$CollisionShape2D.disabled = false
 	$HitRay.cast_to.x = FoV
 	movement_speed = speed
 	cooldown_timer = get_tree().create_timer(0.0, false)
@@ -56,22 +57,18 @@ func _physics_process(delta):
 	# GRAVITY
 		velocity.y += GRAVITY.y
 	# IS IT ALIVE ?
-		if health <= 0 || is_dead:
+		if health <= 0 or is_dead:
 			die()
-		# When he's dead and reload game he fell of surface...
-		elif position.y > InitialPosition.y+3500:
-			position.y = InitialPosition.y - 25
-			$CollisionShape2D.disabled = false
-			is_dead = false
+		
 	# does he see the player ?
-		if $HitRay.is_colliding() && $HitRay.get_collider().name == "Vladimir":
+		if $HitRay.is_colliding() and $HitRay.get_collider().name == "Vladimir":
 			player = $HitRay.get_collider()
 			has_player = true
 		else:
 			player = null
 			has_player = false
 			
-		if has_player && !player.is_dead:
+		if has_player and !player.is_dead:
 			distance = abs(position.x - player.position.x)
 	
 		velocity = move_and_slide(velocity)
@@ -126,3 +123,7 @@ func _on_Weapon_body_exited(body):
 	if body.get_collision_layer_bit(1):
 		can_attack = false
 # ------------------------------------------------------------------------------
+
+func _on_WallDetection_body_entered(body):
+	if body.get_collision_layer_bit(0) and is_jumping:
+		velocity.y -= jump_strength

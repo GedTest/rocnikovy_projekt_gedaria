@@ -5,13 +5,13 @@ extends Enemy
 var StickPath = preload("res://Enemy/BOSS_Warden/Stick.tscn")
 var BirdPath = preload("res://Level/Prologue/Bird.tscn").instance()
 
-var can_throw = false     # bCanThrow
-var is_throwing = false   # bThrowing
-var is_done_once = true   # bDoOnce
-var is_jumping = true     # bCanJump
-var is_in_air = false     # bWasInAir
-var is_moving = true      # bStop
-var is_hitted = false     # bHit
+var can_throw = false
+var is_throwing = false
+var is_done_once = true
+var can_jump = true
+var is_in_air = false
+var is_moving = true
+var is_hitted = false
 
 var boost = 1
 var max_health
@@ -26,25 +26,25 @@ func _ready():
 	max_health = health
 	is_blocking = true
 	
-	cooldown_timer = get_tree().create_timer(0.0)
-	hit_in_row_timer = get_tree().create_timer(0.0)
-	throw_timer = get_tree().create_timer(0.0)
+	cooldown_timer = get_tree().create_timer(0.0, false)
+	hit_in_row_timer = get_tree().create_timer(0.0, false)
+	throw_timer = get_tree().create_timer(0.0, false)
 	
-	yield(get_tree().create_timer(10.0), "timeout")
+	yield(get_tree().create_timer(10.0, false), "timeout")
 	$Dialog.show()
-	yield(get_tree().create_timer(4.0), "timeout")
+	yield(get_tree().create_timer(4.0, false), "timeout")
 	$Dialog.queue_free()
 # ------------------------------------------------------------------------------
 
 func _process(delta):
 	if !is_dead and !is_throwing:
 		# DAMPING VELOCITY FROM JUMP IMPULSE
-		if !is_jumping and is_in_air:
+		if !can_jump and is_in_air:
 			speed += 35
 			velocity.y += 12
 		
 		# if he reach ground and have 0 speed then reset the speed
-		elif is_jumping and is_in_air:
+		elif can_jump and is_in_air:
 			speed = 200
 			is_in_air = false
 	
@@ -57,7 +57,7 @@ func _process(delta):
 			can_throw = true
 			
 		# is he in the air or on the ground ?
-		is_jumping = true if $GroundRay.is_colliding() else false
+		can_jump = true if $GroundRay.is_colliding() else false
 		
 		# does he see the player ?
 		if $HitRay.is_colliding() and $HitRay.get_collider().name == "Vladimir" or $HitRay2.is_colliding() and $HitRay2.get_collider().name == "Vladimir":
@@ -78,7 +78,7 @@ func _process(delta):
 			if hit_in_row > 0 and hit_in_row < 2:
 			#	is_blocking = true
 				if hit_in_row_timer.time_left <= 0.0:
-					hit_in_row_timer = get_tree().create_timer(3.5)
+					hit_in_row_timer = get_tree().create_timer(3.5, false)
 					yield(hit_in_row_timer, "timeout")
 					hit_in_row = 0
 		# If there weren't 2 hits in a row, he is in blocking state
@@ -140,14 +140,14 @@ func attack(): # PRIMARY ATTACK - THRESH
 				print("Vladimir's health: ", player.health)
 			
 		if attack_timer.time_left <= 0.0 and !is_throwing:
-			attack_timer = get_tree().create_timer(1.2)
+			attack_timer = get_tree().create_timer(1.2, false)
 			yield(attack_timer, "timeout")
 			if !has_player:
 				is_moving = true
 				speed = 200
 			
 		if cooldown_timer.time_left <= 0.0 and !is_throwing:
-			cooldown_timer = get_tree().create_timer(2.5)
+			cooldown_timer = get_tree().create_timer(2.5, false)
 			yield(cooldown_timer, "timeout")
 			is_moving = true
 			speed = 200
@@ -171,9 +171,9 @@ func jump(): # JUMP IN DISTANCE SO HE CAN THROW
 			
 			speed -= 900
 			velocity.y = -1200
-			yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.5, false), "timeout")
 			is_in_air = true
-			if is_jumping:
+			if can_jump:
 				is_moving = true
 # ------------------------------------------------------------------------------
 
@@ -186,7 +186,7 @@ func throw(): # SECONDARY ATTACK - THROW
 	$AnimationTree.set("parameters/THROW_CATCH/blend_position", direction)
 	state_machine.travel('THROW_CATCH')
 	if throw_timer.time_left <= 0.0 and !is_attacking:
-		throw_timer = get_tree().create_timer(0.6)
+		throw_timer = get_tree().create_timer(0.6, false)
 		yield(throw_timer, "timeout")
 	
 	# deal the damage by projektil
@@ -195,7 +195,7 @@ func throw(): # SECONDARY ATTACK - THROW
 	
 	state_machine.travel('THROW_WAIT')
 	if throw_timer.time_left <= 0.0 and !is_attacking:
-		throw_timer = get_tree().create_timer(3.3)
+		throw_timer = get_tree().create_timer(3.3, false)
 		yield(throw_timer, "timeout")
 		if !is_dead:
 			state_machine.travel('THROW_CATCH')

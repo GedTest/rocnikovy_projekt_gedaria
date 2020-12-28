@@ -6,6 +6,7 @@ onready var arr_soldiers = [$soldier2,$soldier3,$soldier4]
 
 func _ready():
 	$Vladimir/Sprite.flip_h = false
+	$Vladimir/Camera.position.y = -250
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
@@ -24,3 +25,6 @@ func _on_DoorArea2D_body_entered(body):
 		$Vladimir.velocity.x = 0
 		for soldier in arr_soldiers:
 			soldier.flip_h = !soldier.flip_h
+			
+		yield(get_tree().create_timer(1.5), "timeout")
+		get_tree().change_scene("res://Level/TestLevel.tscn")

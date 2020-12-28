@@ -15,10 +15,11 @@ export(int) var jump_strength = 1700
 export(int) var damage = 5
 export(int) var max_health = 12
 export(int) var health = 12
-export(int) var pebble_counter = 0
 
 var shoot_distance = 500
 var acorn_counter = 0
+var pebble_counter = 0
+var heavy_attack_counter = 0
 var next_pos_ID = ""
 
 var direction = 1
@@ -27,25 +28,25 @@ var velocity = Vector2(0, 0)
 var mouse_position = Vector2(0, 0)
 var jumped_height = Vector2(0, 0)
 
-var is_dead = false         # bIsDead
-var is_moving = true       # bStop
-var can_move = true         # bCanMove
-var can_jump = true         # bCanJump
-var is_crouching = false    # bCrouching
-var can_attack = false      # bCanAttack
-var is_attacking = false    # bSwording
-var is_blocking = false     # bBlocking
-var is_hidden = false       # bHidden
-var is_aimining = false     # bAimining
-var is_hitted = false       # bHit
-var is_raking = false       # bRake
-var is_yield_paused = false # bYieldStop
-var has_slingshot = false   # bHasSlingshot
+var is_dead = false
+var is_moving = true
+var can_move = true
+var can_jump = true
+var is_crouching = false
+var can_attack = false
+var is_attacking = false
+var is_blocking = false
+var is_hidden = false
+var is_aimining = false
+var is_hitted = false
+var is_raking = false
+var is_yield_paused = false
+var has_slingshot = false
 
-var has_learned_attack = false       # bAttackLearned
-var has_learned_heavy_attack = false # bHeavyAttackLearned
-var has_learned_raking = false       # bRakingLearned
-var has_learned_blocking = false     # bBlockingLearned
+var has_learned_attack = true
+var has_learned_heavy_attack = true
+var has_learned_raking = true
+var has_learned_blocking = true
 
 var enemy : Enemy = null
 var attack_timer = null
@@ -157,20 +158,24 @@ func attack(): # LIGHT ATTACK, fast but low dmg,
 # ------------------------------------------------------------------------------
 
 func heavy_attack(): # HEAVY ATTACK, slow but high dmg
-	if has_learned_heavy_attack:
+	if has_learned_heavy_attack and heavy_attack_counter > 0:
+		var current_animation = state_machine.get_current_node()
+		
 		if Input.is_action_just_pressed("heavy attack") and !is_attacking and !is_blocking:
-			$AnimationTree.set("parameters/HEAVY_ATTACK/blend_position", attack_direction)
-			state_machine.travel('HEAVY_ATTACK')
-			
-			if heavy_attack_timer.time_left <= 0.0:
-				heavy_attack_timer = get_tree().create_timer(1.25)
-				if !is_yield_paused:
-					yield(heavy_attack_timer, "timeout")
-					
-					if enemy and can_attack:
-						enemy.is_heavy_attacked = true
-						enemy.hit(damage)
-						#enemy.position.x -= 200 * enemy.direction
+			if current_animation != 'HEAVY_ATTACK':
+				$AnimationTree.set("parameters/HEAVY_ATTACK/blend_position", attack_direction)
+				state_machine.travel('HEAVY_ATTACK')
+				heavy_attack_counter -= 1
+				
+				if heavy_attack_timer.time_left <= 0.0:
+					heavy_attack_timer = get_tree().create_timer(1.25)
+					if !is_yield_paused:
+						yield(heavy_attack_timer, "timeout")
+						
+						if enemy and can_attack:
+							enemy.is_heavy_attacked = true
+							enemy.hit(damage)
+							#enemy.position.x -= 200 * enemy.direction
 # ------------------------------------------------------------------------------
 
 func shoot():
@@ -244,7 +249,13 @@ func hit(var dmg):
 		get_parent().find_node("UserInterface").update_health(dmg, 'minus', health, max_health)
 		health -= dmg
 		is_hitted = true
+		
+		
 		if health > 1:
+			var current_animation = state_machine.get_current_node()
+			if current_animation == 'HEAVY_ATTACK':
+				heavy_attack_counter += 1
+				
 			state_machine.travel('HIT')
 		if !is_yield_paused:
 			yield(get_tree().create_timer(0.95, false), "timeout")
@@ -259,7 +270,8 @@ func die(): # CHARACTER DIES
 	state_machine.travel('DEATH')
 	Global.is_yield_paused = true
 	# Load checkpoint
-	SaveLoad.load_from_slot("slot_4")
+	if Global.level_root().name != "TutorialLevel":
+		SaveLoad.load_from_slot("slot_4")
 	yield(get_tree().create_timer(2.2, false), "timeout")
 	$AnimationTree.active = false
 # ------------------------------------------------------------------------------
@@ -270,9 +282,12 @@ func save(): # SAVE VARIABLES IN DICTIONARY
 		"max_health":max_health,
 		"pebble_counter":pebble_counter,
 		"acorn_counter":acorn_counter,
+		"heavy_attack_counter":heavy_attack_counter,
 		"speed":speed,
 		"damage":damage,
-		"has_slingshot":has_slingshot
+		"has_slingshot":has_slingshot,
+		"has_learned_heavy_attack":has_learned_heavy_attack,
+		"has_learned_raking":has_learned_raking
 	}
 	return saved_data
 # ------------------------------------------------------------------------------

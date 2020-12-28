@@ -4,10 +4,11 @@ extends Control
 var timer = null
 var is_yield_paused = false
 var current_health = 12
-var pebble_counter = 0
 var max_health = 0
 var saved_health = 0
 var acorn_counter = 0
+var pebble_counter = 0
+var heavy_attack_counter = 0
 
 onready var arr_max_health = [
 	$leaves/FallingLeaves1,$leaves/FallingLeaves2,
@@ -28,7 +29,7 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _process(delta):
-	var vladimir = get_parent().get_parent().find_node('Vladimir')
+	var vladimir = Global.level_root().find_node('Vladimir')
 	
 	acorn_counter = vladimir.acorn_counter
 	$AcornCounter.text = str(acorn_counter) + "x"
@@ -38,11 +39,18 @@ func _process(delta):
 	
 	pebble_counter = vladimir.pebble_counter
 	
+	heavy_attack_counter = vladimir.heavy_attack_counter
+	$UniqueLeaf.visible = true if heavy_attack_counter > 0 else false
+	$UniqueLeafCounter.visible = $UniqueLeaf.visible
+	$UniqueLeafCounter.text = str(int(heavy_attack_counter / 4)) + "x"
+	$UniqueLeaf.value = int(heavy_attack_counter) % 4
+	
 	$Slingshot.visible = vladimir.has_slingshot
-	is_yield_paused = get_parent().get_parent().is_yield_paused
+	is_yield_paused = Global.level_root().is_yield_paused
 # ------------------------------------------------------------------------------
 
-func update_health(var value, var condition : String, var current_health,var max_health = 12):
+func update_health(var value, var condition : String, var current_health, \
+				   var max_health = 12):
 	match condition:
 		"minus":
 		# warning-ignore:unused_variable
@@ -54,11 +62,11 @@ func update_health(var value, var condition : String, var current_health,var max
 					arr_max_health[current_health].emitting = true
 					arr_max_health[current_health].one_shot = false
 					
-					if timer.time_left <= 0.0:
-						timer = get_tree().create_timer(0.1)
-						if !is_yield_paused:
-							yield(timer, "timeout")
-							arr_max_health[current_health].one_shot = true
+					#if timer.time_left <= 0.0:
+					#	timer = get_tree().create_timer(0.1)
+					#	if !is_yield_paused:
+					#		yield(timer, "timeout")
+					arr_max_health[current_health].one_shot = true
 		
 		"plus":
 			if current_health >= 0 and current_health < max_health:

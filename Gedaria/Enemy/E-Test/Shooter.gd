@@ -1,7 +1,7 @@
 extends Enemy
 
 
-var ProjectilePath = preload("res://Enemy/E-Test/Projectile.tscn")
+const ProjectilePath = preload("res://Enemy/E-Test/Projectile.tscn")
 
 var turn_around_timer = null
 
@@ -14,7 +14,7 @@ func _ready():
 func _process(delta):
 	if !is_dead:
 		# LOOK AROUND FOR PLAYER
-		if turn_around_timer.time_left <= 0.0 && !has_player:
+		if turn_around_timer.time_left <= 0.0 and !has_player:
 			turn_around_timer = get_tree().create_timer(5.0, false)
 			if !is_yield_paused:
 				yield(turn_around_timer, "timeout")
@@ -46,6 +46,12 @@ func shoot(): # FIRE A PROJECTILE
 			attack_timer = get_tree().create_timer(2.0, false)
 			if !is_yield_paused:
 				yield(attack_timer, "timeout")
-				if has_player && !player.is_dead:
-					var projectile = ProjectilePath.instance()
-					add_child(projectile)
+				if has_player:
+					# PLAYER IS HIDING
+					if player.is_hidden:
+						turn_around()
+						return
+						
+					elif !player.is_dead:
+						var projectile = ProjectilePath.instance()
+						add_child(projectile)

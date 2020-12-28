@@ -2,10 +2,12 @@ extends RigidBody2D
 
 
 signal hit_by_stone
-signal added_pebble(oldPebblePosition)
+
+var PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
 
 var can_damage = false
 var vladimir = null
+var has_hitted_shield = false
 
 
 func _ready():
@@ -20,7 +22,8 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(0):
 		if !"Tree" in body.name:
-			emit_signal("added_pebble", position)
+			if has_hitted_shield:
+				add_pebble(position)
 			queue_free()
 		
 	elif body.get_collision_layer_bit(4):
@@ -30,7 +33,7 @@ func _on_Area2D_body_entered(body):
 	
 	elif body.get_collision_layer_bit(2):
 		if "Shield" in body.name:
-			connect("added_pebble", get_parent(),"_on_added_pebble")
+			has_hitted_shield = true
 		else:
 			if can_damage:
 				body.hit(vladimir.damage)
@@ -41,3 +44,9 @@ func _on_Area2D_body_entered(body):
 # warning-ignore:unused_argument
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
 	queue_free()
+# ------------------------------------------------------------------------------
+
+func add_pebble(old_pebble_position):
+	var pebble = PebblePath.instance()
+	Global.level_root().call_deferred("add_child", pebble)
+	pebble.position = old_pebble_position

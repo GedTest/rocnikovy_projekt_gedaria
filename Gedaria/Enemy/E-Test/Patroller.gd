@@ -3,16 +3,12 @@ extends Enemy
 
 export (bool) var can_turn_around = true
 export (bool) var is_able_to_roll = true
-export (bool) var is_able_to_jump = true   # is_able_to_jump
-export (int) var height_level
 
 var turn_around_timer = null
-var jump_timer = null
 var do_barrel_roll_timer = null
 var cooldown_roll_timer = null
 
 var has_player_before = false
-var can_jump = false
 var is_reversed = false
 var is_moving = true
 var can_roll = false
@@ -21,7 +17,6 @@ var can_roll = false
 func _ready():
 	death_anim_time = 3.0
 	turn_around_timer = get_tree().create_timer(0.0, false)
-	jump_timer = get_tree().create_timer(0.0, false)
 	do_barrel_roll_timer = get_tree().create_timer(0.0, false)
 	cooldown_roll_timer = get_tree().create_timer(0.0, false)
 # ------------------------------------------------------------------------------
@@ -67,43 +62,39 @@ func move(var from, var to): # MOVE
 	if !is_dead:
 	# MOVE FROM 'A' TO 'B'
 		if !has_player and !has_player_before:
+			$HitRay.enabled = true
 			
 			if position.x > to:
 				direction = -1
 				$Sprite.flip_h = false
 				$HitRay.cast_to.x = -FoV
+				$WallDetection.position.x = -65
 			elif position.x < from:
 				direction = 1
 				$Sprite.flip_h = true
 				$HitRay.cast_to.x = FoV
-			
+				$WallDetection.position.x = 65
+				
 			# LOOK AROUND FOR PLAYER
 			if turn_around_timer.time_left <= 0.0 and !has_player:
 				turn_around_timer = get_tree().create_timer(5.0, false)
 				if !is_yield_paused:
 					yield(turn_around_timer, "timeout")
 					turn_around()
-			
-			if is_able_to_jump:
-				 # IF HE FALLS OFF THE PLATFORM, HE JUMPS BACK
-				if int(position.y) != height_level:
-					jump()
-				else:
-					can_jump = true
 				
 	# FOLLOW PLAYER OR NOT
 		if has_player:
+			# PLAYER IS HIDING
 			if player.is_hidden:
+				$HitRay.enabled = false
 				has_player = false
 				player = null
-				speed = movement_speed
 				return
 				
 			if is_able_to_roll:
 				has_player_before = true
 			if !can_roll or !is_able_to_roll:
 				is_moving = true if distance > 125 else false
-				can_jump = is_moving
 			
 			# MOVE TOWARDS PLAYER (RIGHT)
 			if player.position.x <= position.x+FoV and player.position.x > position.x:
@@ -111,6 +102,7 @@ func move(var from, var to): # MOVE
 					direction = 1
 					$Sprite.flip_h = true
 					$HitRay.cast_to.x = FoV
+					$WallDetection.position.x = 65
 			
 			# MOVE TOWARDS PLAYER (LEFT)
 			elif player.position.x >= position.x-FoV and player.position.x < position.x:
@@ -118,6 +110,7 @@ func move(var from, var to): # MOVE
 					direction = -1
 					$Sprite.flip_h = false
 					$HitRay.cast_to.x = -FoV
+					$WallDetection.position.x = -65
 					
 			# IF RUNNING FOR TOO MUCH LONG
 			if position.x < from or position.x > to:
@@ -158,6 +151,7 @@ func turn_around(): # LOOK BACK AND FORTH
 		$Sprite.flip_h = !$Sprite.flip_h
 		speed = 0
 		$HitRay.cast_to.x = -$HitRay.cast_to.x
+		$WallDetection.position.x *= -1
 		
 		if turn_around_timer.time_left <= 0.0:
 			turn_around_timer = get_tree().create_timer(0.75, false)
@@ -167,22 +161,11 @@ func turn_around(): # LOOK BACK AND FORTH
 				if !has_player:
 					$Sprite.flip_h = !$Sprite.flip_h
 					$HitRay.cast_to.x = -$HitRay.cast_to.x
+					$WallDetection.position.x *= -1
 				state_machine.travel('run')
-# ------------------------------------------------------------------------------
-
-func jump(): # JUMP BACK ONTO PLATFORM
-	if jump_timer.time_left <= 0.0:
-		if can_jump:
-			jump_timer = get_tree().create_timer(2.5, false)
-		if !is_yield_paused:
-			yield(jump_timer, "timeout")
-			if !has_player:
-				can_jump = false
-				velocity.y -= (position.y + height_level) * 1.15
 # ------------------------------------------------------------------------------
 
 func save():
 	things_to_save.is_focused = self.is_focused
 	.save()
 	return things_to_save
-# ------------------------------------------------------------------------------

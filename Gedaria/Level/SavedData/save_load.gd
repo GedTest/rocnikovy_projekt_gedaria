@@ -72,7 +72,6 @@ func update_current_data():
 # ------------------------------------------------------------------------------
 func update_map_data():
 	if level_root() != null:
-
 		for node in get_tree().get_nodes_in_group("persistant"):
 			var node_data = []
 
@@ -133,7 +132,7 @@ func load_map():
 		update_node(node)
 # ------------------------------------------------------------------------------
 func update_node(node):
-	if current_data.has( str([level_root().filename, node.name] )):
+	if current_data.has( str([level_root().filename, node.name]) ):
 		var data = current_data[ str([level_root().filename, node.name] )]
 		#print("")
 		#for value in data.values():
@@ -142,7 +141,6 @@ func update_node(node):
 		#for key in data.keys():
 		#	print("values is ", key)
 		#print("")
-		
 		#var substrArray = [""]
 		#for key in current_data.keys():
 			#if key[0] == "[":

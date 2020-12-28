@@ -2,7 +2,6 @@ extends Node2D
 
 onready var Boss_Warden = preload("res://Enemy/BOSS_Warden/BOSS_Warden.tscn")
 onready var Letter = preload("res://Level/Prologue/Letter.tscn")
-onready var camera = $Camera2D
 onready var block_tutorial = $BlockingTutorial
 
 
@@ -17,10 +16,17 @@ var Boss = null
 
 
 func _ready():
+	$Camera2D.current = true
+	$Vladimir.has_learned_attack = false
+	$Vladimir.has_learned_blocking = false
+	$Vladimir.has_learned_heavy_attack = false
+	$Vladimir.has_learned_raking = false
 	$Vladimir/AnimationTree.active = false
+	
 	$Vladimir.state_machine = $Vladimir/AnimationTree2.get("parameters/playback")
 	$Vladimir/Sprite.hide()
 	yield(get_tree().create_timer(3.0), "timeout")
+	
 	if $Vladimir.position.x == 150:
 		$MovementTutorial.show()
 		yield(get_tree().create_timer(4.0), "timeout")
@@ -28,6 +34,11 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _process(delta):
+	# restart level
+	if $Vladimir.health <= 0 and $timer.time_left == 0.0:
+			get_tree().paused = true
+			$timer.start()
+	
 	if is_rake_picked_up:
 		is_rake_picked_up = false
 		
@@ -126,3 +137,6 @@ func _on_Scarecrow_tree_exiting():
 	block_tutorial.queue_free()
 	$Branch/Area2D2/CollisionShape2D.disabled = false
 # ------------------------------------------------------------------------------
+
+func _on_timer_timeout():
+	get_tree().change_scene("res://Level/Prologue/TutorialLevel.tscn")

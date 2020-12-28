@@ -6,6 +6,8 @@ var LeafPath = preload("res://Level/Leaf.tscn")
 
 export (int) var value = 3
 export (Array) var arr_leaves_in = [0, 0, 0]
+export (bool) var is_movable = false
+export (Vector2) var grab_position = Vector2(150, 50)
 
 var arr_children = []
 var is_complete = false
@@ -14,6 +16,13 @@ var leaves = 0
 
 
 func _ready():
+	$GrabLeft/CollisionShape2D.disabled = !is_movable
+	$GrabLeft.position = Vector2(-grab_position.x, grab_position.y)
+	$GrabLeft.visible = is_movable
+	$GrabRight/CollisionShape2D.disabled = !is_movable
+	$GrabRight.position = grab_position
+	$GrabRight.visible = is_movable
+	
 	for LeafHolder in get_children():
 		if LeafHolder is StaticBody2D:
 			arr_children.append(LeafHolder)
