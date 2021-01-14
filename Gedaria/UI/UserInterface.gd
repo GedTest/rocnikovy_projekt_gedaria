@@ -63,12 +63,15 @@ func update_health(var value, var condition : String, var current_health, \
 					arr_max_health[current_health].one_shot = false
 					
 					arr_max_health[current_health].one_shot = true
-		
 		"plus":
 			if current_health >= 0 and current_health < max_health:
 				for i in range(value):
 					arr_max_health[current_health].find_node('Leaf').show()
 					current_health += 1
+		"upgrade":
+				var next_life = $leaves.get_children()[max_health]
+				arr_max_health.append(next_life)
+				arr_max_health[max_health].show()
 # ------------------------------------------------------------------------------
 
 func update_pebbles(var num, var condition : String, var pebble_counter):

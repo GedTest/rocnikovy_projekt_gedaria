@@ -216,8 +216,9 @@ func save_to_slot(slot_name):
 	update_current_data()
 	if slots.has(slot_name):
 		slots[slot_name] = current_data.duplicate()
+		Global.last_map = slots[slot_name]["last_map"]
 	else:
-		print('Error 1: Saveslot %s doesn´t exist.',slot_name)
+		print('Error 1: Saveslot %s doesn´t exist.', slot_name)
 # ------------------------------------------------------------------------------
 func load_from_slot(slot_name):
 	print("load_from_slot ",slot_name)

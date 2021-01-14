@@ -2,6 +2,7 @@ extends Node
 
 
 var blue_berries = 0
+var last_map = ""
 
 var is_pausable = false
 var is_yield_paused = false

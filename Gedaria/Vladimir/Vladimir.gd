@@ -12,7 +12,7 @@ const PebblePath = preload("res://Vladimir/Pebble.tscn")
 export(int) var speed = 525
 export(int) var modify_speed = 1
 export(int) var jump_strength = 1700
-export(int) var damage = 5
+export(int) var damage = 2
 export(int) var max_health = 12
 export(int) var health = 12
 
@@ -249,7 +249,6 @@ func hit(var dmg):
 		get_parent().find_node("UserInterface").update_health(dmg, 'minus', health, max_health)
 		health -= dmg
 		is_hitted = true
-		
 		
 		if health > 1:
 			var current_animation = state_machine.get_current_node()
