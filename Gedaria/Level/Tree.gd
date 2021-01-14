@@ -1,11 +1,12 @@
-extends StaticBody2D
+extends Sprite
 
 
-func _on_Area2D_body_entered(body):
-	if body.get_collision_layer_bit(1):
-		body.find_node("Camera").offset.y = 300
-# ------------------------------------------------------------------------------
-
-func _on_Area2D_body_exited(body):
-	if body.get_collision_layer_bit(1):
-		body.find_node("Camera").offset.y = 0
+func _ready():
+	var tree_type = self.texture.load_path.split(".")[1]
+	var tree_color = tree_type.substr(len(tree_type)-4)
+	
+	match tree_color:
+		"Dark":
+			$Leaves.texture = load("res://Level/TreeDarkLeaves.png")
+		"ight":
+			$Leaves.texture = load("res://Level/TreeLightLeaves.png")

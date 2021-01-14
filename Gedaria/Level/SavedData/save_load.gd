@@ -63,10 +63,10 @@ func update_current_data():
 		current_data["last_saved_slot"] = last_saved_slot
 		
 		# SAVING GLOBAL VALUES
-		#current_data["globals"] = {}
+		current_data["globals"] = {}
 		#
 		#for x in arr:
-		#	current_data["globals"][x] = Global.get(x)
+		current_data["globals"]["blue_berries"] = Global.blue_berries
 			
 	#	print("CURRENT_DATA: ",current_data)
 # ------------------------------------------------------------------------------
@@ -227,6 +227,7 @@ func load_from_slot(slot_name):
 
 	#for x in slots[slot_name]["globals"].keys():
 	#	Global.set(x, slots[slot_name]["globals"][x])
+	Global.blue_berries = slots[slot_name]["globals"]["blue_berries"]
 	
 	is_yield_paused = true
 	

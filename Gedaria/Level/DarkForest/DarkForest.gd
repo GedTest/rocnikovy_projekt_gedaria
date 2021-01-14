@@ -5,9 +5,11 @@ var PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
 onready var arr_patrollers = [
 	$Patroller,$Patroller2,$Patroller3,$Patroller4,$Patroller5,
 	$Patroller6,$Patroller7,$Patroller8,$Patroller9,$Patroller10,
+	$Patroller11,$Patroller12,$Patroller13,
 ]
 onready var arr_guardians = [
-	$Guardian,$Guardian2,$Guardian3,$Guardian4,
+	$Guardian,$Guardian2,$Guardian3,$Guardian4,$Guardian5,
+	$Guardian6,
 ]
 
 var is_yield_paused = false
@@ -35,7 +37,7 @@ func _on_LoadingTimer_timeout():
 	
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
-			leaf_holder.add_leaf()
+			leaf_holder.show_leaf()
 # ------------------------------------------------------------------------------
 
 func _process(delta):
@@ -44,6 +46,10 @@ func _process(delta):
 		
 	for i in arr_guardians:
 		i.move()
+		
+	if $PilesOfLeaves/PileOfLeaves7.is_complete:
+		$Winds/Wind10.rotation_degrees = 210
+		$Winds/Wind10.impulse = Vector2(700, -2400)
 # ------------------------------------------------------------------------------
 
 func _on_Mushroom_tree_exited():

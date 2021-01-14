@@ -1,11 +1,7 @@
 extends Node
 
 
-#var acornCounter = 0
-#var maxHealth = 12
-#var savedHealth = 12
-#var pebbleCounter = 0
-#var HEALTH = 12
+var blue_berries = 0
 
 var is_pausable = false
 var is_yield_paused = false

@@ -1,4 +1,5 @@
 # ignore godot inner files
+project.godot
 
 # texture files
 *.res

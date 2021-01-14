@@ -1,4 +1,3 @@
-class_name Scarecrow, "res://Level/Prologue/scarecrow.png"
 extends Enemy
 
 
@@ -9,12 +8,12 @@ var is_done_once = true
 func _ready():
 	previous_hp = health
 	speed = 0
-	state_machine = $AnimationTree.get("parameters/playback")
 # ------------------------------------------------------------------------------
 
 func _process(delta):
 	if is_instance_valid(self):
 		if health <= 0:
+			$AnimatedSprite.play("dead")
 			$Sprite.texture = load("res://Level/Chase/seno.png")
 			$CollisionShape2D.disabled = true
 			emit_signal("tree_exiting")

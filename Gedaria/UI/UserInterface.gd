@@ -62,10 +62,6 @@ func update_health(var value, var condition : String, var current_health, \
 					arr_max_health[current_health].emitting = true
 					arr_max_health[current_health].one_shot = false
 					
-					#if timer.time_left <= 0.0:
-					#	timer = get_tree().create_timer(0.1)
-					#	if !is_yield_paused:
-					#		yield(timer, "timeout")
 					arr_max_health[current_health].one_shot = true
 		
 		"plus":
@@ -79,14 +75,12 @@ func update_pebbles(var num, var condition : String, var pebble_counter):
 	match condition:
 		"minus":
 			if pebble_counter >= 0:
-			# warning-ignore:unused_variable
 				for pebble in range(num):
 					arr_pebbles[pebble_counter].hide()
 					pebble_counter -= 1
 		
 		"plus":
 			if pebble_counter >= 0 and pebble_counter <= 5:
-			# warning-ignore:unused_variable
 				for pebble in range(num):
 					arr_pebbles[pebble_counter-1].show()
 					pebble_counter += 1
@@ -94,7 +88,6 @@ func update_pebbles(var num, var condition : String, var pebble_counter):
 
 func save():
 	var saved_data = {
-		"UI":"UI",
 		"saved_health":current_health,
 		"max_health":max_health,
 		"acorn_counter":acorn_counter
@@ -114,3 +107,7 @@ func load_ui_icons():
 		pebble.hide()
 	for i in range(pebble_counter):
 		arr_pebbles[i].show()
+		
+	if acorn_counter > 0:
+		$AcornCounter.show()
+		$Acorn.show()

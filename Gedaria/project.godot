@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Level/PileOfLeaves.gd"
 }, {
-"base": "Enemy",
-"class": "Scarecrow",
-"language": "GDScript",
-"path": "res://Level/Prologue/Scarecrow.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Vladimir",
 "language": "GDScript",
@@ -79,7 +74,6 @@ _global_script_class_icons={
 "MushroomSpring": "res://Level/Mushroom3.png",
 "Pebble": "res://UI/kamen.png",
 "PileOfLeaves": "",
-"Scarecrow": "res://Level/Prologue/scarecrow.png",
 "Vladimir": "res://Vladimir/animations/sprites/vladimir.png",
 "clouds": "res://Level/Prologue/cloud1.png"
 }

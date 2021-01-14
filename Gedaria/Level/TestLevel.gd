@@ -24,7 +24,7 @@ func _ready():
 #	$Vladimir.has_learned_attack = true
 	$Vladimir.has_learned_heavy_attack = false
 #	$Vladimir.has_learned_blocking = true
-	$Vladimir.has_learned_raking = false
+	$Vladimir.has_learned_raking = true
 	
 	$Vladimir/Camera.current = true
 # ------------------------------------------------------------------------------
@@ -37,6 +37,10 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	Global.is_yield_paused = false
 	Global.is_pausable = true
 	$CanvasLayer/UserInterface.load_ui_icons()
+	
+	for leaf_holder in $LeafHolders.get_children():
+		if leaf_holder.has_leaf:
+			leaf_holder.show_leaf()
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
