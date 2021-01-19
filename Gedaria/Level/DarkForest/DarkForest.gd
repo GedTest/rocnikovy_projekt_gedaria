@@ -33,11 +33,20 @@ func _on_LoadingTimer_timeout():
 	get_tree().set_pause(false)
 	Global.is_yield_paused = false
 	Global.is_pausable = true
-	$CanvasLayer/UserInterface.load_ui_icons()
 	
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
 			leaf_holder.show_leaf()
+			
+			
+	var vladimir_data = "[res://Level/MerchantSquirrel.tscn, Vladimir]"
+	print("vladimir_data: ", vladimir_data)
+	
+	print("has data? ",SaveLoad.slots["slot_4"].has(vladimir_data))
+	#if SaveLoad.slots["slot_4"][vladimir_data]:
+	$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
+		
+	$CanvasLayer/UserInterface.load_ui_icons()
 # ------------------------------------------------------------------------------
 
 func _process(delta):

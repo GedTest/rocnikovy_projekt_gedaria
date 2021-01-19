@@ -50,6 +50,8 @@ func update_current_data():
 				var dict = node.save()
 				for y in dict:
 					node_data[y] = dict[y]
+					if node.name == "Vladimir":
+						print(node_data[y])
 			
 			# stich save data together
 			#current_data[[level_root().get_filename(), node.name]] = node_data
@@ -64,11 +66,25 @@ func update_current_data():
 		
 		# SAVING GLOBAL VALUES
 		current_data["globals"] = {}
-		#
+		#var arr = [
+		#	"health",
+		#	"max_health",
+		#	"pebble_counter",
+		#	"acorn_counter",
+		#	"heavy_attack_counter",
+		#	"speed",
+		#	"damage",
+		#	"has_slingshot",
+		#	"has_learned_heavy_attack",
+		#	"has_learned_raking",
+		#	"blue_berries"
+		#]
+	
 		#for x in arr:
 		current_data["globals"]["blue_berries"] = Global.blue_berries
 			
-	#	print("CURRENT_DATA: ",current_data)
+		#print(current_data["[res://Level/TestLevel.tscn, Vladimir]"])
+		#print("CURRENT_DATA: ",current_data)
 # ------------------------------------------------------------------------------
 func update_map_data():
 	if level_root() != null:

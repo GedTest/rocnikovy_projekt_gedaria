@@ -41,6 +41,9 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
 			leaf_holder.show_leaf()
+	#print("next_level: ",Global.next_level)
+	if SaveLoad.slots["slot_4"].has("[res://Level/TestLevel.tscn, Vladimir]"):
+		$Vladimir.set_values(SaveLoad.slots["slot_4"]["[res://Level/TestLevel.tscn, Vladimir]"])
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument

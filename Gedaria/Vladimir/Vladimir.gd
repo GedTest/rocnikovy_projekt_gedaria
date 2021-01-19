@@ -117,7 +117,7 @@ func move(): # MOVE
 	var animation = "RUN" if velocity.x != 0  else "IDLE"
 	
 	$Sprite.flip_v = false
-	if !is_hitted and !is_attacking and !is_raking and !is_dead:
+	if !is_hitted and !is_attacking and !is_raking and !is_dead and !is_aimining:
 		state_machine.travel(animation)
 
 # ------------------------------------------------------------------------------
@@ -187,6 +187,7 @@ func shoot():
 		state_machine.travel("HOLD_" + animation)
 		
 		if Input.is_action_just_pressed("attack"):
+			state_machine.travel("RELEASE_" + animation)
 			can_move = true
 			
 			var pebble = PebblePath.instance()
@@ -196,7 +197,6 @@ func shoot():
 			if has_slingshot:
 				pebble.can_damage = true
 				
-			state_machine.travel("RELEASE_" + animation)
 			pebble_counter -= 1
 			get_parent().find_node("UserInterface").update_pebbles(1, "minus", pebble_counter)
 			
@@ -308,3 +308,13 @@ func _on_WeaponHitbox_body_exited(body):
 func _draw(): # ENGINE DRAW FUNCTION
 	if is_aimining:
 		draw_line(Vector2(0, 0), mouse_position, Color(1.0, 1.0, 1.0, 0.3), 8.0)
+# ------------------------------------------------------------------------------
+
+func set_values(data):
+	for value in data:
+		if value == "pos" or \
+			value == "file" or \
+			value == "parent":
+			continue
+		#print(typeof(value)," - ",value,": ",data[value])
+		self.set(value, data[value])

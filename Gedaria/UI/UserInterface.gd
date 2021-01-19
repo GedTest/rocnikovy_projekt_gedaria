@@ -17,6 +17,10 @@ onready var arr_max_health = [
 	$leaves/FallingLeaves7,$leaves/FallingLeaves8,
 	$leaves/FallingLeaves9,$leaves/FallingLeaves10,
 	$leaves/FallingLeaves11,$leaves/FallingLeaves12,
+	$leaves/FallingLeaves13,$leaves/FallingLeaves14,
+	$leaves/FallingLeaves15,$leaves/FallingLeaves16,
+	$leaves/FallingLeaves17,$leaves/FallingLeaves18,
+	$leaves/FallingLeaves19,$leaves/FallingLeaves20,
 ]
 onready var arr_pebbles = [
 	$Pebbles/Pebble1,$Pebbles/Pebble2,$Pebbles/Pebble3,
@@ -101,10 +105,10 @@ func save():
 func load_ui_icons():
 	yield(get_tree().create_timer(0.25), "timeout")
 	for leaf in arr_max_health:
-		leaf.find_node('Leaf').hide()
+		leaf.hide()
 	
 	for leaf in range(current_health):
-		arr_max_health[leaf].find_node('Leaf').show()
+		arr_max_health[leaf].show()
 
 	for pebble in arr_pebbles:
 		pebble.hide()
