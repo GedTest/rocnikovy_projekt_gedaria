@@ -17,7 +17,6 @@ export(int) var jump_strength = 1500
 export(bool) var is_jumping = false
 
 var distance
-var movement_speed
 var hit_in_row = 0
 var death_anim_time = 3.0
 var hit_anim_time = 0.75
@@ -32,6 +31,7 @@ var is_blocking = false
 var is_timeout = false
 var is_yield_paused = false
 var is_focused = false
+var is_moving = true
 
 var player = null
 var attack_timer = null
@@ -41,9 +41,8 @@ var state_machine = null
 
 
 func _ready():
-	$CollisionShape2D.disabled = false
+	#$CollisionShape2D.disabled = false
 	$HitRay.cast_to.x = FoV
-	movement_speed = speed
 	cooldown_timer = get_tree().create_timer(0.0, false)
 	attack_timer = get_tree().create_timer(0.0, false)
 	hit_timer = get_tree().create_timer(0.0, false)
@@ -72,6 +71,10 @@ func _physics_process(delta):
 			distance = abs(position.x - player.position.x)
 	
 		velocity = move_and_slide(velocity)
+	
+	# when reload dead enemy disable his collision
+	elif is_dead and !$CollisionShape2D.disabled:
+		$CollisionShape2D.disabled = true
 # ------------------------------------------------------------------------------
 
 func die(): # CHARACTER DIES
@@ -101,7 +104,7 @@ func save(): # SAVE VARIABLES IN DICTIONARY
 # ------------------------------------------------------------------------------
 
 func hit(dmg):
-	speed = 0
+	is_moving = false
 	health -= dmg if !is_heavy_attacked else dmg * 2
 	if health > 0:
 		state_machine.travel('HIT')
@@ -109,7 +112,7 @@ func hit(dmg):
 			hit_timer = get_tree().create_timer(hit_anim_time)
 			if !is_yield_paused:
 				yield(hit_timer, "timeout")
-				speed = movement_speed
+				is_moving = true
 # ------------------------------------------------------------------------------
 
 func _on_Weapon_body_entered(body):

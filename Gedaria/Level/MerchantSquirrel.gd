@@ -24,6 +24,7 @@ func _ready():
 	
 
 func _on_LoadingTimer_timeout():
+	$Vladimir.position = $Level_start.position
 	SaveLoad.update_current_data()
 	yield(get_tree().create_timer(0.1), "timeout")
 	
@@ -31,8 +32,9 @@ func _on_LoadingTimer_timeout():
 	Global.is_yield_paused = false
 	$CanvasLayer/UserInterface.load_ui_icons()
 	
-	print("next level: ",Global.get_level_by_index(1))
-	$Sign.scene = Global.get_level_by_index(1)
+	
+	print("next level: ",Global.get_next_level())
+	$Sign.scene = Global.get_next_level()
 	
 	var vladimir_data = Global.vladimir_data()
 	print("vladimir_data: ", vladimir_data)

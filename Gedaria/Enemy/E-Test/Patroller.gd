@@ -10,7 +10,7 @@ var cooldown_roll_timer = null
 
 var has_player_before = false
 var is_reversed = false
-var is_moving = true
+#var is_moving = true
 var can_roll = false
 
 
@@ -34,8 +34,8 @@ func _physics_process(delta):
 					attack()
 				
 		if cooldown_roll_timer.time_left <= 0.0 and !can_attack and is_able_to_roll:
-			cooldown_roll_timer = get_tree().create_timer(4.0, false)
 			if !is_yield_paused:
+				cooldown_roll_timer = get_tree().create_timer(4.0, false)
 				yield(cooldown_roll_timer, "timeout")
 				can_roll = true
 		
@@ -149,7 +149,7 @@ func turn_around(): # LOOK BACK AND FORTH
 	if !is_dead and can_turn_around:
 		state_machine.travel('STANDING')
 		$Sprite.flip_h = !$Sprite.flip_h
-		speed = 0
+		is_moving = false
 		$HitRay.cast_to.x = -$HitRay.cast_to.x
 		$WallDetection.position.x *= -1
 		
@@ -157,7 +157,8 @@ func turn_around(): # LOOK BACK AND FORTH
 			turn_around_timer = get_tree().create_timer(0.75, false)
 			if !is_yield_paused:
 				yield(turn_around_timer, "timeout")
-				speed = movement_speed
+				is_moving = true
+				
 				if !has_player:
 					$Sprite.flip_h = !$Sprite.flip_h
 					$HitRay.cast_to.x = -$HitRay.cast_to.x

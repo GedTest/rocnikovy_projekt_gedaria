@@ -13,9 +13,17 @@ onready var arr_patrollers = [
 onready var arr_guardians = [
 	$Guardian,$Guardian2,$Guardian3,$Guardian4,$Guardian5,
 ]
+onready var arr_shooters = [
+	$Shooter,$Shooter2,$Shooter3,$Shooter4,
+	$Shooter5,$Shooter6,$Shooter7,$Shooter8,
+]
+var arr_enemies = null
 
 
 func _ready():
+	#if ! Global.level_root().filename in SaveLoad.visited_maps:
+	#	$Vladimir.position = $Level_start.position
+		
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
 	
@@ -24,7 +32,7 @@ func _ready():
 #	$Vladimir.has_learned_attack = true
 	$Vladimir.has_learned_heavy_attack = false
 #	$Vladimir.has_learned_blocking = true
-	$Vladimir.has_learned_raking = true
+	$Vladimir.has_learned_raking = false
 	
 	$Vladimir/Camera.current = true
 # ------------------------------------------------------------------------------
@@ -44,6 +52,8 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	#print("next_level: ",Global.next_level)
 	if SaveLoad.slots["slot_4"].has("[res://Level/TestLevel.tscn, Vladimir]"):
 		$Vladimir.set_values(SaveLoad.slots["slot_4"]["[res://Level/TestLevel.tscn, Vladimir]"])
+	
+	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -65,7 +75,7 @@ func _process(delta):
 			is_done_once = false
 			emit_signal("enemy_health_changed")
 			
-			$Vladimir.position = Vector2(6980, 5805)
+			$Vladimir.position = Vector2(6980, 5820)
 			$Vladimir.is_moving = false
 # ------------------------------------------------------------------------------
 

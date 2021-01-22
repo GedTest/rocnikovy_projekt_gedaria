@@ -1,5 +1,8 @@
 # ignore godot inner files
 project.godot
+*.exe
+*.pck
+*.cfg
 
 # texture files
 *.res

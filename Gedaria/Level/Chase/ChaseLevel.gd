@@ -24,7 +24,9 @@ func add_floor_tile():
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
+	$StartingPlatform2/Label.text = Global.language["czech"]["jumping"]
 	$StartingPlatform2/Label.show()
+	$StartingPlatform3/Label.text = Global.language["czech"]["crawling"]
 	$StartingPlatform3/Label.show()
 	
 	yield(get_tree().create_timer(0.4), "timeout")

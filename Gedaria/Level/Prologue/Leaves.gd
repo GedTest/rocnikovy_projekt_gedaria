@@ -11,7 +11,7 @@ func _on_Area2D_body_entered(body):
 		enemy = body
 		enemy.is_hitted = true
 		enemy.is_blocking = false
-		enemy.speed = 0
+		enemy.is_moving = false
 		enemy.state_machine.travel('HIT_LOOP')
 		if enemy.is_dead:
 			enemy.state_machine.travel('DEATH')
@@ -20,5 +20,5 @@ func _on_Area2D_body_entered(body):
 func _on_Timer_timeout():
 	enemy.is_hitted = false
 	enemy.is_blocking = true
-	enemy.speed = 160
+	enemy.is_moving = true
 	queue_free()

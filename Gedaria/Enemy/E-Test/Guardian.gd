@@ -6,7 +6,7 @@ export (int) var starting_position
 
 var turn_around_timer = null
 
-var is_moving = true
+var can_move_from_position = true
 
 
 func _ready():
@@ -57,7 +57,7 @@ func move(): # MOVE
 				state_machine.travel('run')
 			else:
 				state_machine.travel('standing')
-				speed = 0
+				can_move_from_position = false
 				
 		# FOLLOW PLAYER OR NOT
 		if has_player:
@@ -68,12 +68,12 @@ func move(): # MOVE
 				player = null
 				return
 			
-			is_moving = true if distance > 125 else false
+			can_move_from_position = true if distance > 125 else false
 			
 			# MOVE TOWARDS PLAYER (RIGHT)
 			if player.position.x <= position.x+FoV and player.position.x > position.x:
 				if !can_attack:
-					speed = movement_speed
+					#speed = movement_speed
 					direction = 1
 					$Shield.position.x = 75
 					$Sprite.flip_h = true
@@ -83,7 +83,7 @@ func move(): # MOVE
 			# MOVE TOWARDS PLAYER (LEFT)
 			elif player.position.x >= position.x-FoV and player.position.x < position.x:
 				if !can_attack:
-					speed = movement_speed
+					#speed = movement_speed
 					direction = -1
 					$Shield.position.x = -75
 					$Sprite.flip_h = false
@@ -97,7 +97,7 @@ func move(): # MOVE
 					if !is_yield_paused:
 						yield(turn_around_timer, "timeout")
 		
-		velocity.x = speed * direction * int(is_moving)
+		velocity.x = speed * direction * int(can_move_from_position)
 # ------------------------------------------------------------------------------
 
 func hit(dmg):
@@ -118,7 +118,7 @@ func hit(dmg):
 
 func attack(): # DO ATTACK
 	if !is_dead:
-		is_moving = false
+		can_move_from_position = false
 		$AnimationTree.set("parameters/ATTACK/blend_position",direction)
 		state_machine.travel('ATTACK')
 		
@@ -133,6 +133,6 @@ func attack(): # DO ATTACK
 			attack_timer = get_tree().create_timer(1.2, false)
 			if !is_yield_paused:
 				yield(attack_timer, "timeout")
-				speed = movement_speed
+				#speed = movement_speed
 				is_attacking = false
-				is_moving = true
+				can_move_from_position = true

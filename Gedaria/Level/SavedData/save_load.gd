@@ -268,6 +268,7 @@ func save_to_file(slot):
 	save_game.close()
 # ------------------------------------------------------------------------------
 func load_from_file(slot):
+	Global.stop_enemy_timers()
 	print("slot: ",slot," load_from_file ",paths[slot-1])
 	var save_game = File.new()
 	

@@ -63,7 +63,7 @@ func _process(delta):
 			#self.set_collision_mask_bit(1, true)
 			yield(get_tree().create_timer(1.0), "timeout")
 			self.mode = RigidBody2D.MODE_RIGID
-	else:
+	elif is_movable:
 		self.set_collision_layer_bit(0, true)
 		#self.set_collision_mask_bit(1, true)
 		self.mode = RigidBody2D.MODE_RIGID

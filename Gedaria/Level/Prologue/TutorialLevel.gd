@@ -2,7 +2,6 @@ extends Node2D
 
 onready var Boss_Warden = preload("res://Enemy/BOSS_Warden/BOSS_Warden.tscn")
 onready var Letter = preload("res://Level/Prologue/Letter.tscn")
-onready var block_tutorial = $BlockingTutorial
 
 
 var is_boss_on_map = false
@@ -16,7 +15,6 @@ var Boss = null
 
 
 func _ready():
-	$Camera2D.current = true
 	$Vladimir.has_learned_attack = false
 	$Vladimir.has_learned_blocking = false
 	$Vladimir.has_learned_heavy_attack = false
@@ -28,6 +26,7 @@ func _ready():
 	yield(get_tree().create_timer(3.0), "timeout")
 	
 	if $Vladimir.position.x == 150:
+		$MovementTutorial.text = Global.language["czech"]["movement"]
 		$MovementTutorial.show()
 		yield(get_tree().create_timer(4.0), "timeout")
 		$MovementTutorial.queue_free()
@@ -77,7 +76,7 @@ func _process(delta):
 		$BossHPBar/Label.text = 'Warden: ' + str($Boss.health) 
 		$BossHPBar/Health.rect_size.x = 60 * $Boss.health
 		
-		$Boss.move_children()
+		$Boss.move()
 		
 		# BOSSES SECOND PHASE
 		if $Boss.health <= $Boss.max_health / 2:
@@ -98,6 +97,7 @@ func _process(delta):
 func _on_InteractTutorial_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		is_item_interactable = true
+		$InteractTutorial/Label.text = Global.language["czech"]["interaction"]
 		$InteractTutorial/Label.show()
 # ------------------------------------------------------------------------------
 
@@ -109,6 +109,7 @@ func _on_InteractTutorial_body_exited(body):
 
 func _on_CombatTutorial_body_entered(body):
 	if body.get_collision_layer_bit(1) and is_item_picked_up:
+		$CombatTutorial/Label.text = Global.language["czech"]["attack"]
 		$CombatTutorial/Label.show()
 # ------------------------------------------------------------------------------
 
@@ -118,6 +119,7 @@ func _on_CombatTutorial_body_exited(body):
 # ------------------------------------------------------------------------------
 
 func _on_Scarecrow_tree_exiting():
+	print("hello ")
 	$CombatTutorial.queue_free()
 	yield(get_tree().create_timer(0.2), "timeout")
 	
@@ -130,11 +132,12 @@ func _on_Scarecrow_tree_exiting():
 	is_boss_on_map = true
 	yield(get_tree().create_timer(1.5), "timeout")
 	
-	block_tutorial.show()
+	$BlockingTutorial.text = Global.language["czech"]["blocking"]
+	$BlockingTutorial.show()
 	$Vladimir.has_learned_blocking = true
 	yield(get_tree().create_timer(4.0), "timeout")
 	
-	block_tutorial.queue_free()
+	$BlockingTutorial.queue_free()
 	$Branch/Area2D2/CollisionShape2D.disabled = false
 # ------------------------------------------------------------------------------
 

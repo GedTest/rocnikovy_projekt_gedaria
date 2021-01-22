@@ -10,7 +10,6 @@ var is_throwing = false
 var is_done_once = true
 var can_jump = true
 var is_in_air = false
-var is_moving = true
 var is_hitted = false
 
 var boost = 1
@@ -31,6 +30,7 @@ func _ready():
 	throw_timer = get_tree().create_timer(0.0, false)
 	
 	yield(get_tree().create_timer(10.0, false), "timeout")
+	$Dialog.text = Global.language["czech"]["boss_warden_quote"]
 	$Dialog.show()
 	yield(get_tree().create_timer(4.0, false), "timeout")
 	$Dialog.queue_free()
@@ -51,7 +51,7 @@ func _process(delta):
 		# 2ND PHASE OF BOSSFIGHT
 		if health == max_health / 2 and is_done_once:
 			get_parent().add_child(BirdPath)
-			BirdPath.position = Vector2(1920,400)
+			BirdPath.position = Vector2(1920, 400)
 			jump()
 			is_done_once = false
 			can_throw = true
@@ -80,6 +80,7 @@ func _process(delta):
 				if hit_in_row_timer.time_left <= 0.0:
 					hit_in_row_timer = get_tree().create_timer(3.5, false)
 					yield(hit_in_row_timer, "timeout")
+					is_moving = true
 					hit_in_row = 0
 		# If there weren't 2 hits in a row, he is in blocking state
 			elif hit_in_row != 2 and is_attacking:
@@ -91,7 +92,7 @@ func _process(delta):
 		velocity = move_and_slide(velocity)
 # ------------------------------------------------------------------------------
 
-func move_children(): # HANDLE MOVEMENT
+func move(): # HANDLE MOVEMENT
 	if !is_dead:
 		$AnimationTree.set("parameters/JUMP/blend_position", direction)
 		
@@ -123,11 +124,10 @@ func move_children(): # HANDLE MOVEMENT
 				$HitRay.cast_to.x = FoV
 				$HitRay2.cast_to.x = FoV
 		
-		velocity.x = speed * direction * boost
+		velocity.x = speed * direction * boost * int(is_moving)
 # ------------------------------------------------------------------------------		
 
 func attack(): # PRIMARY ATTACK - THRESH
-	speed = 0 # Stop moving
 	is_moving = false # Stop moving
 	$AnimationTree.set("parameters/ATTACK/blend_position", direction)
 	state_machine.travel('ATTACK')
@@ -144,13 +144,11 @@ func attack(): # PRIMARY ATTACK - THRESH
 			yield(attack_timer, "timeout")
 			if !has_player:
 				is_moving = true
-				speed = 200
 			
 		if cooldown_timer.time_left <= 0.0 and !is_throwing:
 			cooldown_timer = get_tree().create_timer(2.5, false)
 			yield(cooldown_timer, "timeout")
 			is_moving = true
-			speed = 200
 			is_attacking = false
 # ------------------------------------------------------------------------------
 
@@ -166,22 +164,21 @@ func jump(): # JUMP IN DISTANCE SO HE CAN THROW
 	# ensure the he can't jump out of screen
 	if !is_hitted:
 		if position.x > from -200 and position.x < to +200:
-			is_moving = false
+			is_moving = false   #####
 			speed = 200
 			
 			speed -= 900
 			velocity.y = -1200
 			yield(get_tree().create_timer(0.5, false), "timeout")
 			is_in_air = true
-			if can_jump:
-				is_moving = true
+			if can_jump:         #####
+				is_moving = true #####
 # ------------------------------------------------------------------------------
 
 func throw(): # SECONDARY ATTACK - THROW
 	can_throw = false
 	is_throwing = true
 	is_moving = false
-	speed = 0
 	
 	$AnimationTree.set("parameters/THROW_CATCH/blend_position", direction)
 	state_machine.travel('THROW_CATCH')
@@ -202,7 +199,6 @@ func throw(): # SECONDARY ATTACK - THROW
 		can_throw = true
 		is_throwing = false
 		is_moving = true
-		speed = 200
 # ------------------------------------------------------------------------------
 
 func hit(dmg):

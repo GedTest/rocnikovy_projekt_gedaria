@@ -11,11 +11,20 @@ onready var arr_guardians = [
 	$Guardian,$Guardian2,$Guardian3,$Guardian4,$Guardian5,
 	$Guardian6,
 ]
-
+onready var arr_shooters = [
+	$Shooter,$Shooter2,$Shooter3,$Shooter4,
+	$Shooter5,$Shooter6,$Shooter7,$Shooter8,
+	$Shooter9,$Shooter10,$Shooter11,$Shooter12,
+	$Shooter13,
+]
+var arr_enemies = null
 var is_yield_paused = false
 
 
 func _ready():
+	if ! Global.level_root().filename in SaveLoad.visited_maps:
+		$Vladimir.position = $Level_start.position
+		
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
 	
@@ -43,10 +52,11 @@ func _on_LoadingTimer_timeout():
 	print("vladimir_data: ", vladimir_data)
 	
 	print("has data? ",SaveLoad.slots["slot_4"].has(vladimir_data))
-	#if SaveLoad.slots["slot_4"][vladimir_data]:
-	$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
+	if SaveLoad.slots["slot_4"][vladimir_data]:
+		$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
 		
 	$CanvasLayer/UserInterface.load_ui_icons()
+	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
 # ------------------------------------------------------------------------------
 
 func _process(delta):
