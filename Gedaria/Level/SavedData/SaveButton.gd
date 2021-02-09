@@ -16,7 +16,7 @@ func update():
 			text = "save to slot " + str(slot)
 		else:
 			text = "overwrite slot " + str(slot)
-	else:
+	elif type == "LOAD" and name != "RestartButton":
 		if SaveLoad.slots["slot_"+str(slot)].empty():
 			text = "EMPTY"
 		else:

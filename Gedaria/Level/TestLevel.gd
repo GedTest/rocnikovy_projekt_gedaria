@@ -21,17 +21,14 @@ var arr_enemies = null
 
 
 func _ready():
-	#if ! Global.level_root().filename in SaveLoad.visited_maps:
-	#	$Vladimir.position = $Level_start.position
-		
+	Global.set_player_position_at_start($Vladimir, $Level_start)
+	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
 	
 	connect("enemy_health_changed", $FallingTree, "on_enemy_health_changed")
 	
-#	$Vladimir.has_learned_attack = true
 	$Vladimir.has_learned_heavy_attack = false
-#	$Vladimir.has_learned_blocking = true
 	$Vladimir.has_learned_raking = false
 	
 	$Vladimir/Camera.current = true
@@ -69,6 +66,7 @@ func _process(delta):
 		
 	if $PilesOfLeaves/PileOfLeaves1.is_complete:
 		$Wind.position = Vector2(35500, 7000)
+		$Tutorial7.position = Vector2(35310, 7140)
 	
 	if find_node("Patroller5"):
 		if find_node("Patroller5").health <= 2 and is_done_once:
@@ -82,7 +80,7 @@ func _process(delta):
 func _on_KillZone_body_entered(body): # Kills player if he fall into
 	if body.get_collision_layer_bit(1):
 		yield(get_tree().create_timer(0.5), "timeout")
-		$Vladimir.die()
+		body.die()
 # ------------------------------------------------------------------------------
 
 func _on_AmbushArea_body_entered(body):

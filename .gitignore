@@ -3,6 +3,8 @@ project.godot
 *.exe
 *.pck
 *.cfg
+IG.gd
+IG.tscn
 
 # texture files
 *.res

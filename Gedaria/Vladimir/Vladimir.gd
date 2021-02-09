@@ -246,7 +246,8 @@ func rake(): # RAKE LEAVES TO CREATE PILE OF LEAVES
 
 func hit(var dmg):
 	if !is_dead:
-		get_parent().find_node("UserInterface").update_health(dmg, 'minus', health, max_health)
+		Global.level_root().find_node("UserInterface") \
+		.update_health(dmg, 'minus', health, max_health)
 		health -= dmg
 		is_hitted = true
 		

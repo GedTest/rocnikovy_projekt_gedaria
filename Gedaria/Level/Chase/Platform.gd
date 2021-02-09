@@ -27,7 +27,7 @@ func _ready():
 	if randi()%2 + 1 == 1:
 		mud = Mud.instance()
 		mud.force = 0.75
-		mud.speed = 0.625
+		mud.speed = 0.675
 		add_child(mud)
 	
 	upper_obstacle = UpperObstacle.instance()
@@ -42,7 +42,7 @@ func rand_spawn():
 	upper_obstacle.position = arr_position[randi() % 4 + 4].position
 	if mud:
 		var pos = arr_position[randi() % 4].position
-		mud.position = Vector2(pos.x -250, pos.y)
+		mud.position = Vector2(pos.x -250, pos.y+13)
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):  # Spawn next Platform

@@ -50,8 +50,6 @@ func update_current_data():
 				var dict = node.save()
 				for y in dict:
 					node_data[y] = dict[y]
-					if node.name == "Vladimir":
-						print(node_data[y])
 			
 			# stich save data together
 			#current_data[[level_root().get_filename(), node.name]] = node_data
@@ -82,8 +80,8 @@ func update_current_data():
 	
 		#for x in arr:
 		current_data["globals"]["blue_berries"] = Global.blue_berries
+		current_data["globals"]["prefered_language"] = Global.prefered_language
 			
-		#print(current_data["[res://Level/TestLevel.tscn, Vladimir]"])
 		#print("CURRENT_DATA: ",current_data)
 # ------------------------------------------------------------------------------
 func update_map_data():
@@ -245,6 +243,7 @@ func load_from_slot(slot_name):
 	#for x in slots[slot_name]["globals"].keys():
 	#	Global.set(x, slots[slot_name]["globals"][x])
 	Global.blue_berries = slots[slot_name]["globals"]["blue_berries"]
+	Global.prefered_language = slots[slot_name]["globals"]["prefered_language"]
 	
 	is_yield_paused = true
 	

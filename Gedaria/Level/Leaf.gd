@@ -7,7 +7,8 @@ export(String, "res://UI/list_buk.png",
 	"res://UI/list_břečťan.png", "res://UI/list_dub.png",
 	"res://UI/list_ginko_biloba.png", "res://UI/list_kopřiva.png",
 	"res://UI/list_lipa.png", "res://UI/list_olše.png",
-	"res://UI/list_ořech.png", "res://UI/4.png", "res://UI/8.png"
+	"res://UI/list_ořech.png", "res://UI/list_javor_červený.png", 
+	"res://UI/list_javor_velkolistý.png"
 ) var texture = "res://UI/list_olše.png"
 
 func _ready():

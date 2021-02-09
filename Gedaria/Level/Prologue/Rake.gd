@@ -15,6 +15,7 @@ func _process(delta):
 	$Label.text = "Press button " + button
 		
 	if Input.is_action_just_pressed(button) and get_parent().is_item_interactable:
+		get_parent().find_node("Cameraa").current = false
 		randomize()
 		match button:
 			"Left Arrow": position.x -= 12

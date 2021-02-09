@@ -13,12 +13,14 @@ func _on_Area2D_body_entered(body):
 		enemy.is_blocking = false
 		enemy.is_moving = false
 		enemy.state_machine.travel('HIT_LOOP')
+		enemy.find_node("stars").emitting = true
 		if enemy.is_dead:
 			enemy.state_machine.travel('DEATH')
 # ------------------------------------------------------------------------------
 
 func _on_Timer_timeout():
+	enemy.find_node("stars").emitting = false
 	enemy.is_hitted = false
 	enemy.is_blocking = true
 	enemy.is_moving = true
-	queue_free()
+	self.queue_free()

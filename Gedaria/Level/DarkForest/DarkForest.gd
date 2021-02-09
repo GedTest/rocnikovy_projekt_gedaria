@@ -1,6 +1,5 @@
 extends Node2D
 
-var PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
 
 onready var arr_patrollers = [
 	$Patroller,$Patroller2,$Patroller3,$Patroller4,$Patroller5,
@@ -19,12 +18,12 @@ onready var arr_shooters = [
 ]
 var arr_enemies = null
 var is_yield_paused = false
+var enabled_animation = false
 
 
 func _ready():
-	if ! Global.level_root().filename in SaveLoad.visited_maps:
-		$Vladimir.position = $Level_start.position
-		
+	Global.set_player_position_at_start($Vladimir, $Level_start)
+	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
 	
@@ -49,11 +48,11 @@ func _on_LoadingTimer_timeout():
 			
 			
 	var vladimir_data = "[res://Level/MerchantSquirrel.tscn, Vladimir]"
-	print("vladimir_data: ", vladimir_data)
+	#print("vladimir_data: ", vladimir_data)
 	
-	print("has data? ",SaveLoad.slots["slot_4"].has(vladimir_data))
-	if SaveLoad.slots["slot_4"][vladimir_data]:
-		$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
+	#print("has data? ",SaveLoad.slots["slot_4"].has(vladimir_data))
+	#if SaveLoad.slots["slot_4"][vladimir_data]:
+	#	$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
 		
 	$CanvasLayer/UserInterface.load_ui_icons()
 	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
@@ -72,16 +71,25 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func _on_Mushroom_tree_exited():
+	if enabled_animation:
+		$AnimationPlayer.play("secret_passage")
+		$Vladimir.can_move = false
 	$InvisibleWall.queue_free()
 # ------------------------------------------------------------------------------
 
 func _on_KillZone_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		yield(get_tree().create_timer(0.25), "timeout")
-		$Vladimir.die()
+		body.die()
 # ------------------------------------------------------------------------------
 
-func _on_added_pebble(old_pebble_position):
-	var new_pebble = PebblePath.instance()
-	$Pebbles.call_deferred("add_child", new_pebble)
-	new_pebble.position = old_pebble_position
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$Vladimir/Camera.current = true
+	$Vladimir.can_move = true
+	print("wtf")
+	$TutorialSign.position = Vector2(6430, 6035)
+# ------------------------------------------------------------------------------
+
+func _on_DisableAnimation_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		enabled_animation = true

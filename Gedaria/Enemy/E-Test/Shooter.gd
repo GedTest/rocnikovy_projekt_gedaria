@@ -32,7 +32,7 @@ func turn_around(): # LOOK BACK AND FORTH
 		$HitRay.cast_to.x = -$HitRay.cast_to.x
 		
 		if turn_around_timer.time_left <= 0.0:
-			turn_around_timer = get_tree().create_timer(0.75, false)
+			turn_around_timer = get_tree().create_timer(1.15, false)
 			if !is_yield_paused:
 				yield(turn_around_timer, "timeout")
 				if !has_player:
@@ -43,7 +43,7 @@ func turn_around(): # LOOK BACK AND FORTH
 func shoot(): # FIRE A PROJECTILE 
 	if !is_dead:
 		if attack_timer.time_left <= 0.0:
-			attack_timer = get_tree().create_timer(2.0, false)
+			attack_timer = get_tree().create_timer(3.25, false)
 			if !is_yield_paused:
 				yield(attack_timer, "timeout")
 				if has_player:

@@ -76,6 +76,7 @@ func update_health(var value, var condition : String, var current_health, \
 				var next_life = $leaves.get_children()[max_health]
 				arr_max_health.append(next_life)
 				arr_max_health[max_health].show()
+				arr_max_health[max_health].find_node('Leaf').show()
 # ------------------------------------------------------------------------------
 
 func update_pebbles(var num, var condition : String, var pebble_counter):
@@ -104,11 +105,12 @@ func save():
 
 func load_ui_icons():
 	yield(get_tree().create_timer(0.25), "timeout")
-	for leaf in arr_max_health:
-		leaf.hide()
+	for leaf_holder in arr_max_health:
+		leaf_holder.find_node('Leaf').hide()
 	
-	for leaf in range(current_health):
-		arr_max_health[leaf].show()
+	for leaf_holder in range(current_health):
+		arr_max_health[leaf_holder].find_node('Leaf').show()
+		arr_max_health[leaf_holder].show()
 
 	for pebble in arr_pebbles:
 		pebble.hide()

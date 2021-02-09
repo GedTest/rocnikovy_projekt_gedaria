@@ -13,22 +13,31 @@ var is_yield_paused = false
 
 var Boss = null
 
+onready var arr_texts = {
+	"movement":$MovementTutorial/Label,
+	"interaction":$InteractTutorial/Text/TextSprite/RichTextLabel,
+	"attack":$CombatTutorial/TextBg/Label,
+	"blocking":$BlockingTutorial/Label,
+}
+
 
 func _ready():
+	Languages.translate(arr_texts, Global.prefered_language)
+	get_tree().paused = false
 	$Vladimir.has_learned_attack = false
 	$Vladimir.has_learned_blocking = false
 	$Vladimir.has_learned_heavy_attack = false
 	$Vladimir.has_learned_raking = false
 	$Vladimir/AnimationTree.active = false
+	$Vladimir/Camera.current = false
 	
 	$Vladimir.state_machine = $Vladimir/AnimationTree2.get("parameters/playback")
 	$Vladimir/Sprite.hide()
 	yield(get_tree().create_timer(3.0), "timeout")
 	
 	if $Vladimir.position.x == 150:
-		$MovementTutorial.text = Global.language["czech"]["movement"]
 		$MovementTutorial.show()
-		yield(get_tree().create_timer(4.0), "timeout")
+		yield(get_tree().create_timer(3.0), "timeout")
 		$MovementTutorial.queue_free()
 # ------------------------------------------------------------------------------
 
@@ -49,7 +58,7 @@ func _process(delta):
 			$Vladimir.remove_child($Vladimir/Sprite2)
 			$Rake.call_deferred("queue_free")
 			$Vladimir.has_learned_attack = true
-			$InteractTutorial.queue_free()
+			$InteractTutorial/CollisionShape2D.disabled = true
 			$Tree.show()
 			$Tree.play('Grow')
 			$Shake.start(15, 1.25, 0.1)
@@ -62,9 +71,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if is_item_interactable:
 			$Rake/Label.show()
-			$InteractTutorial.hide()
-			# Set new animation set
+			
 		if is_letter_on_map and $Letter.is_interactable:
+			$Branch/leaves.hide()
+			$Branch/AnimationPlayer.stop()
 			$Letter/Text.show()
 			yield(get_tree().create_timer(7.0), "timeout")
 			
@@ -90,36 +100,34 @@ func _process(delta):
 		if $Boss.is_dead and is_boss_on_map:
 			is_boss_on_map = false
 			is_letter_on_map = true
-			add_child(Letter.instance())
+			self.add_child(Letter.instance())
 			$Letter.position = Vector2($Boss.position.x, $Boss.position.y+100)
 # ------------------------------------------------------------------------------
 
 func _on_InteractTutorial_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		is_item_interactable = true
-		$InteractTutorial/Label.text = Global.language["czech"]["interaction"]
-		$InteractTutorial/Label.show()
+		$InteractTutorial/Text/TextSprite/RichTextLabel.show()
 # ------------------------------------------------------------------------------
 
 func _on_InteractTutorial_body_exited(body):
 	if body.get_collision_layer_bit(1):
 		is_item_interactable = false
-		$InteractTutorial/Label.hide()
+		$InteractTutorial/Text/TextSprite/RichTextLabel.hide()
 # ------------------------------------------------------------------------------
 
 func _on_CombatTutorial_body_entered(body):
+	print(body.name)
 	if body.get_collision_layer_bit(1) and is_item_picked_up:
-		$CombatTutorial/Label.text = Global.language["czech"]["attack"]
-		$CombatTutorial/Label.show()
+		$CombatTutorial.show()
 # ------------------------------------------------------------------------------
 
 func _on_CombatTutorial_body_exited(body):
 	if body.get_collision_layer_bit(1):
-		$CombatTutorial/Label.hide()
+		$CombatTutorial.hide()
 # ------------------------------------------------------------------------------
 
 func _on_Scarecrow_tree_exiting():
-	print("hello ")
 	$CombatTutorial.queue_free()
 	yield(get_tree().create_timer(0.2), "timeout")
 	
@@ -132,10 +140,9 @@ func _on_Scarecrow_tree_exiting():
 	is_boss_on_map = true
 	yield(get_tree().create_timer(1.5), "timeout")
 	
-	$BlockingTutorial.text = Global.language["czech"]["blocking"]
 	$BlockingTutorial.show()
 	$Vladimir.has_learned_blocking = true
-	yield(get_tree().create_timer(4.0), "timeout")
+	yield(get_tree().create_timer(5.0), "timeout")
 	
 	$BlockingTutorial.queue_free()
 	$Branch/Area2D2/CollisionShape2D.disabled = false

@@ -67,6 +67,8 @@ func _process(delta):
 		self.set_collision_layer_bit(0, true)
 		#self.set_collision_mask_bit(1, true)
 		self.mode = RigidBody2D.MODE_RIGID
+	else:
+		self.set_collision_layer_bit(0, true)
 # ------------------------------------------------------------------------------
 
 func save():

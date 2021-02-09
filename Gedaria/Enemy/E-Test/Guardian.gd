@@ -105,8 +105,8 @@ func hit(dmg):
 		# CALLING THE "BASE FUNTCION" FIRST
 		.hit(dmg)
 	
+	hit_in_row += 1 if dmg < 5 else 3
 	var knockbackDistance = 0
-	hit_in_row += 1
 	
 	# KNOCKBACK WHILE BLOCKING
 	if is_blocking and int(position.x) != starting_position:

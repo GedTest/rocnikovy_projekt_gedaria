@@ -11,7 +11,8 @@ export(String, "res://UI/list_buk.png",
 	"res://UI/list_břečťan.png", "res://UI/list_dub.png",
 	"res://UI/list_ginko_biloba.png", "res://UI/list_kopřiva.png",
 	"res://UI/list_lipa.png", "res://UI/list_olše.png",
-	"res://UI/list_ořech.png", "res://UI/4.png", "res://UI/8.png"
+	"res://UI/list_ořech.png", "res://UI/list_javor_červený.png", 
+	"res://UI/list_javor_velkolistý.png"
 ) var texture = "res://UI/list_olše.png"
 
 var leaf = null
@@ -53,7 +54,7 @@ func _on_Area2D_body_entered(body):
 				self.set_collision_mask_bit(3, true)
 				leaf = null
 	
-	if body.get_collision_layer_bit(5) and is_destroyable:
+	if body.get_collision_layer_bit(5) and is_destroyable and !is_empty:
 		self.spawn_leaf()
 		SaveLoad.delete_actor(self)
 # ------------------------------------------------------------------------------
@@ -77,6 +78,8 @@ func _on_Area2D_area_entered(area):
 		
 		self.set_collision_layer_bit(3, false)
 		self.set_collision_mask_bit(3, false)
+		if is_destroyable:
+			SaveLoad.delete_actor(self)
 # ------------------------------------------------------------------------------
 
 func show_leaf():

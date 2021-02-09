@@ -14,5 +14,6 @@ func _on_BridgeArea_body_entered(body):
 		
 		vladimir.find_node("Camera").current = true
 		vladimir.is_moving = true
+		vladimir.velocity = vladimir.GRAVITY
 		SaveLoad.delete_actor(get_parent().find_node("PebbleProtector"))
 		SaveLoad.delete_actor(self)

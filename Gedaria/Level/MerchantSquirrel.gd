@@ -10,7 +10,7 @@ onready var UI = $CanvasLayer/UserInterface
 var is_yield_paused = false
 var arr_levels = [
 	"res://Level/TestLevel.tscn","res://Level/DarkForest/DarkForest.tscn",
-	"ahoj_level"
+	"res://Level/Cave_entrance/Cave_entrance.tscn",
 ]
 var damage_upgrade_counter = 1
 var health_upgrade_counter = 1
