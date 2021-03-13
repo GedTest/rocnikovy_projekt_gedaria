@@ -94,8 +94,12 @@ func _physics_process(delta):
 
 func jump(): # JUMP
 	if Input.is_action_just_pressed("jump"):
-		can_jump = true if ($GroundRay.is_colliding() or $GroundRay2.is_colliding()) else false
-			
+		can_jump = true if (
+							$GroundRay.is_colliding() or
+							$GroundRay2.is_colliding() or
+							$GroundRay3.is_colliding()
+							)else false
+		
 		if can_jump:
 			jumped_height.y = position.y
 			velocity.y = -jump_strength
@@ -119,8 +123,8 @@ func move(): # MOVE
 	$Sprite.flip_v = false
 	if !is_hitted and !is_attacking and !is_raking and !is_dead and !is_aimining:
 		state_machine.travel(animation)
-
 # ------------------------------------------------------------------------------
+
 func crouch(): # CROUCH
 	var bCanStandUp = false if $CeilingRay.is_colliding() else true
 	
@@ -175,7 +179,7 @@ func heavy_attack(): # HEAVY ATTACK, slow but high dmg
 						if enemy and can_attack:
 							enemy.is_heavy_attacked = true
 							enemy.hit(damage)
-							#enemy.position.x -= 200 * enemy.direction
+							enemy.position.x -= 50 * enemy.direction
 # ------------------------------------------------------------------------------
 
 func shoot():
@@ -317,5 +321,5 @@ func set_values(data):
 			value == "file" or \
 			value == "parent":
 			continue
-		#print(typeof(value)," - ",value,": ",data[value])
+		print(typeof(value)," - ",value,": ",data[value])
 		self.set(value, data[value])

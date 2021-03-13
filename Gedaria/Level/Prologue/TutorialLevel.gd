@@ -1,8 +1,11 @@
 extends Node2D
 
-onready var Boss_Warden = preload("res://Enemy/BOSS_Warden/BOSS_Warden.tscn")
-onready var Letter = preload("res://Level/Prologue/Letter.tscn")
-
+onready var BossWardenPath = preload("res://Enemy/BOSS_Warden/BOSS_Warden.tscn")
+onready var LetterPath = preload("res://Level/Prologue/Letter.tscn")
+onready var MushroomPath = preload("res://Level/Mushroom.tscn")
+onready var spawn_positions = [$Position1.position, 
+							   $Position2.position, 
+							   $Position3.position]
 
 var is_boss_on_map = false
 var is_letter_on_map = false
@@ -11,7 +14,7 @@ var is_item_picked_up = false
 var is_rake_picked_up = false
 var is_yield_paused = false
 
-var Boss = null
+var boss = null
 
 onready var arr_texts = {
 	"movement":$MovementTutorial/Label,
@@ -46,6 +49,14 @@ func _process(delta):
 	if $Vladimir.health <= 0 and $timer.time_left == 0.0:
 			get_tree().paused = true
 			$timer.start()
+	
+	if $Vladimir.health <= 4:
+		if $Mushrooms.get_child_count() == 0:
+			var mushroom = MushroomPath.instance()
+			var rand_index = randi() % 3
+			mushroom.position = spawn_positions[rand_index]
+			mushroom.hp = "plus"
+			$Mushrooms.add_child(mushroom)
 	
 	if is_rake_picked_up:
 		is_rake_picked_up = false
@@ -98,9 +109,10 @@ func _process(delta):
 			
 		# IF BOSS IS NO MORE SHOW A LETTER
 		if $Boss.is_dead and is_boss_on_map:
+			$Boss.z_index = 0
 			is_boss_on_map = false
 			is_letter_on_map = true
-			self.add_child(Letter.instance())
+			self.add_child(LetterPath.instance())
 			$Letter.position = Vector2($Boss.position.x, $Boss.position.y+100)
 # ------------------------------------------------------------------------------
 
@@ -131,9 +143,9 @@ func _on_Scarecrow_tree_exiting():
 	$CombatTutorial.queue_free()
 	yield(get_tree().create_timer(0.2), "timeout")
 	
-	Boss = Boss_Warden.instance()
-	add_child(Boss)
-	Boss.name = "Boss"
+	boss = BossWardenPath.instance()
+	add_child(boss)
+	boss.name = "Boss"
 	$Boss.position = Vector2(5, 910)
 	yield(get_tree().create_timer(0.2), "timeout")
 	

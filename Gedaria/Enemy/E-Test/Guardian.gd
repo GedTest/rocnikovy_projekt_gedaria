@@ -66,14 +66,15 @@ func move(): # MOVE
 				$HitRay.enabled = false
 				has_player = false
 				player = null
+				$Shield/CollisionShape2D.disabled = true
 				return
 			
+			$Shield/CollisionShape2D.disabled = false
 			can_move_from_position = true if distance > 125 else false
 			
 			# MOVE TOWARDS PLAYER (RIGHT)
 			if player.position.x <= position.x+FoV and player.position.x > position.x:
 				if !can_attack:
-					#speed = movement_speed
 					direction = 1
 					$Shield.position.x = 75
 					$Sprite.flip_h = true
@@ -83,7 +84,6 @@ func move(): # MOVE
 			# MOVE TOWARDS PLAYER (LEFT)
 			elif player.position.x >= position.x-FoV and player.position.x < position.x:
 				if !can_attack:
-					#speed = movement_speed
 					direction = -1
 					$Shield.position.x = -75
 					$Sprite.flip_h = false
@@ -98,6 +98,26 @@ func move(): # MOVE
 						yield(turn_around_timer, "timeout")
 		
 		velocity.x = speed * direction * int(can_move_from_position)
+# ------------------------------------------------------------------------------
+
+func move_in_range(from, to):
+	if int(position.x) < from+1:
+		starting_position = to
+		dir = 1
+		direction = 1
+		$Shield.position.x = 75
+		$Sprite.flip_h = true
+		$HitRay.cast_to.x = FoV
+		$BackwardRay.cast_to.x = -110
+		
+	if int(position.x) > to-10:
+		starting_position = from
+		dir = -1
+		direction = -1
+		$Shield.position.x = -75
+		$Sprite.flip_h = false
+		$HitRay.cast_to.x = -FoV
+		$BackwardRay.cast_to.x = 110
 # ------------------------------------------------------------------------------
 
 func hit(dmg):

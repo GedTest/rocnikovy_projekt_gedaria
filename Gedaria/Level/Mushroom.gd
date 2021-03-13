@@ -11,7 +11,6 @@ func _on_Area2D_body_entered(body):
 	match hp:
 		"plus":
 			if body.get_collision_layer_bit(1) and body.health < body.max_health:
-				$Area2D/CollisionShape2D.shape = null
 				get_parent().get_parent().find_node("UserInterface").\
 				update_health(1, hp, body.health, body.max_health)
 				body.health += 1
@@ -19,7 +18,6 @@ func _on_Area2D_body_entered(body):
 				
 		"minus":
 			if body.get_collision_layer_bit(1) and body.health > 0:
-				$Area2D/CollisionShape2D.shape = null
 				body.hit(damage)
 				SaveLoad.delete_actor(self)
 # ------------------------------------------------------------------------------

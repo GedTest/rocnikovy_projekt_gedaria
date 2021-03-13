@@ -8,7 +8,7 @@ export (Vector2) var direction = Vector2(-1, -1)
 export (int) var has_leaf = 0
 export (bool) var is_destroyable = false
 export(String, "res://UI/list_buk.png",
-	"res://UI/list_břečťan.png", "res://UI/list_dub.png",
+	"res://UI/list_břečťan.png","res://UI/list_dub.png",
 	"res://UI/list_ginko_biloba.png", "res://UI/list_kopřiva.png",
 	"res://UI/list_lipa.png", "res://UI/list_olše.png",
 	"res://UI/list_ořech.png", "res://UI/list_javor_červený.png", 

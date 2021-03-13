@@ -50,7 +50,6 @@ func _process(delta):
 	
 		# 2ND PHASE OF BOSSFIGHT
 		if health == max_health / 2 and is_done_once:
-			get_parent().find_node("Branch").shake()
 			get_parent().add_child(BirdPath)
 			BirdPath.position = Vector2(1920, 400)
 			jump()

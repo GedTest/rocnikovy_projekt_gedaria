@@ -1,20 +1,23 @@
 extends Node
 
 
-var blue_berries = 0
-var last_map = ""
 var arr_levels = [
-	"res://Level/TestLevel.tscn","res://Level/DarkForest/DarkForest.tscn",
-	"res://Level/Cave_entrance/Cave_entrance.tscn"
+	"res://Level/TestLevel.tscn",
+	"res://Level/DarkForest/DarkForest.tscn",
+	"res://Level/CaveEntrance/CaveEntrance.tscn",
+	"res://Level/CultInCave/CultInCave.tscn",
+	"",
 ]
+var last_map = ""
 var prefered_language = "čeština"
 
-
-var next_level_id = arr_levels.find(last_map) - 1
-var prev_level_id = arr_levels.find(last_map) + 1
+var blue_berries = 0
+var next_level_id = 1
+var prev_level_id = 0
 
 var is_pausable = false
 var is_yield_paused = false
+var first_entrance = true
 
 
 func level_root():
@@ -35,10 +38,23 @@ func delete_actor(relate):
 # ------------------------------------------------------------------------------
 
 func vladimir_data():
-	return "["+arr_levels[prev_level_id]+", Vladimir]"
+#	if last_map == "res://Level/TestLevel.tscn":
+#		prev_level_id = 0
+#	elif last_map == "res://Level/DarkForest/DarkForest.tscn":
+#		prev_level_id = 1
+#	elif last_map == "res://Level/CaveEntrance/LiLCave.tscn":
+#		return "[res://Level/CaveEntrance/LiLCave.tscn, Vladimir]"
+#	else:
+	if last_map == "res://Level/CaveEntrance/LiLCave.tscn":
+		return "[res://Level/CaveEntrance/LiLCave.tscn, Vladimir]"
+	else:
+		prev_level_id = arr_levels.find(last_map)# - 1
+
+		return "["+arr_levels[prev_level_id]+", Vladimir]"
 # ------------------------------------------------------------------------------
 
 func get_next_level():
+	next_level_id = arr_levels.find(last_map) + 1
 	return arr_levels[next_level_id]
 # ------------------------------------------------------------------------------
 
@@ -60,6 +76,19 @@ func stop_enemy_timers():
 func set_player_position_at_start(player, start):
 	if !level_root().filename in SaveLoad.visited_maps:
 		player.position = start.position
+# ------------------------------------------------------------------------------
+
+func is_first_entrance(level):
+	if level in SaveLoad.visited_maps:
+		first_entrance = false
+# ------------------------------------------------------------------------------
+
+func update_data_from_merchant(vladimir):
+	if first_entrance:
+		var vladimir_data = "["+str(last_map)+", Vladimir]"
+		
+		if SaveLoad.slots["slot_4"].has(vladimir_data):
+			vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
 # ------------------------------------------------------------------------------
 
 #func Persistant():

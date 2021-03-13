@@ -41,7 +41,6 @@ var state_machine = null
 
 
 func _ready():
-	#$CollisionShape2D.disabled = false
 	$HitRay.cast_to.x = FoV
 	cooldown_timer = get_tree().create_timer(0.0, false)
 	attack_timer = get_tree().create_timer(0.0, false)
@@ -82,6 +81,7 @@ func die(): # CHARACTER DIES
 	can_attack = false
 	is_dead = true
 	velocity = GRAVITY
+	self.z_index -= 1
 	state_machine.travel('DEATH') # play dying animation
 	if !is_yield_paused:
 		yield(get_tree().create_timer(death_anim_time), "timeout")

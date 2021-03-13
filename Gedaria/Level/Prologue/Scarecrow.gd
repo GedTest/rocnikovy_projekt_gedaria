@@ -19,7 +19,8 @@ func _process(delta):
 			emit_signal("tree_exiting")
 			set_process(false)
 			disconnect("tree_exiting",get_parent(), "_on_Scarecrow_tree_exiting")
-		
+			self.z_index = 0
+			
 		if health != previous_hp:
 			$Particles2D.emitting = true
 		previous_hp = health

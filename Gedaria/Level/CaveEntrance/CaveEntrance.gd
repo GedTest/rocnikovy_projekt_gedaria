@@ -1,24 +1,24 @@
 extends Node2D
 
 
-var PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
+const PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
 
-onready var arr_bats = [
-	$Bat,$Bat2,$Bat3,$Bat4,$Bat5,
-	$Bat6,$Bat7,$Bat8,$Bat9,$Bat10,
-	$Bat11,$Bat12,$Bat13,$Bat14,$Bat15,
-	$Bat16,$Bat17,$Bat18,$Bat19,$Bat20,
-	$Bat21,
-]
 
 var is_yield_paused = false
 var has_key = false
 var is_interactable = false
 
+var leaf_counter = 0
+
+onready var arr_bats = [
+	$Bat,$Bat2,$Bat3,$Bat4,$Bat5,
+	$Bat6,$Bat7,$Bat8,$Bat9,$Bat10,
+]
 
 func _ready():
 	#Global.set_player_position_at_start($Vladimir, $Level_start)
-
+	Global.is_first_entrance(self.filename)
+	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
 
@@ -40,13 +40,9 @@ func _on_LoadingTimer_timeout():
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
 			leaf_holder.show_leaf()
-
-
-	var vladimir_data = "[res://Level/MerchantSquirrel.tscn, Vladimir]"
-
-	#if SaveLoad.slots["slot_4"][vladimir_data]:
-	#	$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
-
+	
+	Global.update_data_from_merchant($Vladimir)
+	
 	$CanvasLayer/UserInterface.load_ui_icons()
 # ------------------------------------------------------------------------------
 
@@ -84,3 +80,17 @@ func _on_Area2D_body_exited(body):
 func _on_Key_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		has_key = true
+
+
+func _on_LeafArea_body_entered(body):
+	if body.get_collision_layer_bit(3):
+		leaf_counter += 1
+		print(leaf_counter)
+		
+		if leaf_counter == 9:
+			SaveLoad.delete_actor($KillZone3)
+
+
+func _on_Wind_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		$Winds/Wind8.scale.y = 1.5

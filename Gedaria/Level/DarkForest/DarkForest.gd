@@ -1,6 +1,10 @@
 extends Node2D
 
 
+var arr_enemies = []
+var is_yield_paused = false
+var enabled_animation = false
+
 onready var arr_patrollers = [
 	$Patroller,$Patroller2,$Patroller3,$Patroller4,$Patroller5,
 	$Patroller6,$Patroller7,$Patroller8,$Patroller9,$Patroller10,
@@ -16,13 +20,11 @@ onready var arr_shooters = [
 	$Shooter9,$Shooter10,$Shooter11,$Shooter12,
 	$Shooter13,
 ]
-var arr_enemies = null
-var is_yield_paused = false
-var enabled_animation = false
 
 
 func _ready():
-	Global.set_player_position_at_start($Vladimir, $Level_start)
+	#Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.is_first_entrance(self.filename)
 	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
@@ -45,15 +47,9 @@ func _on_LoadingTimer_timeout():
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
 			leaf_holder.show_leaf()
-			
-			
-	var vladimir_data = "[res://Level/MerchantSquirrel.tscn, Vladimir]"
-	#print("vladimir_data: ", vladimir_data)
 	
-	#print("has data? ",SaveLoad.slots["slot_4"].has(vladimir_data))
-	#if SaveLoad.slots["slot_4"][vladimir_data]:
-	#	$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
-		
+	Global.update_data_from_merchant($Vladimir)
+	
 	$CanvasLayer/UserInterface.load_ui_icons()
 	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
 # ------------------------------------------------------------------------------

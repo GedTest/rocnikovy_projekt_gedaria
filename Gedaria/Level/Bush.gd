@@ -20,6 +20,7 @@ func _process(delta):
 	if player:
 		if player.is_crouching:
 			player.is_hidden = true
+			player.find_node("CeilingRay").collide_with_areas = true
 		else:
 			player.is_hidden = false
 # ------------------------------------------------------------------------------
@@ -35,3 +36,4 @@ func _on_Area2D_body_exited(body):
 	if body.get_collision_layer_bit(1):
 		player = null
 		body.is_hidden = false
+		body.find_node("CeilingRay").collide_with_areas = false

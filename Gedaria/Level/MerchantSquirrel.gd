@@ -10,7 +10,7 @@ onready var UI = $CanvasLayer/UserInterface
 var is_yield_paused = false
 var arr_levels = [
 	"res://Level/TestLevel.tscn","res://Level/DarkForest/DarkForest.tscn",
-	"res://Level/Cave_entrance/Cave_entrance.tscn",
+	"res://Level/CaveEntrance/CaveEntrance.tscn","res://Level/CultInCave/CultInCave.tscn",
 ]
 var damage_upgrade_counter = 1
 var health_upgrade_counter = 1
@@ -22,7 +22,6 @@ func _ready():
 	$BigTree/Leaves.hide()
 # ------------------------------------------------------------------------------
 	
-
 func _on_LoadingTimer_timeout():
 	$Vladimir.position = $Level_start.position
 	SaveLoad.update_current_data()
@@ -42,14 +41,21 @@ func _on_LoadingTimer_timeout():
 	if Global.vladimir_has_previous_data():
 		$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
 # ------------------------------------------------------------------------------
-
+#	var sum = 0
+#	for i in range(1,9):
+#		var HP = int(10.5+pow(1.5, i))
+#		var DMG = int(10.5+pow(1.5, i))
+#		var MS = int(9.25+pow(1.4, i))
+#		print("HP, DMG: ",HP," ", DMG)
+#		print("MS: ",MS)
+#		sum += (HP + DMG + MS)
+#	print("SUM: ",sum)
 func _process(delta):
 	pass
 # ------------------------------------------------------------------------------
 
 func _on_HealthButton_pressed():
 	var cost = 3+int(pow(1.4, health_upgrade_counter))
-	
 	if $Vladimir.health < HEALTH_LIMIT:
 		if $Vladimir.acorn_counter >= cost:
 			$Vladimir.acorn_counter -= cost

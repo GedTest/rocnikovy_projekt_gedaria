@@ -6,6 +6,8 @@ signal enemy_health_changed
 var is_done_once = true
 var is_yield_paused = false
 
+var arr_enemies = []
+
 onready var arr_patrollers = [
 	$Patroller,$Patroller2,$Patroller3,$Patroller4,$Patroller5,
 	$Patroller6,$Patroller7,$Patroller9,$Patroller10,$Patroller11,
@@ -17,11 +19,10 @@ onready var arr_shooters = [
 	$Shooter,$Shooter2,$Shooter3,$Shooter4,
 	$Shooter5,$Shooter6,$Shooter7,$Shooter8,
 ]
-var arr_enemies = null
 
 
 func _ready():
-	Global.set_player_position_at_start($Vladimir, $Level_start)
+	#Global.set_player_position_at_start($Vladimir, $Level_start)
 	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
@@ -46,11 +47,9 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
 			leaf_holder.show_leaf()
-	#print("next_level: ",Global.next_level)
-	if SaveLoad.slots["slot_4"].has("[res://Level/TestLevel.tscn, Vladimir]"):
-		$Vladimir.set_values(SaveLoad.slots["slot_4"]["[res://Level/TestLevel.tscn, Vladimir]"])
-	
+			
 	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
+	$Vladimir.has_learned_raking = true
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -66,6 +65,8 @@ func _process(delta):
 		
 	if $PilesOfLeaves/PileOfLeaves1.is_complete:
 		$Wind.position = Vector2(35500, 7000)
+		$Wind3.position = Vector2(35830, 7105)
+		$PilesOfLeaves/PileOfLeaves1.mode = RigidBody2D.MODE_STATIC
 		$Tutorial7.position = Vector2(35310, 7140)
 	
 	if find_node("Patroller5"):
@@ -97,5 +98,6 @@ func _on_RakingLearn_body_entered(body):
 
 func _on_HeavyAttackLearn_body_entered(body):
 	if body.get_collision_layer_bit(1):
+		$HeavyAttackLearn/CollisionShape2D.disabled = true
 		body.has_learned_heavy_attack = true
 		body.heavy_attack_counter = 4

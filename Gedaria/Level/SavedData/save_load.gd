@@ -64,19 +64,6 @@ func update_current_data():
 		
 		# SAVING GLOBAL VALUES
 		current_data["globals"] = {}
-		#var arr = [
-		#	"health",
-		#	"max_health",
-		#	"pebble_counter",
-		#	"acorn_counter",
-		#	"heavy_attack_counter",
-		#	"speed",
-		#	"damage",
-		#	"has_slingshot",
-		#	"has_learned_heavy_attack",
-		#	"has_learned_raking",
-		#	"blue_berries"
-		#]
 	
 		#for x in arr:
 		current_data["globals"]["blue_berries"] = Global.blue_berries
@@ -178,9 +165,6 @@ func update_node(node):
 		for x in data:
 			if x == "scale":
 				node.scale = Vector2(data["scale"][0], data["scale"][1])
-			#if x == "savedPosition":
-			#	node.savedPosition = Vector2(data["savedPosition"]["x"],data["savedPosition"]["y"])
-			#	node.resetState = true
 			else:
 				node.set(x, data[x])
 # ------------------------------------------------------------------------------
@@ -197,6 +181,7 @@ func save_node(node):
 		all.pos = {"x":node.get_global_position().x, "y":node.get_global_position().y}
 		all.rotation_degrees = node.get_rotation_degrees()
 		all.scale = [node.get_scale().x, node.get_scale().y]
+		all.visible = node.visible
 
 	if node is RigidBody2D:
 		node.set_collision_layer_bit(3,node.get_collision_layer_bit(3))
@@ -217,9 +202,6 @@ func save_node(node):
 	if node is StaticBody2D:
 		node.set_collision_layer_bit(3,node.get_collision_layer_bit(3))
 		node.set_collision_mask_bit(3,node.get_collision_mask_bit(3))
-		#if "LeafHolder" in node.name:
-		#	all.pos = {"x":node.get_global_position().x, "y":node.get_global_position().y}
-		#	all.texture = node.find_node("Sprite").texture
 	
 	if node is Sprite:
 		all.texture = node.texture

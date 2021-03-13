@@ -1,7 +1,7 @@
 extends Area2D
 
 
-const StonePath = preload("res://Level/Cave_entrance/Stone.tscn")
+const StonePath = preload("res://Level/CaveEntrance/Stone.tscn")
 
 
 func _on_FallingStonesSpawner_body_entered(body):
