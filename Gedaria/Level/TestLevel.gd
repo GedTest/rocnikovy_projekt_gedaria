@@ -22,10 +22,11 @@ onready var arr_shooters = [
 
 
 func _ready():
-	#Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
+	Fullscreen.hide_elements()
 	
 	connect("enemy_health_changed", $FallingTree, "on_enemy_health_changed")
 	
@@ -41,15 +42,13 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	
 	get_tree().set_pause(false)
 	Global.is_yield_paused = false
-	Global.is_pausable = true
 	$CanvasLayer/UserInterface.load_ui_icons()
 	
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
 			leaf_holder.show_leaf()
-			
+	
 	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
-	$Vladimir.has_learned_raking = true
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -62,11 +61,13 @@ func _process(delta):
 
 	if $Patroller8.is_focused:
 		$Patroller8.move($Patroller8.from, $Patroller8.to)
+		if $Bridge.is_broken:
+			$Patroller8.set_collision_mask_bit(0, false)
 		
-	if $PilesOfLeaves/PileOfLeaves1.is_complete:
+	if $PilesOfLeaves/PileOf4Leaves4.is_complete:
 		$Wind.position = Vector2(35500, 7000)
 		$Wind3.position = Vector2(35830, 7105)
-		$PilesOfLeaves/PileOfLeaves1.mode = RigidBody2D.MODE_STATIC
+		$PilesOfLeaves/PileOf4Leaves4.mode = RigidBody2D.MODE_STATIC
 		$Tutorial7.position = Vector2(35310, 7140)
 	
 	if find_node("Patroller5"):
@@ -78,16 +79,17 @@ func _process(delta):
 			$Vladimir.is_moving = false
 # ------------------------------------------------------------------------------
 
-func _on_KillZone_body_entered(body): # Kills player if he fall into
+func _on_KillZone_body_entered(body, sec): # Kills player if he fall into
 	if body.get_collision_layer_bit(1):
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(sec), "timeout")
 		body.die()
 # ------------------------------------------------------------------------------
 
 func _on_AmbushArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$Patroller3.position = Vector2(3500, 4787)
-		$Patroller4.position = Vector2(3580, 4787)
+		$Patroller3.from = 4500
+		$Patroller3.to = 7300
+		$Patroller4.position = Vector2(3440, 4675)
 		$Patroller5.position = Vector2(7534, 4959)
 # ------------------------------------------------------------------------------
 
@@ -98,6 +100,11 @@ func _on_RakingLearn_body_entered(body):
 
 func _on_HeavyAttackLearn_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$HeavyAttackLearn/CollisionShape2D.disabled = true
+		$HeavyAttackLearn/CollisionShape2D.set_deferred("disabled", true)
 		body.has_learned_heavy_attack = true
 		body.heavy_attack_counter = 4
+
+
+func _on_VisibilityNotifier2D_viewport_entered(viewport):
+	$Patroller3.direction = -1
+	$Patroller3.speed = 350

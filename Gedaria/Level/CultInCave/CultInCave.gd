@@ -22,14 +22,14 @@ onready var arr_bats = [
 
 
 func _ready():
-	#Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 	Global.is_first_entrance(self.filename)
 	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
+	Fullscreen.hide_elements()
 	
-	$Vladimir.heavy_attack_counter = 4
-	$Vladimir.has_slingshot = true
+	$Vladimir.heavy_attack_counter += 4
 # ------------------------------------------------------------------------------
 
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
@@ -38,7 +38,6 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 
 	get_tree().set_pause(false)
 	Global.is_yield_paused = false
-	Global.is_pausable = true
 
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
@@ -47,6 +46,7 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	Global.update_data_from_merchant($Vladimir)
 	
 	$CanvasLayer/UserInterface.load_ui_icons()
+	$CanvasLayer/UserInterface/UniqueLeaf.margin_left = 1635
 	arr_enemies.insert(0, $Patroller)
 	arr_enemies.insert(1, $Guardian)
 # ------------------------------------------------------------------------------
@@ -81,7 +81,9 @@ func _process(delta):
 	if $PillarLeft.position.y == 7120:
 		if $BreakableFloors/PillarBreakableFloors.get_child_count() == 0:
 			$AnimationPlayer.play("PILLARS_COLLAPSING")
-			SaveLoad.delete_actor($KillZones/KillZone)
+	
+	if $PileOfLeaves/PileOf4Leaves5.is_complete:
+		$Winds/Wind11.disable_wind()
 # ------------------------------------------------------------------------------
 
 func _on_KillZone_body_entered(body): # Kills player if he fall into
@@ -135,7 +137,7 @@ func _on_RopeArea_body_exited(body):
 
 func _on_TrapDoorMechanismArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$TrapDoor/TrapDoorMechanismArea/CollisionShape2D.disabled = true
+		$TrapDoor/TrapDoorMechanismArea/CollisionShape2D.set_deferred("disabled", true)
 		$AnimationPlayer.play("OPEN_TRAPDOOR")
 # ------------------------------------------------------------------------------
 

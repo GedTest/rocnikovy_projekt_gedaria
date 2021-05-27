@@ -6,6 +6,7 @@ var arr_levels = [
 	"res://Level/DarkForest/DarkForest.tscn",
 	"res://Level/CaveEntrance/CaveEntrance.tscn",
 	"res://Level/CultInCave/CultInCave.tscn",
+	"res://Level/ForestClearing/ForestCleaning.tscn",
 	"",
 ]
 var last_map = ""
@@ -15,7 +16,7 @@ var blue_berries = 0
 var next_level_id = 1
 var prev_level_id = 0
 
-var is_pausable = false
+var is_pausable = true
 var is_yield_paused = false
 var first_entrance = true
 

@@ -23,13 +23,14 @@ onready var arr_shooters = [
 
 
 func _ready():
-	#Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 	Global.is_first_entrance(self.filename)
 	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
+	Fullscreen.hide_elements()
 	
-	$Vladimir.heavy_attack_counter = 4
+	$Vladimir.heavy_attack_counter += 4
 	$Vladimir.has_learned_attack = true
 	$Vladimir.has_learned_heavy_attack = true
 	$Vladimir.has_learned_blocking = true
@@ -42,7 +43,6 @@ func _on_LoadingTimer_timeout():
 	
 	get_tree().set_pause(false)
 	Global.is_yield_paused = false
-	Global.is_pausable = true
 	
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
@@ -51,6 +51,10 @@ func _on_LoadingTimer_timeout():
 	Global.update_data_from_merchant($Vladimir)
 	
 	$CanvasLayer/UserInterface.load_ui_icons()
+	$CanvasLayer/UserInterface/UniqueLeaf.margin_left = 1676
+	if Global.first_entrance:
+		$LeafHolders/LeafHolder.has_leaf = 0
+		$LeafHolders/LeafHolder2.has_leaf = 0
 	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
 # ------------------------------------------------------------------------------
 
@@ -61,8 +65,7 @@ func _process(delta):
 	for i in arr_guardians:
 		i.move()
 		
-	if $PilesOfLeaves/PileOfLeaves7.is_complete:
-		$Winds/Wind10.rotation_degrees = 210
+	if $PilesOfLeaves/PileOf6Leaves2.is_complete:
 		$Winds/Wind10.impulse = Vector2(700, -2400)
 # ------------------------------------------------------------------------------
 
@@ -70,6 +73,8 @@ func _on_Mushroom_tree_exited():
 	if enabled_animation:
 		$AnimationPlayer.play("secret_passage")
 		$Vladimir.can_move = false
+		$LeafHolders/LeafHolder.has_leaf = 1
+		$LeafHolders/LeafHolder2.has_leaf = 1
 	$InvisibleWall.queue_free()
 # ------------------------------------------------------------------------------
 
@@ -82,10 +87,27 @@ func _on_KillZone_body_entered(body):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$Vladimir/Camera.current = true
 	$Vladimir.can_move = true
-	print("wtf")
 	$TutorialSign.position = Vector2(6430, 6035)
 # ------------------------------------------------------------------------------
 
 func _on_DisableAnimation_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		enabled_animation = true
+
+
+func _on_Area2D_body_entered(body, visibility):
+#	if body.get_collision_layer_bit(1):
+#		$entrance.visible = visibility
+	pass
+
+
+func _on_Area2D3_body_entered(body):
+#	if body.get_collision_layer_bit(1):
+#		$entrance.modulate = Color(1,1,1,0.5)
+	pass
+
+
+func _on_Area2D3_body_exited(body):
+#	if body.get_collision_layer_bit(1):
+#		$entrance.modulate = Color(1,1,1,1)
+	pass

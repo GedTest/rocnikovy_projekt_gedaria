@@ -1,25 +1,21 @@
 extends StaticBody2D
 
 
-var number_of_piles = 0
-var prev_number = 0
+var is_done_once = true
+var arr_piles = []
 
 
 func _process(delta):
-	if number_of_piles != prev_number:
-		prev_number = number_of_piles
-		if number_of_piles == 1:
-			get_parent().get_node("AnimationPlayer").play("ELEVATOR_1_LEAF")
-		elif number_of_piles == 2:
-			get_parent().get_node("AnimationPlayer").play("ELEVATOR_2_LEAVES")
+	if arr_piles.size() == 1 and is_done_once:
+		is_done_once = false
+		get_parent().get_node("AnimationPlayer").play("ELEVATOR_1_LEAF")
+	elif arr_piles.size() == 2 and is_done_once:
+		is_done_once = false
+		get_parent().get_node("AnimationPlayer").play("ELEVATOR_2_LEAVES")
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
-	if body.get_collision_layer_bit(0) and "PileOfLeaves" in body.name:
-		number_of_piles += 1
-# ------------------------------------------------------------------------------
-
-func _on_Area2D_body_exited(body):
-	if body.get_collision_layer_bit(0) and "PileOfLeaves" in body.name:
-		number_of_piles -= 1
-		prev_number -= 1
+	if body.get_collision_layer_bit(0) and "PileOf4Leaves" in body.name:
+		if !(body in arr_piles):
+			arr_piles.append(body)
+			is_done_once = true

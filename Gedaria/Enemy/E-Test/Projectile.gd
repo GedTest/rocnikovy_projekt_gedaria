@@ -19,7 +19,10 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _process(delta):
-	position.x += speed * direction * int(is_moving)
+	if direction is Vector2:
+		position += speed * direction * int(is_moving)
+	else:
+		position.x += speed * direction * int(is_moving)
 	
 	# WHEN PROJECTILE REACHES BORDER IT VANISHES
 	if abs(position.x) > starting_position + distance:

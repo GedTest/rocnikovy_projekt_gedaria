@@ -8,6 +8,7 @@ func _ready():
 	$Vladimir.has_learned_raking = false
 	$Vladimir/Sprite.flip_h = false
 	$Vladimir/Camera.position.y = -250
+	Fullscreen.hide_elements()
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):

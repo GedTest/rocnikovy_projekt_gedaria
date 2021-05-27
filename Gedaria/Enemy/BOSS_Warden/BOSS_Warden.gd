@@ -2,7 +2,7 @@ class_name BOSS_Warden, "res://Enemy/BOSS_Warden/BOSS_Warden.png"
 extends Enemy
 
 
-var StickPath = preload("res://Enemy/BOSS_Warden/Stick.tscn")
+const StickPath = preload("res://Enemy/BOSS_Warden/Stick.tscn")
 var BirdPath = preload("res://Level/Prologue/Bird.tscn").instance()
 
 var can_throw = false
@@ -10,23 +10,20 @@ var is_throwing = false
 var is_done_once = true
 var can_jump = true
 var is_in_air = false
-var is_hitted = false
+var is_hitted_by_leaf = false
 
 var boost = 1
 var max_health
 
 var throw_timer = null
-var hit_in_row_timer = null
 
 
 func _ready():
 	FoV = 1000
 	state_machine = $AnimationTree.get("parameters/playback")
 	max_health = health
-	is_blocking = true
 	
 	cooldown_timer = get_tree().create_timer(0.0, false)
-	hit_in_row_timer = get_tree().create_timer(0.0, false)
 	throw_timer = get_tree().create_timer(0.0, false)
 	
 	yield(get_tree().create_timer(10.0, false), "timeout")
@@ -50,6 +47,7 @@ func _process(delta):
 	
 		# 2ND PHASE OF BOSSFIGHT
 		if health == max_health / 2 and is_done_once:
+			is_blocking = true
 			get_parent().add_child(BirdPath)
 			BirdPath.position = Vector2(1920, 400)
 			jump()
@@ -67,25 +65,6 @@ func _process(delta):
 			player = null
 			has_player = false
 		
-		if health > max_health / 2:
-		# When he got 2 hits in row he is vulnerable to take damage
-			if hit_in_row == 2:
-				is_blocking = false
-				
-			if hit_in_row > 0 and hit_in_row < 2:
-			#	is_blocking = true
-				if hit_in_row_timer.time_left <= 0.0:
-					hit_in_row_timer = get_tree().create_timer(3.5, false)
-					yield(hit_in_row_timer, "timeout")
-					is_moving = true
-					hit_in_row = 0
-		# If there weren't 2 hits in a row, he is in blocking state
-			elif hit_in_row != 2 and is_attacking:
-				is_blocking = true
-				
-		elif !is_hitted:
-			is_blocking = true
-			
 		velocity = move_and_slide(velocity)
 # ------------------------------------------------------------------------------
 
@@ -94,7 +73,6 @@ func move(): # HANDLE MOVEMENT
 		$AnimationTree.set("parameters/JUMP/blend_position", direction)
 		
 		if has_player and !player.is_dead:
-			#distance = abs(position.x - player.position.x)
 			if distance <= 135 and !is_attacking and !(can_throw or is_throwing):
 				attack()
 				
@@ -158,7 +136,7 @@ func dash(): # SPEEDS UP AND DASHes TOWARD THE PLAYER
 # ------------------------------------------------------------------------------
 
 func jump(): # JUMP IN DISTANCE SO HE CAN THROW
-	if !is_hitted:
+	if !is_hitted_by_leaf:
 		# ensure the he can't jump out of screen
 		if position.x > from -200 and position.x < to +200:
 			speed = 200
@@ -194,18 +172,16 @@ func throw(): # SECONDARY ATTACK - THROW
 			can_throw = true
 			is_throwing = false
 			is_moving = true
+			$HitRay.enabled = true
 # ------------------------------------------------------------------------------
 
 func hit(dmg):
 	is_moving = false
 	
 	if is_blocking:
-		hit_in_row += 1
 		state_machine.travel('HIT_UNBLOCKABLE')
 	
 	if !is_blocking:
 		$stars.emitting = false
-		is_blocking = true
 		is_moving = true
-		hit_in_row = 0
 		.hit(dmg)

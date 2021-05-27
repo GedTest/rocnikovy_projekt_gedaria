@@ -7,9 +7,9 @@ Main character
 
 const GRAVITY = Vector2(0, 98)
 const FLOOR_NORMAL = Vector2(0, -1)
-const PebblePath = preload("res://Vladimir/Pebble.tscn")
+const PEBBLE_PATH = preload("res://Vladimir/Pebble.tscn")
 
-export(int) var speed = 525
+export(int) var speed = 480
 export(int) var modify_speed = 1
 export(int) var jump_strength = 1700
 export(int) var damage = 2
@@ -48,7 +48,7 @@ var has_learned_heavy_attack = true
 var has_learned_raking = true
 var has_learned_blocking = true
 
-var enemy : Enemy = null
+var enemy = null
 var attack_timer = null
 var heavy_attack_timer = null
 var block_timer = null
@@ -93,16 +93,14 @@ func _physics_process(delta):
 # ------------------------------------------------------------------------------
 
 func jump(): # JUMP
-	if Input.is_action_just_pressed("jump"):
-		can_jump = true if (
-							$GroundRay.is_colliding() or
-							$GroundRay2.is_colliding() or
-							$GroundRay3.is_colliding()
-							)else false
-		
-		if can_jump:
-			jumped_height.y = position.y
-			velocity.y = -jump_strength
+	can_jump = true if ($GroundRay.is_colliding() or
+						$GroundRay2.is_colliding() or
+						$GroundRay3.is_colliding()
+						)else false
+						
+	if Input.is_action_just_pressed("jump") and can_jump:
+		jumped_height.y = position.y
+		velocity.y = -jump_strength
 # ------------------------------------------------------------------------------
 
 func move(): # MOVE
@@ -110,10 +108,12 @@ func move(): # MOVE
 		direction = 1
 		attack_direction = 1
 		$Sprite.flip_h = false
+		$WeaponHitbox.position.x = 90
 	elif Input.is_action_pressed("left") and !is_raking:
 		direction = -1
 		attack_direction = -1
 		$Sprite.flip_h = true
+		$WeaponHitbox.position.x = -90
 	else:
 		direction = 0
 	
@@ -147,7 +147,8 @@ func attack(): # LIGHT ATTACK, fast but low dmg,
 			is_attacking = true
 			can_move = false
 			$AnimationTree.set("parameters/ATTACK/blend_position", attack_direction)
-			state_machine.travel('ATTACK')
+			if state_machine.get_current_node() != "HOLD_PEBBLE":
+				state_machine.travel('ATTACK')
 			
 			if attack_timer.time_left <= 0.0:
 				attack_timer = get_tree().create_timer(0.656)
@@ -155,7 +156,6 @@ func attack(): # LIGHT ATTACK, fast but low dmg,
 					yield(attack_timer, "timeout")
 					if enemy and can_attack:
 						enemy.hit(damage)
-						print("Enemy health: ", enemy.health)
 					
 					can_move = true
 					is_attacking = false
@@ -179,7 +179,8 @@ func heavy_attack(): # HEAVY ATTACK, slow but high dmg
 						if enemy and can_attack:
 							enemy.is_heavy_attacked = true
 							enemy.hit(damage)
-							enemy.position.x -= 50 * enemy.direction
+							enemy.jump_back()
+							#enemy.position.x -= 50 * enemy.direction
 # ------------------------------------------------------------------------------
 
 func shoot():
@@ -194,7 +195,7 @@ func shoot():
 			state_machine.travel("RELEASE_" + animation)
 			can_move = true
 			
-			var pebble = PebblePath.instance()
+			var pebble = PEBBLE_PATH.instance()
 			get_parent().add_child(pebble)
 			pebble.position = $Position2D.global_position
 			
@@ -213,7 +214,10 @@ func block(): # BLOCK INCOMING DAMAGE
 	if has_learned_blocking:
 		if Input.is_action_just_pressed("block"):
 			state_machine.travel('BLOCKING')
-			is_moving = false
+			
+			if can_jump:
+				is_moving = false
+			velocity = GRAVITY
 			is_blocking = true
 			
 			if block_timer.time_left <= 0.0:
@@ -240,12 +244,12 @@ func rake(): # RAKE LEAVES TO CREATE PILE OF LEAVES
 				var collision = $LeavesCollector.get_slide_collision(index)
 				if collision.collider.is_in_group("leaves"):
 					collision.collider.apply_central_impulse(collision.normal * 20)
-			yield(get_tree().create_timer(1.35,false), "timeout")
 			is_raking = false
 			
 		# DESTROY A PILE OF LEAVES
 		elif Input.is_action_just_pressed("attack") and !is_crouching:
-			state_machine.travel('ATTACK')
+			if state_machine.get_current_node() != "HOLD_PEBBLE":
+				state_machine.travel('ATTACK')
 # ------------------------------------------------------------------------------
 
 func hit(var dmg):
@@ -267,17 +271,18 @@ func hit(var dmg):
 # ------------------------------------------------------------------------------
 
 func die(): # CHARACTER DIES
-	health = 0
-	is_dead = true
-	set_collision_layer_bit(1, false)
-	velocity = GRAVITY
-	state_machine.travel('DEATH')
-	Global.is_yield_paused = true
-	# Load checkpoint
-	if Global.level_root().name != "TutorialLevel":
-		SaveLoad.load_from_slot("slot_4")
-	yield(get_tree().create_timer(2.2, false), "timeout")
-	$AnimationTree.active = false
+	if !is_dead:
+		is_dead = true
+		health = 0
+		set_collision_layer_bit(1, false)
+		velocity = GRAVITY
+		state_machine.travel('DEATH')
+		Global.is_yield_paused = true
+		# Load checkpoint
+		if Global.level_root().name != "TutorialLevel":
+			SaveLoad.load_from_slot("slot_4")
+		yield(get_tree().create_timer(2.2, false), "timeout")
+		$AnimationTree.active = false
 # ------------------------------------------------------------------------------
 
 func save(): # SAVE VARIABLES IN DICTIONARY
@@ -290,8 +295,10 @@ func save(): # SAVE VARIABLES IN DICTIONARY
 		"speed":speed,
 		"damage":damage,
 		"has_slingshot":has_slingshot,
+		"has_learned_attack":has_learned_attack,
 		"has_learned_heavy_attack":has_learned_heavy_attack,
-		"has_learned_raking":has_learned_raking
+		"has_learned_raking":has_learned_raking,
+		"has_learned_blocking":has_learned_blocking
 	}
 	return saved_data
 # ------------------------------------------------------------------------------

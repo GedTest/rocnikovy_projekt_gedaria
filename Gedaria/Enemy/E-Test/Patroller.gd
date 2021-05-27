@@ -10,7 +10,6 @@ var cooldown_roll_timer = null
 
 var has_player_before = false
 var is_reversed = false
-#var is_moving = true
 var can_roll = false
 
 

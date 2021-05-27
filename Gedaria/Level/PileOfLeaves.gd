@@ -2,12 +2,15 @@ class_name PileOfLeaves
 extends RigidBody2D
 
 
+const BASE = 3
+const LEAF_HOLDER_4_POSITION = Vector2(-43.736, 0)
+
 var LeafPath = preload("res://Level/Leaf.tscn")
 
-export (int) var value = 3
-export (Array) var arr_leaves_in = [0, 0, 0]
+export (int) var value = 4
+export (Array) var arr_leaves_in = [0, 0, 0, 0]
 export (bool) var is_movable = false
-export (Vector2) var grab_position = Vector2(150, 50)
+#export (Vector2) var grab_position = Vector2(150, 50)
 
 var arr_children = []
 var is_complete = false
@@ -18,11 +21,9 @@ var leaf_texture = null
 
 func _ready():
 	$GrabLeft/CollisionShape2D.disabled = !is_movable
-	$GrabLeft.position = Vector2(-grab_position.x, grab_position.y)
-	$GrabLeft.visible = is_movable
+	#$GrabLeft.visible = is_movable
 	$GrabRight/CollisionShape2D.disabled = !is_movable
-	$GrabRight.position = grab_position
-	$GrabRight.visible = is_movable
+	#$GrabRight.visible = is_movable
 	
 	for LeafHolder in get_children():
 		if LeafHolder is StaticBody2D:
@@ -63,6 +64,8 @@ func _process(delta):
 			for i in arr_children:
 				SaveLoad.delete_actor(i)
 			arr_children.clear()
+			$Sprite.modulate = Color(1, 1, 1, 1)
+			$Sprite.z_index = 0
 			
 			self.set_collision_layer_bit(0, true)
 			#self.set_collision_mask_bit(1, true)
@@ -72,6 +75,9 @@ func _process(delta):
 		self.set_collision_layer_bit(0, true)
 		#self.set_collision_mask_bit(1, true)
 		self.mode = RigidBody2D.MODE_RIGID
+		$Sprite.modulate = Color(1, 1, 1, 1)
+		$Sprite.z_index = 0
+		
 	else:
 		self.set_collision_layer_bit(0, true)
 # ------------------------------------------------------------------------------
@@ -92,31 +98,44 @@ func _on_Grab_body_entered(body, direction):
 
 func remove_leaf(leaf_holder):
 	leaf_holder.has_leaf = 0
-	leaf_holder.find_node("Sprite").texture = null
 	leaf_holder.is_empty = true
 	leaf_holder.set_collision_layer_bit(3, false)
 	leaf_holder.set_collision_mask_bit(3, false)
-	leaf_texture = leaf_holder.leaf_texture
+	leaf_texture = leaf_holder.find_node("Sprite").frame
+	leaf_holder.find_node("Sprite").frame = LeafHolder.EMPTY_FRAME
 # ------------------------------------------------------------------------------
 
 func append_leaf(leaf_holder):
 	if leaf_holder.is_empty:
 		leaf_holder.has_leaf = 1
-		if leaf_texture == null:
-			leaf_texture == "res://UI/list_buk.png"
-		leaf_holder.find_node("Sprite").texture = load(leaf_texture)
 		leaf_holder.is_empty = false
 		leaf_holder.set_collision_layer_bit(3, true)
 		leaf_holder.set_collision_mask_bit(3, true)
+		if leaf_holder.name == "LeafHolder4":
+			print("bruh")
+			leaf_holder.initial_position = LEAF_HOLDER_4_POSITION
+		
+#		if leaf_texture == null or leaf_texture == LeafHolder.EMPTY_FRAME:
+#			leaf_texture = 1
+		leaf_holder.find_node("Sprite").frame = leaf_texture
 # ------------------------------------------------------------------------------
 
 func build_pile(full_leaf_holder, sum):
 	if sum < value-1:
-		var row_number = int(full_leaf_holder.get_groups()[1].substr(4, 1))
-		var current_row_number = 1 if sum <= 2 else 2
+		var index = 1
+		for i in full_leaf_holder.get_groups().size():
+			if "row" in full_leaf_holder.get_groups()[i]:
+				index = i
+		
+		var row_number = int(full_leaf_holder.get_groups()[index].substr(4, 2))
+		var current_row_number = 1 if sum < BASE else 2
 		var empty_leaf_holder = null
 		
-	#	if sum <= 2:
+		
+		#if sum <= 2:
+		var frame = int(full_leaf_holder.get_groups()[index].substr(6, 2))
+		full_leaf_holder.find_node("Sprite").frame = frame
+		
 		if row_number > current_row_number:
 			for child in arr_children:
 				if child.is_empty:
@@ -127,13 +146,19 @@ func build_pile(full_leaf_holder, sum):
 					
 					break
 			#print(empty_leaf_holder.name,"  ",full_leaf_holder.get_groups()[1])
+
+#		elif sum > 2:
+#			var frame = int(full_leaf_holder.get_groups()[index].substr(6, 2))
+#			full_leaf_holder.find_node("Sprite").frame = frame
+#			#current_row_number = 2
+#			print("now frame is #",frame)
+#			if row_number > current_row_number:
+#				for child in arr_children:
+#					if child.is_empty:
+#						empty_leaf_holder = child
+#						print(empty_leaf_holder.name)
 #
-#	elif sum > 2:
-#		current_row_number = 2
-#		if row_number > current_row_number:
-#			for child in arr_children:
-#				if child.is_empty:
-#					empty_leaf_holder = child
+#						remove_leaf(full_leaf_holder)
+#						append_leaf(empty_leaf_holder)
 #
-#			remove_leaf(full_leaf_holder)
-#			append_leaf(empty_leaf_holder)
+#						break

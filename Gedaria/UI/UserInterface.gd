@@ -1,6 +1,15 @@
 extends Control
 
 
+const LEAF_IMAGES = [
+	"res://UI/list_lipa", "res://UI/list_javor_červený",
+	"res://UI/list_olše", "res://UI/list_břečťan",
+	"res://UI/list_kopřiva", "res://UI/list_ořech",
+	"res://UI/list_buk", "res://UI/list_dub",
+	"res://UI/list_ginko_biloba",  
+	"res://UI/list_javor_velkolistý"
+]
+
 var timer = null
 var is_yield_paused = false
 var current_health = 12
@@ -30,27 +39,36 @@ onready var arr_pebbles = [
 
 func _ready():
 	timer = get_tree().create_timer(0.0)
+
+	var index = Global.arr_levels.find(Global.level_root().filename)
+	if index > 2:
+		index += 1
+	if index == -1:
+		index = 3
+
+	$UniqueLeaf.texture_progress = load(LEAF_IMAGES[index] + ".png")
+	$UniqueLeaf.texture_under = load(LEAF_IMAGES[index] + "_50.png")
 # ------------------------------------------------------------------------------
 
 func _process(delta):
 	var vladimir = Global.level_root().find_node('Vladimir')
-	
-	acorn_counter = vladimir.acorn_counter
-	$AcornCounter.text = str(acorn_counter) + "x"
-	
-	max_health = vladimir.max_health
-	current_health = vladimir.health
-	
-	pebble_counter = vladimir.pebble_counter
-	
-	heavy_attack_counter = vladimir.heavy_attack_counter
-	$UniqueLeaf.visible = true if heavy_attack_counter > 0 else false
-	$UniqueLeafCounter.visible = $UniqueLeaf.visible
-	$UniqueLeafCounter.text = str(int(heavy_attack_counter / 4)) + "x"
-	$UniqueLeaf.value = int(heavy_attack_counter) % 4
-	
-	$Slingshot.visible = vladimir.has_slingshot
-	is_yield_paused = Global.level_root().is_yield_paused
+	if vladimir:
+		acorn_counter = vladimir.acorn_counter
+		$AcornCounter.text = str(acorn_counter) + "x"
+		
+		max_health = vladimir.max_health
+		current_health = vladimir.health
+		
+		pebble_counter = vladimir.pebble_counter
+		
+		heavy_attack_counter = vladimir.heavy_attack_counter
+		$UniqueLeaf.visible = true if heavy_attack_counter > 0 else false
+		$UniqueLeafCounter.visible = $UniqueLeaf.visible
+		$UniqueLeafCounter.text = str(int(heavy_attack_counter / 4)) + "x"
+		$UniqueLeaf.value = int(heavy_attack_counter) % 4
+		
+		$Slingshot.visible = vladimir.has_slingshot
+		is_yield_paused = Global.level_root().is_yield_paused
 # ------------------------------------------------------------------------------
 
 func update_health(var value, var condition : String, var current_health, \

@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+
 var arr_enemy = []
 var damage = 2
 var closest_enemy = Vector2(99999, 0)
@@ -10,9 +11,8 @@ func _physics_process(delta):
 		for enemy in arr_enemy:
 			if abs(enemy.position.x - global_position.x) < closest_enemy.x:
 				closest_enemy = enemy.global_position
-	
-	self.fly(closest_enemy)
 
+	self.fly(closest_enemy)
 #-------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
@@ -28,7 +28,7 @@ func fly(closest_enemy):
 
 	if $GroundRay.is_colliding():
 		self.apply_central_impulse(Vector2(0, -25))
-	
+
 	direction *= Vector2(0.5, 2)
 	self.add_central_force(direction)
 # ------------------------------------------------------------------------------

@@ -19,7 +19,7 @@ var speed_upgrade_counter = 1
 func _ready():
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
-	$BigTree/Leaves.hide()
+	$BigTree/Leaf_node.hide()
 # ------------------------------------------------------------------------------
 	
 func _on_LoadingTimer_timeout():
@@ -29,6 +29,7 @@ func _on_LoadingTimer_timeout():
 	
 	get_tree().set_pause(false)
 	Global.is_yield_paused = false
+	Global.is_pausable = false
 	$CanvasLayer/UserInterface.load_ui_icons()
 	
 	

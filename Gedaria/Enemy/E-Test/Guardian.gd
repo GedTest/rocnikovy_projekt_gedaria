@@ -68,8 +68,9 @@ func move(): # MOVE
 				player = null
 				$Shield/CollisionShape2D.disabled = true
 				return
-			
-			$Shield/CollisionShape2D.disabled = false
+				
+			if is_blocking:
+				$Shield/CollisionShape2D.disabled = false
 			can_move_from_position = true if distance > 125 else false
 			
 			# MOVE TOWARDS PLAYER (RIGHT)
@@ -79,7 +80,6 @@ func move(): # MOVE
 					$Shield.position.x = 75
 					$Sprite.flip_h = true
 					$HitRay.cast_to.x = FoV
-					$BackwardRay.cast_to.x = -110
 			
 			# MOVE TOWARDS PLAYER (LEFT)
 			elif player.position.x >= position.x-FoV and player.position.x < position.x:
@@ -88,7 +88,6 @@ func move(): # MOVE
 					$Shield.position.x = -75
 					$Sprite.flip_h = false
 					$HitRay.cast_to.x = -FoV
-					$BackwardRay.cast_to.x = 110
 					
 			# IF RUNNING FOR TOO MUCH LONG GO BACKWARDS
 			if position.x < starting_position or position.x > starting_position:
@@ -108,7 +107,6 @@ func move_in_range(from, to):
 		$Shield.position.x = 75
 		$Sprite.flip_h = true
 		$HitRay.cast_to.x = FoV
-		$BackwardRay.cast_to.x = -110
 		
 	if int(position.x) > to-10:
 		starting_position = from
@@ -117,7 +115,6 @@ func move_in_range(from, to):
 		$Shield.position.x = -75
 		$Sprite.flip_h = false
 		$HitRay.cast_to.x = -FoV
-		$BackwardRay.cast_to.x = 110
 # ------------------------------------------------------------------------------
 
 func hit(dmg):
@@ -130,10 +127,7 @@ func hit(dmg):
 	
 	# KNOCKBACK WHILE BLOCKING
 	if is_blocking and int(position.x) != starting_position:
-		if $BackwardRay.is_colliding() or $BackwardRay2.is_colliding():
-			var ray = $BackwardRay if $BackwardRay.is_colliding() else $BackwardRay2
-			knockbackDistance = abs(position.x - ray.get_collision_point().x)
-		position.x -= (100 - knockbackDistance) * direction
+		self.jump_back(100, 0.08)
 # ------------------------------------------------------------------------------
 
 func attack(): # DO ATTACK

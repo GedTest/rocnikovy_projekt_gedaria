@@ -2,7 +2,7 @@ class_name Enemy, "res://Enemy/sprites/_IDLE/_IDLE_000.png"
 extends KinematicBody2D
 
 
-const GRAVITY = Vector2(0, 98)
+var GRAVITY = Vector2(0, 98)
 
 var direction = 1
 var velocity = Vector2(0, 0)
@@ -113,6 +113,7 @@ func hit(dmg):
 			if !is_yield_paused:
 				yield(hit_timer, "timeout")
 				is_moving = true
+				print("Enemy health: ", self.health)
 # ------------------------------------------------------------------------------
 
 func _on_Weapon_body_entered(body):
@@ -128,5 +129,12 @@ func _on_Weapon_body_exited(body):
 # ------------------------------------------------------------------------------
 
 func _on_WallDetection_body_entered(body):
-	if body.get_collision_layer_bit(0) and is_jumping:
+	if body.get_collision_layer_bit(19) and is_jumping:
 		velocity.y -= jump_strength
+
+func jump_back(var distance = 100, var time = 0.3):
+	$AdvancedTween.play(time, position.x, position.x + (distance*-direction))
+
+
+func _on_AdvancedTween_advance_tween(sat):
+	position.x = sat

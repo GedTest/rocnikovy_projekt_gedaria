@@ -18,13 +18,14 @@ func _ready():
 		var spring = DampedSpringJoint2D.new()
 		self.add_child(spring)
 		self.add_child(segment)
-		segment.position.x = arr_segments.back().position.x + 5
+		segment.position.x = arr_segments.back().position.x + 6
 		
 		spring.node_a = arr_segments.back().get_path()
 		spring.node_b = segment.get_path()
 		spring.length = 0
-		spring.rest_length = 0
+		spring.rest_length = 1
 		spring.stiffness = 32
+		spring.bias = 0.5
 		
 		arr_segments.append(segment)
 #-------------------------------------------------------------------------------

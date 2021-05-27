@@ -11,11 +11,13 @@ var is_yield_paused = false
 
 
 func _ready():
-	#Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 	Global.is_first_entrance(self.filename)
-	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
+	Fullscreen.hide_elements()
+	
+	$Vladimir.heavy_attack_counter += 4
 # ------------------------------------------------------------------------------
 
 func _on_LoadingTimer_timeout():
@@ -24,7 +26,6 @@ func _on_LoadingTimer_timeout():
 
 	get_tree().set_pause(false)
 	Global.is_yield_paused = false
-	Global.is_pausable = true
 
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:

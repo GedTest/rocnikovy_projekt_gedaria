@@ -9,7 +9,7 @@ func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(2) and body.name == "Boss":
 		$Timer.start()
 		enemy = body
-		enemy.is_hitted = true
+		enemy.is_hitted_by_leaf = true
 		enemy.is_blocking = false
 		enemy.is_moving = false
 		enemy.state_machine.travel('HIT_LOOP')
@@ -20,7 +20,7 @@ func _on_Area2D_body_entered(body):
 
 func _on_Timer_timeout():
 	enemy.find_node("stars").emitting = false
-	enemy.is_hitted = false
+	enemy.is_hitted_by_leaf = false
 	enemy.is_blocking = true
 	enemy.is_moving = true
 	self.queue_free()

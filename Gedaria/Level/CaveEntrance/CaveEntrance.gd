@@ -16,13 +16,14 @@ onready var arr_bats = [
 ]
 
 func _ready():
-	#Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 	Global.is_first_entrance(self.filename)
 	
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
+	Fullscreen.hide_elements()
 
-	$Vladimir.heavy_attack_counter = 4
+	$Vladimir.heavy_attack_counter += 4
 	$Vladimir.has_learned_attack = true
 	$Vladimir.has_learned_heavy_attack = true
 	$Vladimir.has_learned_blocking = true
@@ -35,7 +36,6 @@ func _on_LoadingTimer_timeout():
 
 	get_tree().set_pause(false)
 	Global.is_yield_paused = false
-	Global.is_pausable = true
 
 	for leaf_holder in $LeafHolders.get_children():
 		if leaf_holder.has_leaf:
@@ -44,6 +44,7 @@ func _on_LoadingTimer_timeout():
 	Global.update_data_from_merchant($Vladimir)
 	
 	$CanvasLayer/UserInterface.load_ui_icons()
+	$PileOfLeaves/PileOfLeavesWide/BounceArea.connect("body_entered", self, "_on_bounce")
 # ------------------------------------------------------------------------------
 
 func _process(delta):
@@ -52,6 +53,15 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("interact") and is_interactable:
 		$Bars.queue_free()
+		
+	if $PileOfLeaves/PileOf4Leaves3.is_complete:
+		$Winds/Wind19.disable_wind()
+		
+	if $LeafHolders/LeafHolder13.has_leaf:
+		$Winds/Wind14.disable_wind()
+		if $LeafHolders/LeafHolder12.has_leaf:
+			$Winds/Wind4.disable_wind()
+			$Winds/Wind15.disable_wind()
 # ------------------------------------------------------------------------------
 
 func _on_CaveTeleport_body_entered(body, next_position):
@@ -89,8 +99,16 @@ func _on_LeafArea_body_entered(body):
 		
 		if leaf_counter == 9:
 			SaveLoad.delete_actor($KillZone3)
+			$PileOfLeaves/PileOfLeavesWide2.show()
 
 
 func _on_Wind_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		$Winds/Wind8.scale.y = 1.5
+		$Winds/Wind8.impulse.x = -2000
+		print($Winds/Wind8.impulse)
+
+func _on_bounce(body):
+	if body.get_collision_layer_bit(1):
+		$PileOfLeaves/PileOfLeavesWide/AnimatedSprite.frame = 0
+		$PileOfLeaves/PileOfLeavesWide/AnimatedSprite.play("bounce")

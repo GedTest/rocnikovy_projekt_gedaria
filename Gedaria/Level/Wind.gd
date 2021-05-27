@@ -9,3 +9,8 @@ func _on_Wind_body_entered(body):
 		body.linear_velocity = Vector2.ZERO
 		body.linear_damp = 0.25
 		body.apply_central_impulse(impulse)
+# ------------------------------------------------------------------------------
+
+func disable_wind():
+	$CollisionShape2D.disabled = true
+	self.hide()

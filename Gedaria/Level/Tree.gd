@@ -7,6 +7,6 @@ func _ready():
 	
 	match tree_color:
 		"Dark":
-			$Leaves.texture = load("res://Level/TreeDarkLeaves.png")
+			$Leaf_node.texture = load("res://Level/TreeDarkLeaves.png")
 		"ight":
-			$Leaves.texture = load("res://Level/TreeLightLeaves.png")
+			$Leaf_node.texture = load("res://Level/TreeLightLeaves.png")
