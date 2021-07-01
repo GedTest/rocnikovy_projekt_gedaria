@@ -4,7 +4,8 @@ extends Node
 const LEVELS = [
 	"res://Level/Chase/ChaseLevel.tscn",
 	"res://Level/Prologue/TutorialLevel.tscn",
-	"res://Level/Prologue/KidnapLevel.tscn"]
+	"res://Level/Prologue/KidnapLevel.tscn",
+	"res://Level/MainMenu/MainMenu.tscn"]
 
 
 func _process(delta):
@@ -29,4 +30,4 @@ func pause():
 
 func hide_elements():
 	$TextureRect.hide()
-	$TextureRect/TextEdit.hide()
+	$TextureRect/TextEdit.show()

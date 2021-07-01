@@ -11,10 +11,20 @@ var is_moving = true
 
 
 func _ready():
+	var parent = get_parent()
 	starting_position = abs(position.x)
-	direction = get_parent().direction
-	damage = get_parent().damage
-	distance = get_parent().FoV
+	direction = parent.direction
+	damage = parent.damage
+	distance = parent.FoV
+	
+	if direction is int:
+		$Sprite.flip_h = true if direction < 0 else false
+		$Particles2D.rotation_degrees = 270 if direction < 0 else 90
+	else:
+		$Sprite.flip_h = false
+		var angle = parent.find_angle_between(parent.player.position, parent.position)
+		$Sprite.rotation_degrees = angle
+		$Particles2D.rotation_degrees += angle
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument

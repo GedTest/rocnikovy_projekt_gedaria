@@ -8,7 +8,7 @@ func _on_BridgeArea_body_entered(body):
 		
 		vladimir.is_moving = false
 		Patroller8.find_node("Camera").current = true
-		Patroller8.find_node("Sprite").flip_h = true
+		Patroller8.find_node("Sprite3").flip_h = true
 		Patroller8.is_focused = true
 		yield(get_tree().create_timer(4.0, false), "timeout")
 		

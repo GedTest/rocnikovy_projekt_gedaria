@@ -3,7 +3,9 @@ var y = 5650
 
 signal enemy_health_changed
 
-const RopePath = preload("res://Rope_test/rope_spring.tscn")
+const ROPE_PATH = preload("res://Rope_test/rope_spring.tscn")
+const PATROLLER_PATH = preload("res://Enemy/E-Test/Patroller.tscn")
+const GUARDIAN_PATH = preload("res://Enemy/E-Test/Guardian.tscn")
 
 var is_done_once = true
 var is_yield_paused = false
@@ -11,13 +13,26 @@ var is_rope_interactable = false
 var is_lever_interactable = false
 var is_rope_on_place = false
 
-var non_pillar_leaf_holders = 30
 var arr_enemies = []
+
+onready var leaf_holders = [
+	$LeafHolders/LeafHolder49,
+	$LeafHolders/LeafHolder50,
+	$LeafHolders/LeafHolder51,
+]
 
 onready var arr_bats = [
 	$Bat,$Bat2,$Bat3,$Bat4,$Bat5,
 	$Bat6,$Bat7,$Bat8,$Bat9,$Bat10,
 	$Bat11,
+]
+
+onready var arr_patrollers = [
+	$Patroller,$Patroller2,$Patroller3,
+	$Patroller4,$Patroller5,
+]
+onready var arr_guardians = [
+	$Guardian,$Guardian2,$Guardian3,
 ]
 
 
@@ -39,23 +54,31 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	get_tree().set_pause(false)
 	Global.is_yield_paused = false
 
-	for leaf_holder in $LeafHolders.get_children():
+	var leaf_holders = $LeafHolders.get_children() + $PillarLeafolders.get_children()
+	for leaf_holder in leaf_holders:
 		if leaf_holder.has_leaf:
 			leaf_holder.show_leaf()
 	
 	Global.update_data_from_merchant($Vladimir)
 	
 	$CanvasLayer/UserInterface.load_ui_icons()
-	$CanvasLayer/UserInterface/UniqueLeaf.margin_left = 1635
 	arr_enemies.insert(0, $Patroller)
 	arr_enemies.insert(1, $Guardian)
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
 func _process(delta):
-	$Patroller.move($Patroller.from,$Patroller.to)
-	$Guardian.move()
-	$Guardian.move_in_range($Guardian.from, $Guardian.to)
+#	$Patroller.move($Patroller.from,$Patroller.to)
+#	$Guardian.move()
+#	$Guardian.move_in_range($Guardian.from, $Guardian.to)
+	
+	for i in arr_patrollers:
+		i.move(i.from, i.to)
+	
+	for i in arr_guardians:
+		i.move()
+		if i.from != 0 or i.to != 0:
+			i.move_in_range(i.from, i.to)
 	
 	for bat in arr_bats:
 		bat.move(bat.from, bat.to)
@@ -65,7 +88,7 @@ func _process(delta):
 			$RopeUnderStone.call_deferred("queue_free")
 			$rope_spring.call_deferred("queue_free")
 			
-			var rope = RopePath.instance()
+			var rope = ROPE_PATH.instance()
 			$Vladimir.add_child(rope)
 			rope.position -= Vector2(750, -20)
 			
@@ -75,7 +98,7 @@ func _process(delta):
 			$RopeArea.call_deferred("queue_free")
 			
 	if $PillarLeft.position.y == 6890:
-		if $LeafHolders.get_child_count() - non_pillar_leaf_holders == 0:
+		if $PillarLeafolders.get_child_count() == 0:
 			$AnimationPlayer.play("PILLAR_MIDDLE_COLLAPSIN")
 	
 	if $PillarLeft.position.y == 7120:
@@ -84,11 +107,17 @@ func _process(delta):
 	
 	if $PileOfLeaves/PileOf4Leaves5.is_complete:
 		$Winds/Wind11.disable_wind()
+	
+	if $Vladimir.position.x >= 8660:
+		for leaf_holder in leaf_holders:
+			if is_instance_valid(leaf_holder):
+				leaf_holder.spawn_leaf()
+				SaveLoad.delete_actor(leaf_holder)
 # ------------------------------------------------------------------------------
 
-func _on_KillZone_body_entered(body): # Kills player if he fall into
+func _on_KillZone_body_entered(body, sec=0.5): # Kills player if he fall into
 	if body.get_collision_layer_bit(1):
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(sec), "timeout")
 		body.die()
 # ------------------------------------------------------------------------------
 
@@ -144,4 +173,16 @@ func _on_TrapDoorMechanismArea_body_entered(body):
 func _on_CollapsingArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		SaveLoad.delete_actor($CollapsingFloors/CollapsingFloor)
+# ------------------------------------------------------------------------------
+
+func _on_AmbushArea_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		$AmbushArea/CollisionShape2D.set_deferred("disabled", true)
+		$Guardian2.position = Vector2(21400, 8190)
+		$Guardian3.position = Vector2(23100, 8190)
+		
+		for patroller in arr_patrollers:
+			var offset = arr_patrollers.find(patroller)
+			if offset > 0:
+				patroller.position = Vector2(offset * 350 + 21500, 8190)
 # ------------------------------------------------------------------------------

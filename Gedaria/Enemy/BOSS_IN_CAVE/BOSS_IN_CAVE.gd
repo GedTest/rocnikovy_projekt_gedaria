@@ -3,8 +3,8 @@ extends Enemy
 
 signal health_changed
 
-const LeafPath = preload("res://Level/Leaf.tscn")
-const FallingRockPath = preload("res://Level/CaveDuel/Stone.tscn")
+const LEAF_PATH = preload("res://Level/Leaf.tscn")
+const FALLING_ROCK_PATH = preload("res://Level/CaveDuel/Stone.tscn")
 
 var is_done_once = true
 var is_in_air = false
@@ -212,7 +212,7 @@ func falling_rocks():
 		is_moving = false
 		is_blocking = true
 		for i in range(7):
-			var rock = FallingRockPath.instance()
+			var rock = FALLING_ROCK_PATH.instance()
 			get_parent().find_node("Rocks").call_deferred("add_child", rock)
 			
 			randomize()
@@ -261,7 +261,7 @@ func _on_Tween_tween_completed(object, key):
 
 func spawn_leaves_in_range(number):
 	for n in range(max_leaves - number):
-		var leaf = LeafPath.instance()
+		var leaf = LEAF_PATH.instance()
 		leaf.texture = "res://UI/list_lipa.png"
 		get_parent().get_node("Leaves").add_child(leaf)
 		leaf.position = self.position

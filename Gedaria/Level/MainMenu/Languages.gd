@@ -27,6 +27,16 @@ var languages = {
 		"bush_quest":"Ahoj, oni.... ukradli mi mé děti.... přineseš je zpátky, že mládenče?",
 		"bush_thanks":"Oh děkuji mladíku!",
 		"pause":"Stisknutím [color=#004a23]tlačítka 'Esc'[/color] hru zastavíš a zobrazí se nabídka menu.",
+		"continue":"Pokračovat",
+		"save":"Uložit",
+		"restart":"Restartovat u kontrolního bodu",
+		"main_menu":"Hlavní menu",
+		"audio":"Zvuk",
+		"language":"Jazyk",
+		"close":"Zavřít",
+		"back":"Zpět",
+		"master_volume":"Celková hlasitost ",
+		"music_volume":"Hlasitost hudby "
 	},
 	"english":{
 		"throwing":"With the help of pebbles, you can throw at beehives, thus provoking bees. [color=#004a23]Press the 'Q' button[/color] and aim at the hive, then press left mouse button",
@@ -54,6 +64,16 @@ var languages = {
 		"bush_quest":"Hi, they .... stole my children .... will you bring them back, young man? ",
 		"bush_thanks":"Oh thank you young man!",
 		"pause":"[color=#004a23]Press the 'Esc'[/color] button to stop the game and display the menu.",
+		"continue":"Continue",
+		"save":"Save",
+		"restart":"Restart at chechkpoint",
+		"main_menu":"Main menu",
+		"audio":"Audio",
+		"language":"Language",
+		"close":"Close",
+		"back":"Back",
+		"master_volume":"Master volume ",
+		"music_volume":"Music volume "
 	},
 	"polskie": {
 		"start":"Zacząć gre",

@@ -2,8 +2,8 @@ class_name BOSS_Warden, "res://Enemy/BOSS_Warden/BOSS_Warden.png"
 extends Enemy
 
 
-const StickPath = preload("res://Enemy/BOSS_Warden/Stick.tscn")
-var BirdPath = preload("res://Level/Prologue/Bird.tscn").instance()
+const STICK_PATH = preload("res://Enemy/BOSS_Warden/Stick.tscn")
+var BIRD_PATH = preload("res://Level/Prologue/Bird.tscn").instance()
 
 var can_throw = false
 var is_throwing = false
@@ -48,8 +48,8 @@ func _process(delta):
 		# 2ND PHASE OF BOSSFIGHT
 		if health == max_health / 2 and is_done_once:
 			is_blocking = true
-			get_parent().add_child(BirdPath)
-			BirdPath.position = Vector2(1920, 400)
+			get_parent().add_child(BIRD_PATH)
+			BIRD_PATH.position = Vector2(1920, 400)
 			jump()
 			is_done_once = false
 			can_throw = true
@@ -162,7 +162,7 @@ func throw(): # SECONDARY ATTACK - THROW
 	
 		# deal the damage by projektil
 		throw_timer.time_left = 0.0
-		add_child(StickPath.instance())
+		add_child(STICK_PATH.instance())
 		
 		if throw_timer.time_left <= 0.0 and !is_attacking:
 			throw_timer = get_tree().create_timer(3.3, false)

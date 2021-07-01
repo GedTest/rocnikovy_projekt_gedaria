@@ -86,7 +86,7 @@ func _process(delta):
 			$Branch/leaves.hide()
 			$Branch/AnimationPlayer.stop()
 			$Letter/Text.show()
-			yield(get_tree().create_timer(7.0), "timeout")
+			yield(get_tree().create_timer(8.0), "timeout")
 			
 			get_tree().change_scene("res://Level/Prologue/KidnapLevel.tscn")
 	

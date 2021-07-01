@@ -7,6 +7,7 @@ export(bool) var is_forwarding_vertical = false
 
 var count = 0
 var forward_dir = 1
+var is_falling_down = false
 
 
 func _on_Gateway_body_entered(body):
@@ -19,7 +20,7 @@ func _on_Gateway_body_entered(body):
 		
 		elif is_forwarding_vertical:
 			forward_dir = -1 if count % 4 == 0 else 1
-			if forward_dir == -1:
+			if forward_dir == -1 or is_falling_down:
 				body.find_node("CollisionShape2D").set_deferred("disabled", true)
 				body.set_deferred("mode", RigidBody2D.MODE_STATIC)
 				yield(get_tree().create_timer(0.2, false), "timeout")

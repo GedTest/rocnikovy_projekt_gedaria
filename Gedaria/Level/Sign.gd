@@ -1,8 +1,8 @@
 extends Area2D
 
 
-export(String, "res://Level/TestLevel.tscn",
-			   "res://Level/DarkForest/DarkForest.tscn",
+export(String, "res://Level/In the wood.tscn",
+			   "res://Level/DarkForest/Dark forest.tscn",
 			   "res://Level/MerchantSquirrel.tscn",
 			   "res://Level/CaveEntrance/CaveEntrance.tscn",
 			   "res://Level/CaveEntrance/LiLCave.tscn",

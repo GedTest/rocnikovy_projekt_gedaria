@@ -1,7 +1,8 @@
 extends Enemy
 
 
-const ProjectilePath = preload("res://Enemy/E-Test/Projectile.tscn")
+const PROJECTILE_PATH = preload("res://Enemy/E-Test/Projectile.tscn")
+const AIMING_BERNARD = "Bernadr.png"
 
 export(bool) var can_shoot_in_sector = false
 
@@ -9,11 +10,19 @@ var turn_around_timer = null
 var has_spotted_player = false
 var aim_direction = 1
 
+onready var rotation_objects = [$HitRay, $left_hand, $right_hand, $musket]
+
 
 func _ready():
+	can_attack = true
+	cooldown_timer = get_tree().create_timer(0.0, false)
 	turn_around_timer = get_tree().create_timer(0.0, false)
 	if can_shoot_in_sector:
 		$SpotArea/CollisionPolygon2D.disabled = false
+		for obj in rotation_objects:
+			obj.show()
+		$Sprite.hide()
+#		$Sprite.texture = load(AIMING_BERNARD)
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -26,16 +35,18 @@ func _process(delta):
 				yield(turn_around_timer, "timeout")
 				self.turn_around()
 		
-		direction = 1 if $Sprite.flip_h else -1
+		direction = 1 if $HitRay.cast_to.x > 0 else -1
 		
 		if can_shoot_in_sector:
 			self.aim()
 			
-		if has_player:
+		if has_player and can_attack:
 			self.shoot()
 			
-			if has_spotted_player:
-				$HitRay.rotation_degrees = find_angle_between(player.position, self.position)
+		if has_player and has_spotted_player:
+			for obj in rotation_objects:
+				obj.rotation_degrees = find_angle_between(player.position, self.position)
+
 # ------------------------------------------------------------------------------
 
 func turn_around(): # LOOK BACK AND FORTH
@@ -44,29 +55,42 @@ func turn_around(): # LOOK BACK AND FORTH
 		$HitRay.cast_to.x = -$HitRay.cast_to.x
 		
 		if turn_around_timer.time_left <= 0.0:
-			turn_around_timer = get_tree().create_timer(1.15, false)
+			turn_around_timer = get_tree().create_timer(1.3, false)
 			if !is_yield_paused:
 				yield(turn_around_timer, "timeout")
-				if !has_player:
-					$Sprite.flip_h = !$Sprite.flip_h
-					$HitRay.cast_to.x = -$HitRay.cast_to.x
+				$Sprite.flip_h = !$Sprite.flip_h
+				$HitRay.cast_to.x = -$HitRay.cast_to.x
 # ------------------------------------------------------------------------------
 
 func shoot(): # FIRE A PROJECTILE 
 	if !is_dead:
+		can_attack = false
+		$AnimationTree.set("parameters/ATTACK/blend_position", direction)
+		state_machine.travel("ATTACK")
 		if attack_timer.time_left <= 0.0:
-			attack_timer = get_tree().create_timer(3.0, false)
+			attack_timer = get_tree().create_timer(1.15, false)
 			if !is_yield_paused:
 				yield(attack_timer, "timeout")
 				if has_player:
 					# PLAYER IS HIDING
 					if player.is_hidden:
 						turn_around()
+						can_attack = true
 						return
 						
-					elif !player.is_dead:
-						var projectile = ProjectilePath.instance()
+					if !player.is_dead:
+						var projectile = PROJECTILE_PATH.instance()
+						if can_shoot_in_sector:
+							self.find_coordinations()
+						projectile.position = $BulletSpawnPoint.position
 						add_child(projectile)
+						$AudioStreamPlayer2D.play()
+						
+		if cooldown_timer.time_left <= 0.0:
+			cooldown_timer = get_tree().create_timer(3.65, false)
+			if !is_yield_paused:
+				yield(cooldown_timer, "timeout")
+				can_attack = true
 # ------------------------------------------------------------------------------
 
 func find_angle_between(player, enemy):
@@ -95,4 +119,19 @@ func aim():
 	if $HitRay.rotation_degrees > 123:
 		aim_direction = 0.4
 	
-	$HitRay.rotation_degrees -= (aim_direction/2)
+	for obj in rotation_objects:
+		obj.rotation_degrees -= (aim_direction/2)
+# ------------------------------------------------------------------------------
+
+func find_coordinations():
+	var V = Vector2.RIGHT
+	var A = $PointA.global_position
+	var B = $HitRay.global_position
+	var U = Vector2(player.global_position.x - B.x, player.global_position.y - B.y)
+	
+	var t = ((U.y*A.x) - (U.y*B.x) - (A.y*U.x) + (B.y*U.x)) / ((V.y*U.x) - (U.y*V.x))
+	var x = A.x + V.x*t
+	var y = A.y + V.y*t
+	
+	
+	$BulletSpawnPoint.global_position = Vector2(x, y)

@@ -12,7 +12,7 @@ onready var arr_patrollers = [
 ]
 onready var arr_guardians = [
 	$Guardian,$Guardian2,$Guardian3,$Guardian4,$Guardian5,
-	$Guardian6,
+	$Guardian6,$Guardian7,
 ]
 onready var arr_shooters = [
 	$Shooter,$Shooter2,$Shooter3,$Shooter4,
@@ -23,7 +23,7 @@ onready var arr_shooters = [
 
 
 func _ready():
-	Global.set_player_position_at_start($Vladimir, $Level_start)
+#	Global.set_player_position_at_start($Vladimir, $Level_start)
 	Global.is_first_entrance(self.filename)
 	
 	get_tree().set_pause(true)
@@ -51,7 +51,7 @@ func _on_LoadingTimer_timeout():
 	Global.update_data_from_merchant($Vladimir)
 	
 	$CanvasLayer/UserInterface.load_ui_icons()
-	$CanvasLayer/UserInterface/UniqueLeaf.margin_left = 1676
+	
 	if Global.first_entrance:
 		$LeafHolders/LeafHolder.has_leaf = 0
 		$LeafHolders/LeafHolder2.has_leaf = 0
@@ -64,6 +64,8 @@ func _process(delta):
 		
 	for i in arr_guardians:
 		i.move()
+		if i.from != 0 or i.to != 0:
+			i.move_in_range(i.from, i.to)
 		
 	if $PilesOfLeaves/PileOf6Leaves2.is_complete:
 		$Winds/Wind10.impulse = Vector2(700, -2400)

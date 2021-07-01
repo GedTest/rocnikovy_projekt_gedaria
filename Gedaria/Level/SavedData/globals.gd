@@ -2,8 +2,8 @@ extends Node
 
 
 var arr_levels = [
-	"res://Level/TestLevel.tscn",
-	"res://Level/DarkForest/DarkForest.tscn",
+	"res://Level/In the wood.tscn",
+	"res://Level/DarkForest/Dark forest.tscn",
 	"res://Level/CaveEntrance/CaveEntrance.tscn",
 	"res://Level/CultInCave/CultInCave.tscn",
 	"res://Level/ForestClearing/ForestCleaning.tscn",
@@ -39,9 +39,9 @@ func delete_actor(relate):
 # ------------------------------------------------------------------------------
 
 func vladimir_data():
-#	if last_map == "res://Level/TestLevel.tscn":
+#	if last_map == "res://Level/In the wood.tscn":
 #		prev_level_id = 0
-#	elif last_map == "res://Level/DarkForest/DarkForest.tscn":
+#	elif last_map == "res://Level/DarkForest/Dark forest.tscn":
 #		prev_level_id = 1
 #	elif last_map == "res://Level/CaveEntrance/LiLCave.tscn":
 #		return "[res://Level/CaveEntrance/LiLCave.tscn, Vladimir]"

@@ -16,7 +16,7 @@ onready var arr_bats = [
 ]
 
 func _ready():
-	Global.set_player_position_at_start($Vladimir, $Level_start)
+#	Global.set_player_position_at_start($Vladimir, $Level_start)
 	Global.is_first_entrance(self.filename)
 	
 	get_tree().set_pause(true)

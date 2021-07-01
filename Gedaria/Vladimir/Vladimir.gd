@@ -1,4 +1,4 @@
-class_name Vladimir, "res://Vladimir/animations/sprites/vladimir.png"
+class_name Vladimir, "res://Vladimir/animations/Vladimir.png"
 extends KinematicBody2D
 """
 Main character
@@ -20,6 +20,7 @@ var shoot_distance = 500
 var acorn_counter = 0
 var pebble_counter = 0
 var heavy_attack_counter = 0
+var jump_forgivness_timer = 0.0
 var next_pos_ID = ""
 
 var direction = 1
@@ -54,6 +55,8 @@ var heavy_attack_timer = null
 var block_timer = null
 var state_machine = null
 
+#var t = 0.0
+
 
 func _ready():
 	set_collision_layer_bit(1, true)
@@ -78,11 +81,11 @@ func _physics_process(delta):
 			
 	# IF HE'S NOT STOP BY SOME EVENT
 		if is_moving:
-			jump()
+			jump(delta)
 			move()
 			crouch()
 			attack()
-			heavy_attack()
+			heavy_attack(delta)
 			shoot()
 			block()
 			rake()
@@ -92,11 +95,19 @@ func _physics_process(delta):
 									  false, 4, PI,false)
 # ------------------------------------------------------------------------------
 
-func jump(): # JUMP
+func jump(delta): # JUMP
+	var MAX_TIME = 0.1
+	
 	can_jump = true if ($GroundRay.is_colliding() or
 						$GroundRay2.is_colliding() or
 						$GroundRay3.is_colliding()
 						)else false
+	if can_jump:
+		jump_forgivness_timer = 0.0
+	else:
+		jump_forgivness_timer += delta
+		if jump_forgivness_timer <= MAX_TIME:
+			can_jump = true
 						
 	if Input.is_action_just_pressed("jump") and can_jump:
 		jumped_height.y = position.y
@@ -119,6 +130,7 @@ func move(): # MOVE
 	
 	velocity.x = direction * (speed*modify_speed) * int(can_move) # * delta
 	var animation = "RUN" if velocity.x != 0  else "IDLE"
+	
 	
 	$Sprite.flip_v = false
 	if !is_hitted and !is_attacking and !is_raking and !is_dead and !is_aimining:
@@ -145,13 +157,13 @@ func attack(): # LIGHT ATTACK, fast but low dmg,
 	if has_learned_attack:
 		if Input.is_action_just_pressed("attack") and !is_attacking and !is_blocking:
 			is_attacking = true
-			can_move = false
+#			can_move = false
 			$AnimationTree.set("parameters/ATTACK/blend_position", attack_direction)
 			if state_machine.get_current_node() != "HOLD_PEBBLE":
 				state_machine.travel('ATTACK')
 			
 			if attack_timer.time_left <= 0.0:
-				attack_timer = get_tree().create_timer(0.656)
+				attack_timer = get_tree().create_timer(0.35)
 				if !is_yield_paused:
 					yield(attack_timer, "timeout")
 					if enemy and can_attack:
@@ -161,9 +173,21 @@ func attack(): # LIGHT ATTACK, fast but low dmg,
 					is_attacking = false
 # ------------------------------------------------------------------------------
 
-func heavy_attack(): # HEAVY ATTACK, slow but high dmg
+func heavy_attack(delta): # HEAVY ATTACK, slow but high dmg
 	if has_learned_heavy_attack and heavy_attack_counter > 0:
 		var current_animation = state_machine.get_current_node()
+		
+		
+#		if Input.is_action_pressed("attack"):
+#			t += delta
+#		if Input.is_action_just_pressed("attack"):
+#			t = 0
+#		if Input.is_action_just_released("attack"):
+#			t = 0
+#		if t >= 0.3 and Input.is_action_pressed("attack") and !is_attacking and !is_blocking:
+#			t = -999
+#			print('yay HOLD')#hfl
+		
 		
 		if Input.is_action_just_pressed("heavy attack") and !is_attacking and !is_blocking:
 			if current_animation != 'HEAVY_ATTACK':
@@ -180,7 +204,8 @@ func heavy_attack(): # HEAVY ATTACK, slow but high dmg
 							enemy.is_heavy_attacked = true
 							enemy.hit(damage)
 							enemy.jump_back()
-							#enemy.position.x -= 50 * enemy.direction
+
+#						t = 0
 # ------------------------------------------------------------------------------
 
 func shoot():
@@ -237,8 +262,19 @@ func rake(): # RAKE LEAVES TO CREATE PILE OF LEAVES
 			
 		if Input.is_action_pressed("rake") and !is_crouching:
 			is_raking = true
+			
+			if Input.is_action_pressed("right"):
+				direction = -1
+				$Sprite.flip_h = true
+			if Input.is_action_pressed("left"):
+				direction = 1
+				$Sprite.flip_h = false
+			
 			velocity.x = -direction * speed / 2
-			$AnimationTree.set("parameters/RAKING/blend_position", attack_direction)
+			
+			var dir = attack_direction if direction == 0 else -direction
+			
+			$AnimationTree.set("parameters/RAKING/blend_position", dir)
 			state_machine.travel('RAKING')
 			for index in $LeavesCollector.get_slide_count():
 				var collision = $LeavesCollector.get_slide_collision(index)

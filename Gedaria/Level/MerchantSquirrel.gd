@@ -5,11 +5,12 @@ const HEALTH_LIMIT = 20
 const DAMAGE_LIMIT = 10
 const SPEED_LIMIT = 25 # 25%
 const BASE_SPEED = 525
+const HEAVY_ATTACK_LIMIT = 3
 onready var UI = $CanvasLayer/UserInterface
 
 var is_yield_paused = false
 var arr_levels = [
-	"res://Level/TestLevel.tscn","res://Level/DarkForest/DarkForest.tscn",
+	"res://Level/In the wood.tscn","res://Level/DarkForest/Dark forest.tscn",
 	"res://Level/CaveEntrance/CaveEntrance.tscn","res://Level/CultInCave/CultInCave.tscn",
 ]
 var damage_upgrade_counter = 1
@@ -56,7 +57,8 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func _on_HealthButton_pressed():
-	var cost = 3+int(pow(1.4, health_upgrade_counter))
+#	var cost = 3+int(pow(1.4, health_upgrade_counter))
+	var cost = 12
 	if $Vladimir.health < HEALTH_LIMIT:
 		if $Vladimir.acorn_counter >= cost:
 			$Vladimir.acorn_counter -= cost
@@ -79,8 +81,8 @@ func _on_HealthButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_AttackButton_pressed():
-	var cost = 3+int(pow(1.4, health_upgrade_counter))
-	
+#	var cost = 3+int(pow(1.4, health_upgrade_counter))
+	var cost = 12
 	if $Vladimir.damage < DAMAGE_LIMIT:
 		if $Vladimir.acorn_counter >= cost:
 			$Vladimir.acorn_counter -= cost
@@ -92,8 +94,8 @@ func _on_AttackButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_SpeedButton_pressed():
-	var cost = 2+int(pow(1.4, health_upgrade_counter))
-	
+#	var cost = 2+int(pow(1.4, health_upgrade_counter))
+	var cost = 12
 	if $Vladimir.speed <= BASE_SPEED + BASE_SPEED*SPEED_LIMIT/100:
 		if $Vladimir.acorn_counter >= cost:
 			$Vladimir.acorn_counter -= cost

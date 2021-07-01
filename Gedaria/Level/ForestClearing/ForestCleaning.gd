@@ -29,7 +29,7 @@ onready var arr_patrollers = [
 	$Patroller4,$Patroller5,$Patroller6,
 ]
 onready var arr_guardians = [
-	$Guardian,
+	$Guardian,$Guardian2,$Guardian3
 ]
 onready var arr_shooters = [
 	$Shooter,
@@ -73,13 +73,6 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 				var new_leaf = LEAF_PATH.instance()
 				$Leaves.call_deferred("add_child", new_leaf)
 				new_leaf.position = Vector2(25000, 8650)
-	$CanvasLayer/UserInterface/UniqueLeaf.margin_left = 1676
-#	$PilesOfLeaves/PileOf6Leaves2/LeafHolder.has_leaf = 1
-#	$PilesOfLeaves/PileOf6Leaves2/LeafHolder2.has_leaf = 1
-#	$PilesOfLeaves/PileOf6Leaves2/LeafHolder3.has_leaf = 1
-#	$PilesOfLeaves/PileOf6Leaves2/LeafHolder4.has_leaf = 1
-#	$PilesOfLeaves/PileOf6Leaves2/LeafHolder5.has_leaf = 1
-#	$PilesOfLeaves/PileOf6Leaves2/LeafHolder6.has_leaf = 1
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -130,6 +123,7 @@ func _on_StalkingArea_body_exited(body):
 
 func _on_WindArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
+		$WindArea.position.y += 8000
 		$Winds/Wind6.position.x = 25000
 		$Winds/Wind6.impulse.x = -10000
 		SaveLoad.delete_actor($Winds/Wind5)
@@ -181,3 +175,10 @@ func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		$StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
+
+
+func _on_Gateway7_body_entered(body):
+	if "RollingTree" in body.name:
+		$Gateway7.is_falling_down = true
+		yield(get_tree().create_timer(2.0), "timeout")
+		body.queue_free()

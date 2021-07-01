@@ -34,6 +34,7 @@ func _ready():
 	$Vladimir.has_learned_raking = false
 	
 	$Vladimir/Camera.current = true
+	$Patroller8.state_machine.call_deferred("travel", "STANDING 2")
 # ------------------------------------------------------------------------------
 
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
@@ -48,6 +49,8 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 		if leaf_holder.has_leaf:
 			leaf_holder.show_leaf()
 	
+	
+	demo_lang(Global.prefered_language)
 	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
 # ------------------------------------------------------------------------------
 
@@ -58,8 +61,12 @@ func _process(delta):
 		
 	for i in arr_guardians:
 		i.move()
+		if i.from != 0 or i.to != 0:
+			i.move_in_range(i.from, i.to)
 
 	if $Patroller8.is_focused:
+		$Patroller8/Sprite3.flip_h = false
+		$Patroller8/Sprite2.flip_h = false
 		$Patroller8.move($Patroller8.from, $Patroller8.to)
 		if $Bridge.is_broken:
 			$Patroller8.set_collision_mask_bit(0, false)
@@ -103,8 +110,31 @@ func _on_HeavyAttackLearn_body_entered(body):
 		$HeavyAttackLearn/CollisionShape2D.set_deferred("disabled", true)
 		body.has_learned_heavy_attack = true
 		body.heavy_attack_counter = 4
-
+# ------------------------------------------------------------------------------
 
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
 	$Patroller3.direction = -1
 	$Patroller3.speed = 350
+
+
+
+
+
+
+
+func _on_lang_btn_pressed(lang):
+	demo_lang(lang)
+func demo_lang(lang):
+	if lang == "čeština":
+		$DEMO_TUTORIAL/Movement.bbcode_text = "[color=#004a23]A/D[/color] Pohyb"
+		$DEMO_TUTORIAL/Jump.bbcode_text = "[color=#004a23]W[/color] Skok"
+		$DEMO_TUTORIAL/Crouch.bbcode_text = "[color=#004a23]S[/color] Skrčení se"
+		$DEMO_TUTORIAL/Attack.bbcode_text = "[color=#004a23]Levé tlačítko myši[/color] Útok"
+		$DEMO_TUTORIAL/Block.bbcode_text = "[color=#004a23]Mezerník[/color] Blokování"
+	elif lang == "english":
+		$DEMO_TUTORIAL/Movement.bbcode_text = "[color=#004a23]A/D[/color] Movement"
+		$DEMO_TUTORIAL/Jump.bbcode_text = "[color=#004a23]W[/color] Jump"
+		$DEMO_TUTORIAL/Crouch.bbcode_text = "[color=#004a23]S[/color] Crouch"
+		$DEMO_TUTORIAL/Attack.bbcode_text = "[color=#004a23]Left mouse button[/color] Attack"
+		$DEMO_TUTORIAL/Block.bbcode_text = "[color=#004a23]Spacebar[/color] Block"
+	

@@ -29,4 +29,4 @@ func _on_DoorArea2D_body_entered(body):
 			soldier.flip_h = !soldier.flip_h
 			
 		yield(get_tree().create_timer(1.5), "timeout")
-		get_tree().change_scene("res://Level/TestLevel.tscn")
+		get_tree().change_scene("res://Level/In the wood.tscn")

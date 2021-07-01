@@ -3,10 +3,18 @@ extends Enemy
 
 export (bool) var can_turn_around = true
 export (bool) var is_able_to_roll = true
+enum Type {
+	ERNEST,
+	ERWIN,
+}
+
+export(Type) var type = Type.ERWIN
 
 var turn_around_timer = null
 var do_barrel_roll_timer = null
 var cooldown_roll_timer = null
+
+var sprite = null
 
 var has_player_before = false
 var is_reversed = false
@@ -14,7 +22,11 @@ var can_roll = false
 
 
 func _ready():
-	death_anim_time = 3.0
+	sprite = $Sprite2 if type == Type.ERNEST else $Sprite3
+	$Sprite2.visible = true if type == Type.ERNEST else false
+	$Sprite3.visible = true if type == Type.ERWIN else false
+	death_anim_time = 2.6
+	hit_anim_time = 0.5
 	turn_around_timer = get_tree().create_timer(0.0, false)
 	do_barrel_roll_timer = get_tree().create_timer(0.0, false)
 	cooldown_roll_timer = get_tree().create_timer(0.0, false)
@@ -25,16 +37,16 @@ func _physics_process(delta):
 	if !is_dead:
 		is_reversed = true if direction == -1 else false
 		
-		if has_player and distance <= 135:
+		if has_player and distance <= 150:
 			if cooldown_timer.time_left <= 0.0:
-				cooldown_timer = get_tree().create_timer(1.0, false)
+				cooldown_timer = get_tree().create_timer(2.6, false)
 				if !is_yield_paused:
 					yield(cooldown_timer, "timeout")
 					attack()
 				
 		if cooldown_roll_timer.time_left <= 0.0 and !can_attack and is_able_to_roll:
 			if !is_yield_paused:
-				cooldown_roll_timer = get_tree().create_timer(4.0, false)
+				cooldown_roll_timer = get_tree().create_timer(6.0, false)
 				yield(cooldown_roll_timer, "timeout")
 				can_roll = true
 		
@@ -43,6 +55,7 @@ func _physics_process(delta):
 			if has_player_before and !is_attacking and distance <= 300 and can_roll:
 				position.x += 10 * direction
 				$HitRay.enabled = false
+				state_machine.travel("FLIP")
 			
 				if do_barrel_roll_timer.time_left <= 0.0:
 					do_barrel_roll_timer = get_tree().create_timer(0.4, false)
@@ -50,7 +63,7 @@ func _physics_process(delta):
 						yield(do_barrel_roll_timer, "timeout")
 						$HitRay.enabled = true
 						has_player_before = false
-						$Sprite.flip_h = !$Sprite.flip_h 
+						sprite.flip_h = !sprite.flip_h 
 						$HitRay.cast_to.x = -$HitRay.cast_to.x
 						can_roll = false
 # ------------------------------------------------------------------------------
@@ -59,18 +72,20 @@ func _physics_process(delta):
 # warning-ignore:shadowed_variable
 func move(var from, var to): # MOVE
 	if !is_dead:
+		if is_moving:
+			state_machine.travel('run')
 	# MOVE FROM 'A' TO 'B'
 		if !has_player and !has_player_before:
 			$HitRay.enabled = true
 			
 			if position.x > to:
 				direction = -1
-				$Sprite.flip_h = false
+				sprite.flip_h = true
 				$HitRay.cast_to.x = -FoV
 				$WallDetection.position.x = -65
 			elif position.x < from:
 				direction = 1
-				$Sprite.flip_h = true
+				sprite.flip_h = false
 				$HitRay.cast_to.x = FoV
 				$WallDetection.position.x = 65
 				
@@ -99,7 +114,7 @@ func move(var from, var to): # MOVE
 			if player.position.x <= position.x+FoV and player.position.x > position.x:
 				if !can_attack:
 					direction = 1
-					$Sprite.flip_h = true
+					sprite.flip_h = false
 					$HitRay.cast_to.x = FoV
 					$WallDetection.position.x = 65
 			
@@ -107,7 +122,7 @@ func move(var from, var to): # MOVE
 			elif player.position.x >= position.x-FoV and player.position.x < position.x:
 				if !can_attack:
 					direction = -1
-					$Sprite.flip_h = false
+					sprite.flip_h = true
 					$HitRay.cast_to.x = -FoV
 					$WallDetection.position.x = -65
 					
@@ -117,37 +132,40 @@ func move(var from, var to): # MOVE
 					turn_around_timer = get_tree().create_timer(2.0, false)
 					if !is_yield_paused:
 						yield(turn_around_timer, "timeout")
-						$Sprite.flip_h = !$Sprite.flip_h 
+						sprite.flip_h = !sprite.flip_h 
 						$HitRay.cast_to.x = -$HitRay.cast_to.x 
 			
 		velocity.x = speed * direction * int(is_moving)
 # ------------------------------------------------------------------------------
 
 func attack(): # DO ATTACK
-	if !is_dead:
+	if !is_dead and !is_attacking:
 		is_moving = false
-		$AnimationTree.set("parameters/ATTACK/blend_position",direction)
+		$AnimationTree.set("parameters/ATTACK/blend_position", direction)
 		state_machine.travel('ATTACK')
 		
-		if has_player:
-			if !player.is_dead and can_attack and !is_attacking:
-				is_attacking = true
-				if !player.is_blocking:
-					player.hit(damage)
-					print("Vladimir's health: ", player.health)
-					
 		if attack_timer.time_left <= 0.0:
-			attack_timer = get_tree().create_timer(1.2, false)
+			attack_timer = get_tree().create_timer(0.6, false)
 			if !is_yield_paused:
 				yield(attack_timer, "timeout")
-				is_attacking = false
-				is_moving = true
+				if has_player:
+					if !player.is_dead and can_attack:
+						is_attacking = true
+						if !player.is_blocking:
+							player.hit(damage)
+						
+				if attack_timer.time_left <= 0.0:
+					attack_timer = get_tree().create_timer(1.0, false)
+					if !is_yield_paused:
+						yield(attack_timer, "timeout")
+						is_attacking = false
+						is_moving = true
 # ------------------------------------------------------------------------------
 
 func turn_around(): # LOOK BACK AND FORTH
 	if !is_dead and can_turn_around:
 		state_machine.travel('STANDING')
-		$Sprite.flip_h = !$Sprite.flip_h
+		sprite.flip_h = !sprite.flip_h
 		is_moving = false
 		$HitRay.cast_to.x = -$HitRay.cast_to.x
 		$WallDetection.position.x *= -1
@@ -159,7 +177,7 @@ func turn_around(): # LOOK BACK AND FORTH
 				is_moving = true
 				
 				if !has_player:
-					$Sprite.flip_h = !$Sprite.flip_h
+					sprite.flip_h = !sprite.flip_h
 					$HitRay.cast_to.x = -$HitRay.cast_to.x
 					$WallDetection.position.x *= -1
 				state_machine.travel('run')

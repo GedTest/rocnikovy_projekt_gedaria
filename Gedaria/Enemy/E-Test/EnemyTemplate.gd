@@ -1,4 +1,4 @@
-class_name Enemy, "res://Enemy/sprites/_IDLE/_IDLE_000.png"
+class_name Enemy, "res://Enemy/BOSS_Warden/BOSS_Warden.png"
 extends KinematicBody2D
 
 
@@ -78,11 +78,14 @@ func _physics_process(delta):
 
 func die(): # CHARACTER DIES
 	health = 0
+	$HitRay.enabled = false
 	can_attack = false
 	is_dead = true
 	velocity = GRAVITY
 	self.z_index -= 1
+	
 	state_machine.travel('DEATH') # play dying animation
+	
 	if !is_yield_paused:
 		yield(get_tree().create_timer(death_anim_time), "timeout")
 		$CollisionShape2D.disabled = true
@@ -132,9 +135,12 @@ func _on_WallDetection_body_entered(body):
 	if body.get_collision_layer_bit(19) and is_jumping:
 		velocity.y -= jump_strength
 
-func jump_back(var distance = 100, var time = 0.3):
-	$AdvancedTween.play(time, position.x, position.x + (distance*-direction))
+func jump_back(var obj=self, var distance = 100, var time = 0.3, dir=-direction):
+	$AdvancedTween.play(time, obj.position.x, obj.position.x + (distance*dir))
 
 
 func _on_AdvancedTween_advance_tween(sat):
-	position.x = sat
+	if "Guardian" in self.name and has_player:
+		player.position.x = sat
+	else:
+		self.position.x = sat

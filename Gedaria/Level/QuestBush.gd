@@ -7,7 +7,7 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
-	if Global.level_root().filename == "res://Level/TestLevel.tscn":
+	if Global.level_root().filename == "res://Level/In the wood.tscn":
 		$Label.text = Languages.languages[Global.prefered_language]["bush_quest"]
 	elif Global.blue_berries == 5:
 		$Label.text = Languages.languages[Global.prefered_language]["bush_thanks"]
