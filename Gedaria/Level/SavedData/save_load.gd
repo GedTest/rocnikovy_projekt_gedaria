@@ -4,8 +4,8 @@ extends "res://Level/SavedData/globals.gd"
 #         A D V A N C E     S A V E     A N D     L O A D     S Y S T E M
 # ------------------------------------------------------------------------------
 var paths = [
-	"user://slot_1.json", "user://slot_2.json",
-	"user://slot_3.json", "user://slot_4.json",
+	"user://Saves/slot_1.json", "user://Saves/slot_2.json",
+	"user://Saves/slot_3.json", "user://Saves/slot_4.json",
 ]
 var last_saved_slot = 0
 
@@ -52,9 +52,7 @@ func update_current_data():
 					node_data[y] = dict[y]
 			
 			# stich save data together
-			#current_data[[level_root().get_filename(), node.name]] = node_data
 			current_data[str([level_root().get_filename(), node.name])] = node_data
-			#current_data[str(["\""+level_root().get_filename()+"\"", "\""+node.name+"\""])] = node_data
 		current_data["last_map"] = level_root().get_filename()
 		current_data["visited_maps"] = visited_maps.duplicate()
 
@@ -65,11 +63,9 @@ func update_current_data():
 		# SAVING GLOBAL VALUES
 		current_data["globals"] = {}
 	
-		#for x in arr:
 		current_data["globals"]["blue_berries"] = Global.blue_berries
+		current_data["globals"]["leaves_in_cave_counter"] = Global.leaves_in_cave_counter
 		current_data["globals"]["prefered_language"] = Global.prefered_language
-			
-		#print("CURRENT_DATA: ",current_data)
 # ------------------------------------------------------------------------------
 func update_map_data():
 	if level_root() != null:
@@ -87,7 +83,6 @@ func update_map_data():
 
 			# stich save data together
 			map_data[[level_root().get_filename(), node.name]] = node_data
-	#	print("%-%MAP_DATA%-%: ",map_data)
 # ------------------------------------------------------------------------------
 func load_map():
 	#	data structure ---- [[map_filename, node_name], node]
@@ -102,30 +97,23 @@ func load_map():
 	if visited_maps.has(level_root().filename):
 		# DELETE OBJECTS
 		for key in keys_in_map:
-			#print(str(key[0])," is in c_d: ",current_data.has( str(key[0]) ))
-			if !(current_data.has( str(key[0]) )): # if c_d doesn't have key
-				print(key[1],".queue_free()")
+			if not(current_data.has( str(key[0]) )): # if c_d doesn't have key
 				key[1].queue_free()                # free it from memory
 	else:
 		visited_maps.append(level_root().filename)
 
 	# ADD OBJECTS
 	for x in current_data:
-#		print("XXX: ",x)
 		var substrArray = [""]
 		if x[0] == "[":
 			substrArray = x.substr(1,x.length()-2).split(", ")
 
 			substrArray = Array(substrArray)
-#			print("substrArray = ",substrArray,typeof(substrArray))
-
-#		print("substrArray[0] == level_root().filename: ",substrArray[0] == level_root().filename," and !(map_data.has(substrArray)): ",!(map_data.has(substrArray)))
-		if substrArray[0] == level_root().filename and !(map_data.has(substrArray)):
-			print(substrArray[1],"isn't on map -> LOAD")
+		
+		if substrArray[0] == level_root().filename and not(map_data.has(substrArray)):
 			var obj = load(current_data[x]["file"]).instance()
 			obj.name = current_data[x]["name"]
 			level_root().get_node(current_data[x]["parent"]).add_child(obj)
-			#level_root().get_node("Persistant").add_child(obj)
 
 	# UPDATE OBJECTS
 	yield(get_tree().create_timer(0.15), "timeout")
@@ -135,31 +123,9 @@ func load_map():
 func update_node(node):
 	if current_data.has( str([level_root().filename, node.name]) ):
 		var data = current_data[ str([level_root().filename, node.name] )]
-		#print("")
-		#for value in data.values():
-		#	#value = str2var(value)
-		#	print("value: ",value," is typeof: ",typeof(value))
-		#for key in data.keys():
-		#	print("values is ", key)
-		#print("")
-		#var substrArray = [""]
-		#for key in current_data.keys():
-			#if key[0] == "[":
-			#	key = key.substr(1,key.length()-2).split(", ")
-			#print("key: ",key," is typeof: ",typeof(key))
-		#	if current_data.has("next_pos_ID"):
-				#if current_data["next_pos_ID"] != "":
-		#		print("nextPOSid",current_data["next_pos_ID"])
-				
-		if data.has("next_pos_ID"):
-			if data["next_pos_ID"] != "":
-				var pos = get_position_2D(data["next_pos_ID"]).global_position
-				node.global_position = pos
-				current_data[[level_root().filename, node.name]]["next_pos_ID"] = ""
-				node.next_pos_ID = ""
-			else:
-				node.global_position = Vector2(data["pos"]["x"], data["pos"]["y"])
-		elif !(node is Control):
+
+		node.global_position = Vector2(data["pos"]["x"], data["pos"]["y"])
+		if not(node is Control):
 			node.global_position = Vector2(data["pos"]["x"], data["pos"]["y"])
 		
 		for x in data:
@@ -168,7 +134,7 @@ func update_node(node):
 			else:
 				node.set(x, data[x])
 # ------------------------------------------------------------------------------
-# IMPORTANT! THIS IS WHERE YOU DECLARE VALUES TO BE SAVED!
+# IMPORTANTnot THIS IS WHERE YOU DECLARE VALUES TO BE SAVEDnot
 func save_node(node):
 	# general saving
 	var all = {}
@@ -208,7 +174,6 @@ func save_node(node):
 	return all
 # ------------------------------------------------------------------------------
 func save_to_slot(slot_name):
-	print("save_to_slot: ",slot_name)
 	update_current_data()
 	if slots.has(slot_name):
 		slots[slot_name] = current_data.duplicate()
@@ -217,40 +182,33 @@ func save_to_slot(slot_name):
 		print('Error 1: Saveslot %s doesn´t exist.', slot_name)
 # ------------------------------------------------------------------------------
 func load_from_slot(slot_name):
-	print("load_from_slot ",slot_name)
 	current_data = slots[slot_name].duplicate()
 	visited_maps = slots[slot_name]["visited_maps"].duplicate()
 	last_saved_slot = slots[slot_name]["last_saved_slot"]
 
-	#for x in slots[slot_name]["globals"].keys():
-	#	Global.set(x, slots[slot_name]["globals"][x])
 	Global.blue_berries = slots[slot_name]["globals"]["blue_berries"]
+	Global.leaves_in_cave_counter = slots[slot_name]["globals"]["leaves_in_cave_counter"]
 	Global.prefered_language = slots[slot_name]["globals"]["prefered_language"]
 	
 	is_yield_paused = true
 	
 	yield(get_tree().create_timer(5.0), "timeout")
-	print('# = = = = = = = = = = #')
-	print('| = = = L O A D = = = |')
-	print('# = = = = = = = = = = #')
 	get_tree().change_scene(slots[slot_name]["last_map"])
 # ------------------------------------------------------------------------------
 func save_to_file(slot):
-	print("slot: ",slot," save_to_file ",paths[slot-1])
 	save_to_slot("slot_"+str(slot))
 	
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.25), "timeout")
 	var save_game = File.new()
 	
 	save_game.open(paths[slot-1], File.WRITE)
-	#save_game.store_line(JSON.print(current_data.duplicate()))
+	
 	save_game.store_line(to_json(current_data.duplicate()))
 	
 	save_game.close()
 # ------------------------------------------------------------------------------
 func load_from_file(slot):
 	Global.stop_enemy_timers()
-	print("slot: ",slot," load_from_file ",paths[slot-1])
 	var save_game = File.new()
 	
 	if not save_game.file_exists(paths[slot-1]):
@@ -261,13 +219,6 @@ func load_from_file(slot):
 	var text = save_game.get_as_text()     # text == file.json
 	
 	var data = parse_json(text)
-	#var data = JSON.parse(text).result
-# ==========================================================================
-#	for key in data.keys():
-#		key = str2var(key)
-#		print("key: ",key," is typeof: ",typeof(key)," data from key: ",data[key])
-# data maji String keys
-# ==========================================================================
 	yield(get_tree().create_timer(0.05), "timeout")
 	slots["slot_"+str(slot)] = data
 

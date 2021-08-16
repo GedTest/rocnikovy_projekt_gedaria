@@ -1,8 +1,6 @@
 extends RigidBody2D
 
 
-signal hit_by_stone
-
 var PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
 
 var can_damage = false
@@ -13,10 +11,7 @@ var has_hitted_shield = false
 func _ready():
 	vladimir = get_parent().find_node('Vladimir')
 	var mouse = vladimir.mouse_position
-	apply_central_impulse(Vector2(mouse.x - position.x, mouse.y - position.y))
-	$Area2D.set_collision_mask_bit(0, true)
-	$Area2D.set_collision_layer_bit(0, true)
-	self.set_collision_mask_bit(0, true)
+	self.apply_central_impulse(Vector2(mouse.x - position.x, mouse.y - position.y)*1.5)
 #-------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
@@ -24,30 +19,28 @@ func _on_Area2D_body_entered(body):
 		has_hitted_shield = true
 			
 	if body.get_collision_layer_bit(0):
-		if !"Tree" in body.name:
+		# body = terrain
+		if not "Tree" in body.name:
 			if has_hitted_shield:
 				add_pebble(position)
 			queue_free()
-		
-	elif body.get_collision_layer_bit(4):
-		connect("hit_by_stone",body,"_on_hit_by_stone")
-		emit_signal("hit_by_stone")
-		queue_free()
 	
 	elif body.get_collision_layer_bit(2):
+		# body = enemy
 		if "Guardian" in body.name:
 			body.is_blocking = false
+			# Guardian has shield that block pebbles
+			# but you can hit him from behind
 		if can_damage:
 			body.hit(vladimir.damage)
+			if "Guardian" in body.name:
+				body.is_blocking = true
 		else:
 			body.hit(0)
-			
-	if "Guardian" in body.name:
-		body.is_blocking = true
 # ------------------------------------------------------------------------------
 
-# warning-ignore:unused_argument
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	# pebble free itself when is beyond screen
 	queue_free()
 # ------------------------------------------------------------------------------
 

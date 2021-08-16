@@ -1,4 +1,4 @@
-class_name MushroomSpring, "res://Level/Mushroom3.png"
+class_name MushroomSpring, "res://Level/Mushroom_spring0.png"
 extends Area2D
 
 

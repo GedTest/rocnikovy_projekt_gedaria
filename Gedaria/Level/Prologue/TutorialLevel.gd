@@ -7,27 +7,21 @@ const MushroomPath = preload("res://Level/Mushroom.tscn")
 var is_boss_on_map = false
 var is_letter_on_map = false
 var is_item_interactable = false
-var is_item_picked_up = false
 var is_yield_paused = false
 var is_pause_time = true
+var is_done_once = false
 
 var boss = null
 
-onready var arr_texts = {
-	"movement":$MovementTutorial/Label,
-	"interaction":$InteractTutorial/Text/TextSprite/RichTextLabel,
-	"attack":$CombatTutorial/TextBg/Label,
-	"blocking":$BlockingTutorial/Label,
-}
 onready var spawn_positions = [$Position1.position, 
 							   $Position2.position, 
 							   $Position3.position]
 
 
 func _ready():
-	Fullscreen.find_node("TextEdit").hide()
+	Fullscreen.hide_elements()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Vladimir.damage = 1
-	Languages.translate(arr_texts, Global.prefered_language)
 	get_tree().paused = false
 	Global.is_pausable = false
 	$Vladimir.has_learned_attack = false
@@ -39,18 +33,16 @@ func _ready():
 	
 	$Vladimir.state_machine = $Vladimir/AnimationTree2.get("parameters/playback")
 	$Vladimir/Sprite.hide()
-	yield(get_tree().create_timer(3.0), "timeout")
+	yield(get_tree().create_timer(4.0), "timeout")
 	
 	if $Vladimir.position.x == 150:
-		$TutorialAnimation.show()
-		$AnimationPlayer.play("TUTORIAL_MOVEMENT")
-		$MovementTutorial.show()
-		yield(get_tree().create_timer(3.0), "timeout")
-		$MovementTutorial.queue_free()
-		$TutorialAnimation.hide()
+		$TutorialSign3.show()
 # ------------------------------------------------------------------------------
 
 func _process(delta):
+	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+		$TutorialSign3.hide()
+		 
 	# restart level
 	if $Vladimir.health <= 0 and $timer.time_left == 0.0:
 			get_tree().paused = true
@@ -63,6 +55,7 @@ func _process(delta):
 	# INTERACT HANDLER
 	if Input.is_action_just_pressed("interact"):
 		if is_item_interactable:
+			$TutorialSign.is_interactable = true
 			$Cameraa.current = false
 			$InteractTutorial.hide()
 			$Rake.call_deferred("queue_free")
@@ -77,7 +70,7 @@ func _process(delta):
 			$Tree.show()
 			$Tree.play('Grow')
 			$Shake.start(15, 1.25, 0.1)
-			yield(get_tree().create_timer(1.25), "timeout")
+			yield(get_tree().create_timer(1.3), "timeout")
 			
 			$Tree.queue_free()
 			$UI/UserInterface.show()
@@ -96,10 +89,11 @@ func _process(delta):
 				is_pause_time = false
 				yield(get_tree().create_timer(0.6), "timeout")
 				Fullscreen.pause()
-				yield(get_tree().create_timer(3.0), "timeout")
+				$TutorialSign.call_deferred("queue_free")
+				yield(get_tree().create_timer(2.5), "timeout")
 				Global.is_pausable = true
 				$Vladimir.has_learned_blocking = true
-				$BlockingTutorial.show()
+				$C/TutorialSign2.show_text()
 		
 		# BOSS HP BAR
 		$BossHPBar.show()
@@ -109,13 +103,18 @@ func _process(delta):
 		$Boss.move()
 		
 		# BOSSES SECOND PHASE
-		if $Boss.health <= $Boss.max_health / 2:
+		if $Boss.health <= $Boss.max_health / 2 and not is_done_once:
+			is_done_once = true
+			$Vladimir.is_moving = false
+			$Boss.can_move_during_cutscene = false
 			$Vladimir.damage = 2
 			$StaticBody2D.show()
 			$StaticBody2D/CollisionShape2D.disabled = false
 			$Branch/Area2D/CollisionShape2D.disabled = false
-			if $Vladimir.position.x >= 1300:
-				$StaticBody2D/Branch.play('Grow')
+			
+			$AnimationPlayer.play("CROW_IN_SPOTLIGHT")
+			yield(get_tree().create_timer(4.6), "timeout")
+			$StaticBody2D/Branch.play('Grow')
 			
 		# IF BOSS IS NO MORE SHOW A LETTER
 		if $Boss.is_dead and is_boss_on_map:
@@ -129,27 +128,14 @@ func _process(delta):
 func _on_InteractTutorial_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		is_item_interactable = true
-		$InteractTutorial/Text/TextSprite/RichTextLabel.show()
 # ------------------------------------------------------------------------------
 
 func _on_InteractTutorial_body_exited(body):
 	if body.get_collision_layer_bit(1):
 		is_item_interactable = false
-		$InteractTutorial/Text/TextSprite/RichTextLabel.hide()
-# ------------------------------------------------------------------------------
-
-func _on_CombatTutorial_body_entered(body):
-	if body.get_collision_layer_bit(1) and is_item_picked_up:
-		$CombatTutorial.show()
-# ------------------------------------------------------------------------------
-
-func _on_CombatTutorial_body_exited(body):
-	if body.get_collision_layer_bit(1):
-		$CombatTutorial.hide()
 # ------------------------------------------------------------------------------
 
 func _on_Scarecrow_tree_exiting():
-	$CombatTutorial.queue_free()
 	yield(get_tree().create_timer(0.2), "timeout")
 	
 	boss = BossWardenPath.instance()
@@ -175,3 +161,8 @@ func _on_MushroomSpawnTimer_timeout():
 	mushroom.hp = "plus"
 	if $Vladimir.health <= 4:
 		$Mushrooms.add_child(mushroom)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$Vladimir.is_moving = true
+	$Boss.can_move_during_cutscene = true

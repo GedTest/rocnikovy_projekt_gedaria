@@ -20,14 +20,14 @@ func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
 
 func _process(delta):
-	if !is_hitted:
-		velocity.x = speed*modify_speed if !is_slow_motion else (speed/2.5)*modify_speed
-		velocity.y += GRAVITY.y if !is_slow_motion else GRAVITY.y / 5
+	if not is_hitted:
+		velocity.x = speed*modify_speed if not is_slow_motion else (speed/2.5)*modify_speed
+		velocity.y += GRAVITY.y if not is_slow_motion else GRAVITY.y / 5
 		
 		jump()
 		crouch()
 		
-		if speed != 0 && !is_crawling:
+		if speed != 0 && not is_crawling:
 			state_machine.travel('RUN')
 		
 		velocity = move_and_slide(velocity)
@@ -38,7 +38,7 @@ func jump(): # JUMP
 		is_on_ground = true if $GroundRay.is_colliding() else false
 			
 		if is_on_ground:
-			velocity.y = -jump_strength if !is_slow_motion else -jump_strength / 2
+			velocity.y = -jump_strength if not is_slow_motion else -jump_strength / 2
 # ------------------------------------------------------------------------------
 
 func crouch():
@@ -47,7 +47,7 @@ func crouch():
 		$CollisionShape2D.position.y = 50
 		$CollisionShape2D.scale.y = 0.5
 		state_machine.travel('CRAWLING')
-		velocity.x = speed / 1.5 if !is_slow_motion else speed / 4
+		velocity.x = speed / 1.5 if not is_slow_motion else speed / 4
 	else:
 		is_crawling = false
 		$CollisionShape2D.position.y = 0

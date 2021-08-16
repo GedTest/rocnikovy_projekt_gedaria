@@ -1,4 +1,4 @@
-extends Node2D
+extends Level
 
 
 signal enemy_health_changed
@@ -7,9 +7,7 @@ const ROLLING_TREE_PATH = preload("res://Level/ForestClearing/RollingTree.tscn")
 const ENEMY_PATH = preload("res://Enemy/E-Test/Patroller.tscn")
 const LEAF_PATH = preload("res://Level/Leaf.tscn")
 
-var is_done_once = true
 var has_spawned_once = false
-var is_yield_paused = false
 var can_spawn = false
 
 var spawn_timer = null
@@ -17,59 +15,35 @@ var spawn_timer = null
 var count = 0
 var sec = 0.1
 
-var arr_enemies = []
-
 onready var missing_leaves = [
 	$Leaves/Leaf7,$Leaves/Leaf8,
 	$Leaves/Leaf9,$Leaves/Leaf10,
 	]
 
-onready var arr_patrollers = [
-	$Patroller,$Patroller2,$Patroller3,
-	$Patroller4,$Patroller5,$Patroller6,
-]
-onready var arr_guardians = [
-	$Guardian,$Guardian2,$Guardian3
-]
-onready var arr_shooters = [
-	$Shooter,
-]
-
 
 func _ready():
-#	Global.set_player_position_at_start($Vladimir, $Level_start)
-	Global.is_first_entrance(self.filename)
-	
-	get_tree().set_pause(true)
-	SaveLoad.load_map()
-	Fullscreen.hide_elements()
-	
-	$Vladimir.heavy_attack_counter += 4
-	$Vladimir.has_learned_attack = true
-	$Vladimir.has_learned_heavy_attack = true
-	$Vladimir.has_learned_blocking = true
-	$Vladimir.has_learned_raking = true
+	arr_patrollers = [
+		$Patroller,$Patroller2,$Patroller3,
+		$Patroller4,$Patroller5,$Patroller6,
+	]
+	arr_guardians = [
+		$Guardian,$Guardian2,$Guardian3
+	]
+	arr_shooters = [
+		$Shooter,
+	]
 	$Bridge.is_broken = true
 # ------------------------------------------------------------------------------
 
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
-	SaveLoad.update_current_data()
-	yield(get_tree().create_timer(0.1), "timeout")
+	._on_LoadingTimer_timeout()
+	Global.update_data_from_merchant($Vladimir)
 	
-	get_tree().set_pause(false)
-	Global.is_yield_paused = false
-	$CanvasLayer/UserInterface.load_ui_icons()
-	
-	for leaf_holder in $LeafHolders.get_children():
-		if leaf_holder.has_leaf:
-			leaf_holder.show_leaf()
-			
-	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
 	spawn_timer = get_tree().create_timer(0.0)
 	
-	if !$PilesOfLeaves/PileOf4Leaves.is_complete:
+	if not $PilesOfLeaves/PileOf4Leaves.is_complete:
 		for leaf in missing_leaves:
-			if !is_instance_valid(leaf):
+			if not is_instance_valid(leaf):
 				var new_leaf = LEAF_PATH.instance()
 				$Leaves.call_deferred("add_child", new_leaf)
 				new_leaf.position = Vector2(25000, 8650)
@@ -77,16 +51,10 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 
 # warning-ignore:unused_argument
 func _process(delta):
-	for i in arr_patrollers:
-		i.move(i.from, i.to)
+	._process(delta)
 	
-	for i in arr_guardians:
-		i.move()
-		if i.from != 0 or i.to != 0:
-			i.move_in_range(i.from, i.to)
-	
-	if !$Shooter.can_shoot_in_sector:
-		$Shooter/HitRay.rotation_degrees = 180 if $Shooter/Sprite.flip_h else 0
+	if not $Shooter.can_shoot_in_sector:
+		$Shooter/HitRay.rotation_degrees = 180 #if $Shooter/Sprite.flip_h else 0
 	
 		if $Shooter.has_player:
 			$Shooter.can_shoot_in_sector = true
@@ -95,15 +63,9 @@ func _process(delta):
 	if can_spawn:
 		self.spawn_rolling_trees()
 	
-	if $LeafHolders/LeafHolder17.has_leaf and !has_spawned_once:
+	if $LeafHolders/LeafHolder17.has_leaf and not has_spawned_once:
 		has_spawned_once = true
 		self.spawn_patrollers(4, Vector2(5730, 9075), 4000, 6900)
-# ------------------------------------------------------------------------------
-
-func _on_KillZone_body_entered(body, sec = 0.5): # Kills player if he fall into
-	if body.get_collision_layer_bit(1):
-		yield(get_tree().create_timer(sec), "timeout")
-		body.die()
 # ------------------------------------------------------------------------------
 
 func _on_StalkingArea_body_entered(body):
@@ -137,7 +99,7 @@ func _on_WindArea_body_entered(body):
 func spawn_rolling_trees():
 	if spawn_timer.time_left <= 0.0:
 		spawn_timer = get_tree().create_timer(sec)
-		if !is_yield_paused:
+		if not is_yield_paused:
 			yield(spawn_timer, "timeout")
 			
 			count += 1
@@ -160,7 +122,7 @@ func spawn_patrollers(number_of_enemies, pos, from, to):
 		enemy.from = from
 		enemy.to = to
 		enemy.position = Vector2(pos.x - number*30, pos.y)
-		enemy.is_jumping = true
+		enemy.set_deferred("is_jumping", true)
 		enemy.FoV = 350
 		arr_enemies.append(enemy)
 		arr_patrollers.append(enemy)
@@ -179,6 +141,6 @@ func _on_Area2D_body_entered(body):
 
 func _on_Gateway7_body_entered(body):
 	if "RollingTree" in body.name:
-		$Gateway7.is_falling_down = true
+		$Gateways/Gateway7.is_falling_down = true
 		yield(get_tree().create_timer(2.0), "timeout")
 		body.queue_free()

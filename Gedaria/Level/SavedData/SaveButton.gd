@@ -26,7 +26,8 @@ func update():
 			var current_slot = SaveLoad.slots["slot_"+str(slot)]
 			var date = current_slot["date"]
 			
-			$Label.text = current_slot["last_map"].split('/')[3].split('.')[0]
+			var level = current_slot["last_map"].split('/')[4].split('.')[0]
+			$Label.text = Languages.languages[Global.prefered_language][level]
 			$Label.text += "\n\nDate: "+str(date["day"])+"."+str(date["month"])+"."+str(date["year"])
 			$Label.text += "\nTime: "+str(date["hour"]) + ":" + str(date["minute"])
 # ------------------------------------------------------------------------------
@@ -39,9 +40,10 @@ func on_pressed():
 			SaveLoad.save_to_file(slot)
 		"LOAD":
 			self.disabled = true
-			#if !SaveLoad.slots["slot_"+str(slot)].empty():
+			#if not SaveLoad.slots["slot_"+str(slot)].empty():
 			Global.is_yield_paused = true
 				#SaveLoad.load_from_slot("slot_"+str(slot))
+			Fullscreen.show_loading_screen()
 			SaveLoad.load_from_file(slot)
 			
 	for button in get_tree().get_nodes_in_group("buttons"):

@@ -6,14 +6,6 @@ const PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
 var damage = 2
 
 
-func _ready():
-	pass
-
-
-#func _process(delta):
-#	pass
-
-
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		body.hit(damage)
@@ -24,5 +16,5 @@ func _on_Area2D_body_entered(body):
 			var pebble = PebblePath.instance()
 			pebble.position = self.position
 			get_parent().call_deferred("add_child", pebble)
-			
+
 		self.queue_free()

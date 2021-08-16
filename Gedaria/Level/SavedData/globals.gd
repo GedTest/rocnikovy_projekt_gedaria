@@ -2,23 +2,27 @@ extends Node
 
 
 var arr_levels = [
-	"res://Level/In the wood.tscn",
+	"res://Level/InTheWood/In the wood.tscn",
 	"res://Level/DarkForest/Dark forest.tscn",
-	"res://Level/CaveEntrance/CaveEntrance.tscn",
-	"res://Level/CultInCave/CultInCave.tscn",
-	"res://Level/ForestClearing/ForestCleaning.tscn",
+	"res://Level/CaveEntrance/Cave entrance.tscn",
+	"res://Level/CultInCave/Mine shaft.tscn",
+	"res://Level/CaveDuel/Cave duel.tscn",
+	"res://Level/ForestClearing/Forest clearing.tscn",
 	"",
 ]
 var last_map = ""
-var prefered_language = "čeština"
+var prefered_language = "english"
 
 var blue_berries = 0
+var leaves_in_cave_counter = 0
 var next_level_id = 1
 var prev_level_id = 0
 
+var is_done_once = false
 var is_pausable = true
 var is_yield_paused = false
 var first_entrance = true
+var is_boss_on_map = false
 
 
 func level_root():
@@ -27,7 +31,7 @@ func level_root():
 # ------------------------------------------------------------------------------
 
 func get_position_2D(ID):
-	print("ID: ",ID)
+#	print("ID: ",ID)
 	for x in get_tree().get_nodes_in_group("pos"):
 		if x.name == ID:
 			return x
@@ -46,8 +50,8 @@ func vladimir_data():
 #	elif last_map == "res://Level/CaveEntrance/LiLCave.tscn":
 #		return "[res://Level/CaveEntrance/LiLCave.tscn, Vladimir]"
 #	else:
-	if last_map == "res://Level/CaveEntrance/LiLCave.tscn":
-		return "[res://Level/CaveEntrance/LiLCave.tscn, Vladimir]"
+	if last_map == "res://Level/CaveEntrance/Lil cave.tscn":
+		return "[res://Level/CaveEntrance/Lil cave.tscn, Vladimir]"
 	else:
 		prev_level_id = arr_levels.find(last_map)# - 1
 
@@ -68,14 +72,14 @@ func stop_enemy_timers():
 	if "arr_enemies" in level_root():
 		
 		for enemy in level_root().arr_enemies:
-			if !enemy.is_dead:
+			if not enemy.is_dead:
 				enemy.turn_around_timer.time_left = 0.0
 				if "cooldown_roll_timer" in enemy:
 					enemy.cooldown_roll_timer.time_left = 0.0
 # ------------------------------------------------------------------------------
 
 func set_player_position_at_start(player, start):
-	if !level_root().filename in SaveLoad.visited_maps:
+	if not level_root().filename in SaveLoad.visited_maps:
 		player.position = start.position
 # ------------------------------------------------------------------------------
 
@@ -90,6 +94,23 @@ func update_data_from_merchant(vladimir):
 		
 		if SaveLoad.slots["slot_4"].has(vladimir_data):
 			vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
+# ------------------------------------------------------------------------------
+
+func reset_data():
+	last_map = ""
+	
+	blue_berries = 0
+	leaves_in_cave_counter = 0
+	next_level_id = 1
+	prev_level_id = 0
+	
+	is_done_once = false
+	is_pausable = true
+	is_yield_paused = false
+	first_entrance = true
+	is_boss_on_map = false
+	
+	SaveLoad.reset_data()
 # ------------------------------------------------------------------------------
 
 #func Persistant():

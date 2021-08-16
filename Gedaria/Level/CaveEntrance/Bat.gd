@@ -5,7 +5,7 @@ export (int) var height = 0
 
 
 func _process(delta):
-	if !is_dead:
+	if not is_dead:
 		velocity.y = -GRAVITY.y
 		
 		if $HitRay.is_colliding():
@@ -16,9 +16,9 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func move(var from, var to): # MOVE
-	if !is_dead:
+	if not is_dead:
 	# MOVE FROM 'A' TO 'B'
-		if !has_player:
+		if not has_player:
 			if position.x > to:
 				direction = -1
 				$Sprite.flip_h = false
@@ -40,14 +40,14 @@ func move(var from, var to): # MOVE
 			
 			# MOVE TOWARDS PLAYER (RIGHT)
 			if player.position.x <= position.x+FoV and player.position.x > position.x:
-				if !can_attack:
+				if not can_attack:
 					direction = 1
 					$Sprite.flip_h = true
 					$HitRay.cast_to.x = FoV
 			
 			# MOVE TOWARDS PLAYER (LEFT)
 			elif player.position.x >= position.x-FoV and player.position.x < position.x:
-				if !can_attack:
+				if not can_attack:
 					direction = -1
 					$Sprite.flip_h = false
 					$HitRay.cast_to.x = -FoV
@@ -65,27 +65,27 @@ func fly_down():
 		velocity.y += vertical_distance*2
 # ------------------------------------------------------------------------------
 
-func attack(player):
+func bite(player):
 #	$AnimationTree.set("parameters/ATTACK/blend_position",direction)
 #	state_machine.travel('ATTACK')
 	
 	if has_player:
 		$HitRay.enabled = false
-		if !player.is_dead:
-			if !player.is_blocking:
+		if not player.is_dead:
+			if not player.is_blocking:
 				player.hit(damage)
 				print("Vladimir's health: ", player.health)
 
 	if attack_timer.time_left <= 0.0:
 		attack_timer = get_tree().create_timer(0.75, false)
-		if !is_yield_paused:
+		if not is_yield_paused:
 			yield(attack_timer, "timeout")
 			$HitRay.enabled = true
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		self.attack(body)
+		self.bite(body)
 	
 	if body.get_collision_layer_bit(7):
 		self.hit(3)

@@ -9,10 +9,10 @@ var has_player = false
 
 
 func _process(delta):
-	if !has_player:
+	if not has_player:
 		if is_slow_motion:
 			velocity.x = 200
-		speed = 10 if !is_slow_motion else 5
+		speed = 10 if not is_slow_motion else 5
 		velocity.x += speed
 		if velocity.x > 430:
 			velocity.x = 430

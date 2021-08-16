@@ -1,69 +1,44 @@
-extends Node2D
+extends Level
 
 
 signal enemy_health_changed
 
-var is_done_once = true
-var is_yield_paused = false
-
-var arr_enemies = []
-
-onready var arr_patrollers = [
-	$Patroller,$Patroller2,$Patroller3,$Patroller4,$Patroller5,
-	$Patroller6,$Patroller7,$Patroller9,$Patroller10,$Patroller11,
-]
-onready var arr_guardians = [
-	$Guardian,$Guardian2,$Guardian3,$Guardian4,$Guardian5,
-]
-onready var arr_shooters = [
-	$Shooter,$Shooter2,$Shooter3,$Shooter4,
-	$Shooter5,$Shooter6,$Shooter7,$Shooter8,
-]
+var is_done_once_tutorial = true
 
 
 func _ready():
-	Global.set_player_position_at_start($Vladimir, $Level_start)
-	
-	get_tree().set_pause(true)
-	SaveLoad.load_map()
-	Fullscreen.hide_elements()
-	
+	# CALLING THE "BASE FUNTCION" FIRST
 	connect("enemy_health_changed", $FallingTree, "on_enemy_health_changed")
 	
 	$Vladimir.has_learned_heavy_attack = false
 	$Vladimir.has_learned_raking = false
-	
 	$Vladimir/Camera.current = true
 	$Patroller8.state_machine.call_deferred("travel", "STANDING 2")
+	
+	arr_patrollers = [
+		$Patroller,$Patroller2,$Patroller3,$Patroller4,$Patroller5,
+		$Patroller6,$Patroller7,$Patroller9,$Patroller10,$Patroller11,
+	]
+	arr_guardians = [
+		$Guardian,$Guardian2,$Guardian3,$Guardian4,$Guardian5,
+	]
+	arr_shooters = [
+		$Shooter,$Shooter2,$Shooter3,$Shooter4,
+		$Shooter5,$Shooter6,$Shooter7,$Shooter8,
+	]
 # ------------------------------------------------------------------------------
 
-func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
-	SaveLoad.update_current_data()
-	yield(get_tree().create_timer(0.1), "timeout")
-	
-	get_tree().set_pause(false)
-	Global.is_yield_paused = false
-	$CanvasLayer/UserInterface.load_ui_icons()
-	
-	for leaf_holder in $LeafHolders.get_children():
-		if leaf_holder.has_leaf:
-			leaf_holder.show_leaf()
-	
+func _on_LoadingTimer_timeout():
+	# CALLING THE "BASE FUNTCION" FIRST
+	._on_LoadingTimer_timeout()
 	
 	demo_lang(Global.prefered_language)
-	arr_enemies = arr_guardians + arr_patrollers + arr_shooters
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
 func _process(delta):
-	for i in arr_patrollers:
-		i.move(i.from, i.to)
-		
-	for i in arr_guardians:
-		i.move()
-		if i.from != 0 or i.to != 0:
-			i.move_in_range(i.from, i.to)
-
+	._process(delta)
+	
 	if $Patroller8.is_focused:
 		$Patroller8/Sprite3.flip_h = false
 		$Patroller8/Sprite2.flip_h = false
@@ -72,10 +47,10 @@ func _process(delta):
 			$Patroller8.set_collision_mask_bit(0, false)
 		
 	if $PilesOfLeaves/PileOf4Leaves4.is_complete:
-		$Wind.position = Vector2(35500, 7000)
-		$Wind3.position = Vector2(35830, 7105)
+		$Winds/Wind.position = Vector2(35500, 7000)
+		$Winds/Wind3.position = Vector2(35830, 7105)
 		$PilesOfLeaves/PileOf4Leaves4.mode = RigidBody2D.MODE_STATIC
-		$Tutorial7.position = Vector2(35310, 7140)
+		$Tutorials/Tutorial7.position = Vector2(35310, 7140)
 	
 	if find_node("Patroller5"):
 		if find_node("Patroller5").health <= 2 and is_done_once:
@@ -84,12 +59,6 @@ func _process(delta):
 			
 			$Vladimir.position = Vector2(6980, 5820)
 			$Vladimir.is_moving = false
-# ------------------------------------------------------------------------------
-
-func _on_KillZone_body_entered(body, sec): # Kills player if he fall into
-	if body.get_collision_layer_bit(1):
-		yield(get_tree().create_timer(sec), "timeout")
-		body.die()
 # ------------------------------------------------------------------------------
 
 func _on_AmbushArea_body_entered(body):
@@ -117,6 +86,22 @@ func _on_VisibilityNotifier2D_viewport_entered(viewport):
 	$Patroller3.speed = 350
 
 
+func _on_Tutorial4_entered(body):
+	if body.get_collision_layer_bit(1) and is_done_once_tutorial:
+		is_done_once_tutorial = false
+		$Vladimir.can_move = false
+		$Tutorials/Tutorial4/Sprite.hide()
+		$Tutorials/Tutorial4/AnimationPlayer.play("HEAVY_ATTACK")
+		yield(get_tree().create_timer(3.4, false), "timeout")
+		$Tutorials/Tutorial4.show_text()
+		$Vladimir.can_move = true
+		$CanvasLayer/UserInterface.scale_unique_leaf()
+
+
+
+
+
+
 
 
 
@@ -137,4 +122,3 @@ func demo_lang(lang):
 		$DEMO_TUTORIAL/Crouch.bbcode_text = "[color=#004a23]S[/color] Crouch"
 		$DEMO_TUTORIAL/Attack.bbcode_text = "[color=#004a23]Left mouse button[/color] Attack"
 		$DEMO_TUTORIAL/Block.bbcode_text = "[color=#004a23]Spacebar[/color] Block"
-	

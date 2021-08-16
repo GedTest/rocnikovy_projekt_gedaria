@@ -2,7 +2,10 @@ class_name Vladimir, "res://Vladimir/animations/Vladimir.png"
 extends KinematicBody2D
 """
 Main character
+young serf who wants to be free, 
+once he found the legendary rake he became a hero
 """
+
 
 
 const GRAVITY = Vector2(0, 98)
@@ -20,7 +23,7 @@ var shoot_distance = 500
 var acorn_counter = 0
 var pebble_counter = 0
 var heavy_attack_counter = 0
-var jump_forgivness_timer = 0.0
+var heavy_attack_increment = 4
 var next_pos_ID = ""
 
 var direction = 1
@@ -33,6 +36,7 @@ var is_dead = false
 var is_moving = true
 var can_move = true
 var can_jump = true
+var can_stand_up = true
 var is_crouching = false
 var can_attack = false
 var is_attacking = false
@@ -50,30 +54,35 @@ var has_learned_raking = true
 var has_learned_blocking = true
 
 var enemy = null
+var block_timer = null
+var breakable_stone = null
 var attack_timer = null
 var heavy_attack_timer = null
-var block_timer = null
+var jump_forgivness_timer = 0.0
+var throw_timer = null
 var state_machine = null
 
 #var t = 0.0
 
 
 func _ready():
-	set_collision_layer_bit(1, true)
+	self.set_collision_layer_bit(1, true)
 	state_machine = $AnimationTree.get("parameters/playback")
 	attack_timer = get_tree().create_timer(0.0)
 	heavy_attack_timer = get_tree().create_timer(0.0)
 	block_timer = get_tree().create_timer(0.0)
+	throw_timer = get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------	
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
-	if !is_dead:
+	# GRAVITY
+	velocity.y += GRAVITY.y
+	
+	if not is_dead:
 		is_yield_paused = get_parent().is_yield_paused
 		update() # Draw function
 		
-	# GRAVITY
-		velocity.y += GRAVITY.y
 		
 	# IS HE ALIVE ?
 		if health <= 0:
@@ -90,9 +99,9 @@ func _physics_process(delta):
 			block()
 			rake()
 		
-			# I don't like this method, it already multiply by delta
-			velocity = move_and_slide(velocity, FLOOR_NORMAL, \
-									  false, 4, PI,false)
+	# I don't like this method, it already multiply by delta
+	velocity = move_and_slide(velocity, FLOOR_NORMAL, \
+							  false, 4, PI,false)
 # ------------------------------------------------------------------------------
 
 func jump(delta): # JUMP
@@ -102,25 +111,26 @@ func jump(delta): # JUMP
 						$GroundRay2.is_colliding() or
 						$GroundRay3.is_colliding()
 						)else false
+	
 	if can_jump:
 		jump_forgivness_timer = 0.0
+		jumped_height.y = position.y
 	else:
 		jump_forgivness_timer += delta
 		if jump_forgivness_timer <= MAX_TIME:
 			can_jump = true
 						
 	if Input.is_action_just_pressed("jump") and can_jump:
-		jumped_height.y = position.y
 		velocity.y = -jump_strength
 # ------------------------------------------------------------------------------
 
 func move(): # MOVE
-	if Input.is_action_pressed("right") and !is_raking:
+	if Input.is_action_pressed("right") and not is_raking:
 		direction = 1
 		attack_direction = 1
 		$Sprite.flip_h = false
 		$WeaponHitbox.position.x = 90
-	elif Input.is_action_pressed("left") and !is_raking:
+	elif Input.is_action_pressed("left") and not is_raking:
 		direction = -1
 		attack_direction = -1
 		$Sprite.flip_h = true
@@ -133,19 +143,18 @@ func move(): # MOVE
 	
 	
 	$Sprite.flip_v = false
-	if !is_hitted and !is_attacking and !is_raking and !is_dead and !is_aimining:
+	if not is_hitted and not is_attacking and not is_raking and not is_dead and not is_aimining:
 		state_machine.travel(animation)
 # ------------------------------------------------------------------------------
 
 func crouch(): # CROUCH
-	var bCanStandUp = false if $CeilingRay.is_colliding() else true
-	
-	if (Input.is_action_pressed("crouch") and !is_hitted) or !bCanStandUp:
+	if (Input.is_action_pressed("crouch") and not is_hitted) or not can_stand_up:
 		is_crouching = true
 		$CollisionShape2D.position.y = 35
 		$CollisionShape2D.scale.y = 0.825
-		state_machine.travel('CRAWLING')
-		velocity.x = direction * speed / 1.6
+		var animation = "CRAWLING" if velocity.x != 0  else "CRAWLING_STAND"
+		state_machine.travel(animation)
+		velocity.x = direction * speed / 1.8
 		
 	else:
 		is_crouching = false
@@ -155,61 +164,55 @@ func crouch(): # CROUCH
 
 func attack(): # LIGHT ATTACK, fast but low dmg,
 	if has_learned_attack:
-		if Input.is_action_just_pressed("attack") and !is_attacking and !is_blocking:
+		if Input.is_action_just_pressed("attack") and not is_attacking and not is_blocking:
 			is_attacking = true
-#			can_move = false
 			$AnimationTree.set("parameters/ATTACK/blend_position", attack_direction)
 			if state_machine.get_current_node() != "HOLD_PEBBLE":
 				state_machine.travel('ATTACK')
 			
 			if attack_timer.time_left <= 0.0:
 				attack_timer = get_tree().create_timer(0.35)
-				if !is_yield_paused:
+				if not is_yield_paused:
 					yield(attack_timer, "timeout")
 					if enemy and can_attack:
 						enemy.hit(damage)
 					
-					can_move = true
 					is_attacking = false
 # ------------------------------------------------------------------------------
 
 func heavy_attack(delta): # HEAVY ATTACK, slow but high dmg
-	if has_learned_heavy_attack and heavy_attack_counter > 0:
-		var current_animation = state_machine.get_current_node()
-		
-		
-#		if Input.is_action_pressed("attack"):
-#			t += delta
-#		if Input.is_action_just_pressed("attack"):
-#			t = 0
-#		if Input.is_action_just_released("attack"):
-#			t = 0
-#		if t >= 0.3 and Input.is_action_pressed("attack") and !is_attacking and !is_blocking:
-#			t = -999
-#			print('yay HOLD')#hfl
-		
-		
-		if Input.is_action_just_pressed("heavy attack") and !is_attacking and !is_blocking:
-			if current_animation != 'HEAVY_ATTACK':
-				$AnimationTree.set("parameters/HEAVY_ATTACK/blend_position", attack_direction)
-				state_machine.travel('HEAVY_ATTACK')
-				heavy_attack_counter -= 1
-				
-				if heavy_attack_timer.time_left <= 0.0:
-					heavy_attack_timer = get_tree().create_timer(1.25)
-					if !is_yield_paused:
-						yield(heavy_attack_timer, "timeout")
-						
-						if enemy and can_attack:
-							enemy.is_heavy_attacked = true
-							enemy.hit(damage)
-							enemy.jump_back()
-
-#						t = 0
+	if not (is_crouching or is_attacking or is_blocking or is_aimining or is_raking):
+		if has_learned_heavy_attack and heavy_attack_counter > 0:
+			var current_animation = state_machine.get_current_node()
+			if Input.is_action_just_pressed("heavy_attack"):
+				if current_animation != 'HEAVY_ATTACK':
+					$AnimationTree.set("parameters/HEAVY_ATTACK/blend_position", attack_direction)
+					state_machine.travel('HEAVY_ATTACK')
+					Global.level_root().find_node("UserInterface").scale_unique_leaf(0.6, 0.9)
+					is_attacking = true
+					heavy_attack_counter -= 1
+					
+					if heavy_attack_timer.time_left <= 0.0:
+						heavy_attack_timer = get_tree().create_timer(1.25)
+						if not is_yield_paused:
+							yield(heavy_attack_timer, "timeout")
+							
+							if breakable_stone:
+								breakable_stone.hit()
+								heavy_attack_counter += 1
+								breakable_stone = null
+								
+							
+							if enemy and can_attack:
+								enemy.is_heavy_attacked = true
+								enemy.hit(damage)
+								enemy.jump_back()
+								
+							is_attacking = false
 # ------------------------------------------------------------------------------
 
 func shoot():
-	if Input.is_action_pressed("shoot") and pebble_counter > 0 and !is_crouching:
+	if Input.is_action_pressed("shoot") and pebble_counter > 0 and not is_crouching:
 		can_move = false
 		is_aimining = true
 		mouse_position = get_local_mouse_position()
@@ -218,24 +221,29 @@ func shoot():
 		
 		if Input.is_action_just_pressed("attack"):
 			state_machine.travel("RELEASE_" + animation)
-			can_move = true
+			if throw_timer.time_left <= 0.0:
+				throw_timer = get_tree().create_timer(0.3)
+				if not is_yield_paused:
+					yield(throw_timer, "timeout")
+					can_move = true
 			
-			var pebble = PEBBLE_PATH.instance()
-			get_parent().add_child(pebble)
-			pebble.position = $Position2D.global_position
-			
-			if has_slingshot:
-				pebble.can_damage = true
-				
-			pebble_counter -= 1
-			get_parent().find_node("UserInterface").update_pebbles(1, "minus", pebble_counter)
+					var pebble = PEBBLE_PATH.instance()
+					get_parent().add_child(pebble)
+					pebble.position = $Position2D.global_position
+					
+					if has_slingshot:
+						pebble.can_damage = true
+						
+					if Global.level_root().filename != "res://Level/CaveDuel/Cave duel.tscn":
+						pebble_counter -= 1
+						get_parent().find_node("UserInterface").update_pebbles(1, "minus", pebble_counter)
 			
 	if Input.is_action_just_released("shoot"):
 		can_move = true
 		is_aimining = false
 # ------------------------------------------------------------------------------
 
-func block(): # BLOCK INCOMING DAMAGE
+func block(): # BLOCK DAMAGE
 	if has_learned_blocking:
 		if Input.is_action_just_pressed("block"):
 			state_machine.travel('BLOCKING')
@@ -247,7 +255,7 @@ func block(): # BLOCK INCOMING DAMAGE
 			
 			if block_timer.time_left <= 0.0:
 				block_timer = get_tree().create_timer(0.7)
-				if !is_yield_paused:
+				if not is_yield_paused:
 					yield(block_timer, "timeout")
 					is_moving = true
 					is_blocking = false
@@ -260,7 +268,7 @@ func rake(): # RAKE LEAVES TO CREATE PILE OF LEAVES
 			$AnimationTree.active = false
 			$AnimationTree.active = true
 			
-		if Input.is_action_pressed("rake") and !is_crouching:
+		if Input.is_action_pressed("rake") and not is_crouching and not is_hitted:
 			is_raking = true
 			
 			if Input.is_action_pressed("right"):
@@ -272,7 +280,8 @@ func rake(): # RAKE LEAVES TO CREATE PILE OF LEAVES
 			
 			velocity.x = -direction * speed / 2
 			
-			var dir = attack_direction if direction == 0 else -direction
+			var standing_direction = 1 if $Sprite.flip_h else -1
+			var dir = standing_direction if direction == 0 else -direction
 			
 			$AnimationTree.set("parameters/RAKING/blend_position", dir)
 			state_machine.travel('RAKING')
@@ -280,16 +289,10 @@ func rake(): # RAKE LEAVES TO CREATE PILE OF LEAVES
 				var collision = $LeavesCollector.get_slide_collision(index)
 				if collision.collider.is_in_group("leaves"):
 					collision.collider.apply_central_impulse(collision.normal * 20)
-			is_raking = false
-			
-		# DESTROY A PILE OF LEAVES
-		elif Input.is_action_just_pressed("attack") and !is_crouching:
-			if state_machine.get_current_node() != "HOLD_PEBBLE":
-				state_machine.travel('ATTACK')
 # ------------------------------------------------------------------------------
 
 func hit(var dmg):
-	if !is_dead:
+	if not is_dead:
 		Global.level_root().find_node("UserInterface") \
 		.update_health(dmg, 'minus', health, max_health)
 		health -= dmg
@@ -301,13 +304,13 @@ func hit(var dmg):
 				heavy_attack_counter += 1
 				
 			state_machine.travel('HIT')
-		if !is_yield_paused:
+		if not is_yield_paused:
 			yield(get_tree().create_timer(0.95, false), "timeout")
 			is_hitted = false
 # ------------------------------------------------------------------------------
 
 func die(): # CHARACTER DIES
-	if !is_dead:
+	if not is_dead:
 		is_dead = true
 		health = 0
 		set_collision_layer_bit(1, false)
@@ -333,6 +336,7 @@ func save(): # SAVE VARIABLES IN DICTIONARY
 		"has_slingshot":has_slingshot,
 		"has_learned_attack":has_learned_attack,
 		"has_learned_heavy_attack":has_learned_heavy_attack,
+		"heavy_attack_increment":heavy_attack_increment,
 		"has_learned_raking":has_learned_raking,
 		"has_learned_blocking":has_learned_blocking
 	}
@@ -344,6 +348,8 @@ func _on_WeaponHitbox_body_entered(body):
 	if body.get_collision_layer_bit(2):
 		enemy = body if body.name != "Shield" else body.get_parent()
 		can_attack = true
+	elif body.get_collision_layer_bit(7):
+		breakable_stone = body
 # ------------------------------------------------------------------------------
 
 func _on_WeaponHitbox_body_exited(body):
@@ -353,8 +359,9 @@ func _on_WeaponHitbox_body_exited(body):
 		can_attack = false
 # ------------------------------------------------------------------------------
 
-func _draw(): # ENGINE DRAW FUNCTION
+func _draw(): # DRAW LINE BETWEEN MOUOSE AND VLADIMIR
 	if is_aimining:
+		$Sprite.flip_h = true if mouse_position.x < 0 else false
 		draw_line(Vector2(0, 0), mouse_position, Color(1.0, 1.0, 1.0, 0.3), 8.0)
 # ------------------------------------------------------------------------------
 
@@ -364,5 +371,21 @@ func set_values(data):
 			value == "file" or \
 			value == "parent":
 			continue
-		print(typeof(value)," - ",value,": ",data[value])
+#		print(typeof(value)," - ",value,": ",data[value])
 		self.set(value, data[value])
+# ------------------------------------------------------------------------------
+
+func _on_Ceiling_body_entered(body):
+	# detect if vladimir can stand up
+	# if something above him he can't
+	can_stand_up = false
+# ------------------------------------------------------------------------------
+
+func _on_Ceiling_body_exited(body):
+	can_stand_up = true
+# ------------------------------------------------------------------------------
+
+func stop_moving_during_cutsene():
+	self.is_moving = false
+	self.velocity = self.GRAVITY
+	self.state_machine.travel("IDLE")

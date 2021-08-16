@@ -20,10 +20,8 @@ var leaf_texture = null
 
 
 func _ready():
-	$GrabLeft/CollisionShape2D.disabled = !is_movable
-	#$GrabLeft.visible = is_movable
-	$GrabRight/CollisionShape2D.disabled = !is_movable
-	#$GrabRight.visible = is_movable
+	$GrabLeft/CollisionShape2D.disabled = not is_movable
+	$GrabRight/CollisionShape2D.disabled = not is_movable
 	
 	for LeafHolder in get_children():
 		if LeafHolder is StaticBody2D:
@@ -33,16 +31,15 @@ func _ready():
 func _process(delta):
 	var sum = 0
 	
-	if is_loaded and !is_complete:
+	if is_loaded and not is_complete:
 		is_loaded = false
 		
 		for i in range(leaves):
-			print("adding leave ", i)
 			var Leaf = LeafPath.instance()
 			get_parent().get_parent().find_node("Leaves").add_child(Leaf)
 			Leaf.position = Vector2(position.x-250 + (i*100), position.y)
 	
-	if !is_complete:
+	if not is_complete:
 		for i in value:
 			
 			if arr_children.empty():
@@ -92,7 +89,7 @@ func save():
 # ------------------------------------------------------------------------------
 
 func _on_Grab_body_entered(body, direction):
-	if body.get_collision_layer_bit(5):
+	if body.get_collision_layer_bit(4):
 		self.apply_central_impulse(Vector2(direction * 6000, 0))
 # ------------------------------------------------------------------------------
 
@@ -102,7 +99,7 @@ func remove_leaf(leaf_holder):
 	leaf_holder.set_collision_layer_bit(3, false)
 	leaf_holder.set_collision_mask_bit(3, false)
 	leaf_texture = leaf_holder.find_node("Sprite").frame
-	leaf_holder.find_node("Sprite").frame = LeafHolder.EMPTY_FRAME
+	leaf_holder.find_node("Sprite").frame = LeafHolder.EMPTY_FRAME-1
 # ------------------------------------------------------------------------------
 
 func append_leaf(leaf_holder):
@@ -112,7 +109,6 @@ func append_leaf(leaf_holder):
 		leaf_holder.set_collision_layer_bit(3, true)
 		leaf_holder.set_collision_mask_bit(3, true)
 		if leaf_holder.name == "LeafHolder4":
-			print("bruh")
 			leaf_holder.initial_position = LEAF_HOLDER_4_POSITION
 		
 #		if leaf_texture == null or leaf_texture == LeafHolder.EMPTY_FRAME:

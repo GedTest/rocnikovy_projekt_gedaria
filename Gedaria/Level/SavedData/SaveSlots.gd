@@ -14,3 +14,9 @@ func _on_Close_pressed():
 	$LoadButtons.hide()
 	
 	$Close.hide()
+# ------------------------------------------------------------------------------
+
+func hide_all():
+	$SaveButtons.hide()
+	$LoadButtons.hide()
+	$Close.hide()

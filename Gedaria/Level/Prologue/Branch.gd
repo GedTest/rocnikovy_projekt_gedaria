@@ -2,10 +2,13 @@ class_name Branch, "res://Level/Prologue/branch.png"
 extends StaticBody2D
 
 
-onready var LeafPath = preload("res://Level/Prologue/Leaf.tscn")
+const MAX_CRACKS = 2
 
-var cracks : int = 0
+var cracks = 0
 var timer = null
+var is_don_once = false
+
+onready var LeafPath = preload("res://Level/Prologue/Leaf.tscn")
 
 
 func _ready():
@@ -15,7 +18,12 @@ func _ready():
 func _process(delta):
 	var leaf = LeafPath.instance()
 	
-	if cracks >= 3:
+	if cracks == 1 and not is_don_once:
+		$AnimationPlayer.play("crack")
+		is_don_once = true
+	
+	if cracks >= MAX_CRACKS:
+		is_don_once = false
 		cracks = 0
 	# spawn leaf
 		self.add_child(leaf)
@@ -37,22 +45,12 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func _on_Branch_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		$Area2D.disconnect("body_entered", self, "_on_Branch_body_entered")
 	cracks += 1
 # ------------------------------------------------------------------------------
 
-func shake():
-	$Tween.interpolate_property($Sprite, "rotation_degrees", \
-								$Sprite.rotation_degrees, 10, \
-								1.0, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-	$Tween.start()
-	
-	$Tween.interpolate_property($Sprite, "rotation_degrees", \
-								$Sprite.rotation_degrees, 0, \
-								0.5, Tween.TRANS_QUAD,\
-								Tween.EASE_OUT_IN, 1.1)
-	$Tween.start()
+func _on_Branch_body_exited(body):
+	yield(get_tree().create_timer(0.25), "timeout")
+	$Area2D.connect("body_entered", self, "_on_Branch_body_entered")
 # ------------------------------------------------------------------------------
-
-func _on_Timer_timeout():
-	shake()
-	$Timer.start(randi() % 5)

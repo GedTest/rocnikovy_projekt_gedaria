@@ -7,7 +7,7 @@ var closest_enemy = Vector2(99999, 0)
 
 
 func _physics_process(delta):
-	if !arr_enemy.empty():
+	if not arr_enemy.empty():
 		for enemy in arr_enemy:
 			if abs(enemy.position.x - global_position.x) < closest_enemy.x:
 				closest_enemy = enemy.global_position

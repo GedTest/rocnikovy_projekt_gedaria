@@ -19,11 +19,11 @@ func _process(delta):
 				for node in level.get_children():
 					if node.name == "Boss":
 						boss = node
+						boss.is_immune = false
 				
 				if player.has_learned_blocking:
 					is_done_once = false
 					player.block()
 					Fullscreen.pause()
-					Fullscreen.find_node("TextEdit").show()
 					boss.find_node("StaticBody2D").call_deferred("queue_free")
-					level.find_node("BlockingTutorial").call_deferred("queue_free")
+					level.find_node("TutorialSign2").call_deferred("queue_free")

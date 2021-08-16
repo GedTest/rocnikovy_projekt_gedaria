@@ -5,6 +5,7 @@ var is_yield_paused = false
 onready var arr_soldiers = [$soldier2,$soldier3,$soldier4]
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Vladimir.has_learned_raking = false
 	$Vladimir/Sprite.flip_h = false
 	$Vladimir/Camera.position.y = -250
@@ -26,7 +27,7 @@ func _on_DoorArea2D_body_entered(body):
 		$Vladimir.is_moving = false
 		$Vladimir.velocity = $Vladimir.GRAVITY
 		for soldier in arr_soldiers:
-			soldier.flip_h = !soldier.flip_h
+			soldier.flip_h = not soldier.flip_h
 			
 		yield(get_tree().create_timer(1.5), "timeout")
-		get_tree().change_scene("res://Level/In the wood.tscn")
+		get_tree().change_scene("res://Level/InTheWood/In the wood.tscn")

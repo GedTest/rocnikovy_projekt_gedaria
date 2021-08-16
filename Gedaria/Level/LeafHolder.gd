@@ -2,7 +2,7 @@ class_name LeafHolder
 extends StaticBody2D
 
 
-const EMPTY_FRAME = 24
+const EMPTY_FRAME = 28
 const PARTS_OF_PILE = "res://Level/PileOfLeavesTextures2.png"
 
 var LeafPath = preload("res://Level/Leaf.tscn")
@@ -12,6 +12,8 @@ export (Vector2) var direction = Vector2(-1, -1)
 export (int) var has_leaf = 0
 export (int) var level = 0
 export (bool) var is_destroyable = false
+export (bool) var is_invincible = false
+var can_be_filled = true
 export(String, "res://UI/list_buk.png",
 	"res://UI/list_břečťan.png","res://UI/list_dub.png",
 	"res://UI/list_ginko_biloba.png", "res://UI/list_kopřiva.png",
@@ -35,8 +37,8 @@ func _ready():
 func _process(delta):
 	if position != initial_position:
 		position = initial_position
-		
-	var condition = false if !has_leaf else true
+
+	var condition = true if has_leaf else false
 	if is_part_of_pile:
 		$CollisionShape2D.disabled = condition
 	self.set_collision_layer_bit(0, condition)
@@ -45,32 +47,27 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	# collision_layer_bit 3 = Leaves
-	if body.get_collision_layer_bit(3):
+	if body.get_collision_layer_bit(3) and can_be_filled:
 		if is_empty:
 			is_empty = false
-#			leaf = body
 			has_leaf = 1
 			
 			# if frame is empty = leave is not placed yet
-			if $Area2D/Sprite.frame == EMPTY_FRAME or ((3 * 5) + level):
+			if $Area2D/Sprite.frame == EMPTY_FRAME or ((3 * 7) + level):
 				self.set_texture()
 				
 				if is_part_of_pile:
 					$Area2D/Sprite.frame = int(get_groups()[1].substr(6, 2))
-#					if !is_part_of_pile:
-#						leaf_texture = leaf.texture
-#						$Area2D/Sprite.texture = load(leaf_texture)
-#					else:
-					
+
 				SaveLoad.delete_actor(body)
 				self.set_collision_layer_bit(3, true)
 				self.set_collision_mask_bit(3, true)
-#					leaf = null
 					
 	
-	if body.get_collision_layer_bit(5) and is_destroyable and !is_empty:
-		self.spawn_leaf()
-		SaveLoad.delete_actor(self)
+	if body.get_collision_layer_bit(4) and is_destroyable and not is_empty:
+		if not is_invincible:
+			self.spawn_leaf()
+			SaveLoad.delete_actor(self)
 # ------------------------------------------------------------------------------
 
 func save():
@@ -84,8 +81,8 @@ func save():
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_area_entered(area):
-	if area.get_collision_layer_bit(1) and $Area2D/Sprite.frame != EMPTY_FRAME and !is_part_of_pile:
-		if has_leaf:
+	if area.get_collision_layer_bit(1) and $Area2D/Sprite.frame != EMPTY_FRAME and not is_part_of_pile:
+		if has_leaf and not is_invincible:
 			has_leaf = 0
 			$Area2D/Sprite.frame = EMPTY_FRAME
 			self.spawn_leaf()
@@ -125,12 +122,13 @@ func set_texture():
 		$Area2D/Sprite.texture = load(PARTS_OF_PILE)
 		$Area2D/Sprite.vframes = 7
 		$Area2D/Sprite.hframes = 4
-		$Area2D/Sprite.frame = EMPTY_FRAME
+		$Area2D/Sprite.frame = (EMPTY_FRAME-1)
 		$Area2D/Sprite.scale = Vector2(1.5, 1.5)
-	elif !is_part_of_pile:
+	elif not is_part_of_pile:
 		$Area2D/Sprite.vframes = 5
-		$Area2D/Sprite.hframes = 5
-		$Area2D/Sprite.frame = ((randi() % 3) * 5) + level
-		if !has_leaf:
-			$Area2D/Sprite.frame = (3 * 5) + level
-		$Area2D/Sprite.scale = Vector2(1.16, 1.16)
+		$Area2D/Sprite.hframes = 7
+		$Area2D/Sprite.frame = ((randi() % 3) * 7) + level
+		if not has_leaf:
+			$Area2D/Sprite.frame = (3 * 7) + level
+			
+		$Area2D/Sprite.scale = Vector2(1.24, 1.192)

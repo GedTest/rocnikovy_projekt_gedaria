@@ -2,13 +2,15 @@ extends Control
 
 
 var timer = null
-var is_yield_paused = false
+
 var current_health = 12
 var max_health = 0
 var saved_health = 0
 var acorn_counter = 0
 var pebble_counter = 0
 var heavy_attack_counter = 0
+
+var unique_leaf = "res://UI/list_lipa"
 
 onready var arr_max_health = [
 	$leaves/FallingLeaves1,$leaves/FallingLeaves2,
@@ -29,14 +31,14 @@ onready var arr_pebbles = [
 
 
 func _ready():
-	if Global.level_root().filename == "res://Level/DarkForest/Dark forest.tscn":
-		$Blueberries.show()
-		$BlueberryCounter.show()
+	self.show_blueberries()
 	timer = get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------
 
 func _process(delta):
 	var vladimir = Global.level_root().find_node('Vladimir')
+	
+	# set references on vladimir's values
 	if vladimir:
 		acorn_counter = vladimir.acorn_counter
 		$AcornCounter.text = str(acorn_counter) + "x"
@@ -47,20 +49,22 @@ func _process(delta):
 		pebble_counter = vladimir.pebble_counter
 		
 		heavy_attack_counter = vladimir.heavy_attack_counter
-		$UniqueLeaf.visible = true if heavy_attack_counter > 0 else false
+		$UniqueLeaf.visible = true if vladimir.has_learned_heavy_attack else false
 		$UniqueLeafCounter.visible = $UniqueLeaf.visible
-		$UniqueLeafCounter.text = str(int(heavy_attack_counter / 4)) + "x"
-		$UniqueLeaf.value = int(heavy_attack_counter) % 4
+		$UniqueLeafCounter.text = str(vladimir.heavy_attack_counter) + "x"#str(int(heavy_attack_counter / vladimir.heavy_attack_increment)) + "x"
+		$UniqueLeaf.value = int(heavy_attack_counter) % int(vladimir.heavy_attack_increment)
+		$UniqueLeaf.max_value = vladimir.heavy_attack_increment
+		
+		if vladimir.heavy_attack_counter == vladimir.heavy_attack_increment:
+			$UniqueLeaf.value = vladimir.heavy_attack_increment
 		
 		$Slingshot.visible = vladimir.has_slingshot
-		is_yield_paused = Global.level_root().is_yield_paused
 # ------------------------------------------------------------------------------
 
 func update_health(var value, var condition : String, var current_health, \
 				   var max_health = 12):
 	match condition:
 		"minus":
-		# warning-ignore:unused_variable
 			if current_health >= 0:
 				for i in range(value):
 					current_health -= 1
@@ -101,12 +105,17 @@ func save():
 	var saved_data = {
 		"saved_health":current_health,
 		"max_health":max_health,
-		"acorn_counter":acorn_counter
+		"acorn_counter":acorn_counter,
+		"unique_leaf":unique_leaf
 	}
 	return saved_data
 # ------------------------------------------------------------------------------
 
 func load_ui_icons():
+	# at the beginning of each level, 
+	# refresh the visual pointer according to the data
+	# first hide all, then show only those which 
+	# are true according to data 
 	yield(get_tree().create_timer(0.25), "timeout")
 	for leaf_holder in arr_max_health:
 		leaf_holder.find_node('Leaf').hide()
@@ -125,3 +134,39 @@ func load_ui_icons():
 		$Acorn.show()
 	
 	$BlueberryCounter.text = str(Global.blue_berries) + "/5"
+	if Global.leaves_in_cave_counter > 0:
+		$LeavesInCave.show()
+		$LeavesInCave/Counter.text = str(Global.leaves_in_cave_counter)+"/9"
+	self.set_unique_leaf(unique_leaf)
+# ------------------------------------------------------------------------------
+
+func set_unique_leaf(texture):
+	$UniqueLeaf.texture_progress = load(texture + ".png")
+	$UniqueLeaf.texture_under = load(texture + "_50.png")
+	
+	unique_leaf = texture
+	
+	if texture == "res://UI/list_javor_červený" or \
+		texture == "res://UI/list_ořech":
+			$UniqueLeaf.margin_left = 1676
+			
+	elif texture == "res://UI/list_kopřiva":
+		$UniqueLeaf.margin_left = 1635
+# ------------------------------------------------------------------------------
+
+func scale_unique_leaf(start=0.4, end=1.0):
+	# upon picking up the leaves play scaling effect
+	$Tween.interpolate_property($UniqueLeaf, "rect_scale", Vector2(start, start),\
+	 				Vector2(end, end), 1.7, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	$Tween.start()
+# ------------------------------------------------------------------------------
+
+func _on_Tween_tween_all_completed():
+	$UniqueLeaf.rect_scale = Vector2(0.7, 0.7)
+# ------------------------------------------------------------------------------
+
+func show_blueberries():
+	# there are blueberries only in the Dark Forest level
+	if Global.level_root().filename == "res://Level/DarkForest/Dark forest.tscn":
+		$Blueberries.show()
+		$BlueberryCounter.show()

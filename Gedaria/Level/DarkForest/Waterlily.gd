@@ -31,5 +31,5 @@ func _on_Area2D_body_entered(body):
 # ------------------------------------------------------------------------------
 
 func _on_Grab_body_entered(body, direction):
-	if body.get_collision_layer_bit(5) and state_mode == Modes.MOVING:
+	if body.get_collision_layer_bit(4) and state_mode == Modes.MOVING:
 		self.apply_central_impulse(Vector2(direction * 6000, 0))

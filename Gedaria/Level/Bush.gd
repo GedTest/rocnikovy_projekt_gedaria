@@ -20,9 +20,10 @@ func _process(delta):
 	if player:
 		if player.is_crouching:
 			player.is_hidden = true
-			player.find_node("CeilingRay").collide_with_areas = true
+			player.can_stand_up = false
 		else:
 			player.is_hidden = false
+			player.can_stand_up = true
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
@@ -35,5 +36,13 @@ func _on_Area2D_body_exited(body):
 	# collision_layer_bit 1 = Player
 	if body.get_collision_layer_bit(1):
 		player = null
-		body.is_hidden = false
-		body.find_node("CeilingRay").collide_with_areas = false
+		var is_crouching_in_another_bush = false
+		
+		for bush in self.get_parent().get_children():
+			if bush.player:
+				if not bush.player.can_stand_up:
+					is_crouching_in_another_bush = true
+		
+		if not is_crouching_in_another_bush:
+			body.is_hidden = false
+			body.can_stand_up = true

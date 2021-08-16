@@ -16,6 +16,6 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(0) and "PileOf4Leaves" in body.name:
-		if !(body in arr_piles):
+		if not(body in arr_piles):
 			arr_piles.append(body)
 			is_done_once = true

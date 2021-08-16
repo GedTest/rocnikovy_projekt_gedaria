@@ -15,8 +15,13 @@ project.godot
 *.jpg
 *.png
 *.import
+*.ico
 
 *.json
+
+# video and music
+*.ogv
+*.wav
 
 # ignore theese folders
 .import/
