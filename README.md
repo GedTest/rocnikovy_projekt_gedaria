@@ -38,5 +38,7 @@ Godot uses GDScript, GDScript is a high-level, dynamically typed programming lan
 [**instagram**](https://www.instagram.com/gedaria_official/?hl=cs)
 
 [**Itch.io**](https://gedaria.itch.io/gedaria)
+
 [**YouTube**](https://www.youtube.com/channel/UC1L7VD7fd6HZ2r3AyAQQ6UA/videos)
+
 [**Pinterest**](https://cz.pinterest.com/gedaria_official/_created/)
