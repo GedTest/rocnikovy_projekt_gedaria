@@ -12,10 +12,14 @@ was about to happen**. His **family was kidnapped** by local **earl**, for unkno
 * Main theme of the game is autumn, rakes and leaves.
 * You can rake leaves to form a pile of leaves, which can help you to get higher
 * There are two types of leaf barriers horizontal and vertical
+* Wind can blow away leaves to get them higher
+* Minigame called Quickleaves (derrived from Quicksand)
 
 ## Goals:
 * The project is my first encounter with game design, level design and game developement
 * My dream is to became professional game dev, so consider this as my first game
+* I've tried to create something diffrent something unique
+
 
 ## Technology:
 > This game is developed with [**Godot Engine**](https://godotengine.org/)
@@ -33,4 +37,6 @@ Godot uses GDScript, GDScript is a high-level, dynamically typed programming lan
 ### Links
 [**instagram**](https://www.instagram.com/gedaria_official/?hl=cs)
 
-[**itch.io**](https://gedaria.itch.io/gedaria)
+[**Itch.io**](https://gedaria.itch.io/gedaria)
+[**YouTube**](https://www.youtube.com/channel/UC1L7VD7fd6HZ2r3AyAQQ6UA/videos)
+[**Pinterest**](https://cz.pinterest.com/gedaria_official/_created/)
