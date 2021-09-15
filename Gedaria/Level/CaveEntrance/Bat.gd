@@ -3,16 +3,18 @@ extends Enemy
 
 export (int) var height = 0
 
+var is_on_ground = false
+
 
 func _process(delta):
 	if not is_dead:
 		velocity.y = -GRAVITY.y
 		
 		if $HitRay.is_colliding():
-			fly_down()
+			self.fly_down()
 				
 		elif int(self.position.y) >= height:
-			fly_back_up()
+			self.fly_back_up()
 # ------------------------------------------------------------------------------
 
 func move(var from, var to): # MOVE
@@ -44,6 +46,7 @@ func move(var from, var to): # MOVE
 					direction = 1
 					$Sprite.flip_h = true
 					$HitRay.cast_to.x = FoV
+					$Particles2D.rotation_degrees = 197
 			
 			# MOVE TOWARDS PLAYER (LEFT)
 			elif player.position.x >= position.x-FoV and player.position.x < position.x:
@@ -51,30 +54,36 @@ func move(var from, var to): # MOVE
 					direction = -1
 					$Sprite.flip_h = false
 					$HitRay.cast_to.x = -FoV
+					$Particles2D.rotation_degrees = -15
 			
 		velocity.x = speed * direction * int(is_moving)
+		
+	elif is_dead and not is_on_ground:
+		$CollisionShape2D.disabled = false
+		self.velocity = Vector2.ZERO
+		self.velocity = GRAVITY*3
+		self.move_and_slide(velocity)
 # ------------------------------------------------------------------------------
 
 func fly_back_up():
+	state_machine.travel('FLY')
 	velocity.y -= 200
 # ------------------------------------------------------------------------------
 
 func fly_down():
+	state_machine.travel('ATTACK')
+		
 	var vertical_distance = abs(self.position.y - player.position.y)
 	if vertical_distance > 0:
 		velocity.y += vertical_distance*2
 # ------------------------------------------------------------------------------
 
 func bite(player):
-#	$AnimationTree.set("parameters/ATTACK/blend_position",direction)
-#	state_machine.travel('ATTACK')
-	
 	if has_player:
 		$HitRay.enabled = false
 		if not player.is_dead:
 			if not player.is_blocking:
 				player.hit(damage)
-				print("Vladimir's health: ", player.health)
 
 	if attack_timer.time_left <= 0.0:
 		attack_timer = get_tree().create_timer(0.75, false)
@@ -89,3 +98,9 @@ func _on_Area2D_body_entered(body):
 	
 	if body.get_collision_layer_bit(7):
 		self.hit(3)
+# ------------------------------------------------------------------------------
+
+func _on_GroundArea_body_entered(body):
+	if body.get_collision_layer_bit(0):
+		yield(get_tree().create_timer(1.0, false), "timeout")
+		is_on_ground = true

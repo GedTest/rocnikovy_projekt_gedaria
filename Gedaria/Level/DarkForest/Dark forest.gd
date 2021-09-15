@@ -29,6 +29,9 @@ func _on_LoadingTimer_timeout():
 	._on_LoadingTimer_timeout()
 	Global.update_data_from_merchant($Vladimir)
 	
+	acorn_counter = 50
+	unique_leaves_counter = 2
+	
 	if Global.first_entrance:
 		$LeafHolders/LeafHolder.has_leaf = 0
 		$LeafHolders/LeafHolder2.has_leaf = 0

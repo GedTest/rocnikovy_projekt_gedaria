@@ -132,7 +132,6 @@ func attack(attack_time, cooldown_time):
 			if not is_yield_paused:
 				yield(attack_timer, "timeout")
 				if has_player:
-					print(can_attack)
 					if not player.is_dead and can_attack:
 						is_attacking = true
 						if not player.is_blocking:

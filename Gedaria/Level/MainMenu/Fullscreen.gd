@@ -29,6 +29,14 @@ func _process(delta):
 		self.pause()
 # ------------------------------------------------------------------------------
 
+func _input(event):
+	for input in InputMap.get_actions():
+		if "quick_slot" in input:
+			var number = input[-1]
+			if Input.is_action_just_pressed("quick_slot"+number):
+				SaveLoad.save_to_file(int(number))
+# ------------------------------------------------------------------------------
+
 func pause():
 	if not Global.level_root().filename in LEVELS:
 		$Timer.start()
@@ -52,6 +60,7 @@ func pause():
 						
 				$TextureRect.visible = not $TextureRect.visible
 				$PauseMenu.visible = not $PauseMenu.visible
+				$Knirocelo.visible = not $Knirocelo.visible
 				self.get_tree().paused = not self.get_tree().paused
 				
 				var HIDDEN = Input.MOUSE_MODE_HIDDEN
@@ -70,6 +79,7 @@ func hide_elements():
 	$TextureRect.hide()
 	$PauseMenu.hide()
 	$LoadingScreen.hide()
+	$Knirocelo.hide()
 	if not Global.level_root().filename in LEVELS:
 		Global.level_root().find_node("UserInterface").show()
 # ------------------------------------------------------------------------------
@@ -81,12 +91,17 @@ func hide_pause_menu():
 			if child is Button:
 				child.visible = not child.visible
 		$PauseMenu.visible = not $PauseMenu.visible
+		$Knirocelo.visible = not $Knirocelo.visible
 		var texture = BACKGROUNDS[0] if $PauseMenu.visible else BACKGROUNDS[1]
 		$TextureRect.texture = load(texture)
+		$LoadingScreen/AnimationPlayer.stop()
 # ------------------------------------------------------------------------------
 
 func show_loading_screen():
 	self.pause()
+	var arr_texts = { "loading":$LoadingScreen/Label }
+	Languages.translate(arr_texts, Global.prefered_language)
+	$LoadingScreen/AnimationPlayer.play("dot_wave")
 	$LoadingScreen.show()
 	$LoadingScreen/AnimatedSprite.play()
 # ------------------------------------------------------------------------------

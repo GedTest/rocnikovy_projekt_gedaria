@@ -26,7 +26,7 @@ var languages = {
 		"credits":"Autoři",
 		"quit":"Ukončit hru",
 		"bush_quest":"Ahoj, oni.... ukradli mi mé děti.... přineseš je zpátky, že mládenče?",
-		"bush_thanks":"Oh děkuji mladíkunot",
+		"bush_thanks":"Oh děkuji mladíku",
 		"pause":"Stisknutím [color=#004a23]tlačítka 'Esc'[/color] hru zastavíš a zobrazí se nabídka menu.",
 		"continue":"Pokračovat",
 		"new_game":"Nová hra",
@@ -52,6 +52,10 @@ var languages = {
 		"health":"Životy",
 		"damage:":"Poškození",
 		"speed":"Rychlost Pohybu",
+		"statiscitcs":"V předchozím levelu jsi dosáhl: ",
+		"timer":"V čase: ",
+		"quick_save":"F1, F2, F3 rychlé uložení",
+		"loading":"N A Č Í T Á N Í"
 	},
 	"english":{
 		"throwing":"With the help of pebbles, you can throw at beehives, thus provoking bees. [color=#004a23]Press the 'Q' button[/color] and aim at the hive, then press left mouse button",
@@ -78,7 +82,7 @@ var languages = {
 		"credits":"Authors",
 		"quit":"Quit",
 		"bush_quest":"Hi, they .... stole my children .... will you bring them back, young man? ",
-		"bush_thanks":"Oh thank you young mannot",
+		"bush_thanks":"Oh thank you young man",
 		"pause":"[color=#004a23]Press the 'Esc'[/color] button to stop the game and display the menu.",
 		"continue":"Continue",
 		"new_game":"New Game",
@@ -104,6 +108,10 @@ var languages = {
 		"health":"Health",
 		"damage:":"Damage",
 		"speed":"Movement Speed",
+		"statiscitcs":"In previous level you've accomplished:",
+		"timer":"In time: ",
+		"quick_save":"F1, F2, F3 to quick save",
+		"loading":"L O A D I N G"
 	},
 	"polskie": {
 		"start":"Zacząć gre",

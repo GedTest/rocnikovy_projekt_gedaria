@@ -73,6 +73,11 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 		$BOSS_IN_CAVE.set_values()
 	else:
 		$BOSS_IN_CAVE/CanvasLayer/BossHPBar.hide()
+		
+	$Vladimir.has_slingshot = true
+	$Vladimir.pebble_counter = 4
+	$Vladimir.acorn_counter = 27
+	$Vladimir.health = 7
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument

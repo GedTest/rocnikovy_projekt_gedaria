@@ -31,6 +31,8 @@ func _ready():
 func _on_LoadingTimer_timeout():
 	# CALLING THE "BASE FUNTCION" FIRST
 	._on_LoadingTimer_timeout()
+	acorn_counter = 50
+	unique_leaves_counter = 2
 	
 	demo_lang(Global.prefered_language)
 # ------------------------------------------------------------------------------
@@ -92,7 +94,7 @@ func _on_Tutorial4_entered(body):
 		$Vladimir.can_move = false
 		$Tutorials/Tutorial4/Sprite.hide()
 		$Tutorials/Tutorial4/AnimationPlayer.play("HEAVY_ATTACK")
-		yield(get_tree().create_timer(3.4, false), "timeout")
+		yield(get_tree().create_timer(4.5, false), "timeout")
 		$Tutorials/Tutorial4.show_text()
 		$Vladimir.can_move = true
 		$CanvasLayer/UserInterface.scale_unique_leaf()

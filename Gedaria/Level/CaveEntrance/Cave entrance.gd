@@ -90,3 +90,8 @@ func _on_LeavesInCave_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		$LeavesInCave/CollisionShape2D.set_deferred("disabled", false)
 		$CanvasLayer/UserInterface/LeavesInCave.show()
+#		$AnimationPlayer.play("DANGER")
+		$Vladimir.stop_moving_during_cutsene()
+		yield(get_tree().create_timer(5.0, false), "timeout")
+		$Vladimir.is_moving = true
+		$LeavesInCave/CollisionShape2D.set_deferred("disabled", true)

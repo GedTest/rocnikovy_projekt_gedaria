@@ -9,5 +9,5 @@ func _on_FallingStonesSpawner_body_entered(body):
 		
 		var stone = StonePath.instance()
 			
-		stone.position = self.position
+		stone.position = Vector2(self.position.x, self.position.y + 60)
 		get_parent().call_deferred("add_child", stone)

@@ -81,7 +81,8 @@ func save():
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_area_entered(area):
-	if area.get_collision_layer_bit(1) and $Area2D/Sprite.frame != EMPTY_FRAME and not is_part_of_pile:
+	if (area.get_collision_layer_bit(1) and $Area2D/Sprite.frame != EMPTY_FRAME\
+	 and not is_part_of_pile) or area.name == "WindBlowerWind":
 		if has_leaf and not is_invincible:
 			has_leaf = 0
 			$Area2D/Sprite.frame = EMPTY_FRAME
@@ -109,7 +110,7 @@ func spawn_leaf():
 	new_leaf.name = "from_"+name
 	
 	var root = Global.level_root()
-	root.find_node("Leaves").call_deferred("add_child", new_leaf)
+	root.call_deferred("add_child", new_leaf)
 	new_leaf.texture = texture
 	
 	var new_pos = Vector2(60*direction.x, 60*direction.y)
@@ -128,7 +129,10 @@ func set_texture():
 		$Area2D/Sprite.vframes = 5
 		$Area2D/Sprite.hframes = 7
 		$Area2D/Sprite.frame = ((randi() % 3) * 7) + level
+		self.modulate = Color(1, 1, 1, 1.0)
 		if not has_leaf:
+			var alpha = 0.4 if level > 1 and level < 5 else 0.75
+			self.modulate = Color(1, 1, 1, alpha)
 			$Area2D/Sprite.frame = (3 * 7) + level
 			
 		$Area2D/Sprite.scale = Vector2(1.24, 1.192)

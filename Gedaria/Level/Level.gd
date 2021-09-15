@@ -5,7 +5,11 @@ extends Node2D
 var is_done_once = true
 var is_yield_paused = false
 
+var acorn_counter = 0
+var unique_leaves_counter = 0
+
 var arr_enemies = []
+var arr_killed_enemies = []
 
 onready var arr_patrollers = []
 onready var arr_guardians = []
@@ -45,6 +49,8 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 
 # warning-ignore:unused_argument
 func _process(delta):
+	Global.level_root().find_node("Sign").played_time += delta/2
+	
 	for i in arr_patrollers:
 		i.move(i.from, i.to)
 
@@ -52,10 +58,15 @@ func _process(delta):
 		i.move()
 		if i.from != 0 or i.to != 0:
 			i.move_in_range(i.from, i.to)
+	
+	for enemy in arr_enemies:
+		if enemy.is_dead and not enemy in arr_killed_enemies:
+			arr_killed_enemies.append(enemy)
 # ------------------------------------------------------------------------------
 
 func _on_KillZone_body_entered(body, sec=0.7): # Kills player if he fall into
 	if body.get_collision_layer_bit(1):
+		body.is_dead = true
 		yield(get_tree().create_timer(sec), "timeout")
 		body.die()
 # ------------------------------------------------------------------------------
@@ -66,3 +77,4 @@ func set_vladimirs_skills():
 	$Vladimir.has_learned_heavy_attack = true
 	$Vladimir.has_learned_blocking = true
 	$Vladimir.has_learned_raking = true
+	$Vladimir.has_learned_leaf_blower = true

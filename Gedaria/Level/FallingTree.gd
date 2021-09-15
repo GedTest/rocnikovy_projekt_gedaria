@@ -3,8 +3,9 @@ extends StaticBody2D
 
 func on_enemy_health_changed():
 	$AnimationPlayer.play("fall")
-	yield(get_tree().create_timer(3.0, false), "timeout")
 	var level = Global.level_root()
+	level.find_node("Vladimir").stop_moving_during_cutsene()
+	yield(get_tree().create_timer(3.0, false), "timeout")
 	
 	level.find_node("Vladimir").is_moving = true
 	

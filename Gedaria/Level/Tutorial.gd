@@ -15,7 +15,8 @@ export(String, "throwing",
 				"interaction",
 				"blocking",
 				"crouch",
-				"jump"
+				"jump",
+				"quick_save"
 )var text
 export (bool) var requires_input = true
 export (bool) var is_interactable = true 
@@ -114,7 +115,7 @@ func show_text():
 	
 	if self.text == "interaction":
 		return
-		
+	
 	var values = {
 		"crouch":{
 			"frame":0,"key_pos":Vector2(-224, -57),"icon":true,"icon_frame":2,
@@ -157,6 +158,10 @@ func show_text():
 		"raking":{
 			"frame":11,"key_pos":Vector2(-210, -100),
 			"key_text":str(keys["rake"])+" + "+str(keys["right"]),"key_font":76
+		},
+		"quick_save":{
+			"frame":0,"key_pos":Vector2(0, 0),"icon":false,"icon_frame":0,
+			"key_text":"","key_font":26,
 		}
 	}
 		
@@ -182,6 +187,11 @@ func show_text():
 		$Sprite/Label2.text = "Heavy Attack"
 	
 	self.wrap_text(values[self.text]["key_text"], $Sprite/Label)
+	
+	if self.text == "quick_save":
+		var arr_texts = {"quick_save":$Sprite/Label}
+		$Sprite/Label.rect_position = Vector2(-165, -75)
+		Languages.translate(arr_texts, Global.prefered_language)
 # ------------------------------------------------------------------------------
 
 func wrap_text(key_text, label):

@@ -49,7 +49,6 @@ func _on_MainMenuButton_pressed(): # Go to Main Menu
 	Fullscreen.show_loading_screen()
 	get_parent().is_yield_paused = true
 	$MainMenuButton.disabled = true
-	$UserInterface.is_yield_paused = get_parent().is_yield_paused
 	get_tree().set_pause(true)
 	yield(get_tree().create_timer(7.0), "timeout")
 	$MainMenuButton.disabled = false

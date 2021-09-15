@@ -40,11 +40,11 @@ func on_pressed():
 			SaveLoad.save_to_file(slot)
 		"LOAD":
 			self.disabled = true
-			#if not SaveLoad.slots["slot_"+str(slot)].empty():
-			Global.is_yield_paused = true
+			if not SaveLoad.slots["slot_"+str(slot)].empty():
+				Global.is_yield_paused = true
 				#SaveLoad.load_from_slot("slot_"+str(slot))
-			Fullscreen.show_loading_screen()
-			SaveLoad.load_from_file(slot)
+				Fullscreen.show_loading_screen()
+				SaveLoad.load_from_file(slot)
 			
 	for button in get_tree().get_nodes_in_group("buttons"):
 		button.update()

@@ -70,6 +70,7 @@ func _process(delta):
 			self.mode = RigidBody2D.MODE_RIGID
 	elif is_movable:
 		self.set_collision_layer_bit(0, true)
+		self.set_collision_layer_bit(10, true)
 		#self.set_collision_mask_bit(1, true)
 		self.mode = RigidBody2D.MODE_RIGID
 		$Sprite.modulate = Color(1, 1, 1, 1)
