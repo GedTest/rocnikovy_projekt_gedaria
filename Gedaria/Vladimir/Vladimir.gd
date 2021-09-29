@@ -73,18 +73,15 @@ var state_machine = null
 func _ready():
 	self.set_collision_layer_bit(1, true)
 	state_machine = $AnimationTree.get("parameters/playback")
-	attack_timer = get_tree().create_timer(0.0)
-	heavy_attack_timer = get_tree().create_timer(0.0)
-	block_timer = get_tree().create_timer(0.0)
-	throw_timer = get_tree().create_timer(0.0)
+	attack_timer = self.get_tree().create_timer(0.0)
+	heavy_attack_timer = self.get_tree().create_timer(0.0)
+	block_timer = self.get_tree().create_timer(0.0)
+	throw_timer = self.get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------	
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	if not is_dead:
-		# GRAVITY
-		velocity.y += GRAVITY.y
-	
 		is_yield_paused = self.get_parent().is_yield_paused
 		self.update() # Draw function
 		
@@ -106,10 +103,11 @@ func _physics_process(delta):
 			self.rake()
 		
 	# I don't like this method, it already multiply by delta
-	if is_dead:
+	if is_dead and is_on_floor():
 		self.velocity = Vector2.ZERO
-		
-	velocity = move_and_slide(velocity, FLOOR_NORMAL, \
+	else:
+		self.velocity.y += GRAVITY.y
+	velocity = self.move_and_slide(velocity, FLOOR_NORMAL, \
 							  false, 4, PI,false)
 # ------------------------------------------------------------------------------
 
@@ -201,10 +199,12 @@ func heavy_attack(delta): # HEAVY ATTACK, slow but high dmg
 					state_machine.travel('HEAVY_ATTACK')
 					Global.level_root().find_node("UserInterface").scale_unique_leaf(0.6, 0.9)
 					is_attacking = true
+					velocity = GRAVITY
+					is_moving = false
 					heavy_attack_counter -= 1
 
 					if heavy_attack_timer.time_left <= 0.0:
-						heavy_attack_timer = get_tree().create_timer(0.3)
+						heavy_attack_timer = get_tree().create_timer(0.6)
 						if not is_yield_paused:
 							yield(heavy_attack_timer, "timeout")
 
@@ -219,6 +219,7 @@ func heavy_attack(delta): # HEAVY ATTACK, slow but high dmg
 								enemy.hit(damage)
 								enemy.jump_back()
 
+							is_moving = true
 							is_attacking = false
 # ------------------------------------------------------------------------------
 
@@ -373,7 +374,6 @@ func die(): # CHARACTER DIES
 	is_dead = true
 	health = 0
 	set_collision_layer_bit(1, false)
-	self.velocity = Vector2.ZERO
 	state_machine.travel('DEATH')
 	Global.is_yield_paused = true
 	# Load checkpoint
@@ -444,7 +444,9 @@ func _on_Ceiling_body_exited(body):
 	can_stand_up = true
 # ------------------------------------------------------------------------------
 
-func stop_moving_during_cutsene():
+func stop_moving_during_cutsene(time=0.0):
 	self.is_moving = false
-	self.velocity = self.GRAVITY
+	self.velocity = Vector2.ZERO
 	self.state_machine.travel("IDLE")
+	yield(get_tree().create_timer(time, false), "timeout")
+	self.is_moving = true

@@ -3,6 +3,8 @@ extends StaticBody2D
 
 
 const MAX_CRACKS = 2
+const BRANCH_SFX = preload("res://sfx/branch.wav")
+const BRANCH_FALL_SFX = preload("res://sfx/branch_fall.wav")
 
 var cracks = 0
 var timer = null
@@ -20,6 +22,7 @@ func _process(delta):
 	
 	if cracks == 1 and not is_don_once:
 		$AnimationPlayer.play("crack")
+		AudioManager.play_sfx(BRANCH_SFX, 1)
 		is_don_once = true
 	
 	if cracks >= MAX_CRACKS:
@@ -35,13 +38,18 @@ func _process(delta):
 		$AnimationPlayer.play("fall")
 		
 		if timer.time_left <= 0.0:
-			timer = get_tree().create_timer(3.5)
+			timer = get_tree().create_timer(0.9)
 			yield(timer, "timeout")
-			$Area2D/CollisionShape2D.disabled = false
-			$Area2D2/CollisionShape2D.disabled = false
-			$CollisionShape2D.disabled = false
-			$AnimationPlayer.play("setup")
-			cracks = 0
+			AudioManager.play_sfx(BRANCH_FALL_SFX, 0)
+			
+			if timer.time_left <= 0.0:
+				timer = get_tree().create_timer(2.6)
+				yield(timer, "timeout")
+				$Area2D/CollisionShape2D.disabled = false
+				$Area2D2/CollisionShape2D.disabled = false
+				$CollisionShape2D.disabled = false
+				$AnimationPlayer.play("setup")
+				cracks = 0
 # ------------------------------------------------------------------------------
 
 func _on_Branch_body_entered(body):

@@ -35,7 +35,7 @@ func _on_Area2D_body_entered(body):
 			body.hit(vladimir.damage)
 			if "Guardian" in body.name:
 				body.is_blocking = true
-		else:
+		elif not "Shield" in body.name:
 			body.hit(0)
 # ------------------------------------------------------------------------------
 

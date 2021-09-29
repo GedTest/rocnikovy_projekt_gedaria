@@ -22,8 +22,8 @@ func _process(delta):
 						boss.is_immune = false
 				
 				if player.has_learned_blocking:
+					Fullscreen.pause()
 					is_done_once = false
 					player.block()
-					Fullscreen.pause()
 					boss.find_node("StaticBody2D").call_deferred("queue_free")
 					level.find_node("TutorialSign2").call_deferred("queue_free")

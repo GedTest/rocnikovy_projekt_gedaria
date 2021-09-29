@@ -32,7 +32,8 @@ func _on_Slider_value_changed(value):
 func _on_Slider2_value_changed(value):
 	var percentage = value if value > 0 else 0
 
-	$UserInterface/MusicPlayer.volume_db = (percentage/2)-30
+	var ui = self.get_parent().find_node("UserInterface")
+	ui.find_node("MusicPlayer").volume_db = (percentage/2)-30
 	$AudioSettings/HBoxContainer2/percentage.text = str(percentage) + "%"
 # ------------------------------------------------------------------------------
 

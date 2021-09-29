@@ -36,6 +36,7 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	Global.is_pausable = true
 	$CanvasLayer/UserInterface.load_ui_icons()
 	boss = $BOSS_IN_CAVE
+	$Vladimir.damage = 10
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -48,6 +49,10 @@ func _process(delta):
 	if $Vladimir.health <= 6 and $Mushrooms.get_child_count() < 4:
 		if $MushroomSpawnTimer.time_left <= 0.0:
 			$MushroomSpawnTimer.start()
+	
+	if $Vladimir.health <= 0 and $timer.time_left == 0.0:
+		get_tree().paused = true
+		$timer.start()
 	
 	if $Vladimir.position.x <= -13875:
 		$Vladimir.damage = vlad_damage
@@ -129,3 +134,7 @@ func _on_BoosterArea_body_entered(body):
 		yield(get_tree().create_timer(1.0), "timeout")
 		body.is_moving = true
 		body.velocity.y = -100
+# ------------------------------------------------------------------------------
+
+func _on_Timer_timeout():
+	get_tree().change_scene("res://Level/CaveDuel/Cave duel.tscn")

@@ -80,7 +80,7 @@ func _on_HeavyAttackLearn_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		$HeavyAttackLearn/CollisionShape2D.set_deferred("disabled", true)
 		body.has_learned_heavy_attack = true
-		body.heavy_attack_counter = 4
+		body.heavy_attack_counter = 8
 # ------------------------------------------------------------------------------
 
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
@@ -95,6 +95,7 @@ func _on_Tutorial4_entered(body):
 		$Tutorials/Tutorial4/Sprite.hide()
 		$Tutorials/Tutorial4/AnimationPlayer.play("HEAVY_ATTACK")
 		yield(get_tree().create_timer(4.5, false), "timeout")
+		$Tutorials/Tutorial4.can_carousel = true
 		$Tutorials/Tutorial4.show_text()
 		$Vladimir.can_move = true
 		$CanvasLayer/UserInterface.scale_unique_leaf()

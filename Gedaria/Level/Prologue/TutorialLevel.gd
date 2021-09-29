@@ -3,6 +3,8 @@ extends Node2D
 const BossWardenPath = preload("res://Enemy/BOSS_Warden/BOSS_Warden.tscn")
 const LetterPath = preload("res://Level/Prologue/Letter.tscn")
 const MushroomPath = preload("res://Level/Mushroom.tscn")
+const LETTER_SFX = preload("res://sfx/open_letter.wav")
+const EARTQUAKE_SFX = preload("res://sfx/earthquake.wav")
 
 var is_boss_on_map = false
 var is_letter_on_map = false
@@ -13,9 +15,11 @@ var is_done_once = false
 
 var boss = null
 
-onready var spawn_positions = [$Position1.position, 
-							   $Position2.position, 
-							   $Position3.position]
+onready var spawn_positions = [
+	$Position1.position, 
+	$Position2.position, 
+	$Position3.position
+]
 
 
 func _ready():
@@ -69,6 +73,7 @@ func _process(delta):
 			$InteractTutorial/CollisionShape2D.disabled = true
 			$Tree.show()
 			$Tree.play('Grow')
+			AudioManager.play_sfx(EARTQUAKE_SFX, 0)
 			$Shake.start(15, 1.25, 0.1)
 			yield(get_tree().create_timer(1.3), "timeout")
 			
@@ -79,6 +84,7 @@ func _process(delta):
 			$Branch/leaves.hide()
 			$Branch/AnimationPlayer.stop()
 			$Letter/Text.show()
+			AudioManager.play_sfx(LETTER_SFX, 0)
 			yield(get_tree().create_timer(8.0), "timeout")
 			
 			get_tree().change_scene("res://Level/Prologue/KidnapLevel.tscn")
@@ -91,8 +97,8 @@ func _process(delta):
 				Fullscreen.pause()
 				$TutorialSign.call_deferred("queue_free")
 				yield(get_tree().create_timer(2.5), "timeout")
-				Global.is_pausable = true
 				$Vladimir.has_learned_blocking = true
+				Global.is_pausable = true
 				$C/TutorialSign2.show_text()
 		
 		# BOSS HP BAR
@@ -141,7 +147,7 @@ func _on_Scarecrow_tree_exiting():
 	boss = BossWardenPath.instance()
 	add_child(boss)
 	boss.name = "Boss"
-	$Boss.position = Vector2(5, 910)
+	$Boss.position = Vector2(5, 770)
 	yield(get_tree().create_timer(0.2), "timeout")
 	
 	is_boss_on_map = true
@@ -152,7 +158,7 @@ func _on_Scarecrow_tree_exiting():
 
 func _on_timer_timeout():
 	get_tree().change_scene("res://Level/Prologue/TutorialLevel.tscn")
-
+# ------------------------------------------------------------------------------
 
 func _on_MushroomSpawnTimer_timeout():
 	var mushroom = MushroomPath.instance()
@@ -161,8 +167,13 @@ func _on_MushroomSpawnTimer_timeout():
 	mushroom.hp = "plus"
 	if $Vladimir.health <= 4:
 		$Mushrooms.add_child(mushroom)
-
+# ------------------------------------------------------------------------------
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$Vladimir.is_moving = true
 	$Boss.can_move_during_cutscene = true
+# ------------------------------------------------------------------------------
+
+func _on_UnderLevelKillZone_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		_on_timer_timeout()

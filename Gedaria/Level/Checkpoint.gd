@@ -4,7 +4,7 @@ extends Area2D
 var has_checked = false
 
 func _ready():
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	if has_checked:
 		$AnimationPlayer.play("CHECKPOINT")
 # ------------------------------------------------------------------------------

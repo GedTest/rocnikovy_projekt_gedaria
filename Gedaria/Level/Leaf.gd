@@ -11,8 +11,17 @@ export(String, "res://UI/list_buk.png",
 	"res://UI/list_javor_velkolistý.png"
 ) var texture = "res://UI/list_olše.png"
 
+const COLORS = [
+	Color("f9b34a"),Color("ad372a"),
+	Color("bc6633"),Color("006742"),
+	Color("008d36"),Color("006742"),
+	Color("ad6738"),
+]
+
+
 func _ready():
 	$Sprite.texture = load(texture)
+	$Sprite.modulate = COLORS[randi()%7]
 #	if "Leaves" == get_parent().name:
 #		self.add_to_group("persistant")
 

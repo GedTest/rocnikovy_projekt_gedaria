@@ -10,6 +10,7 @@ and has two attacks - thresh & throw
 
 const STICK_PATH = preload("res://Enemy/BOSS_Warden/Stick.tscn")
 const BIRD_PATH = preload("res://Level/Prologue/Bird.tscn")
+const KICK_SFX = preload("res://sfx/kick.wav")
 
 var can_throw = false
 var is_throwing = false
@@ -58,10 +59,13 @@ func _process(delta):
 	
 		# 2ND PHASE OF BOSSFIGHT
 		if health == max_health / 2 and is_done_once:
+			$ShieldLeft.emitting = true
+			$ShieldRight.emitting = true
 			is_blocking = true
 			var bird = BIRD_PATH.instance()
 			self.get_parent().add_child(bird)
-			bird.position = Vector2(1920, 400)
+			AudioManager.play_sfx(bird.CROW_SFX, 0, 0.5)
+			bird.position = Vector2(1920, 300)
 			self.jump()
 			is_done_once = false
 			can_throw = true
@@ -203,7 +207,6 @@ func hit(dmg):
 		
 		if is_blocking:
 			self.kick()
-			state_machine.travel('HIT_UNBLOCKABLE')
 		
 		if not is_blocking:
 			hit_in_row += 1
@@ -212,7 +215,10 @@ func hit(dmg):
 				self.kick()
 				return
 			
-			$stars.emitting = false
+			if $stars.emitting:
+				$ShieldLeft.emitting = true
+				$ShieldRight.emitting = true
+				$stars.emitting = false
 			is_moving = true
 			.hit(dmg)
 # ------------------------------------------------------------------------------
@@ -220,7 +226,10 @@ func hit(dmg):
 func kick():
 	# KICK PLAYER BACK SO BOSS CAN ATTACK
 	if self.has_player:
+		state_machine.travel('KICK')
+		AudioManager.play_sfx(KICK_SFX, 0, 0.35)
+		
 		var kick_direction = 1 if player.position.x - self.position.x > 0 else -1
 		var x = 350 * kick_direction
-		$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x+x, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN)
+		$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x+x, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN, 0.3)
 		$Tween.start()

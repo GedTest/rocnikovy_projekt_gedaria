@@ -32,60 +32,29 @@ var big_size_y = 290
 
 var can_interact = false
 var has_two_inputs = false
-var part = -1
+var can_carousel = false
+var part = 0
+
+var arr_texts = {}
+var timer = null
+
 
 func _ready():
+	timer = self.get_tree().create_timer(0.0)
 	if self.text == "raking" or self.text == "shooting" or self.text == "throwing":
 		has_two_inputs = true
-
+# ------------------------------------------------------------------------------
 
 func _process(delta):
 	if can_interact and (Input.is_action_just_pressed("interact") or not requires_input):
 		if requires_input:
 			$InteractIcon.hide()
+		if self.text == "raking" or self.text == "heavy_attack":
+			can_carousel = true
 		self.show_text()
 		
-		if part != -1:
-			if self.text == "heavy_attack":
-				var keys = KeyBinding.get_current_keys(true)
-				if part == 1:
-					$Sprite.frame = 8
-					$Sprite/Label2.text = "Heavy Attack"
-					$InteractIcon.show()
-					$Sprite/Mouse.visible = true if "BUTTON_" in keys["heavy_attack"] else false
-					if "BUTTON_" in keys["heavy_attack"]:
-						$Sprite/Label.text = "" 
-				elif part == 2:
-					$Sprite.frame = 9
-					$Sprite/Label2.text = "Breaks Shield"
-					$Sprite/Label.text = ""
-					$Sprite/Mouse.hide()
-					$InteractIcon.show()
-				elif part == 3:
-					$Sprite.frame = 10
-					$Sprite/Label2.text = "Limited by"
-					$Sprite/Label.text = ""
-					$Sprite/Mouse.hide()
-					$InteractIcon.show()
-					part = 0
-				
-			elif self.text == "raking":
-				if part == 1:
-					$Sprite.frame = 11
-					$InteractIcon.show()
-					$Sprite/Label.show()
-				elif part == 2:
-					$Sprite.frame = 12
-					$InteractIcon.show()
-					$Sprite/Label.hide()
-					$Sprite/Mouse.hide()
-					$Sprite/Mouse2.hide()
-				elif part == 3:
-					$Sprite.frame = 13
-					$InteractIcon.show()
-					$Sprite/Label.show()
-					part = 0
-			part += 1
+	if can_carousel:
+		self.carousel()
 # ------------------------------------------------------------------------------
 
 func _on_Area_body_entered(body):
@@ -102,12 +71,10 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	if body.get_collision_layer_bit(1):
 		can_interact = false
+		can_carousel = false
 		$Sprite.hide()
 		if requires_input:
 			$InteractIcon.hide()
-		
-		if self.text == "raking" or self.text == "heavy_attack":
-			part = 1
 # ------------------------------------------------------------------------------
 
 func show_text():
@@ -184,12 +151,11 @@ func show_text():
 		$Sprite/Label2.rect_position = values[self.text]["label_pos"]
 		$Sprite/Label2.get_font("font").size = values[self.text]["label_font"]
 		$Sprite/Mouse.position = Vector2(-87, 25)
-		$Sprite/Label2.text = "Heavy Attack"
 	
 	self.wrap_text(values[self.text]["key_text"], $Sprite/Label)
 	
 	if self.text == "quick_save":
-		var arr_texts = {"quick_save":$Sprite/Label}
+		arr_texts = {"quick_save":$Sprite/Label}
 		$Sprite/Label.rect_position = Vector2(-165, -75)
 		Languages.translate(arr_texts, Global.prefered_language)
 # ------------------------------------------------------------------------------
@@ -252,3 +218,54 @@ func wrap_intreaction_text(label):
 	var keys = KeyBinding.get_current_keys(true)
 	label.text = keys["interact"]
 	self.wrap_text(keys["interact"], label)
+# ------------------------------------------------------------------------------
+
+func carousel():
+	if self.text == "heavy_attack":
+		var keys = KeyBinding.get_current_keys(true)
+		if part == 1:
+			$Sprite.frame = 8
+			arr_texts = {"heavyattack":$Sprite/Label2}
+			Languages.translate(arr_texts, Global.prefered_language)
+			$InteractIcon.show()
+			$Sprite/Mouse.visible = true if "BUTTON_" in keys["heavy_attack"] else false
+			if "BUTTON_" in keys["heavy_attack"]:
+				$Sprite/Label.text = "" 
+		elif part == 2:
+			$Sprite.frame = 9
+			arr_texts = {"breaks_shield":$Sprite/Label2}
+			Languages.translate(arr_texts, Global.prefered_language)
+			$Sprite/Label.text = ""
+			$Sprite/Mouse.hide()
+			$InteractIcon.show()
+			
+		elif part == 3:
+			$Sprite.frame = 10
+			arr_texts = {"limited_by":$Sprite/Label2}
+			Languages.translate(arr_texts, Global.prefered_language)
+			$Sprite/Label.text = ""
+			$Sprite/Mouse.hide()
+			$InteractIcon.show()
+			part = 0
+		
+	elif self.text == "raking":
+		if part == 1:
+			$Sprite.frame = 11
+			$InteractIcon.show()
+			$Sprite/Label.show()
+		elif part == 2:
+			$Sprite.frame = 12
+			$InteractIcon.show()
+			$Sprite/Label.hide()
+			$Sprite/Mouse.hide()
+			$Sprite/Mouse2.hide()
+		elif part == 3:
+			$Sprite.frame = 13
+			$InteractIcon.show()
+			$Sprite/Label.show()
+			part = 0
+
+	if timer.time_left <= 0.0:
+		timer = get_tree().create_timer(1.15)
+		yield(timer, "timeout")
+		part += 1

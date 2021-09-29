@@ -17,6 +17,8 @@ onready var leaf_holders_to_free = [
 func _on_LoadingTimer_timeout():
 	._on_LoadingTimer_timeout()
 	Global.update_data_from_merchant($Vladimir)
+	acorn_counter = 25
+	unique_leaves_counter = 1
 	
 	$PilesOfLeaves/PileOfLeavesWide/BounceArea.connect("body_entered", self, "_on_bounce")
 # ------------------------------------------------------------------------------
@@ -28,6 +30,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact") and is_interactable:
 		#play animation of opening bars
 		$AnimationPlayer.play("BARS_UP")
+		$CanvasLayer/UserInterface/Key.hide()
 		
 	if $PilesOfLeaves/PileOf4Leaves3.is_complete:
 		$Winds/Wind19.disable_wind()
@@ -53,6 +56,8 @@ func _on_Key_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		has_key = true
 		$TutorialSign6.show()
+		$Key.queue_free()
+		$CanvasLayer/UserInterface/Key.show()
 # ------------------------------------------------------------------------------
 
 func _on_LeafArea_body_entered(body):
@@ -63,7 +68,7 @@ func _on_LeafArea_body_entered(body):
 		
 		if Global.leaves_in_cave_counter == 9:
 			SaveLoad.delete_actor($KillZones/KillZone3)
-			$PilesOfLeaves/PileOfLeavesWide2.show()
+			$PilesOfLeaves/PileOfLeavesWide2.modulate = Color(1, 1, 1, 1)
 # ------------------------------------------------------------------------------
 
 func _on_Wind_body_entered(body):
@@ -88,10 +93,17 @@ func _on_FreeLeavesArea_body_entered(body):
 
 func _on_LeavesInCave_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$LeavesInCave/CollisionShape2D.set_deferred("disabled", false)
-		$CanvasLayer/UserInterface/LeavesInCave.show()
-#		$AnimationPlayer.play("DANGER")
-		$Vladimir.stop_moving_during_cutsene()
-		yield(get_tree().create_timer(5.0, false), "timeout")
-		$Vladimir.is_moving = true
 		$LeavesInCave/CollisionShape2D.set_deferred("disabled", true)
+		$CanvasLayer/UserInterface/LeavesInCave.show()
+		$AnimationPlayer.play("DANGER")
+		$Vladimir.stop_moving_during_cutsene(5.0)
+# ------------------------------------------------------------------------------
+
+func _on_TwoLeafTutorial_body_entered(body, tutorial_sign):
+	if body.get_collision_layer_bit(1):
+		get_node(tutorial_sign).find_node("Sprite").show()
+# ------------------------------------------------------------------------------
+
+func _on_TwoLeafTutorial_body_exited(body, tutorial_sign):
+	if body.get_collision_layer_bit(1):
+		get_node(tutorial_sign).find_node("Sprite").hide()

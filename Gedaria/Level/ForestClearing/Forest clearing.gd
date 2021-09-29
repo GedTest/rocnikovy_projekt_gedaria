@@ -38,6 +38,8 @@ func _ready():
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
 	._on_LoadingTimer_timeout()
 	Global.update_data_from_merchant($Vladimir)
+	acorn_counter = 50
+	unique_leaves_counter = 1
 	
 	spawn_timer = get_tree().create_timer(0.0)
 	

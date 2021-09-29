@@ -49,6 +49,9 @@ func _ready():
 	arr_guardians = [
 		$Guardian,$Guardian2,$Guardian3,
 	]
+	$RollingStones.gravity_scale = 0.0
+	$Vladimir.health = 16
+	$Vladimir.damage = 5
 # ------------------------------------------------------------------------------
 
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
@@ -56,6 +59,8 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	._on_LoadingTimer_timeout()
 	
 	Global.update_data_from_merchant($Vladimir)
+	acorn_counter = 50
+	unique_leaves_counter = 1
 	
 	arr_enemies.insert(0, $Patroller)
 	arr_enemies.insert(1, $Guardian)
@@ -73,11 +78,6 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 		$BOSS_IN_CAVE.set_values()
 	else:
 		$BOSS_IN_CAVE/CanvasLayer/BossHPBar.hide()
-		
-	$Vladimir.has_slingshot = true
-	$Vladimir.pebble_counter = 4
-	$Vladimir.acorn_counter = 27
-	$Vladimir.health = 7
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -108,6 +108,8 @@ func _process(delta):
 			
 		elif is_lever_interactable and is_rope_on_place:
 			is_rope_on_place = false
+			$AnimationPlayer.play("LEVER_DOWN")
+			yield(get_tree().create_timer(0.3, false), "timeout")
 			$AnimationPlayer.play("ELEVATOR_UP")
 			$RopeArea.call_deferred("queue_free")
 			
@@ -140,20 +142,21 @@ func _on_MushroomSpawnTimer_timeout():
 
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$RollingStones.sleeping = false
+		$RollingStones.gravity_scale = 10.0
+		$RollingStones.linear_velocity = Vector2(500, 0)
+		$RollingStones.applied_force = Vector2(500, 0)
 		$RollingStones.add_central_force(Vector2(100, 1700))
 		$RollingStones.show()
+		$Vladimir/Camera.position.y = -20
 # ------------------------------------------------------------------------------
 
 func _on_RopeUnderStone_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$RopeUnderStone/TextBackground.show()
 		is_rope_interactable = true
 # ------------------------------------------------------------------------------
 
 func _on_RopeUnderStone_body_exited(body):
 	if body.get_collision_layer_bit(1):
-		$RopeUnderStone/TextBackground.hide()
 		is_rope_interactable = false
 # ------------------------------------------------------------------------------
 
@@ -162,10 +165,6 @@ func _on_RopeUnderStone2_body_entered(body):
 		$Vladimir/rope_spring.call_deferred("queue_free")
 		$rope_spring2.show()
 		is_rope_on_place = true
-#		$Vladimir.can_move = false
-#		$AnimationPlayer.play("TO_DO_3")
-#		yield(get_tree().create_timer(5.0, false), "timeout")
-#		$Vladimir.can_move = true
 # ------------------------------------------------------------------------------
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -175,13 +174,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_RopeArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$RopeArea/TextBackground.show()
 		is_lever_interactable = true
 # ----------------------------------------------------------------------------
 
 func _on_RopeArea_body_exited(body):
 	if body.get_collision_layer_bit(1):
-		$RopeArea/TextBackground.hide()
 		is_lever_interactable = false
 # ------------------------------------------------------------------------------
 
@@ -191,29 +188,21 @@ func _on_TrapDoorMechanismArea_body_entered(body):
 		$AnimationPlayer.play("OPEN_TRAPDOOR")
 # ------------------------------------------------------------------------------
 
-func _on_CollapsingArea_body_entered(body):
-	if body.get_collision_layer_bit(1):
-		SaveLoad.delete_actor($CollapsingFloors/CollapsingFloor)
-# ------------------------------------------------------------------------------
-
 func _on_AmbushArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		$AmbushArea/CollisionShape2D.set_deferred("disabled", true)
-		$Guardian2.position = Vector2(21400, 8190)
-		$Guardian3.position = Vector2(23100, 8190)
-		
-		for patroller in arr_patrollers:
-			var offset = arr_patrollers.find(patroller)
-			if offset > 0:
-				patroller.position = Vector2(offset * 350 + 21500, 8190)
+		$Guardian2.position = Vector2(21400, 8185)
+		$Guardian3.position = Vector2(23100, 8185)
+		$Patroller2.position = Vector2(21850, 8185)
+		$Patroller3.position = Vector2(22200, 8185)
+		$Patroller4.position = Vector2(22550, 8185)
+		$Patroller5.position = Vector2(22900, 8185)
 # ------------------------------------------------------------------------------
 
 func _on_CutsceneArea_body_entered(body):
-	$Vladimir.stop_moving_during_cutsene()
+	$Vladimir.stop_moving_during_cutsene(15.0)
 	$AnimationPlayer.play("TO_DO")
 	$CutsceneArea/CollisionShape2D.set_deferred("disabled", true)
-	yield(get_tree().create_timer(15.0, false), "timeout")
-	$Vladimir.is_moving = true
 # ------------------------------------------------------------------------------
 
 func _on_FinalLeafHolders_body_entered(body):
@@ -268,7 +257,10 @@ func reparent(child, new_parent):
 
 func _on_Checkpoint9_body_entered(body):
 	$Checkpoint9.position = Vector2(27980, 5174)
+# ------------------------------------------------------------------------------
 
+func _on_Area2D2_body_entered(body):
+	$Vladimir/Camera.position.y = -200
 
 
 
@@ -279,3 +271,5 @@ func _on_Checkpoint9_body_entered(body):
 
 func _on_q_body_entered(body):
 	$Vladimir.position = Vector2(26000, 4500)
+
+

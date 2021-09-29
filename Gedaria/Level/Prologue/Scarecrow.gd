@@ -1,6 +1,8 @@
 extends Enemy
 
 
+const SCARECROW_SFX = preload("res://sfx/scarecrow.wav")
+
 var previous_hp = 0
 var is_done_once = true
 
@@ -22,6 +24,7 @@ func _process(delta):
 			self.z_index = 0
 			
 		if health != previous_hp:
+			AudioManager.play_sfx(SCARECROW_SFX, 0)
 			$Particles2D.emitting = true
 		previous_hp = health
 # ------------------------------------------------------------------------------
