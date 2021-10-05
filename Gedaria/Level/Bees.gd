@@ -12,7 +12,7 @@ func _physics_process(delta):
 			if abs(enemy.position.x - global_position.x) < closest_enemy.x:
 				closest_enemy = enemy.global_position
 
-	self.fly(closest_enemy)
+	self.fly_to(closest_enemy)
 #-------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
@@ -22,14 +22,14 @@ func _on_Area2D_body_entered(body):
 		$Timer.start()
 # ------------------------------------------------------------------------------
 
-func fly(closest_enemy):
+func fly_to(closest_enemy):
 	var direction = (closest_enemy - global_position)
 	direction /= direction.length()
 
 	if $GroundRay.is_colliding():
-		self.apply_central_impulse(Vector2(0, -25))
+		self.apply_central_impulse(Vector2(0, -21))
 
-	direction *= Vector2(0.5, 2)
+	direction *= Vector2(0.5, 1.85)
 	self.add_central_force(direction)
 # ------------------------------------------------------------------------------
 

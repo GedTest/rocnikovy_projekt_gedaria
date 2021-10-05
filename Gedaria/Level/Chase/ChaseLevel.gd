@@ -1,7 +1,8 @@
 extends Node2D
 
 
-var Platform = preload("res://Level/Chase/Platform.tscn")
+const PLATFORM_PATH = preload("res://Level/Chase/Platform.tscn")
+const HAY_SFX = preload("res://sfx/hay.wav")
 
 var next_platform
 var pos
@@ -16,7 +17,7 @@ func _ready():
 
 func add_floor_tile():
 	pos += Vector2(1920, 0)
-	next_platform = Platform.instance()
+	next_platform = PLATFORM_PATH.instance()
 	next_platform.position = pos
 	call_deferred("add_child", next_platform)
 # ------------------------------------------------------------------------------
@@ -37,3 +38,7 @@ func _on_VisibilityNotifier2D_viewport_entered(viewport):
 
 func _on_END_body_entered(body):
 	get_tree().change_scene("res://Level/Prologue/TutorialLevel.tscn")
+
+
+func _on_END2_body_entered(body):
+	AudioManager.play_sfx(HAY_SFX)

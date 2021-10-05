@@ -7,12 +7,8 @@ var damage = 2
 
 
 func _ready():
-	pass
-
-
-#func _process(delta):
-#	pass
-
+	randomize()
+	$Sprite.frame = randi()%3
 
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1) or body.get_collision_layer_bit(2):

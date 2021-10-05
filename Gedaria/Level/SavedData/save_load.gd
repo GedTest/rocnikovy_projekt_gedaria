@@ -123,8 +123,7 @@ func load_map():
 func update_node(node):
 	if current_data.has( str([level_root().filename, node.name]) ):
 		var data = current_data[ str([level_root().filename, node.name] )]
-
-		node.global_position = Vector2(data["pos"]["x"], data["pos"]["y"])
+		
 		if not(node is Control):
 			node.global_position = Vector2(data["pos"]["x"], data["pos"]["y"])
 		

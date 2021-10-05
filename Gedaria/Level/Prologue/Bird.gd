@@ -3,7 +3,8 @@ extends StaticBody2D
 
 signal time_to_fly
 
-const GOAL_DESTINATION = 1525
+const GOAL_DESTINATION = 1325
+const CROW_SFX = preload("res://sfx/crow.wav")
 
 var is_at_finish = false
 var can_fly_away = false

@@ -22,7 +22,6 @@ var cooldown_roll_timer = null
 var sprite = null
 
 var has_player_before = false
-var is_reversed = false
 var can_roll = false
 
 
@@ -38,8 +37,6 @@ func _ready():
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	if not is_dead:
-		is_reversed = true if direction == -1 else false
-		
 		if has_player and distance <= 150:
 			if cooldown_timer.time_left <= 0.0:
 				cooldown_timer = get_tree().create_timer(2.6, false)

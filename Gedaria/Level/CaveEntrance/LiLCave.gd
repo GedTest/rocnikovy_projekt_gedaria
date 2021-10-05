@@ -11,6 +11,8 @@ onready var arr_bats = [
 func _on_LoadingTimer_timeout():
 	._on_LoadingTimer_timeout()
 	Global.update_data_from_merchant($Vladimir)
+	acorn_counter = 25
+	unique_leaves_counter = 1
 # ------------------------------------------------------------------------------
 
 func _process(delta):

@@ -18,22 +18,16 @@ func _on_AudioButton_pressed():
 	$SettingsTree.hide()
 # ------------------------------------------------------------------------------
 
-func _on_Slider_value_changed(value):
+func _on_Slider_value_changed(value, bus_name):
 	var percentage = value if value > 0 else 0
-	var master_sound = AudioServer.get_bus_index("Master")
+	var music_bus = AudioServer.get_bus_index(bus_name)
 	
 	var is_muted = true if percentage == 0 else false
-	AudioServer.set_bus_mute(master_sound, is_muted)
-
-	AudioServer.set_bus_volume_db(master_sound, (percentage/2)-30)
-	$AudioSettings/HBoxContainer/percentage.text = str(percentage) + "%"
-# ------------------------------------------------------------------------------
-
-func _on_Slider2_value_changed(value):
-	var percentage = value if value > 0 else 0
-
-	$UserInterface/MusicPlayer.volume_db = (percentage/2)-30
-	$AudioSettings/HBoxContainer2/percentage.text = str(percentage) + "%"
+	AudioServer.set_bus_mute(music_bus, is_muted)
+	
+	AudioServer.set_bus_volume_db(music_bus, (percentage/3)-15)
+	var label = $AudioSettings.find_node(bus_name).find_node("percentage")
+	label.text = str(percentage) + "%"
 # ------------------------------------------------------------------------------
 
 func _on_Language_Back_pressed():
@@ -61,3 +55,4 @@ func hide_all():
 	$AudioSettings.hide()
 	$KeyBinding.hide()
 	$SettingsTree.hide()
+

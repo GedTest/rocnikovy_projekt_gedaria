@@ -29,6 +29,10 @@ onready var arr_levels = []
 
 
 func _ready():
+	$KillZone.position = Vector2.ZERO
+	$KillZone/CollisionShape2D.shape.extents = Vector2.ZERO
+	
+	
 	for i in range(number_of_levels):
 		var node = Node2D.new()
 		self.add_child(node)
@@ -84,7 +88,9 @@ func fill():
 				child.can_be_filled = true
 		else:
 			is_completed = true
-			self.emit_signal("is_completed")
+			if "Cage" in self.get_parent().name:
+				print(self.get_parent().name)
+				self.emit_signal("is_completed")
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):

@@ -38,6 +38,8 @@ func _ready():
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
 	._on_LoadingTimer_timeout()
 	Global.update_data_from_merchant($Vladimir)
+	acorn_counter = 50
+	unique_leaves_counter = 1
 	
 	spawn_timer = get_tree().create_timer(0.0)
 	
@@ -65,7 +67,7 @@ func _process(delta):
 	
 	if $LeafHolders/LeafHolder17.has_leaf and not has_spawned_once:
 		has_spawned_once = true
-		self.spawn_patrollers(4, Vector2(5730, 9075), 4000, 6900)
+		self.spawn_patrollers(4, Vector2(6300, 8950), 4000, 6900)
 # ------------------------------------------------------------------------------
 
 func _on_StalkingArea_body_entered(body):
@@ -132,15 +134,21 @@ func spawn_patrollers(number_of_enemies, pos, from, to):
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
 	can_spawn = true
 
-
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		$StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
-
 
 func _on_Gateway7_body_entered(body):
 	if "RollingTree" in body.name:
 		$Gateways/Gateway7.is_falling_down = true
 		yield(get_tree().create_timer(2.0), "timeout")
 		body.queue_free()
+
+func _on_BridgeArea2D_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		$WindyBridge/CollisionShape2D.set_deferred("disabled", false)
+		$Winds/WindBlowerWind.show()
+		for collision in $Winds/WindBlowerWind.get_children():
+				if collision is CollisionShape2D:
+					collision.set_deferred("disabled", false)

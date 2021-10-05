@@ -10,6 +10,7 @@ onready var UI = $CanvasLayer/UserInterface
 
 var is_yield_paused = false
 var can_interact = false
+var stats_can_interact = false
 
 var arr_levels = [
 	"res://Level/InTheWood/In the wood.tscn","res://Level/DarkForest/Dark forest.tscn",
@@ -25,6 +26,8 @@ onready var arr_texts = {
 	"health":$CanvasLayer/HealthButton,
 	"damage:":$CanvasLayer/AttackButton,
 	"speed":$CanvasLayer/SpeedButton,
+	"statiscitcs":$Statistics/Label,
+	"timer":$Statistics/TimeLabel,
 	}
 onready var arr_buttons = [
 	$CanvasLayer/HealthButton,$CanvasLayer/AttackButton,
@@ -58,6 +61,7 @@ func _on_LoadingTimer_timeout():
 	var vladimir_data = Global.vladimir_data()
 	if Global.vladimir_has_previous_data():
 		$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
+	self.set_stats()
 # ------------------------------------------------------------------------------
 #	var sum = 0
 #	for i in range(1,9):
@@ -75,6 +79,9 @@ func _process(delta):
 		$Vladimir.is_moving = not $Vladimir.is_moving
 		$Vladimir.velocity = Vector2.ZERO
 		$Vladimir.state_machine.travel("IDLE")
+		
+	elif stats_can_interact and Input.is_action_just_pressed("interact"):
+		$Statistics.visible = not $Statistics.visible
 	
 	for button in arr_buttons:
 		if button.is_hovered():
@@ -158,6 +165,22 @@ func _on_HeavyAttackButton_pressed():
 			SaveLoad.save_to_file(4)
 # ------------------------------------------------------------------------------
 
+func set_stats():
+	var slot = SaveLoad.slots["slot_4"]
+	var stats = "["+Global.arr_levels[Global.arr_levels.find(Global.last_map)]+", Sign]"
+
+	$Statistics/AcornLabel.text = str(slot[stats]["vladimir_acorns"])+"/"+str(slot[stats]["level_acorns"])
+	$Statistics/LeafLabel.text = str(slot[stats]["collected_unique_leaves"])+"/"+str(slot[stats]["level_unique_leaves"])
+	$Statistics/EnemyLabel.text = str(slot[stats]["killed_enemies"])+"/"+str(slot[stats]["level_enemies"])
+
+	var hour = int(slot[stats]["played_time"]/3600)
+	var minute = int((slot[stats]["played_time"] - hour*3600)/60)
+	var seconds = int(slot[stats]["played_time"]-((hour*3600)+ (minute*60)))
+	Languages.translate(arr_texts, Global.prefered_language)
+	$Statistics/TimeLabel.text += str(hour)+":"+str(minute)+":"+str(seconds)
+	arr_texts.erase("timer")
+# ------------------------------------------------------------------------------
+
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		Languages.translate(arr_texts, Global.prefered_language)
@@ -179,4 +202,12 @@ func _on_Area2D_body_exited(body):
 		$Tree/Area2D/Icon.hide()
 		for button in get_tree().get_nodes_in_group("buy_btn"):
 			button.hide()
+# ------------------------------------------------------------------------------
 
+func _on_Statiscitcs_body_entered(body):
+	stats_can_interact = true
+# ------------------------------------------------------------------------------
+
+func _on_Statiscitcs_body_exited(body):
+	$Statistics.hide()
+	stats_can_interact = false

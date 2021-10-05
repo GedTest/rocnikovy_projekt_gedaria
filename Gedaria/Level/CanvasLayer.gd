@@ -11,8 +11,9 @@ onready var arr_texts = {
 	"language":$Settings/SettingsTree/HBoxContainer2/LangButton,
 	"back":$Settings/AudioSettings/Back,
 	"close":$Settings/SettingsTree/HBoxContainer3/Close,
-	"master_volume":$Settings/AudioSettings/HBoxContainer/MasterPlayerLabel,
-	"music_volume":$Settings/AudioSettings/HBoxContainer2/MusicPlayerLabel,
+	"master_volume":$Settings/AudioSettings/Master/MasterPlayerLabel,
+	"music_volume":$Settings/AudioSettings/Music/MusicPlayerLabel,
+	"sfx_volume":$Settings/AudioSettings/SFX/SFXPlayerLabel,
 	"reset_keys":$Settings/KeyBinding/ResetKeys,
 	"key_binding":$Settings/SettingsTree/HBoxContainer4/BindingButton
 }
@@ -49,7 +50,6 @@ func _on_MainMenuButton_pressed(): # Go to Main Menu
 	Fullscreen.show_loading_screen()
 	get_parent().is_yield_paused = true
 	$MainMenuButton.disabled = true
-	$UserInterface.is_yield_paused = get_parent().is_yield_paused
 	get_tree().set_pause(true)
 	yield(get_tree().create_timer(7.0), "timeout")
 	$MainMenuButton.disabled = false

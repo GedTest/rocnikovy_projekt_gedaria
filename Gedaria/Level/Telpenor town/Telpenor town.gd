@@ -18,13 +18,8 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	Global.update_data_from_merchant($Vladimir)
 # ------------------------------------------------------------------------------
 
-func _process(delta):
-	._process(delta)
-	
-	if not $LeafHolders/LeafHolder46.is_empty:
-		$Winds/Wind5/CollisionShape2D.disabled = false
-	if not $LeafHolders/LeafHolder56.is_empty:
-		$Winds/Wind14/CollisionShape2D.disabled = false
+#func _process(delta):
+#	._process(delta)
 # ------------------------------------------------------------------------------
 
 func _on_EavesdropArea_body_entered(body):

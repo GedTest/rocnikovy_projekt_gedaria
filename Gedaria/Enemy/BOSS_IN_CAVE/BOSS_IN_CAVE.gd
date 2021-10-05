@@ -1,7 +1,7 @@
 class_name BOSS_IN_CAVE, "res://Enemy/BOSS_Warden/BOSS_Warden.png"
 extends Enemy
 """
-Boss Rudolph, Vladimir's uncle
+Boss Rudolph
 is derived from base enemy class,
 he wants to abuse vlad and steal his legendary rake
 """

@@ -8,7 +8,7 @@ var arr_levels = [
 	"res://Level/CultInCave/Mine shaft.tscn",
 	"res://Level/CaveDuel/Cave duel.tscn",
 	"res://Level/ForestClearing/Forest clearing.tscn",
-	"",
+	"res://Level/Telpenor town/Telpenor town.tscn",
 ]
 var last_map = ""
 var prefered_language = "english"
@@ -31,7 +31,6 @@ func level_root():
 # ------------------------------------------------------------------------------
 
 func get_position_2D(ID):
-#	print("ID: ",ID)
 	for x in get_tree().get_nodes_in_group("pos"):
 		if x.name == ID:
 			return x
@@ -112,24 +111,3 @@ func reset_data():
 	
 	SaveLoad.reset_data()
 # ------------------------------------------------------------------------------
-
-#func Persistant():
-#	return level_root().get_node("Persistant")
-#func teleport_actor(relate, map, pos_ID):
-#	if SaveLoad.current_data.has([level_root().filename, relate.name]):
-#		var old = (SaveLoad.current_data[[level_root().filename, relate.name]]).duplicate()
-#		SaveLoad.current_data[[map, relate.name]] = old
-#		SaveLoad.current_data[[map, relate.name]]["next_pos_ID"] = pos_ID
-#		SaveLoad.current_data.erase([level_root().filename, relate.name])
-#		relate.queue_free()
-# ------------------------------------------------------------------------------
-#
-#func player():
-#	for x in get_tree().get_nodes_in_group("player"):
-#		return x
-# ------------------------------------------------------------------------------
-
-#func change_level(map, pos_ID):
-#	teleport_actor(player(), map, pos_ID)
-#	yield(get_tree().create_timer(0.1), "timeout")
-#	get_tree().change_scene(map)
