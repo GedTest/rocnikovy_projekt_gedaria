@@ -15,7 +15,7 @@ const WIND_PATH = preload("res://Vladimir/WindBlowerWind.tscn")
 
 export(int) var speed = 480
 export(int) var modify_speed = 1
-export(int) var jump_strength = 1700
+export(int) var jump_strength = 1750
 export(int) var damage = 2
 export(int) var max_health = 12
 export(int) var health = 12
