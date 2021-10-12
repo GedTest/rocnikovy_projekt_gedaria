@@ -34,11 +34,6 @@ Godot is completely free and open source under the permissive MIT license. No st
 Godot uses GDScript, GDScript is a high-level, dynamically typed programming language. It uses a syntax similar to Python (blocks are indent-based and many keywords are similar). Its goal is to be optimized for and tightly integrated with Godot Engine, allowing great flexibility for content creation and integration.
 
 
-### Links
-[**instagram**](https://www.instagram.com/gedaria_official/?hl=cs)
-
-[**Itch.io**](https://gedaria.itch.io/gedaria)
-
-[**YouTube**](https://www.youtube.com/channel/UC1L7VD7fd6HZ2r3AyAQQ6UA/videos)
-
-[**Pinterest**](https://cz.pinterest.com/gedaria_official/_created/)
+### Link
+with linktree you can integrate more links into just one 😉
+https://linktr.ee/Gedaria
