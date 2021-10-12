@@ -15,7 +15,8 @@ onready var arr_texts = {
 	"music_volume":$Settings/AudioSettings/Music/MusicPlayerLabel,
 	"sfx_volume":$Settings/AudioSettings/SFX/SFXPlayerLabel,
 	"reset_keys":$Settings/KeyBinding/ResetKeys,
-	"key_binding":$Settings/SettingsTree/HBoxContainer4/BindingButton
+	"key_binding":$Settings/SettingsTree/HBoxContainer4/BindingButton,
+	"confirm":$Settings/VideoSettings/ConfirmationButton
 }
 
 
@@ -25,6 +26,7 @@ func _ready():
 
 func _process(delta):
 	$Settings/Languages/Back.text = $Settings/AudioSettings/Back.text
+	$Settings/VideoSettings/Back.text = $Settings/AudioSettings/Back.text
 	$Settings/KeyBinding/Close.text = $Settings/SettingsTree/HBoxContainer3/Close.text
 # ------------------------------------------------------------------------------
 

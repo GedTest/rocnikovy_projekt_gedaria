@@ -18,7 +18,7 @@ func _physics_process(delta):
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(2):
 		body = body if body.name != "Shield" else body.get_parent()
-		body.health -= damage
+		body.hit(damage)
 		$Timer.start()
 # ------------------------------------------------------------------------------
 

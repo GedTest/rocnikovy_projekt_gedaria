@@ -58,7 +58,9 @@ var languages = {
 		"statiscitcs":"V předchozím levelu jsi dosáhl: ",
 		"timer":"V čase: ",
 		"quick_save":"F1, F2, F3 rychlé uložení",
-		"loading":"N A Č Í T Á N Í"
+		"loading":"N A Č Í T Á N Í",
+		"confirm":"Změna se projeví po restartu, uložte prosím hru. "
+		
 	},
 	"english":{
 #		"throwing":"With the help of pebbles, you can throw at beehives, thus provoking bees. [color=#004a23]Press the 'Q' button[/color] and aim at the hive, then press left mouse button",
@@ -117,7 +119,8 @@ var languages = {
 		"statiscitcs":"In previous level you've accomplished:",
 		"timer":"In time: ",
 		"quick_save":"F1, F2, F3 to quick save",
-		"loading":"L O A D I N G"
+		"loading":"L O A D I N G",
+		"confirm":"The change will take effect after restart, please save the game."
 	},
 	"polskie": {
 		"start":"Zacząć gre",
