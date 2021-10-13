@@ -116,7 +116,14 @@ func _on_TossArea_body_entered(body):
 		
 		yield(get_tree().create_timer(0.1), "timeout")
 		is_player_in_air = true
+
+func toss_vladimir(tossable_player):
+	var toss_direction = 1 if self.position.x - tossable_player.position.x > 0 else -1
+	var x = 350 * toss_direction
+	$Tween.interpolate_property(tossable_player, "position", tossable_player.position, Vector2(tossable_player.position.x+x, tossable_player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN, 0.3)
+	$Tween.start()
 # ------------------------------------------------------------------------------
+
 
 func _on_TossArea_body_exited(body):
 	if body.get_collision_layer_bit(1):
