@@ -17,14 +17,14 @@ func _ready():
 	Fullscreen.hide_elements()
 # ------------------------------------------------------------------------------
 
-func _on_Area2D_body_entered(body):
+func _on_HouseArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$House/wall2.modulate = Color(1,1,1,0.25)
+		$House/Outside.hide()
 # ------------------------------------------------------------------------------
 
-func _on_Area2D_body_exited(body):
+func _on_HouseArea_body_exited(body):
 	if body.get_collision_layer_bit(1):
-		$House/wall2.modulate = Color(1,1,1,1)
+		$House/Outside.show()
 # ------------------------------------------------------------------------------
 
 func _on_DoorArea2D_body_entered(body):

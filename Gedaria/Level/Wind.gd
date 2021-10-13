@@ -13,7 +13,12 @@ func _on_Wind_body_entered(body):
 		body.linear_damp = 0.25
 		impulse *= 3 if body is PileOfLeaves else 1
 		body.apply_central_impulse(impulse)
+		
 	if body.get_collision_layer_bit(2) and is_leaf_blower:
+		if "BOSS_EARL" in body.name:
+			body.velocity /= 10
+			return
+		
 		var root = Global.level_root()
 		var direction = root.find_node("Vladimir").position.direction_to(body.position)
 		direction = 1 if direction.x > 0 else -1

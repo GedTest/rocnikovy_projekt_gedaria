@@ -2,6 +2,8 @@ class_name Level
 extends Node2D
 
 
+const FOREST_MUSIC = preload("res://gedaria_theme1wav.wav")
+
 var is_done_once = true
 var is_yield_paused = false
 

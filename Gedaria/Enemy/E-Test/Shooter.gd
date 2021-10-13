@@ -11,6 +11,7 @@ enemy with highest damage
 const PROJECTILE_PATH = preload("res://Enemy/E-Test/Projectile.tscn")
 const AIMING_BERNARD = "res://Enemy/E-Test/BernardLookingDownward.png"
 const NORMAL_BERNARD = "res://Enemy/E-Test/Bernadr.png"
+const SHOT_SFX = preload("res://Enemy/E-Test/audio/musket.wav")
 
 export(bool) var can_shoot_in_sector = false
 
@@ -120,7 +121,7 @@ func shoot():
 							self.find_coordinations()
 						projectile.position = $BulletSpawnPoint.position
 						self.add_child(projectile)
-						$AudioStreamPlayer2D.play()
+						AudioManager.play_sfx(SHOT_SFX)
 						
 		if cooldown_timer.time_left <= 0.0:
 			cooldown_timer = get_tree().create_timer(3.65, false)

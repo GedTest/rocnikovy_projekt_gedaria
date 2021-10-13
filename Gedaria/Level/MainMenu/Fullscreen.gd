@@ -67,6 +67,8 @@ func pause():
 				var VISIBLE = Input.MOUSE_MODE_VISIBLE
 				get_viewport().warp_mouse(Vector2(960, 540))
 				var cursor_visibility = VISIBLE if self.get_tree().paused else HIDDEN
+				if self.get_tree().paused and Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
+					Input.set_mouse_mode(VISIBLE)
 				Input.set_mouse_mode(cursor_visibility)
 			
 	elif Global.level_root().filename == LEVELS[1]:

@@ -27,11 +27,12 @@ func _on_Area2D_body_entered(body):
 	
 	elif body.get_collision_layer_bit(2):
 		# body = enemy
-		if "Guardian" in body.name:
-			body.is_blocking = false
+		if can_damage:
 			# Guardian has shield that block pebbles
 			# but you can hit him from behind
-		if can_damage:
+			if "Guardian" in body.name:
+				body.is_blocking = false
+				
 			body.hit(vladimir.damage)
 			if "Guardian" in body.name:
 				body.is_blocking = true
