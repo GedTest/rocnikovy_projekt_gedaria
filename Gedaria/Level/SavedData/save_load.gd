@@ -56,7 +56,14 @@ func update_current_data():
 		current_data["last_map"] = level_root().get_filename()
 		current_data["visited_maps"] = visited_maps.duplicate()
 
-		current_data["date"] = {"second": OS.get_time()["second"], "minute": OS.get_time()["minute"], "hour" : OS.get_time()["hour"], "day": OS.get_date()["day"], "month" : OS.get_date()["month"], "year" : OS.get_date()["year"]}
+		current_data["date"] = {
+			"second":OS.get_time()["second"],
+			"minute":OS.get_time()["minute"],
+			"hour":OS.get_time()["hour"],
+			"day":OS.get_date()["day"],
+			"month":OS.get_date()["month"],
+			"year":OS.get_date()["year"],
+		}
 
 		current_data["last_saved_slot"] = last_saved_slot
 		
@@ -66,7 +73,17 @@ func update_current_data():
 		current_data["globals"]["blue_berries"] = Global.blue_berries
 		current_data["globals"]["leaves_in_cave_counter"] = Global.leaves_in_cave_counter
 		current_data["globals"]["prefered_language"] = Global.prefered_language
+		
+		current_data["settings"] = {
+			"MasterVolume":AudioManager.get_volume("Master"),
+			"MusicVolume":AudioManager.get_volume("Music"),
+			"SFXVolume":AudioManager.get_volume("SFX"),
+			"MSAA":get_viewport().msaa,
+			"FPS":Engine.target_fps,
+			"VSync":OS.vsync_enabled,
+		}
 # ------------------------------------------------------------------------------
+
 func update_map_data():
 	if level_root() != null:
 		for node in get_tree().get_nodes_in_group("persistant"):
@@ -188,6 +205,13 @@ func load_from_slot(slot_name):
 	Global.blue_berries = slots[slot_name]["globals"]["blue_berries"]
 	Global.leaves_in_cave_counter = slots[slot_name]["globals"]["leaves_in_cave_counter"]
 	Global.prefered_language = slots[slot_name]["globals"]["prefered_language"]
+	
+	AudioManager.set_volume("Master", slots[slot_name]["settings"]["MasterVolume"])
+	AudioManager.set_volume("Music", slots[slot_name]["settings"]["MusicVolume"])
+	AudioManager.set_volume("SFX", slots[slot_name]["settings"]["SFXVolume"])
+	get_viewport().msaa = slots[slot_name]["settings"]["MSAA"]
+	Engine.target_fps = slots[slot_name]["settings"]["FPS"]
+	OS.vsync_enabled = slots[slot_name]["settings"]["VSync"]
 	
 	is_yield_paused = true
 	

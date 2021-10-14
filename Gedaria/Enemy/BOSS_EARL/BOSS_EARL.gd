@@ -100,7 +100,6 @@ func summon_enemies():
 		
 		self.get_parent().call_deferred("add_child", enemy)
 # ------------------------------------------------------------------------------
-
 func throw_foot_trap():
 	# play aniamation
 	var foot_trap = FOOT_TRAP_PATH.instance()

@@ -14,6 +14,8 @@ export (int) var starting_position
 var can_move_from_position = true
 var has_player_behind = false
 
+var player_to_push = null
+
 
 func _ready():
 	death_anim_time = 2.4
@@ -41,6 +43,7 @@ func _physics_process(delta):
 			$Shield.hide()
 			$Shield/CollisionShape2D.disabled = true
 			is_blocking = false
+			player_to_push = null
 	else:
 		$Shield.hide()
 		$Shield/CollisionShape2D.disabled = true
@@ -75,7 +78,7 @@ func move():
 					state_machine.travel('RUN')
 				
 		# FOLLOW PLAYER OR NOT
-		if has_player:
+		if has_player and player:
 			if player.is_hidden:
 				# PLAYER IS HIDING SO HE CAN'T SEE HIM
 				$HitRay.enabled = false
@@ -148,6 +151,7 @@ func hit(dmg):
 			direction = 1
 			
 		self.turn(direction)
+		player_to_push = player
 		$AdvancedTween.play(0.2, player.position.x, player.position.x+(230*direction))
 		
 		has_player_behind = false
@@ -181,6 +185,10 @@ func turn(direction):
 
 func _on_AdvancedTween_advance_tween(sat):
 	# KNOCKBACK PLAYER WITH SHIELD
-	if has_player:
-		player.position.x = sat
+	if has_player and player_to_push:
+		player_to_push.position.x = sat
 # ------------------------------------------------------------------------------
+
+
+func _on_AdvancedTween_tween_all_completed():
+	player_to_push = null
