@@ -1,6 +1,8 @@
 extends Control
 
 
+const MENU_BTN_SFX = preload("res://sfx/klik_do_menu_i_z_menu.wav")
+
 #var is_yield_paused = true
 onready var arr_texts = {
 	"start":$StartButton/Label,
@@ -12,13 +14,14 @@ onready var arr_texts = {
 	"back":$Back,
 	"continue":$StartGame/Continue/Label,
 	"new_game":$StartGame/NewGame/Label,
-	"audio":$Settings/SettingsTree/HBoxContainer/AudioButton,
-	"language":$Settings/SettingsTree/HBoxContainer2/LangButton,
-	"close":$Settings/SettingsTree/HBoxContainer3/Close,
-	"master_volume":$Settings/AudioSettings/HBoxContainer/MasterPlayerLabel,
-	"music_volume":$Settings/AudioSettings/HBoxContainer2/MusicPlayerLabel,
+	"audio":$Settings/SettingsTree/AudioButton,
+	"language":$Settings/SettingsTree/LangButton,
+	"close":$Settings/SettingsTree/Close,
+	"master_volume":$Settings/AudioSettings/Master/MasterPlayerLabel,
+	"music_volume":$Settings/AudioSettings/Music/MusicPlayerLabel,
+	"sfx_volume":$Settings/AudioSettings/SFX/SFXPlayerLabel,
 	"reset_keys":$Settings/KeyBinding/ResetKeys,
-	"key_binding":$Settings/SettingsTree/HBoxContainer4/BindingButton
+	"key_binding":$Settings/SettingsTree/BindingButton
 }
 var latest_slot = -1
 
@@ -29,8 +32,7 @@ func _ready():
 	yield(get_tree().create_timer(0.1), "timeout")
 	
 	Fullscreen.hide_elements()
-	
-	
+	Languages.translate(arr_texts, Global.prefered_language)
 	
 	
 	var save_game = File.new()
@@ -54,17 +56,24 @@ func _ready():
 func _process(delta):
 	$Settings/AudioSettings/Back.text = $Back.text
 	$Settings/Languages/Back.text = $Back.text
-	$Settings/KeyBinding/Close.text = $Settings/SettingsTree/HBoxContainer3/Close.text
+	$Settings/KeyBinding/Close.text = $Settings/SettingsTree/Close.text
 # ------------------------------------------------------------------------------
 
 func _on_StartButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	$StartGame.visible = false if $StartGame.visible else true
 # ------------------------------------------------------------------------------
 
 func _on_LoadButton_pressed():
-	for button in $Slots/LoadButtons.get_children():
+	AudioManager.play_sfx(MENU_BTN_SFX)
+	self.disable_buttons()
+	for button in $Slots/SaveButtons.get_children():
+		button.type = "LOAD"
+		button.disabled = false
 		button.update()
-	$Slots/LoadButtons.visible = false if $Slots/LoadButtons.visible else true
+	$Settings/background.show()
+	$Slots/SaveLoadBackground.visible = false if $Slots/SaveLoadBackground.visible else true
+	$Slots/SaveButtons.visible = false if $Slots/SaveButtons.visible else true
 	$Slots/Close.visible = false if $Slots/Close.visible else true
 # ------------------------------------------------------------------------------
 
@@ -73,6 +82,9 @@ func _on_QuitButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_OptionButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
+	self.disable_buttons()
+	$Settings/background.show()
 	$Settings/SettingsTree.show()
 # ------------------------------------------------------------------------------
 
@@ -124,31 +136,48 @@ func _on_VideoPlayer_finished():
 	$VBoxContainer/VideoPlayer.play()
 # ------------------------------------------------------------------------------
 
+func disable_buttons():
+	$StartButton.disabled = not $StartButton.disabled
+	$LoadButton.disabled = not $LoadButton.disabled
+	$OptionButton.disabled = not $OptionButton.disabled
+	$CreditsButton.disabled = not $CreditsButton.disabled
+	$QuitButton.disabled = not $QuitButton.disabled
+	$StartGame/NewGame.disabled = not $StartGame/NewGame.disabled
+	$StartGame/Continue.disabled = not $StartGame/Continue.disabled
+# ------------------------------------------------------------------------------
+
 func _on_CreditsButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	$Authors.show()
 	$Back.show()
 # ------------------------------------------------------------------------------
 
 func _on_Back_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	$Authors.hide()
 	$Back.hide()
 # ------------------------------------------------------------------------------
 
 func _on_TextureButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	$StartGame.hide()
 # ------------------------------------------------------------------------------
 
 func _on_Continue_pressed():
 	if latest_slot >= 0:
+		AudioManager.play_sfx(MENU_BTN_SFX)
 		SaveLoad.load_from_file(latest_slot)
 		Fullscreen.show_loading_screen()
 # ------------------------------------------------------------------------------
 
 func _on_NewGame_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	Fullscreen.show_loading_screen()
 	var dir_to_remove = Directory.new()
-	dir_to_remove.open("user://Saves")
+	dir_to_remove.open("user://Saves/")
 	for file in SaveLoad.paths:
+		if "config" in file:
+			continue
 		if dir_to_remove.file_exists(file):
 			dir_to_remove.remove(file)
 	Global.reset_data()
@@ -169,3 +198,13 @@ func _on_instagram_button_pressed(link):
 
 func _on_Back_lang_pressed():
 	$Languages.hide()
+
+
+func _on_SettingsClose_pressed():
+	$Settings/background.hide()
+	self.disable_buttons()
+
+
+func _on_LoadClose_pressed():
+	$Settings/background.hide()
+	self.disable_buttons()

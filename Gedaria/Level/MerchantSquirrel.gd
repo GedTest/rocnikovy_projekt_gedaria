@@ -1,6 +1,6 @@
 extends Node2D
 
-
+const MENU_BTN_SFX = preload("res://sfx/klik_do_menu_i_z_menu.wav")
 const HEALTH_LIMIT = 20
 const DAMAGE_LIMIT = 10
 const SPEED_LIMIT = 25 # 25%
@@ -115,6 +115,7 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func _on_HealthButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 3+int(pow(1.4, health_upgrade_counter))
 	var cost = 12
 	if $Vladimir.health < HEALTH_LIMIT:
@@ -139,6 +140,7 @@ func _on_HealthButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_AttackButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 3+int(pow(1.4, health_upgrade_counter))
 	var cost = 16
 	if $Vladimir.damage < DAMAGE_LIMIT:
@@ -153,6 +155,7 @@ func _on_AttackButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_SpeedButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 2+int(pow(1.4, health_upgrade_counter))
 	var cost = 8
 	if $Vladimir.speed <= BASE_SPEED + BASE_SPEED*SPEED_LIMIT/100:
@@ -167,6 +170,7 @@ func _on_SpeedButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_HeavyAttackButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	var cost = 30
 	if $Vladimir.heavy_attack_increment < HEAVY_ATTACK_LIMIT:
 		if $Vladimir.acorn_counter >= cost:

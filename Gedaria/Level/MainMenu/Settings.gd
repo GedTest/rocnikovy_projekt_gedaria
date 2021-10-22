@@ -3,24 +3,28 @@ extends CanvasLayer
 
 const FPS = ["10", "24", "30", "60", "120", "144", "240",]
 const MSAA = ["Disabled", "2x", "4x", "8x", "16x",]
-const LANGUAGES = ["Language", "čeština", "english"]
+const LANGUAGES = ["čeština", "english"]
+
+var MENU_BTN_SFX = ""
 
 var is_visible = false
 
 
 func _ready():
-	$VideoSettings/HBoxContainer3/VSyncCheckBox.pressed = OS.vsync_enabled
-	$VideoSettings/ConfirmationButton.hide()
-	$VideoSettings/Back.disabled = false
+	if Global.level_root().filename == "res://Level/MainMenu/MainMenu.tscn":
+		SaveLoad.load_config()
+		
+	MENU_BTN_SFX = self.get_parent().MENU_BTN_SFX
+	$VideoSettings/VSyncCheckBox.pressed = OS.vsync_enabled
 	
-	var msaa_menu = $VideoSettings/HBoxContainer/MSAADropDown
+	var msaa_menu = $VideoSettings/MSAADropDown
 	self.set_drop_down_menu(msaa_menu, MSAA, get_viewport().msaa)
 	
-	var fps_menu = $VideoSettings/HBoxContainer2/FPSDropDown
+	var fps_menu = $VideoSettings/FPSDropDown
 	self.set_drop_down_menu(fps_menu, FPS, FPS.find(str(Engine.target_fps)))
 	
-	var lang_menu = $SettingsTree/HBoxContainer2/LangDropDown
-	self.set_drop_down_menu(lang_menu, LANGUAGES, 0)
+	var lang_menu = $SettingsTree/LangDropDown
+	self.set_drop_down_menu(lang_menu, LANGUAGES, LANGUAGES.find(Global.prefered_language))
 # ------------------------------------------------------------------------------
 
 func set_drop_down_menu(node, options, curent_option):
@@ -30,7 +34,7 @@ func set_drop_down_menu(node, options, curent_option):
 # ------------------------------------------------------------------------------
 
 func _on_LangButton_pressed():
-	var drop_down = $SettingsTree/HBoxContainer2/LangDropDown
+	var drop_down = $SettingsTree/LangDropDown
 	drop_down.visible = not drop_down.visible
 #	$SettingsTree/HBoxContainer2/LangButton.visible = not $SettingsTree/HBoxContainer2/LangButton.visible
 #	$SettingsTree.hide()
@@ -42,6 +46,7 @@ func _on_lang_btn_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_AudioButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	$AudioSettings.show()
 	$SettingsTree.hide()
 	
@@ -53,6 +58,7 @@ func _on_AudioButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_VideoButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	$VideoSettings.show()
 	$SettingsTree.hide()
 # ------------------------------------------------------------------------------
@@ -70,11 +76,14 @@ func _on_Slider_value_changed(value, bus_name):
 # ------------------------------------------------------------------------------
 
 func _on_SettingsTree_Close_pressed():
+	SaveLoad.save_config()
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	Fullscreen.hide_pause_menu()
 	self.hide_all()
 # ------------------------------------------------------------------------------
 
 func _on_BindingButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	$KeyBinding.show()
 # ------------------------------------------------------------------------------
 
@@ -87,6 +96,7 @@ func hide_all():
 # ------------------------------------------------------------------------------
 
 func _on_Back_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	$AudioSettings.hide()
 	$VideoSettings.hide()
 	$Languages.hide()
@@ -103,11 +113,20 @@ func _on_FPSDropDown_item_selected(id):
 
 func _on_VSyncCheckBox_toggled(button_pressed):
 	OS.vsync_enabled = button_pressed
-	$VideoSettings/Back.disabled = true
-	$VideoSettings/ConfirmationButton.show()
 # ------------------------------------------------------------------------------
 
-func _on_ConfirmationButton_pressed():
-	$VideoSettings/Back.disabled = false
-	$VideoSettings/ConfirmationButton.hide()
+func _on_LangDropDown_item_selected(id):
+	var btn = $SettingsTree/lang_btn 
+	btn.language = LANGUAGES[id]
+	btn.connect("pressed", btn, "_on_lang_btn_pressed")
+	btn.emit_signal("pressed")
 # ------------------------------------------------------------------------------
+
+func _on_VSyncCheckBox_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
+
+
+
+
+func _on_DropDown_item_selected(id, node_name):
+	self.find_node(node_name).rect_size.x = 130
