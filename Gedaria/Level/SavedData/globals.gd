@@ -10,6 +10,19 @@ var arr_levels = [
 	"res://Level/ForestClearing/Forest clearing.tscn",
 	"res://Level/Telpenor town/Telpenor town.tscn",
 ]
+var current_key_mapping = []
+
+var DEFAULT_SETTINGS = {
+	"MasterVolume":0,
+	"MusicVolume":0,
+	"SFXVolume":0,
+	"MSAA":1,
+	"FPS":60,
+	"VSync":true,
+	"Language":"english",
+	"key_mapping":[87,65,83,68,1,2,32,16777237,16777254,69,81,16777217]
+}
+
 var last_map = ""
 var prefered_language = "english"
 

@@ -6,6 +6,7 @@ extends "res://Level/SavedData/globals.gd"
 var paths = [
 	"user://Saves/slot_1.json", "user://Saves/slot_2.json",
 	"user://Saves/slot_3.json", "user://Saves/slot_4.json",
+	"user://config.json"
 ]
 var last_saved_slot = 0
 
@@ -56,7 +57,14 @@ func update_current_data():
 		current_data["last_map"] = level_root().get_filename()
 		current_data["visited_maps"] = visited_maps.duplicate()
 
-		current_data["date"] = {"second": OS.get_time()["second"], "minute": OS.get_time()["minute"], "hour" : OS.get_time()["hour"], "day": OS.get_date()["day"], "month" : OS.get_date()["month"], "year" : OS.get_date()["year"]}
+		current_data["date"] = {
+			"second":OS.get_time()["second"],
+			"minute":OS.get_time()["minute"],
+			"hour":OS.get_time()["hour"],
+			"day":OS.get_date()["day"],
+			"month":OS.get_date()["month"],
+			"year":OS.get_date()["year"],
+		}
 
 		current_data["last_saved_slot"] = last_saved_slot
 		
@@ -65,8 +73,8 @@ func update_current_data():
 	
 		current_data["globals"]["blue_berries"] = Global.blue_berries
 		current_data["globals"]["leaves_in_cave_counter"] = Global.leaves_in_cave_counter
-		current_data["globals"]["prefered_language"] = Global.prefered_language
 # ------------------------------------------------------------------------------
+
 func update_map_data():
 	if level_root() != null:
 		for node in get_tree().get_nodes_in_group("persistant"):
@@ -178,40 +186,94 @@ func save_to_slot(slot_name):
 		slots[slot_name] = current_data.duplicate()
 		Global.last_map = slots[slot_name]["last_map"]
 	else:
-		print('Error 1: Saveslot %s doesn´t exist.', slot_name)
+		print('Error 1: Saveslot ',slot_name,' doesn´t exist.')
 # ------------------------------------------------------------------------------
 func load_from_slot(slot_name):
 	current_data = slots[slot_name].duplicate()
 	visited_maps = slots[slot_name]["visited_maps"].duplicate()
 	last_saved_slot = slots[slot_name]["last_saved_slot"]
-
+	
 	Global.blue_berries = slots[slot_name]["globals"]["blue_berries"]
 	Global.leaves_in_cave_counter = slots[slot_name]["globals"]["leaves_in_cave_counter"]
-	Global.prefered_language = slots[slot_name]["globals"]["prefered_language"]
 	
 	is_yield_paused = true
 	
 	yield(get_tree().create_timer(5.0), "timeout")
 	get_tree().change_scene(slots[slot_name]["last_map"])
 # ------------------------------------------------------------------------------
+
 func save_to_file(slot):
 	save_to_slot("slot_"+str(slot))
-	
+
 	yield(get_tree().create_timer(0.25), "timeout")
 	var save_game = File.new()
-	
+
 	save_game.open(paths[slot-1], File.WRITE)
-	
+
 	save_game.store_line(to_json(current_data.duplicate()))
-	
+
 	save_game.close()
 # ------------------------------------------------------------------------------
+
+func save_config():
+	var save_game = File.new()
+	save_game.open_encrypted_with_pass(paths[4], File.WRITE, "16v04Gedaria")
+	
+	var settings = {
+		"MasterVolume":AudioManager.get_volume("Master"),
+		"MusicVolume":AudioManager.get_volume("Music"),
+		"SFXVolume":AudioManager.get_volume("SFX"),
+		"MSAA":get_viewport().msaa,
+		"FPS":Engine.target_fps,
+		"VSync":OS.vsync_enabled,
+		"Language":Global.prefered_language,
+		"key_mapping":Global.current_key_mapping
+	}
+		
+	save_game.store_string(JSON.print(settings))
+	save_game.close()
+# ------------------------------------------------------------------------------
+
+func load_config():
+	var load_game = File.new()
+	if load_game.file_exists(paths[4]):
+		load_game.open_encrypted_with_pass(paths[4], File.READ, "16v04Gedaria")
+	
+		var setting_dict = JSON.parse(load_game.get_as_text()).result
+		if not setting_dict:
+			setting_dict = Global.DEFAULT_SETTINGS
+		for key in setting_dict.keys():
+			match key:
+				"FPS":Engine.target_fps = setting_dict[key]
+				"MasterVolume":AudioManager.set_volume("Master", setting_dict[key])
+				"MusicVolume":AudioManager.set_volume("Music", setting_dict[key])
+				"SFXVolume":AudioManager.set_volume("SFX", setting_dict[key])
+				"MSAA":get_viewport().msaa = setting_dict[key]
+				"VSync":OS.vsync_enabled = setting_dict[key]
+				"Language":Global.prefered_language = setting_dict[key]
+		
+		# if there is problem with key mapping load default key mapping
+		if setting_dict["key_mapping"].empty():
+			setting_dict = Global.DEFAULT_SETTINGS
+			
+		# create InputEventKey objects from their scancode
+		var loaded_key_mapping = []
+		for scancode in setting_dict["key_mapping"]:
+			loaded_key_mapping.append(KeyBinding.create_input_from_scancode(scancode))
+		
+		# assign new InputEventKey objects to current key map
+		var index = 0
+		for action in KeyBinding.ACTIONS:
+			KeyBinding._change_key(loaded_key_mapping[index], action)
+			index += 1
+# ------------------------------------------------------------------------------
+
 func load_from_file(slot):
 	Global.stop_enemy_timers()
 	var save_game = File.new()
 	
 	if not save_game.file_exists(paths[slot-1]):
-		print("File %s doesn't exist.",paths[slot-1])
+		print("File ",paths[slot-1]," doesn't exist.")
 		return
 	
 	save_game.open(paths[slot-1], save_game.READ)

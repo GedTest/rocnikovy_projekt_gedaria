@@ -55,3 +55,12 @@ func find_oldest_player():
 func play_music(music_clip : AudioStream):
 	$Music/AudioPlayer.stream = music_clip
 	$Music/AudioPlayer.play()
+# ------------------------------------------------------------------------------
+
+func get_volume(bus_name):
+	return AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus_name))
+# ------------------------------------------------------------------------------
+
+func set_volume(bus_name, db):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), db)
+# ------------------------------------------------------------------------------

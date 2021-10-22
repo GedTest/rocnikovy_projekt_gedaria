@@ -15,7 +15,7 @@ const WIND_PATH = preload("res://Vladimir/WindBlowerWind.tscn")
 
 export(int) var speed = 480
 export(int) var modify_speed = 1
-export(int) var jump_strength = 1750
+export(int) var jump_strength = 1800
 export(int) var damage = 2
 export(int) var max_health = 12
 export(int) var health = 12
@@ -55,7 +55,7 @@ var has_learned_attack = true
 var has_learned_heavy_attack = true
 var has_learned_raking = true
 var has_learned_blocking = true
-var has_learned_leaf_blower = true
+var has_learned_leaf_blower = false
 
 var enemy = null
 var wind = null
@@ -216,8 +216,10 @@ func heavy_attack(delta): # HEAVY ATTACK, slow but high dmg
 
 							if enemy and can_attack:
 								enemy.is_heavy_attacked = true
-								enemy.hit(damage)
-								enemy.jump_back()
+								if is_instance_valid(enemy):
+									is_moving = true
+									enemy.hit(damage)
+									enemy.jump_back()
 
 							is_moving = true
 							is_attacking = false

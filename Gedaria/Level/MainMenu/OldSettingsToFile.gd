@@ -37,7 +37,10 @@ func load_settings():
 	var values = []
 	for section in local_settings.keys():
 		for key in local_settings[section].keys():
-			Global.prefered_language = local_settings[section]["pref_lang"]
+			pass
+			#Global.prefered_language = local_settings[section]["pref_lang"]
+
+
 #			var val = local_settings[section][key]
 #			values.append(config_file.get_value(section, key, val))
 #			print("%s: %s" % [key, val])

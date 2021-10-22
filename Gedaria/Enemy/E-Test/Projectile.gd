@@ -30,9 +30,9 @@ func _ready():
 
 func _process(delta):
 	if direction is Vector2:
-		position += speed * direction * int(is_moving)
+		position += speed * direction * int(is_moving) * delta
 	else:
-		position.x += speed * direction * int(is_moving)
+		position.x += speed * direction * int(is_moving) * delta
 	
 	# WHEN PROJECTILE REACHES BORDER IT DISAPPEAR
 	if abs(position.x) > starting_position + distance:

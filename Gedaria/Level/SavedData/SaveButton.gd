@@ -1,6 +1,8 @@
 extends Button
 
 
+const MENU_BTN_SFX = preload("res://sfx/klik_do_menu_i_z_menu.wav")
+
 export (int, 1, 4) var slot = 1
 export (String, "SAVE", "LOAD") var type = "SAVE"
 
@@ -21,7 +23,7 @@ func update():
 			
 	elif type == "LOAD" and name != "RestartButton":
 		if SaveLoad.slots["slot_"+str(slot)].empty():
-			$Label.text = "EMPTY"
+			$Label.text = "NO DATA"
 		else:
 			var current_slot = SaveLoad.slots["slot_"+str(slot)]
 			var date = current_slot["date"]
@@ -33,6 +35,7 @@ func update():
 # ------------------------------------------------------------------------------
 
 func on_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	match type:
 		"SAVE":
 			SaveLoad.last_saved_slot = "slot_"+str(slot)
@@ -43,8 +46,12 @@ func on_pressed():
 			if not SaveLoad.slots["slot_"+str(slot)].empty():
 				Global.is_yield_paused = true
 				#SaveLoad.load_from_slot("slot_"+str(slot))
-				Fullscreen.show_loading_screen()
-				SaveLoad.load_from_file(slot)
+				var save_game = File.new()
+				for i in range(4):
+					if save_game.file_exists(SaveLoad.paths[i]):
+						Fullscreen.show_loading_screen()
+						SaveLoad.load_from_file(slot)
+						break
 			
 	for button in get_tree().get_nodes_in_group("buttons"):
 		button.update()

@@ -1,21 +1,23 @@
 extends Node2D
 
-
+const MENU_BTN_SFX = preload("res://sfx/klik_do_menu_i_z_menu.wav")
 const HEALTH_LIMIT = 20
 const DAMAGE_LIMIT = 10
 const SPEED_LIMIT = 25 # 25%
 const BASE_SPEED = 480
 const HEAVY_ATTACK_LIMIT = 7
+const CAVE_LEVELS = [
+	"res://Level/CaveEntrance/Cave entrance.tscn",
+	"res://Level/CaveEntrance/Lil cave.tscn",
+	"res://Level/CultInCave/Mine shaft.tscn",
+]
+
 onready var UI = $CanvasLayer/UserInterface
 
 var is_yield_paused = false
 var can_interact = false
 var stats_can_interact = false
 
-var arr_levels = [
-	"res://Level/InTheWood/In the wood.tscn","res://Level/DarkForest/Dark forest.tscn",
-	"res://Level/CaveEntrance/Cave entrance.tscn","res://Level/CultInCave/Mine shaft.tscn",
-]
 var damage_upgrade_counter = 1
 var health_upgrade_counter = 1
 var speed_upgrade_counter = 1
@@ -40,9 +42,19 @@ func _ready():
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
 	
-	$Tree/Area2D/Tween.interpolate_property($Tree/Squirrel, "position", Vector2(-31, 323),\
-								Vector2(-31, 168), 0.4,\
-								Tween.TRANS_BACK, Tween.EASE_OUT)
+	var squirrel = $Tree/Squirrel
+	if Global.last_map in CAVE_LEVELS:
+		$TileMap2.show()
+		$Hole.show()
+		squirrel = $Hole/Squirrel
+		$CanvasLayer/CaveParallaxBackground.layer = -99
+		
+		$Tree.hide()
+		$TileMap.hide()
+	
+	$CollisionArea/Tween.interpolate_property(squirrel, "position", squirrel.position,\
+								Vector2(squirrel.position.x, squirrel.position.y-150),\
+								0.4, Tween.TRANS_BACK, Tween.EASE_OUT)
 # ------------------------------------------------------------------------------
 	
 func _on_LoadingTimer_timeout():
@@ -73,7 +85,8 @@ func _on_LoadingTimer_timeout():
 #		sum += (HP + DMG + MS)
 #	print("SUM: ",sum)
 func _process(delta):
-	if can_interact and Input.is_action_just_pressed("interact"):
+	if can_interact and (Input.is_action_just_pressed("interact")
+						or Input.is_action_just_pressed("pause")):
 		for button in get_tree().get_nodes_in_group("buy_btn"):
 			button.visible = not button.visible
 		$Vladimir.is_moving = not $Vladimir.is_moving
@@ -102,6 +115,7 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func _on_HealthButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 3+int(pow(1.4, health_upgrade_counter))
 	var cost = 12
 	if $Vladimir.health < HEALTH_LIMIT:
@@ -126,6 +140,7 @@ func _on_HealthButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_AttackButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 3+int(pow(1.4, health_upgrade_counter))
 	var cost = 16
 	if $Vladimir.damage < DAMAGE_LIMIT:
@@ -140,6 +155,7 @@ func _on_AttackButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_SpeedButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 2+int(pow(1.4, health_upgrade_counter))
 	var cost = 8
 	if $Vladimir.speed <= BASE_SPEED + BASE_SPEED*SPEED_LIMIT/100:
@@ -154,6 +170,7 @@ func _on_SpeedButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_HeavyAttackButton_pressed():
+	AudioManager.play_sfx(MENU_BTN_SFX)
 	var cost = 30
 	if $Vladimir.heavy_attack_increment < HEAVY_ATTACK_LIMIT:
 		if $Vladimir.acorn_counter >= cost:
@@ -190,16 +207,16 @@ func _on_Area2D_body_entered(body):
 		$CanvasLayer/SpeedButton/Label.text = translated_text + "8"
 		$CanvasLayer/HeavyAttackButton/Label.text = translated_text + "30"
 		can_interact = true
-		$Tree/Area2D/Tween.start()
-		$TutorialSign.wrap_intreaction_text($Tree/Area2D/Icon/Label)
-		$Tree/Area2D/Icon.show()
+		$CollisionArea/Tween.start()
+		$TutorialSign.wrap_intreaction_text($CollisionArea/Icon/Label)
+		$CollisionArea/Icon.show()
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_exited(body):
 	if body.get_collision_layer_bit(1):
 		can_interact = false
 		$Vladimir.is_moving = true
-		$Tree/Area2D/Icon.hide()
+		$CollisionArea/Icon.hide()
 		for button in get_tree().get_nodes_in_group("buy_btn"):
 			button.hide()
 # ------------------------------------------------------------------------------
