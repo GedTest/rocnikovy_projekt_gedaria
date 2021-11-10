@@ -20,7 +20,6 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 
 func _process(delta):
 	._process(delta)
-	$BOSS_EARL.move()
 # ------------------------------------------------------------------------------
 
 func _on_EavesdropArea_body_entered(body):

@@ -20,7 +20,7 @@ onready var leaf_holders = $LeafHolders.get_children()
 
 
 func _ready():
-	Global.set_player_position_at_start($Vladimir, $Level_start)
+#	Global.set_player_position_at_start($Vladimir, $Level_start)
 	if Global.level_root().filename != "res://Level/InTheWood/In the wood.tscn":
 		Global.is_first_entrance(self.filename)
 		
@@ -79,4 +79,6 @@ func set_vladimirs_skills():
 	$Vladimir.has_learned_heavy_attack = true
 	$Vladimir.has_learned_blocking = true
 	$Vladimir.has_learned_raking = true
-	$Vladimir.has_learned_leaf_blower = true
+	
+	if Global.arr_levels.find(Global.level_root().filename) > 4:
+		$Vladimir.has_learned_leaf_blower = true

@@ -69,10 +69,11 @@ func update_current_data():
 		current_data["last_saved_slot"] = last_saved_slot
 		
 		# SAVING GLOBAL VALUES
-		current_data["globals"] = {}
-	
-		current_data["globals"]["blue_berries"] = Global.blue_berries
-		current_data["globals"]["leaves_in_cave_counter"] = Global.leaves_in_cave_counter
+		current_data["globals"] = {
+			"blue_berries":Global.blue_berries,
+			"leaves_in_cave_counter":Global.leaves_in_cave_counter,
+			"has_key":Global.has_key,
+		}
 # ------------------------------------------------------------------------------
 
 func update_map_data():
@@ -195,6 +196,7 @@ func load_from_slot(slot_name):
 	
 	Global.blue_berries = slots[slot_name]["globals"]["blue_berries"]
 	Global.leaves_in_cave_counter = slots[slot_name]["globals"]["leaves_in_cave_counter"]
+	Global.has_key = slots[slot_name]["globals"]["has_key"]
 	
 	is_yield_paused = true
 	

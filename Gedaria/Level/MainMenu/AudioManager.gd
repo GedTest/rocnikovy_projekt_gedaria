@@ -3,10 +3,11 @@ extends Node
 var dict = {}
 
 
-func play_sfx(audio_clip : AudioStream, priority=0, delay=0.0):
+func play_sfx(audio_clip : AudioStream, priority=0, delay=0.0, db = 0.0):
 	for child in $SFX.get_children():
 		if not child.playing:
 			child.stream = audio_clip
+			child.volume_db = db
 			yield(get_tree().create_timer(delay), "timeout")
 			child.play()
 			dict[child.name] = priority
@@ -64,3 +65,17 @@ func get_volume(bus_name):
 func set_volume(bus_name, db):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), db)
 # ------------------------------------------------------------------------------
+
+func stop_sfx(sfx_name):
+	for child in $SFX.get_children():
+		if child.playing:
+			if child.stream == sfx_name:
+				child.stop()
+# ------------------------------------------------------------------------------
+
+func is_playing_sfx(sfx_name):
+	for child in $SFX.get_children():
+		if child.playing:
+			if child.stream == sfx_name:
+				return true
+	return false

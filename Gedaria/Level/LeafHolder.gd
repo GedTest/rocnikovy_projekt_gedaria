@@ -82,8 +82,8 @@ func save():
 
 func _on_Area2D_area_entered(area):
 	if (area.get_collision_layer_bit(1) and $Area2D/Sprite.frame != EMPTY_FRAME\
-	 and not is_part_of_pile) or area.name == "WindBlowerWind":
-		if has_leaf and not is_invincible:
+	 and not is_part_of_pile) or area.get_collision_layer_bit(17):
+		if (has_leaf and not is_invincible) or "Hand" in area.get_parent().name:
 			has_leaf = 0
 			$Area2D/Sprite.frame = EMPTY_FRAME
 			self.spawn_leaf()

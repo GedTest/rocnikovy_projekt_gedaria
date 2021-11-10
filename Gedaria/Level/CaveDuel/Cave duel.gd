@@ -19,7 +19,7 @@ func _ready():
 	connect("crashed_in_pile", $BOSS_IN_CAVE, "on_crashed_in_pile")
 	
 	$Vladimir/Camera.current = false
-#	Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
@@ -35,8 +35,11 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	Global.is_yield_paused = false
 	Global.is_pausable = true
 	$CanvasLayer/UserInterface.load_ui_icons()
+	$Vladimir.damage = 6
+	vlad_damage = $Vladimir.damage
+	
 	boss = $BOSS_IN_CAVE
-	$Vladimir.damage = 10
+	boss.set_variable_health(vlad_damage)
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -120,11 +123,14 @@ func collapse_floor():
 	$Vladimir.pebble_counter = 1
 	vlad_damage = $Vladimir.damage
 	$Vladimir.damage = 1
+	$BOSS_IN_CAVE.is_blocking = false
+
 # ------------------------------------------------------------------------------
 
 func _on_BoosterArea_body_entered(body):
 	if body.get_collision_layer_bit(2):
-		body.disconnect("health_changed", self, "add_pile_of_leaves")
+		if is_connected("health_changed", self, "add_pile_of_leaves"):
+			body.disconnect("health_changed", self, "add_pile_of_leaves")
 		body.is_in_minecart = true
 		body.velocity.y = -200
 		body.can_emit_signal = false
@@ -138,3 +144,8 @@ func _on_BoosterArea_body_entered(body):
 
 func _on_Timer_timeout():
 	get_tree().change_scene("res://Level/CaveDuel/Cave duel.tscn")
+# ------------------------------------------------------------------------------
+
+func _on_ReduceDamageArea_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		body.damage = 1

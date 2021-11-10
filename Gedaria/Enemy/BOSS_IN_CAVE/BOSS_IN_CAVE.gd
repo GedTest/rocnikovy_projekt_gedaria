@@ -42,13 +42,8 @@ var despawn_timer = null
 
 
 func _ready():
-	if self.health >= 100:
-		self.connect("health_changed", get_parent(), "add_pile_of_leaves")
-	else:
-		self.disconnect("health_changed", get_parent(), "add_pile_of_leaves")
 	FoV = 1000
 	state_machine = $AnimationTree.get("parameters/playback")
-	max_health = health
 	
 	turn_around_timer = get_tree().create_timer(0.0, false)
 	cooldown_timer = get_tree().create_timer(0.0, false)
@@ -73,27 +68,27 @@ func _process(delta):
 		
 		if is_first_phase:
 			# (176HP - 150HP)
-			if health >= (max_health-50) and health < (max_health-24) and is_done_once:
+			if health >= (max_health*0.75) and health < (max_health*0.9) and is_done_once:
 				is_done_once = false
 				can_fly = true
 	
 			# (182HP - 112HP)
-			if health <= (max_health-18) and health > (max_health/2)+12:
+			if health <= (max_health*0.91) and health > (max_health*0.56):
 				if $event_timer.time_left <= 0.0:
 					$event_timer.start()
 	
 				# (136HP - 130HP)
-				if health > (max_health/2)+30 and health <= (max_health/2)+36:
+				if health > (max_health*0.65) and health <= (max_health*0.68):
 					is_done_once = true
 	
 				# (124HP)
-				elif health <= (max_health/2)+24 and is_done_once:
+				elif health <= (max_health*0.62) and is_done_once:
 					is_done_once = false
 					can_fly = true
 					is_blocking = true
 
 			# (120HP - 110HP)
-			if health <= (max_health/2)+20 and health >= (max_health/2)+10:
+			if health <= (max_health*0.6) and health >= (max_health*0.55):
 				if not is_in_minecart and Global.level_root().filename == "res://Level/CaveDuel/Cave duel.tscn":
 					is_in_minecart = true
 					is_first_phase = false
@@ -118,21 +113,21 @@ func _process(delta):
 		# (100HP - 0HP)
 		if not is_first_phase and not is_in_minecart:
 			# (88HP - 0HP)
-			if health < (max_health/2)-12:
+			if health < (max_health*0.46):
 				if not is_done_once:
-					$event_timer.wait_time = 6.0
+					$event_timer.wait_time = 5.5
 					self.falling_rocks()
 					$falling_timer.start()
 					is_done_once = true
 					
 				if summoning_timer.time_left <= 0.0:
-					summoning_timer = get_tree().create_timer(7.0, false)
+					summoning_timer = get_tree().create_timer(6.5, false)
 					if not is_yield_paused:
 						yield(summoning_timer, "timeout")
 						self.summon_bats()
 			
 			# (82HP - 0HP)
-			if health < (max_health/2)-18:
+			if health < (max_health*0.39):
 				if $event_timer.time_left <= 0.0 and can_spawn_stalactites:
 					can_spawn_stalactites = false
 					$event_timer.start()
@@ -192,6 +187,16 @@ func move(): # HANDLE MOVEMENT
 		velocity.x = speed * direction * int(is_moving)
 # ------------------------------------------------------------------------------		
 
+func set_variable_health(vladimir_damage):
+	self.health = 200 + int(100/vladimir_damage)
+	self.max_health = self.health
+	
+	if self.health >= 100:
+		self.connect("health_changed", get_parent(), "add_pile_of_leaves")
+	else:
+		self.disconnect("health_changed", get_parent(), "add_pile_of_leaves")
+# ------------------------------------------------------------------------------		
+
 #func attack(): # PRIMARY ATTACK - STAB
 #	is_moving = false
 #	if cooldown_timer.time_left <= 0.0:
@@ -229,6 +234,7 @@ func fly(x, y):
 			$event_timer.stop()
 			$HitRay.enabled = false
 			$HitRay2.enabled = false
+			can_fly = false
 			tween_finished = false
 			is_in_air = true
 			is_blocking = true
@@ -241,7 +247,7 @@ func fly(x, y):
 			$Tween2.start()
 			
 			var new_pos = Vector2(position.x, y)
-			$Tween.interpolate_property(self, "position", new_pos, Vector2(x, y), 2.0, Tween.TRANS_SINE, Tween.EASE_IN, 0.51)
+			$Tween.interpolate_property(self, "position", new_pos, Vector2(x, y), 2.0, Tween.TRANS_SINE, Tween.EASE_IN, 0.55)
 			$Tween.start()
 # ------------------------------------------------------------------------------
 
@@ -258,11 +264,12 @@ func falling_rocks():
 			
 			randomize()
 			var x = rand_range(24850, 27600)
+			var y_offset = rand_range(0, 100)
 			
 			Global.level_root().call_deferred("add_child", rock)
 			rock.gravity_scale = rand_range(0.4, 0.8)
 			rock.mass = rand_range(1, 10)
-			rock.position = Vector2(x, 4500)
+			rock.position = Vector2(x, 4500-y_offset)
 			
 		if unconsciousness_timer.time_left <= 0.0:
 			unconsciousness_timer = get_tree().create_timer(2.0, false)
@@ -390,6 +397,7 @@ func _on_event_timer_timeout():
 		can_fly = true
 	
 	elif not is_in_minecart:
+		is_moving = false
 		self.stalactite_wave()
 # ------------------------------------------------------------------------------
 
@@ -439,9 +447,9 @@ func summon_bats():
 			bat.damage = 2
 			bat.FoV = 750
 			if index == 0 or index == 3 or index == 6:
-				bat.height = 4800
+				bat.height = 4850
 			else:
-				bat.height = 4500
+				bat.height = 4675
 			
 			level.call_deferred("add_child", bat)
 			level.arr_bats.append(bat)
@@ -452,13 +460,17 @@ func stalactite_wave():
 		var stalactites = []
 		for i in range(8):
 			var stalactite = STALACTITE_PATH.instance()
-			stalactite.scale.y = 0.163-(i*0.01)
-			var offset = Vector2((90 + i*50)*direction, 200)
+			stalactite.scale.y = 0.8-(i*0.05)
+			stalactite.rotation_degrees = 180
+			var offset = Vector2((100 + i*70)*direction, 200)
 			stalactite.position = self.position + offset
+			stalactite.frame = 3
+			stalactite.z_index = -2
 			$Tween4.interpolate_property(stalactite, "position", stalactite.position, Vector2(stalactite.position.x, stalactite.position.y-80), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN, i*0.2)
 			self.get_parent().call_deferred("add_child", stalactite)
 			stalactites.append(stalactite)
 			$Tween4.start()
+			
 			
 		if despawn_timer.time_left <= 0.0:
 			despawn_timer = get_tree().create_timer(1.5, false)
@@ -467,6 +479,7 @@ func stalactite_wave():
 				for stalactite in stalactites:
 					stalactite.call_deferred("queue_free")
 				can_spawn_stalactites = true
+				is_moving = true
 # ------------------------------------------------------------------------------
 
 func quickleaves():
@@ -477,9 +490,9 @@ func quickleaves():
 # ------------------------------------------------------------------------------
 
 func _on_quickleaves_completed():
-	print("ahoj jsem pryč")
 	is_vlad_in_quickleaves = false
 	self.is_moving = true
+	Global.level_root().set_quick_leaves(true)
 # ------------------------------------------------------------------------------
 
 func set_values():

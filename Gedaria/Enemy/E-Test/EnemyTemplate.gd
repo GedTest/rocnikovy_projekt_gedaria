@@ -47,6 +47,7 @@ var attack_timer = null
 var hit_timer = null
 var cooldown_timer = null
 var turn_around_timer = null
+var sfx_timer = null
 var state_machine = null
 
 
@@ -56,6 +57,7 @@ func _ready():
 	attack_timer = get_tree().create_timer(0.0, false)
 	hit_timer = get_tree().create_timer(0.0, false)
 	turn_around_timer = get_tree().create_timer(0.0, false)
+	sfx_timer = get_tree().create_timer(0.0, false)
 	state_machine = $AnimationTree.get("parameters/playback")
 	
 	self.reset_icon()

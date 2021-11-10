@@ -1,4 +1,4 @@
-class_name BOSS_EARL, "res://Enemy/BOSS_Warden/BOSS_Warden.png"
+class_name BOSS_EARL, "res://Enemy/BOSS_EARL/BOSS_Earl.png"
 extends Enemy
 
 
@@ -6,19 +6,20 @@ const FOOT_TRAP_PATH = preload("res://Enemy/BOSS_EARL/FootTrap.tscn")
 const PATROLLER_PATH = preload("res://Enemy/E-Test/Patroller.tscn")
 const GUARDIAN_PATH = preload("res://Enemy/E-Test/Guardian.tscn")
 
+const KICK_SFX = preload("res://sfx/kick.wav")
+
 var tossable_player = null
 
 var is_player_in_air = false
+var has_jumped = false
 
-
-func _ready():
-	pass
-# ------------------------------------------------------------------------------
 
 func _process(delta):
 	if not is_dead:
-		if Input.is_action_just_pressed("crouch"):
-			self.jump()
+		if Input.is_action_just_pressed("block"):
+			kick()
+#			self.jump()
+#			self.summon_enemies()
 #			self.throw_foot_trap()
 			
 		if is_player_in_air and tossable_player:
@@ -37,94 +38,98 @@ func move(): # HANDLE MOVEMENT
 			
 			if position.x > to:
 				direction = -1
-				$Sprite.flip_h = false
+				$Sprite.flip_h = true
 				$HitRay.cast_to.x = -FoV
 				
 			elif position.x < from:
 				direction = 1
-				$Sprite.flip_h = true
+				$Sprite.flip_h = false
 				$HitRay.cast_to.x = FoV
-				
-			# LOOK AROUND FOR PLAYER
-			if turn_around_timer.time_left <= 0.0:
-				turn_around_timer = get_tree().create_timer(2.0, false)
-				if not is_yield_paused:
-					yield(turn_around_timer, "timeout")
-					self.turn_around()
 		
-		velocity.x = speed * direction * int(is_moving)
-# ------------------------------------------------------------------------------
 
-func turn_around(): # LOOK BACK AND FORTH
-	if not is_dead and not has_player:
-		state_machine.travel('STANDING')
-		$Sprite.flip_h = not $Sprite.flip_h
-		is_moving = false
-		$HitRay.cast_to.x = -$HitRay.cast_to.x
-		$HitRay2.cast_to.x = -$HitRay2.cast_to.x
-		$WallDetection.position.x *= -1
-		$TossArea.position.x *= -1
-		
-		if turn_around_timer.time_left <= 0.0:
-			turn_around_timer = get_tree().create_timer(0.75, false)
-			if not is_yield_paused:
-				yield(turn_around_timer, "timeout")
-				is_moving = true
-				
-				if not has_player:
-					$Sprite.flip_h = not $Sprite.flip_h
-					$HitRay.cast_to.x = -$HitRay.cast_to.x
-					$HitRay2.cast_to.x = -$HitRay2.cast_to.x
-					$WallDetection.position.x *= -1
-					$TossArea.position.x *= -1
-				state_machine.travel('RUN')
+		velocity.x = speed * direction * int(is_moving) * int(not has_jumped)
 # ------------------------------------------------------------------------------
 
 func jump():
-	var TARGET_POSITION = Vector2(22380, 3680)
+	has_jumped = true
+	var TARGET_POSITION = Vector2(2105, 1060)
 	$Tween.interpolate_property(self, "position", self.position, TARGET_POSITION, 0.5, Tween.TRANS_BACK, Tween.EASE_IN)
 	$Tween.start()
 # ------------------------------------------------------------------------------
 
 func summon_enemies():
-	for i in range(5):
-		var enemy_path = PATROLLER_PATH if randi()%2 == 0 else GUARDIAN_PATH
+	var root = self.get_parent()
+	for index in range(6):
+		var enemy_path = GUARDIAN_PATH if randi()%2 == 0 else PATROLLER_PATH
 		var enemy = enemy_path.instance()
-		enemy.position = self.get_parent().spawning_positions[i]
-		enemy.from = 25000
-		enemy.to = 27500
+		enemy.position = root.spawning_positions[index].position
+		enemy.from = 500
+		enemy.to = 1900
 		enemy.health = 3
-		enemy.speed = 250
+		enemy.speed = 220 + 10*randi()%6
 		enemy.damage = 2
 		enemy.FoV = 750
 		
-		self.get_parent().call_deferred("add_child", enemy)
+		if enemy is Patroller:
+			enemy.type = Patroller.Type.ERNEST if randi()%3 == 1 else Patroller.Type.ERWIN
+		
+		root.arr_enemy.append(enemy)
+		root.call_deferred("add_child", enemy)
+	
+	root.can_spawn_pile_of_leaves = true
 # ------------------------------------------------------------------------------
+
+func hit(dmg):
+	.hit(dmg)
+	
+	if has_jumped:
+		var pile_of_leaves = self.get_parent().find_node("PilesOfLeaves").get_child(0)
+		pile_of_leaves.call_deferred("queue_free")
+		has_jumped = false
+# ------------------------------------------------------------------------------
+
 func throw_foot_trap():
 	# play aniamation
-	var foot_trap = FOOT_TRAP_PATH.instance()
-	Global.level_root().call_deferred("add_child", foot_trap)
-	foot_trap.global_position = self.position - Vector2(120*direction, -50)
+	$AnimationTree.set("parameters/ATTACK/blend_position", direction)
+	state_machine.travel('ATTACK')
+	$Trap.show()
+	self.is_moving = false
+	
+	if not is_dead:
+		yield(get_tree().create_timer(0.5), "timeout")
+		self.is_moving = true
+		var foot_trap = FOOT_TRAP_PATH.instance()
+		Global.level_root().call_deferred("add_child", foot_trap)
+		foot_trap.global_position = self.position - Vector2(130*direction, -116)
+# ------------------------------------------------------------------------------
+
+func kick():
+	# KICK PLAYER BACK SO BOSS CAN ATTACK
+	if self.has_player:
+		state_machine.travel('KICK')
+		AudioManager.play_sfx(KICK_SFX, 0, 0.35)
+		
+		$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x-250, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN, 0.45)
+		$Tween.start()
 # ------------------------------------------------------------------------------
 
 func _on_TossArea_body_entered(body):
-	if body.get_collision_layer_bit(1):
+	if body.get_collision_layer_bit(1) and not is_dead:
+		$AnimationTree.set("parameters/ATTACK/blend_position", direction)
+		state_machine.travel('ATTACK')
+		self.is_moving = false
+		
 		tossable_player = body
 		tossable_player.velocity = Vector2(1000*-direction, -2500)
 		tossable_player.is_moving = false
 		
-		yield(get_tree().create_timer(0.1), "timeout")
-		is_player_in_air = true
-
-#func toss_vladimir(tossable_player):
-#	var toss_direction = 1 if self.position.x - tossable_player.position.x > 0 else -1
-#	var x = 350 * toss_direction
-#	$Tween.interpolate_property(tossable_player, "position", tossable_player.position, Vector2(tossable_player.position.x+x, tossable_player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN, 0.3)
-#	$Tween.start()
+		if not is_dead:
+			yield(get_tree().create_timer(0.1), "timeout")
+			is_player_in_air = true
+		if not is_dead:
+			yield(get_tree().create_timer(0.5), "timeout")
+			self.is_moving = true
 # ------------------------------------------------------------------------------
 
-
-func _on_TossArea_body_exited(body):
-	if body.get_collision_layer_bit(1):
-		pass
-#		tossable_player = null
+func _on_Tween_tween_all_completed():
+	state_machine.travel('STANDING')

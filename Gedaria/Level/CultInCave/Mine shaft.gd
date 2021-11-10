@@ -3,6 +3,7 @@ extends Level
 
 const y = 5650
 
+signal on_vladimir_escaped
 signal enemy_health_changed
 
 const ROPE_PATH = preload("res://Rope_test/rope_spring.tscn")
@@ -50,8 +51,6 @@ func _ready():
 		$Guardian,$Guardian2,$Guardian3,
 	]
 	$RollingStones.gravity_scale = 0.0
-	$Vladimir.health = 16
-	$Vladimir.damage = 5
 # ------------------------------------------------------------------------------
 
 func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autostart timer is needed
@@ -69,9 +68,12 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	
 	if Global.is_boss_on_map:
 		if Global.is_done_once:
-			$AnimationPlayer.play("ELEVATOR_UP_HALF")
-			is_done_once = false
+			Global.is_done_once = false
 			$Vladimir.position = Vector2(21900, 8195)
+			
+		$AnimationPlayer.play("ELEVATOR_UP_HALF")
+		$BOSS_IN_CAVE.set_variable_health($Vladimir.damage)
+		connect("on_vladimir_escaped", $Vladimir/Cage, "on_vladimir_escaped")
 			
 		$BOSS_IN_CAVE/CanvasLayer/BossHPBar.show()
 		set_vladimir_values_after_duel()
@@ -84,10 +86,9 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 func _process(delta):
 	if Global.is_boss_on_map:
 		$BOSS_IN_CAVE.move()
-		if $Vladimir.health <= 6 and $Mushrooms.get_child_count() < 4:
+		if $Vladimir.health <= 8 and $MushroomsBoss.get_child_count() < 4:
 			if $MushroomSpawnTimer.time_left <= 0.0:
 				$MushroomSpawnTimer.start()
-				
 				
 	for bat in arr_bats:
 		if bat:
@@ -124,7 +125,7 @@ func _process(delta):
 	if $PilesOfLeaves/PileOf4Leaves5.is_complete:
 		$Winds/Wind11.disable_wind()
 	
-	if $Vladimir.position.x >= 8660:
+	if $Vladimir.position.x >= 8660 and $Vladimir.position.x <= 9000:
 		for leaf_holder in rolling_stone_leaf_holders:
 			if is_instance_valid(leaf_holder):
 				leaf_holder.spawn_leaf()
@@ -137,7 +138,7 @@ func _on_MushroomSpawnTimer_timeout():
 	mushroom.position = mushroom_positions[rand_index]
 	mushroom.hp = "plus"
 	if $Vladimir.health <= 6:
-		$Mushrooms.call_deferred("add_child", mushroom)
+		$MushroomsBoss.call_deferred("add_child", mushroom)
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
@@ -191,12 +192,12 @@ func _on_TrapDoorMechanismArea_body_entered(body):
 func _on_AmbushArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		$AmbushArea/CollisionShape2D.set_deferred("disabled", true)
-		$Guardian2.position = Vector2(21400, 8185)
-		$Guardian3.position = Vector2(23100, 8185)
-		$Patroller2.position = Vector2(21850, 8185)
-		$Patroller3.position = Vector2(22200, 8185)
-		$Patroller4.position = Vector2(22550, 8185)
-		$Patroller5.position = Vector2(22900, 8185)
+		$Guardian2.set_deferred("position", Vector2(21400, 8185))
+		$Guardian3.set_deferred("position", Vector2(23100, 8185))
+		$Patroller2.set_deferred("position", Vector2(21850, 8185))
+		$Patroller3.set_deferred("position", Vector2(22200, 8185))
+		$Patroller4.set_deferred("position", Vector2(22550, 8185))
+		$Patroller5.set_deferred("position", Vector2(22900, 8185))
 # ------------------------------------------------------------------------------
 
 func _on_CutsceneArea_body_entered(body):
@@ -206,15 +207,22 @@ func _on_CutsceneArea_body_entered(body):
 # ------------------------------------------------------------------------------
 
 func _on_FinalLeafHolders_body_entered(body):
+	$QuickLeaves2/Area2D/CollisionShape2D.set_deferred("disabled", true)
+	$QuickLeaves2/KillZone/CollisionShape2D.set_deferred("disabled", true)
 	$FinalLeafHolders/CollisionPolygon2D.set_deferred("disabled", true)
 	$BOSS_IN_CAVE.to = 27500
-	$BOSS_IN_CAVE.position = Vector2(25588, 5120)
+	$BOSS_IN_CAVE.position = Vector2(25588, 5060)
 	var array = [
 		$QuickLeaves2/Level0/LeafHolder9,
 		$QuickLeaves2/Level0/LeafHolder10,
 		$QuickLeaves2/Level0/LeafHolder11,
 	]
 	fill_quick_leaf_holders(array)
+	$QuickLeaves2.set_script(null)
+	$Checkpoint8.hide()
+	$Checkpoint8.position = Vector2(26958, 4904)
+	yield(get_tree().create_timer(1.0), "timeout")
+	$Checkpoint8/CollisionShape2D.set_deferred("disabled", true)
 # ------------------------------------------------------------------------------
 
 func _on_QuickLeaves_body_entered(body):
@@ -239,20 +247,28 @@ func set_vladimir_values_after_duel():
 		$Vladimir.set_values(data)
 # ------------------------------------------------------------------------------
 
-func set_quick_leaves():
+func set_quick_leaves(is_vlad_in_cage=false):
 	var old_child = $Cage if has_cage_parent_root else $Vladimir/Cage
 	var new_parent = $Vladimir if has_cage_parent_root else self
-	old_child.prepare()
+	
+	if is_vlad_in_cage:
+		emit_signal("on_vladimir_escaped")
+	
+	if not has_cage_parent_root:
+		old_child.prepare()
 	reparent(old_child, new_parent)
 # ------------------------------------------------------------------------------
 
 func reparent(child, new_parent):
-	child.show()
+	child.visible = not child.visible
 	var old_parent = child.get_parent()
 	old_parent.remove_child(child)
-	new_parent.add_child(child)
+	new_parent.call_deferred("add_child", child)
 	has_cage_parent_root = not has_cage_parent_root
-	child.position = $Vladimir.position if has_cage_parent_root else Vector2(0, 0)
+	child.position = $Vladimir.position+Vector2(0, -40) if has_cage_parent_root else Vector2(0, 0)
+	
+	if child.get_parent() is Vladimir:
+		connect("on_vladimir_escaped", child, "on_vladimir_escaped")
 # ------------------------------------------------------------------------------
 
 func _on_Checkpoint9_body_entered(body):
@@ -261,15 +277,13 @@ func _on_Checkpoint9_body_entered(body):
 
 func _on_Area2D2_body_entered(body):
 	$Vladimir/Camera.position.y = -200
+# ------------------------------------------------------------------------------
 
+func _on_LeafBlowerEnable_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		body.has_learned_leaf_blower = true
+# ------------------------------------------------------------------------------
 
-
-
-
-
-
-
-func _on_q_body_entered(body):
-	$Vladimir.position = Vector2(26000, 4500)
-
-
+func _on_VisibilityNotifier2D_viewport_entered(viewport):
+	if $BOSS_IN_CAVE.is_dead:
+		$AnimationPlayer.play("BARS_UP")

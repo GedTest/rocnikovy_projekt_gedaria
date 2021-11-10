@@ -28,6 +28,7 @@ var prefered_language = "english"
 
 var blue_berries = 0
 var leaves_in_cave_counter = 0
+var has_key = false
 var next_level_id = 1
 var prev_level_id = 0
 

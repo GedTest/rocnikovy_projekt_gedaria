@@ -10,8 +10,12 @@ once he found the legendary rake he became a hero
 
 const GRAVITY = Vector2(0, 98)
 const FLOOR_NORMAL = Vector2(0, -1)
+
 const PEBBLE_PATH = preload("res://Vladimir/Pebble.tscn")
 const WIND_PATH = preload("res://Vladimir/WindBlowerWind.tscn")
+
+const WALK_SFX = preload("res://sfx/kroky_hlina_long.wav")
+const ATTACK_SFX = preload("res://sfx/slabý útok.wav")
 
 export(int) var speed = 480
 export(int) var modify_speed = 1
@@ -145,8 +149,16 @@ func move(): # MOVE
 	else:
 		direction = 0
 	
+	# choose right animation based on movement
 	velocity.x = direction * (speed*modify_speed) * int(can_move) # * delta
 	var animation = "RUN" if velocity.x != 0  else "IDLE"
+	
+	# walking sound effect
+	if can_jump:
+		if velocity.x != 0 and not AudioManager.is_playing_sfx(WALK_SFX):
+			AudioManager.play_sfx(WALK_SFX, 1, 0, -23)
+	if animation == "IDLE" or not can_jump:
+		AudioManager.stop_sfx(WALK_SFX)
 	
 	
 	$Sprite.flip_v = false
@@ -177,6 +189,7 @@ func attack(): # LIGHT ATTACK, fast but low dmg,
 			$AnimationTree.set("parameters/ATTACK/blend_position", attack_direction)
 			if state_machine.get_current_node() != "HOLD_PEBBLE":
 				state_machine.travel('ATTACK')
+				AudioManager.play_sfx(ATTACK_SFX, 1, 0.3)
 			
 			if attack_timer.time_left <= 0.0:
 				attack_timer = get_tree().create_timer(0.35)
@@ -399,7 +412,8 @@ func save(): # SAVE VARIABLES IN DICTIONARY
 		"has_learned_heavy_attack":has_learned_heavy_attack,
 		"heavy_attack_increment":heavy_attack_increment,
 		"has_learned_raking":has_learned_raking,
-		"has_learned_blocking":has_learned_blocking
+		"has_learned_blocking":has_learned_blocking,
+		"has_learned_leaf_blower":has_learned_leaf_blower
 	}
 	return saved_data
 # ------------------------------------------------------------------------------

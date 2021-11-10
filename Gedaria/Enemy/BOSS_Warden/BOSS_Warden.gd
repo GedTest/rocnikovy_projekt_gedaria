@@ -11,6 +11,7 @@ and has two attacks - thresh & throw
 const STICK_PATH = preload("res://Enemy/BOSS_Warden/Stick.tscn")
 const BIRD_PATH = preload("res://Level/Prologue/Bird.tscn")
 const KICK_SFX = preload("res://sfx/kick.wav")
+const ATTACK_SFX = preload("res://sfx/praštění dřevěnou holí.wav")
 
 var can_throw = false
 var is_throwing = false
@@ -132,7 +133,7 @@ func attack_player():
 			is_attacking = true
 			if not player.is_blocking:
 				player.hit(damage)
-				print("Vladimir's health: ", player.health)
+				AudioManager.play_sfx(ATTACK_SFX)
 			
 		if attack_timer.time_left <= 0.0 and not is_throwing:
 			attack_timer = get_tree().create_timer(1.2, false)

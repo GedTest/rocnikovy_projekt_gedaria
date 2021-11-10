@@ -7,6 +7,8 @@ medium health and damage
 """
 
 
+const WALK1_SFX = preload("res://sfx/krok vojáka 1.wav")
+const WALK2_SFX = preload("res://sfx/krok vojáka 2.wav")
 
 enum Type {
 	ERNEST,
