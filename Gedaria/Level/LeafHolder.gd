@@ -63,7 +63,6 @@ func _on_Area2D_body_entered(body):
 				self.set_collision_layer_bit(3, true)
 				self.set_collision_mask_bit(3, true)
 					
-	
 	if body.get_collision_layer_bit(4) and is_destroyable and not is_empty:
 		if not is_invincible:
 			self.spawn_leaf()

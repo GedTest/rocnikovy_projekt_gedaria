@@ -191,13 +191,19 @@ func _on_TrapDoorMechanismArea_body_entered(body):
 
 func _on_AmbushArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
+		$AnimationPlayer.play("FAKE_FAMILY")
+		$Vladimir.stop_moving_during_cutsene(3.0)
+		yield(get_tree().create_timer(3.0), "timeout")
+		
+		var ambush_enemies = [
+			$Guardian2,$Guardian3,$Patroller2,
+			$Patroller3,$Patroller4,$Patroller5,
+		]
 		$AmbushArea/CollisionShape2D.set_deferred("disabled", true)
-		$Guardian2.set_deferred("position", Vector2(21400, 8185))
-		$Guardian3.set_deferred("position", Vector2(23100, 8185))
-		$Patroller2.set_deferred("position", Vector2(21850, 8185))
-		$Patroller3.set_deferred("position", Vector2(22200, 8185))
-		$Patroller4.set_deferred("position", Vector2(22550, 8185))
-		$Patroller5.set_deferred("position", Vector2(22900, 8185))
+		var offset
+		for enemy in ambush_enemies:
+			offset = ambush_enemies.find(enemy)*500
+			enemy.position = Vector2(21400+offset, 8185)
 # ------------------------------------------------------------------------------
 
 func _on_CutsceneArea_body_entered(body):

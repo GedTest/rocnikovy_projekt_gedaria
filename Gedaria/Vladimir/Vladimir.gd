@@ -232,7 +232,8 @@ func heavy_attack(delta): # HEAVY ATTACK, slow but high dmg
 								if is_instance_valid(enemy):
 									is_moving = true
 									enemy.hit(damage)
-									enemy.jump_back()
+									if enemy.has_method("jump_back"):
+										enemy.jump_back()
 
 							is_moving = true
 							is_attacking = false

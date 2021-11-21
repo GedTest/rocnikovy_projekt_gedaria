@@ -8,19 +8,31 @@ const GUARDIAN_PATH = preload("res://Enemy/E-Test/Guardian.tscn")
 
 const KICK_SFX = preload("res://sfx/kick.wav")
 
+var max_health = 0
+var vlad_damage = 2
+var health_limit = 0
+
 var tossable_player = null
+var throw_timer = null
 
 var is_player_in_air = false
 var has_jumped = false
 
 
+func _ready():
+#	self.set_variable_health(get_parent().find_node("Vladimir").damage)
+	throw_timer = get_tree().create_timer(0.0)
+# ------------------------------------------------------------------------------
+
 func _process(delta):
 	if not is_dead:
-		if Input.is_action_just_pressed("block"):
-			kick()
-#			self.jump()
-#			self.summon_enemies()
-#			self.throw_foot_trap()
+		if is_done_once:
+			if (health <= health_limit and health > health_limit-(2*vlad_damage)):
+				is_done_once = false
+				health_limit -= (max_health*0.3)
+				self.jump()
+				self.summon_enemies()
+				return
 			
 		if is_player_in_air and tossable_player:
 			if tossable_player.is_on_floor():
@@ -29,7 +41,23 @@ func _process(delta):
 				is_player_in_air = false
 		
 		velocity = move_and_slide(velocity)
+		
+	if throw_timer.time_left <= 0.0:
+		throw_timer = get_tree().create_timer(3.75)
+		yield(throw_timer, "timeout")
+		self.throw_foot_trap()
+	
+	if is_dead:
+		$CanvasLayer/BossHPBar.hide()
 # ------------------------------------------------------------------------------
+
+func set_variable_health(vladimir_damage):
+	self.vlad_damage = vladimir_damage
+	self.health = 100 + (5*vladimir_damage)
+	self.max_health = self.health
+	self.health_limit = (max_health)-(max_health*0.3)
+# ------------------------------------------------------------------------------		
+
 
 func move(): # HANDLE MOVEMENT
 	if not is_dead:
@@ -49,12 +77,12 @@ func move(): # HANDLE MOVEMENT
 
 		velocity.x = speed * direction * int(is_moving) * int(not has_jumped)
 # ------------------------------------------------------------------------------
-
 func jump():
-	has_jumped = true
-	var TARGET_POSITION = Vector2(2105, 1060)
+	var TARGET_POSITION = Vector2(1955, 1060)
 	$Tween.interpolate_property(self, "position", self.position, TARGET_POSITION, 0.5, Tween.TRANS_BACK, Tween.EASE_IN)
 	$Tween.start()
+	yield(get_tree().create_timer(0.4), "timeout")
+	has_jumped = true
 # ------------------------------------------------------------------------------
 
 func summon_enemies():
@@ -81,26 +109,30 @@ func summon_enemies():
 
 func hit(dmg):
 	.hit(dmg)
+	yield(get_tree().create_timer(0.75), "timeout")
+	self.state_machine.travel("RUN")
 	
 	if has_jumped:
 		var pile_of_leaves = self.get_parent().find_node("PilesOfLeaves").get_child(0)
 		pile_of_leaves.call_deferred("queue_free")
 		has_jumped = false
+		is_done_once = true
 # ------------------------------------------------------------------------------
 
 func throw_foot_trap():
+	if not has_jumped:
 	# play aniamation
-	$AnimationTree.set("parameters/ATTACK/blend_position", direction)
-	state_machine.travel('ATTACK')
-	$Trap.show()
-	self.is_moving = false
-	
-	if not is_dead:
+		$AnimationTree.set("parameters/ATTACK/blend_position", direction)
+		state_machine.travel('ATTACK')
+		$Trap.show()
+		self.is_moving = false
+		
 		yield(get_tree().create_timer(0.5), "timeout")
-		self.is_moving = true
-		var foot_trap = FOOT_TRAP_PATH.instance()
-		Global.level_root().call_deferred("add_child", foot_trap)
-		foot_trap.global_position = self.position - Vector2(130*direction, -116)
+		if not is_dead:
+			self.is_moving = true
+			var foot_trap = FOOT_TRAP_PATH.instance()
+			Global.level_root().call_deferred("add_child", foot_trap)
+			foot_trap.global_position = self.position - Vector2(130*direction, -116)
 # ------------------------------------------------------------------------------
 
 func kick():
@@ -122,6 +154,7 @@ func _on_TossArea_body_entered(body):
 		tossable_player = body
 		tossable_player.velocity = Vector2(1000*-direction, -2500)
 		tossable_player.is_moving = false
+		tossable_player.is_raking = false
 		
 		if not is_dead:
 			yield(get_tree().create_timer(0.1), "timeout")

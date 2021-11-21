@@ -32,7 +32,6 @@ func _ready():
 	$KillZone.position = Vector2.ZERO
 	$KillZone/CollisionShape2D.shape.extents = Vector2.ZERO
 	
-	
 	for i in range(number_of_levels):
 		var node = Node2D.new()
 		self.add_child(node)

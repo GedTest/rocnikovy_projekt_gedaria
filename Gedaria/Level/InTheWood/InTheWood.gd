@@ -8,7 +8,7 @@ var has_vlad_jumped_across = false
 func _ready():
 	# CALLING THE "BASE FUNTCION" FIRST
 	$Vladimir.has_learned_heavy_attack = false
-	$Vladimir.has_learned_raking = true
+	$Vladimir.has_learned_raking = false
 	$Vladimir/Camera.current = true
 	$Patroller8.state_machine.call_deferred("travel", "STANDING 2")
 	

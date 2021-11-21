@@ -15,7 +15,6 @@ const ATTACK_SFX = preload("res://sfx/praštění dřevěnou holí.wav")
 
 var can_throw = false
 var is_throwing = false
-var is_done_once = true
 var can_jump = true
 var can_move_during_cutscene = true
 var is_immune = true

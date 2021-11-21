@@ -30,6 +30,7 @@ var hit_anim_time = 0.75
 var things_to_save = {}
 
 var is_dead = false
+var is_done_once = true
 var has_player = false
 var can_attack = false
 var is_attacking = false
@@ -102,7 +103,8 @@ func die():
 	is_dead = true
 	self.z_index -= 1
 	
-	state_machine.travel('DEATH')
+	$AnimationTree.active = false
+	$AnimationTree/AnimationPlayer.play("DEATH")
 	
 	if not is_yield_paused:
 		yield(get_tree().create_timer(death_anim_time), "timeout")
@@ -151,6 +153,7 @@ func hit(dmg):
 	is_moving = false
 	is_hitted = true
 	health -= dmg if not is_heavy_attacked else dmg * 2
+	is_heavy_attacked = false
 	if not (health - dmg) < 0 and dmg > 0:
 		state_machine.travel('HIT')
 	if hit_timer.time_left <= 0.0:
@@ -201,9 +204,9 @@ func reset_icon():
 			$Icon.scale = Vector2(0.9, 0.9)
 			$Icon.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		
-		$Tween.interpolate_property($Icon, "scale", Vector2(0.6, 0.6),\
-								Vector2(0.9, 0.9), 0.5,\
-								Tween.TRANS_QUAD, Tween.EASE_OUT)
-		$Tween.interpolate_property($Icon, "modulate", Color(1,1,1,1),\
-								Color(1.0,1.0,1.0,0.0), 1.0,\
-								Tween.TRANS_QUAD, Tween.EASE_OUT, 0.35)
+			$Tween.interpolate_property($Icon, "scale", Vector2(0.6, 0.6),\
+									Vector2(0.9, 0.9), 0.5,\
+									Tween.TRANS_QUAD, Tween.EASE_OUT)
+			$Tween.interpolate_property($Icon, "modulate", Color(1,1,1,1),\
+									Color(1.0,1.0,1.0,0.0), 1.0,\
+									Tween.TRANS_QUAD, Tween.EASE_OUT, 0.35)

@@ -15,7 +15,6 @@ const FALLING_ROCK_PATH = preload("res://Level/CaveDuel/Stone.tscn")
 const BAT_PATH = preload("res://Level/CaveEntrance/Bat.tscn")
 const STALACTITE_PATH = preload("res://Level/CaveEntrance/Stalactite.tscn")
 
-var is_done_once = true
 var can_emit_signal = true
 var is_in_air = false
 var is_vlad_in_quickleaves = false
