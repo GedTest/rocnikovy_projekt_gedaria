@@ -16,16 +16,21 @@ var tossable_player = null
 var throw_timer = null
 
 var is_player_in_air = false
-var has_jumped = false
+var has_jumped = true
+var is_cutscene_finished = false
+var can_throw_foot_traps = false
 
 
 func _ready():
-#	self.set_variable_health(get_parent().find_node("Vladimir").damage)
+	self.set_variable_health(get_parent().find_node("Vladimir").damage)
 	throw_timer = get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------
 
 func _process(delta):
 	if not is_dead:
+		$CanvasLayer/BossHPBar/Label.text = 'Earl Frydrych: ' + str(self.health) 
+		$CanvasLayer/BossHPBar.rect_size.x = 5 * self.health
+		
 		if is_done_once:
 			if (health <= health_limit and health > health_limit-(2*vlad_damage)):
 				is_done_once = false
@@ -42,7 +47,7 @@ func _process(delta):
 		
 		velocity = move_and_slide(velocity)
 		
-	if throw_timer.time_left <= 0.0:
+	if throw_timer.time_left <= 0.0 and is_cutscene_finished and not is_dead:
 		throw_timer = get_tree().create_timer(3.75)
 		yield(throw_timer, "timeout")
 		self.throw_foot_trap()
@@ -74,8 +79,7 @@ func move(): # HANDLE MOVEMENT
 				$Sprite.flip_h = false
 				$HitRay.cast_to.x = FoV
 		
-
-		velocity.x = speed * direction * int(is_moving) * int(not has_jumped)
+		velocity.x = speed * direction * int(is_moving) * int(not has_jumped) * int(is_cutscene_finished)
 # ------------------------------------------------------------------------------
 func jump():
 	var TARGET_POSITION = Vector2(1955, 1060)
@@ -102,7 +106,7 @@ func summon_enemies():
 			enemy.type = Patroller.Type.ERNEST if randi()%3 == 1 else Patroller.Type.ERWIN
 		
 		root.arr_enemy.append(enemy)
-		root.call_deferred("add_child", enemy)
+		root.find_node("Enemies").call_deferred("add_child", enemy)
 	
 	root.can_spawn_pile_of_leaves = true
 # ------------------------------------------------------------------------------
@@ -113,14 +117,16 @@ func hit(dmg):
 	self.state_machine.travel("RUN")
 	
 	if has_jumped:
-		var pile_of_leaves = self.get_parent().find_node("PilesOfLeaves").get_child(0)
-		pile_of_leaves.call_deferred("queue_free")
-		has_jumped = false
-		is_done_once = true
+		var pile_of_leaves = self.get_parent().find_node("PilesOfLeaves")
+		if pile_of_leaves.get_child_count() > 0:
+			pile_of_leaves = pile_of_leaves.get_child(0)
+			pile_of_leaves.call_deferred("queue_free")
+			has_jumped = false
+			is_done_once = true
 # ------------------------------------------------------------------------------
 
 func throw_foot_trap():
-	if not has_jumped:
+	if not has_jumped and can_throw_foot_traps:
 	# play aniamation
 		$AnimationTree.set("parameters/ATTACK/blend_position", direction)
 		state_machine.travel('ATTACK')
@@ -143,6 +149,7 @@ func kick():
 		
 		$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x-250, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN, 0.45)
 		$Tween.start()
+		player.hit(0)
 # ------------------------------------------------------------------------------
 
 func _on_TossArea_body_entered(body):

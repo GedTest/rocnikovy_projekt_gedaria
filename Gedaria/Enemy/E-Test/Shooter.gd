@@ -121,7 +121,7 @@ func shoot():
 							self.find_coordinations()
 						projectile.position = $BulletSpawnPoint.position
 						self.add_child(projectile)
-						AudioManager.play_sfx(SHOT_SFX)
+						AudioManager.play_sfx(SHOT_SFX, 0, 0, -14)
 						
 		if cooldown_timer.time_left <= 0.0:
 			cooldown_timer = get_tree().create_timer(3.65, false)

@@ -36,9 +36,6 @@ func set_drop_down_menu(node, options, curent_option):
 func _on_LangButton_pressed():
 	var drop_down = $SettingsTree/LangDropDown
 	drop_down.visible = not drop_down.visible
-#	$SettingsTree/HBoxContainer2/LangButton.visible = not $SettingsTree/HBoxContainer2/LangButton.visible
-#	$SettingsTree.hide()
-#	$Languages.show()
 # ------------------------------------------------------------------------------
 
 func _on_lang_btn_pressed():
@@ -95,7 +92,7 @@ func hide_all():
 	$SettingsTree.hide()
 # ------------------------------------------------------------------------------
 
-func _on_Back_pressed():
+func _on_Close_pressed():
 	AudioManager.play_sfx(MENU_BTN_SFX)
 	$AudioSettings.hide()
 	$VideoSettings.hide()
@@ -118,8 +115,10 @@ func _on_VSyncCheckBox_toggled(button_pressed):
 func _on_LangDropDown_item_selected(id):
 	var btn = $SettingsTree/lang_btn 
 	btn.language = LANGUAGES[id]
-	btn.connect("pressed", btn, "_on_lang_btn_pressed")
+	if not btn.is_connected("pressed", btn, "_on_lang_btn_pressed"):
+		btn.connect("pressed", btn, "_on_lang_btn_pressed")
 	btn.emit_signal("pressed")
+	Languages.translate($KeyBinding.arr_texts, Global.prefered_language)
 # ------------------------------------------------------------------------------
 
 func _on_VSyncCheckBox_pressed():

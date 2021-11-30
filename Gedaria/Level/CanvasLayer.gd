@@ -11,7 +11,6 @@ onready var arr_texts = {
 	"options":$SettingsButton,
 	"audio":$Settings/SettingsTree/AudioButton,
 	"language":$Settings/SettingsTree/LangButton,
-	"back":$Settings/AudioSettings/Back,
 	"close":$Settings/SettingsTree/Close,
 	"master_volume":$Settings/AudioSettings/Master/MasterPlayerLabel,
 	"music_volume":$Settings/AudioSettings/Music/MusicPlayerLabel,
@@ -25,8 +24,8 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _process(delta):
-	$Settings/Languages/Back.text = $Settings/AudioSettings/Back.text
-	$Settings/VideoSettings/Back.text = $Settings/AudioSettings/Back.text
+	$Settings/AudioSettings/Close.text = $Settings/SettingsTree/Close.text
+	$Settings/VideoSettings/Close.text = $Settings/AudioSettings/Close.text
 # ------------------------------------------------------------------------------
 
 func _on_SaveButton_pressed(): # Show save slots and save game

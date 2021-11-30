@@ -114,11 +114,11 @@ func _process(delta):
 			$AnimationPlayer.play("ELEVATOR_UP")
 			$RopeArea.call_deferred("queue_free")
 			
-	if $PillarLeft.position.y == 6890:
+	if $PillarLeft/Top.position.y == -915:
 		if $PillarLeafolders.get_child_count() == 0:
 			$AnimationPlayer.play("PILLAR_MIDDLE_COLLAPSIN")
 	
-	if $PillarLeft.position.y == 7120:
+	if $PillarLeft/Top.position.y == -315:
 		if $BreakableFloors/PillarBreakableFloors.get_child_count() == 0:
 			$AnimationPlayer.play("PILLARS_COLLAPSING")
 	

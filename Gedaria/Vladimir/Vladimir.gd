@@ -32,7 +32,7 @@ var heavy_attack_increment = 4
 var next_pos_ID = ""
 
 var direction = 1
-var attack_direction = 1
+var attack_direction = -1
 var velocity = Vector2(0, 0)
 var mouse_position = Vector2(0, 0)
 var jumped_height = Vector2(0, 0)
@@ -54,6 +54,7 @@ var is_blowing = false
 var was_blowing = false
 var is_yield_paused = false
 var has_slingshot = false
+var has_rake = true
 
 var has_learned_attack = true
 var has_learned_heavy_attack = true
@@ -137,26 +138,35 @@ func jump(delta): # JUMP
 
 func move(): # MOVE
 	if Input.is_action_pressed("right") and (not is_raking or is_blowing):
-		direction = 1
 		attack_direction = 1
+		direction = 1
+		$Rake.flip_h = false
 		$Sprite.flip_h = false
 		$WeaponHitbox.position.x = 90
 	elif Input.is_action_pressed("left") and (not is_raking or is_blowing):
 		direction = -1
 		attack_direction = -1
+		$Rake.flip_h = true
 		$Sprite.flip_h = true
 		$WeaponHitbox.position.x = -90
 	else:
 		direction = 0
 	
+	if state_machine.get_current_node() == "RUN" or\
+		state_machine.get_current_node() == "IDLE":
+		if has_rake:
+			$Rake.visible = true if not is_blowing else false
+			$LeafBlower.visible = true if is_blowing else false
+	
 	# choose right animation based on movement
 	velocity.x = direction * (speed*modify_speed) * int(can_move) # * delta
 	var animation = "RUN" if velocity.x != 0  else "IDLE"
+	$AnimationTree.set("parameters/"+animation+"/blend_position", attack_direction)
 	
 	# walking sound effect
-	if can_jump:
+	if can_jump and is_moving:
 		if velocity.x != 0 and not AudioManager.is_playing_sfx(WALK_SFX):
-			AudioManager.play_sfx(WALK_SFX, 1, 0, -23)
+			AudioManager.play_sfx(WALK_SFX, 1, 0, -25)
 	if animation == "IDLE" or not can_jump:
 		AudioManager.stop_sfx(WALK_SFX)
 	
@@ -220,8 +230,10 @@ func heavy_attack(delta): # HEAVY ATTACK, slow but high dmg
 						heavy_attack_timer = get_tree().create_timer(0.6)
 						if not is_yield_paused:
 							yield(heavy_attack_timer, "timeout")
+							is_moving = true
 
 							if breakable_stone:
+								is_moving = true
 								breakable_stone.hit()
 								heavy_attack_counter += 1
 								breakable_stone = null
@@ -259,6 +271,7 @@ func blowing(delta):
 			var deg = rad2deg(center.angle_to(mouse_position))
 			wind.global_position = self.position - (dist/10)
 			wind.rotation_degrees = deg+30
+			$LeafBlower.rotation_degrees = deg+200
 			for collision in wind.get_children():
 				if collision is CollisionShape2D:
 					collision.disabled = not collision.disabled
@@ -464,6 +477,7 @@ func _on_Ceiling_body_exited(body):
 func stop_moving_during_cutsene(time=0.0):
 	self.is_moving = false
 	self.velocity = Vector2.ZERO
+	$AnimationTree.set("parameters/IDLE/blend_position", attack_direction)
 	self.state_machine.travel("IDLE")
 	yield(get_tree().create_timer(time, false), "timeout")
 	self.is_moving = true

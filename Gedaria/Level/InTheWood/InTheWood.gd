@@ -57,6 +57,7 @@ func _process(delta):
 			
 	
 	if has_vlad_jumped_across:
+		$BOSS_EARL.has_jumped = false
 		$BOSS_EARL.move()
 		
 		if $BOSS_EARL.position.x <= 30580:
@@ -110,11 +111,10 @@ func _on_Tutorial4_entered(body):
 func _on_KickDownArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		has_vlad_jumped_across = true
+		$BOSS_EARL.has_jumped = false
+		$BOSS_EARL.is_cutscene_finished = true
 		body.stop_moving_during_cutsene(1.75)
 		$KickDownArea/CollisionShape2D.set_deferred("disabled", true)
-		
-#		yield(get_tree().create_timer(2.0, false), "timeout")
-#		SaveLoad.delete_actor($BOSS_EARL)
 
 
 

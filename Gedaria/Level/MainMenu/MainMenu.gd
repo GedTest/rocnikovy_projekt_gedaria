@@ -54,8 +54,9 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _process(delta):
-	$Settings/AudioSettings/Back.text = $Back.text
-	$Settings/Languages/Back.text = $Back.text
+	$Settings/AudioSettings/Close.text = $Settings/SettingsTree/Close.text
+	$Settings/VideoSettings/Close.text = $Settings/SettingsTree/Close.text
+	$Slots/Close.text = $Settings/SettingsTree/Close.text
 	$Settings/KeyBinding/Close.text = $Settings/SettingsTree/Close.text
 # ------------------------------------------------------------------------------
 

@@ -5,6 +5,7 @@ extends Enemy
 const EXPLOSIVE_LEAF_HOLDERS_PATH = preload("res://Level/Fortress/ExplosiveLeafHolder.tscn")
 const QUICKLEAVES_PATH = preload("res://Level/QuickLeaves.tscn")
 const WIND_PATH = preload("res://Vladimir/WindBlowerWind.tscn")
+const PILE_OF_LEAVES_PATH = preload("res://Enemy/BOSS_ONIHRO/OnihroPileOfLeaves.tscn")
 
 const BLOWING_POSITION = Vector2(2650, 880)
 const STARTING_POSITION = Vector2(3220, 850)
@@ -39,6 +40,9 @@ func _ready():
 
 func _process(delta):
 	if not is_dead:
+		$CanvasLayer/BossHPBar/Label.text = 'BOSS_IN_CAVE: ' + str(self.health) 
+		$CanvasLayer/BossHPBar/Health.rect_size.x = 5 * self.health
+		
 		if is_done_once:
 			if (health <= health_limit and health > health_limit-(2*vlad_damage)):
 				is_done_once = false
@@ -52,8 +56,8 @@ func _process(delta):
 		if combo_counter == 0 and can:
 			self.combo()
 
-		if Input.is_action_just_pressed("block"):
-			can = true
+#		if Input.is_action_just_pressed("block"):
+#			can = true
 
 		if is_hitted_by_wind:
 			self.on_hitted_by_wind()
@@ -106,6 +110,11 @@ func die():
 								1.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	$Tween.start()
 	.die()
+	
+	yield(get_tree().create_timer(2.0), "timeout")
+	$Sprite.hide()
+	var pile_of_leaves = PILE_OF_LEAVES_PATH.instance()
+	self.call_deferred("add_child", pile_of_leaves)
 
 func smash():
 	if not is_dead and not has_spawned_quickleaves:
