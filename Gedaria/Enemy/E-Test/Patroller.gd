@@ -145,7 +145,8 @@ func move(var from, var to): # MOVE
 						yield(turn_around_timer, "timeout")
 						sprite.flip_h = not sprite.flip_h 
 						$HitRay.cast_to.x = -$HitRay.cast_to.x 
-			
+		
+#		print("Patroller: ",velocity," dir ",direction," is_moving",is_moving)
 		velocity.x = speed * direction * int(is_moving)
 # ------------------------------------------------------------------------------
 

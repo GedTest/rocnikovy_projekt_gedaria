@@ -112,7 +112,7 @@ func move():
 					if not is_hitted:
 						is_hitted = false
 						state_machine.travel('RUN')
-		
+#		print("Guardian: ",velocity," dir ",direction," is_moving",is_moving)
 		velocity.x = speed * direction * int(can_move_from_position) * int(is_moving)
 # ------------------------------------------------------------------------------
 

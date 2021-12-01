@@ -233,11 +233,11 @@ func _on_CaughtVladimirArea_body_entered(body):
 # ------------------------------------------------------------------------------
 
 func play_cutscene():
-	$CutsceneEnemies.play(1200, 1050, $Vladimir)
-	
 	var SPAWN_POSITION = Vector2(2200, 1570)
 	$CutsceneEnemies/Guardian.position = SPAWN_POSITION
 	$CutsceneEnemies/Patroller.position = SPAWN_POSITION
+	
+	$CutsceneEnemies.play(1200, 1050, $Vladimir)
 # ------------------------------------------------------------------------------
 
 func _on_PebbleHitArea_body_entered(body):
