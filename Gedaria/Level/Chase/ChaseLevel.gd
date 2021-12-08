@@ -41,4 +41,4 @@ func _on_END_body_entered(body):
 
 
 func _on_END2_body_entered(body):
-	AudioManager.play_sfx(HAY_SFX)
+	AudioManager.play_sfx(HAY_SFX, 1, 0, -12)

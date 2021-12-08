@@ -4,12 +4,13 @@ extends Level
 func _ready():
 	arr_patrollers = [
 		$Patroller,$Patroller2,$Patroller3,$Patroller4,
+		$Patroller5,$Patroller6,$Patroller7
 	]
 	arr_guardians = [
-		$Guardian,
+		$Guardian,$Guardian2
 	]
 	arr_shooters = [
-		$Shooter,
+		$Shooter,$Shooter2,$Shooter3,$Shooter4,
 	]
 # ------------------------------------------------------------------------------
 

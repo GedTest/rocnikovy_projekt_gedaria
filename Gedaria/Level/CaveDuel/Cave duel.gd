@@ -16,10 +16,11 @@ onready var spawn_positions = [$Position1.position,$Position2.position,
 
 
 func _ready():
+	Global.can_be_paused = false
 	connect("crashed_in_pile", $BOSS_IN_CAVE, "on_crashed_in_pile")
 	
 	$Vladimir/Camera.current = false
-#	Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 
 	get_tree().set_pause(true)
 	SaveLoad.load_map()

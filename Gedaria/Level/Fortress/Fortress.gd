@@ -31,6 +31,7 @@ func _ready():
 	Global.set_player_position_at_start($Vladimir, $Level_start)
 
 	get_tree().set_pause(true)
+	Global.can_be_paused = false
 	SaveLoad.load_map()
 	
 	

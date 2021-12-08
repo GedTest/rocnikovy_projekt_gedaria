@@ -9,6 +9,7 @@ Base enemy class
 var GRAVITY = Vector2(0, 98)
 const WARNING_ICON = 12
 const HIDDEN_ICON = 13
+const GENERAL_ATTACK_SFX = preload("res://sfx/hit_by_sword.wav")
 
 var direction = 1
 var velocity = Vector2(0, 0)
@@ -125,11 +126,12 @@ func save():
 	return things_to_save
 # ------------------------------------------------------------------------------
 
-func attack(attack_time, cooldown_time):
+func attack(attack_time, cooldown_time, sound=GENERAL_ATTACK_SFX, sound_db=0):
 	if not is_dead and not is_attacking:
 		is_moving = false
 		$AnimationTree.set("parameters/ATTACK/blend_position", direction)
 		state_machine.travel('ATTACK')
+		AudioManager.play_sfx(sound, 1, 0.7, sound_db)
 		
 		if attack_timer.time_left <= 0.0:
 			attack_timer = get_tree().create_timer(cooldown_time, false)

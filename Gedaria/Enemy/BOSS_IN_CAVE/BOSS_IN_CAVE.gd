@@ -62,8 +62,8 @@ func _process(delta):
 		
 		# Player has min 6 damage:
 		# (138HP)
-		if health <= (max_health-12) and not is_in_air:
-			self.lunge()
+#		if health <= (max_health-12) and not is_in_air:
+#			self.lunge()
 		
 		if is_first_phase:
 			# (176HP - 150HP)
@@ -230,12 +230,12 @@ func fly(x, y):
 	
 	if not is_in_air and can_fly:
 		if tween_finished:
+			can_fly = false
+			is_in_air = true
+			tween_finished = false
 			$event_timer.stop()
 			$HitRay.enabled = false
 			$HitRay2.enabled = false
-			can_fly = false
-			tween_finished = false
-			is_in_air = true
 			is_blocking = true
 			GRAVITY.y = 0
 			
@@ -305,7 +305,7 @@ func _on_Tween_tween_completed(object, key):
 		tween_timer = get_tree().create_timer(2.5, false)
 		if not is_yield_paused:
 			yield(tween_timer, "timeout")
-			is_moving = true
+#			is_moving = true
 			is_in_air = false
 			tween_finished = true
 			
@@ -360,7 +360,8 @@ func turn_around(): # LOOK BACK AND FORTH
 			turn_around_timer = get_tree().create_timer(0.75, false)
 			if not is_yield_paused:
 				yield(turn_around_timer, "timeout")
-				is_moving = true
+				if was_in_air:
+					is_moving = true
 				
 				if not has_player and not is_lunging:
 					$Sprite.flip_h = not $Sprite.flip_h

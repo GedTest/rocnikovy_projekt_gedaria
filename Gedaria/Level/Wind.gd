@@ -44,7 +44,9 @@ func _on_Wind_body_entered(body):
 			var root = Global.level_root()
 			var direction = root.find_node("Vladimir").position.direction_to(body.position)
 			direction = 1 if direction.x > 0 else -1
-			body.jump_back(body, 100, 0.3, direction)
+			var force = -5 if body.name == "BOSS_EARL" else 100 
+			body.jump_back(body, force, 0.3, direction)
+		
 	
 	if can_blow_player and body.get_collision_layer_bit(1):
 		body.jump_strength *= impulse.y

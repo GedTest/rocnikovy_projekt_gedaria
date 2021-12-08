@@ -26,7 +26,8 @@ func _process(delta):
 		OS.window_fullscreen = not OS.window_fullscreen
 	
 	if Input.is_action_just_pressed("pause") and Global.is_pausable:
-		self.pause()
+		if Global.can_be_paused:
+			self.pause()
 # ------------------------------------------------------------------------------
 
 func _input(event):

@@ -16,7 +16,8 @@ export(String, "throwing",
 				"blocking",
 				"crouch",
 				"jump",
-				"quick_save"
+				"quick_save",
+				"blowing"
 )var text
 export (bool) var requires_input = true
 export (bool) var is_interactable = true 
@@ -35,6 +36,7 @@ var has_two_inputs = false
 var can_carousel = false
 var part = 0
 
+var carousel_texts = ["raking", "heavy_attack", "blowing"]
 var arr_texts = {}
 var timer = null
 
@@ -49,7 +51,7 @@ func _process(delta):
 	if can_interact and (Input.is_action_just_pressed("interact") or not requires_input):
 		if requires_input:
 			$InteractIcon.hide()
-		if self.text == "raking" or self.text == "heavy_attack":
+		if self.text in carousel_texts:
 			can_carousel = true
 		self.show_text()
 		
@@ -59,7 +61,7 @@ func _process(delta):
 
 func _on_Area_body_entered(body):
 	if body.get_collision_layer_bit(1) and is_interactable:
-		if self.text == "raking" or self.text == "heavy_attack":
+		if self.text in carousel_texts:
 			part = 1
 		
 		can_interact = true
@@ -126,6 +128,11 @@ func show_text():
 			"frame":11,"key_pos":Vector2(-210, -100),
 			"key_text":str(keys["rake"])+" + "+str(keys["right"]),"key_font":76
 		},
+		"blowing":{
+			"frame":0,"key_pos":Vector2(-224, -60),"key_font":70,
+			"label_pos":Vector2(-161.953, -117.328),"label_font":44,
+			"key_text":str(keys["rake"])+" + "+str(keys["heavy_attack"])
+		},
 		"quick_save":{
 			"frame":0,"key_pos":Vector2(0, 0),"icon":false,"icon_frame":0,
 			"key_text":"","key_font":26,
@@ -146,7 +153,7 @@ func show_text():
 		$Sprite/Icon.visible = values[self.text]["icon"]
 		$Sprite/Icon.frame = values[self.text]["icon_frame"]
 	
-	if self.text == "heavy_attack":
+	if self.text == "heavy_attack" or self.text == "blowing":
 		$Sprite/Label2.show()
 		$Sprite/Label2.rect_position = values[self.text]["label_pos"]
 		$Sprite/Label2.get_font("font").size = values[self.text]["label_font"]
@@ -183,6 +190,8 @@ func wrap_text(key_text, label):
 				var pos = Vector2(-87, 25) if self.text == "heavy_attack" else Vector2(0, 0)
 				if self.text == "attack":
 					pos = Vector2(-87, 0)
+				elif self.text == "blowing":
+					pos = Vector2(87, 0)
 				$Sprite/Mouse.position = pos
 		
 		if button_counter == 2:
@@ -264,7 +273,32 @@ func carousel():
 			$InteractIcon.show()
 			$Sprite/Label.show()
 			part = 0
-
+			
+	elif self.text == "blowing":
+		var keys = KeyBinding.get_current_keys(true)
+		if part == 1:
+			$Sprite.frame = 0
+			$InteractIcon.show()
+			$Sprite/Mouse.visible = true if "BUTTON_" in keys["heavy_attack"] else false
+			$Sprite/Label.show()
+			$Sprite/Label2.text = ""
+			
+		elif part == 2:
+			$Sprite.frame = 14
+			$Sprite/Label.hide()
+			$Sprite/Mouse.hide()
+			$Sprite/Mouse2.hide()
+			$InteractIcon.show()
+			
+		elif part == 3:
+			$Sprite.frame = 10
+			arr_texts = {"limited_by":$Sprite/Label2}
+			Languages.translate(arr_texts, Global.prefered_language)
+			$Sprite/Mouse.hide()
+			$Sprite/Mouse2.hide()
+			$InteractIcon.show()
+			part = 0
+			
 	if timer.time_left <= 0.0:
 		timer = get_tree().create_timer(1.15)
 		yield(timer, "timeout")

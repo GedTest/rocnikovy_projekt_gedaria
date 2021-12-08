@@ -24,7 +24,9 @@ var played_time = 0 # in seconds
 func _on_Sign_body_entered(body):
 	# collision layer 1 = Player
 	if body.get_collision_layer_bit(1):
-		if Global.level_root().filename != "res://Level/MerchantSquirrel.tscn":
+		if Global.level_root().filename != "res://Level/MerchantSquirrel.tscn"\
+		 and Global.level_root().filename != "res://Level/Prologue/KidnapLevel.tscn":
+			print(Global.level_root().filename)
 			self.set_collectibles_values()
 		Fullscreen.find_node("PauseMenu").hide()
 		Fullscreen.show_loading_screen()

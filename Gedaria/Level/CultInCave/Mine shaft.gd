@@ -71,7 +71,14 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 			Global.is_done_once = false
 			$Vladimir.position = Vector2(21900, 8195)
 			
+			
 		$AnimationPlayer.play("ELEVATOR_UP_HALF")
+		$Vladimir.is_moving = false
+		yield(get_tree().create_timer(1.0), "timeout")
+		$BOSS_IN_CAVE.is_moving = false
+		$BOSS_IN_CAVE.state_machine.travel("STANDING")
+		$Vladimir.is_moving = true
+		$BOSS_IN_CAVE/CollisionShape2D.set_deferred("disabled" , false)
 		$BOSS_IN_CAVE.set_variable_health($Vladimir.damage)
 		connect("on_vladimir_escaped", $Vladimir/Cage, "on_vladimir_escaped")
 			
@@ -287,9 +294,19 @@ func _on_Area2D2_body_entered(body):
 
 func _on_LeafBlowerEnable_body_entered(body):
 	if body.get_collision_layer_bit(1):
+		$CanvasLayer/UserInterface.update_health(body.max_health-body.health, \
+											"plus", body.health, body.max_health)
+		body.health = body.max_health
 		body.has_learned_leaf_blower = true
 # ------------------------------------------------------------------------------
 
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
 	if $BOSS_IN_CAVE.is_dead:
 		$AnimationPlayer.play("BARS_UP")
+# ------------------------------------------------------------------------------
+
+func _on_RunBossArea_body_entered(body):
+	if body.get_collision_layer_bit(1) and Global.is_boss_on_map:
+		$BOSS_IN_CAVE.is_moving = true
+		$RunBossArea/CollisionShape2D.set_deferred("disabled", true)
+		$AnimationPlayer.play("RUN_BOSS")

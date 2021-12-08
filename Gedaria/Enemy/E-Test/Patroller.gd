@@ -9,6 +9,8 @@ medium health and damage
 
 const WALK1_SFX = preload("res://sfx/krok vojáka 1.wav")
 const WALK2_SFX = preload("res://sfx/krok vojáka 2.wav")
+const ATTACK1_SFX = preload("res://sfx/hit_by_sword.wav")
+const ATTACK2_SFX = preload("res://sfx/sword_hit.wav")
 
 enum Type {
 	ERNEST,
@@ -44,7 +46,9 @@ func _physics_process(delta):
 				cooldown_timer = get_tree().create_timer(2.6, false)
 				if not is_yield_paused:
 					yield(cooldown_timer, "timeout")
-					.attack(1.0, 0.45)
+					randomize()
+					var sound = ATTACK2_SFX if randi()%2 == 0 else ATTACK1_SFX
+					.attack(1.0, 0.45, sound, -6)
 				
 		if cooldown_roll_timer.time_left <= 0.0 and not can_attack and is_able_to_roll:
 			if not is_yield_paused:
@@ -145,8 +149,7 @@ func move(var from, var to): # MOVE
 						yield(turn_around_timer, "timeout")
 						sprite.flip_h = not sprite.flip_h 
 						$HitRay.cast_to.x = -$HitRay.cast_to.x 
-		
-#		print("Patroller: ",velocity," dir ",direction," is_moving",is_moving)
+			
 		velocity.x = speed * direction * int(is_moving)
 # ------------------------------------------------------------------------------
 

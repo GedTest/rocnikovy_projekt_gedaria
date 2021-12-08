@@ -112,7 +112,7 @@ func move():
 					if not is_hitted:
 						is_hitted = false
 						state_machine.travel('RUN')
-#		print("Guardian: ",velocity," dir ",direction," is_moving",is_moving)
+		
 		velocity.x = speed * direction * int(can_move_from_position) * int(is_moving)
 # ------------------------------------------------------------------------------
 
@@ -164,9 +164,9 @@ func hit(dmg):
 		is_moving = true
 # ------------------------------------------------------------------------------
 
-func attack(attack_time, cooldown_time):
+func attack(attack_time, cooldown_time, sound=GENERAL_ATTACK_SFX, sound_db=0):
 	$AnimationTree.set("parameters/STANDING/blend_position", is_blocking)
-	.attack(attack_time, cooldown_time)
+	.attack(attack_time, cooldown_time, sound, sound_db)
 # ------------------------------------------------------------------------------
 
 func turn(direction):

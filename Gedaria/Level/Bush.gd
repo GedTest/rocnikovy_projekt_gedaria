@@ -31,14 +31,13 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	# collision_layer_bit 1 = Player
 	if body.get_collision_layer_bit(1):
-		AudioManager.play_sfx(BUSH_SFX)
+		AudioManager.play_sfx(BUSH_SFX, 1, 0, -10)
 		player = body
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_exited(body):
 	# collision_layer_bit 1 = Player
 	if body.get_collision_layer_bit(1):
-#		AudioManager.play_sfx(BUSH_SFX)
 		player = null
 		var is_crouching_in_another_bush = false
 		

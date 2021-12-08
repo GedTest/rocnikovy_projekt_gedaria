@@ -9,7 +9,7 @@ export (float) var speed = 0.65
 
 func _on_Mud_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		AudioManager.play_sfx(MUD_SFX)
+		AudioManager.play_sfx(MUD_SFX, 1, 0, -10)
 		body.jump_strength *= force
 		body.modify_speed *= speed
 # ------------------------------------------------------------------------------

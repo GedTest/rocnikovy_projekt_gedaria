@@ -141,15 +141,17 @@ func throw_foot_trap():
 			foot_trap.global_position = self.position - Vector2(130*direction, -116)
 # ------------------------------------------------------------------------------
 
-func kick():
+func kick(play_animation_only=false):
 	# KICK PLAYER BACK SO BOSS CAN ATTACK
 	if self.has_player:
 		state_machine.travel('KICK')
 		AudioManager.play_sfx(KICK_SFX, 0, 0.35)
+		player.hit(0)
 		
+		if play_animation_only:
+			return
 		$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x-250, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN, 0.45)
 		$Tween.start()
-		player.hit(0)
 # ------------------------------------------------------------------------------
 
 func _on_TossArea_body_entered(body):
@@ -166,6 +168,11 @@ func _on_TossArea_body_entered(body):
 		if not is_dead:
 			yield(get_tree().create_timer(0.1), "timeout")
 			is_player_in_air = true
+			if is_instance_valid(tossable_player.wind):
+				tossable_player.wind.call_deferred("queue_free")
+			tossable_player.is_aiming = false
+			tossable_player.is_blowing = false
+			
 		if not is_dead:
 			yield(get_tree().create_timer(0.5), "timeout")
 			self.is_moving = true

@@ -27,6 +27,7 @@ var latest_slot = -1
 
 
 func _ready():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 0)
 	get_tree().paused = false
 	
 	yield(get_tree().create_timer(0.1), "timeout")

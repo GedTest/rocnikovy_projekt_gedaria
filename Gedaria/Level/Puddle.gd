@@ -8,7 +8,7 @@ export (float) var force = 2
 
 func _on_PuddleMud_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		AudioManager.play_sfx(PUDDLE_SFX)
+		AudioManager.play_sfx(PUDDLE_SFX, 1, 0, -10)
 		body.modify_speed *= force
 # ------------------------------------------------------------------------------
 

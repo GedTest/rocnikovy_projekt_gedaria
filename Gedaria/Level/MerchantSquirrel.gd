@@ -40,6 +40,7 @@ onready var arr_buttons = [
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().set_pause(true)
+	Global.can_be_paused = false
 	SaveLoad.load_map()
 	
 	var squirrel = $Tree/Squirrel

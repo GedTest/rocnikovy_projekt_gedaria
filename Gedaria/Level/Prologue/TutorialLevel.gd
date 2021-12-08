@@ -23,6 +23,7 @@ onready var spawn_positions = [
 
 
 func _ready():
+	$Vladimir.has_rake = false
 	Fullscreen.hide_elements()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Vladimir.damage = 1
@@ -64,6 +65,7 @@ func _process(delta):
 			$InteractTutorial.hide()
 			$Rake.call_deferred("queue_free")
 			$Vladimir/Sprite.show()
+			$Vladimir.has_rake = true
 			$Vladimir/AnimationTree.active = true
 			$Vladimir.state_machine = $Vladimir/AnimationTree.get("parameters/playback")
 			$Vladimir/AnimationTree2.queue_free()

@@ -20,11 +20,12 @@ onready var leaf_holders = $LeafHolders.get_children()
 
 
 func _ready():
-	#Global.set_player_position_at_start($Vladimir, $Level_start)
+#	Global.set_player_position_at_start($Vladimir, $Level_start)
 	if Global.level_root().filename != "res://Level/InTheWood/In the wood.tscn":
 		Global.is_first_entrance(self.filename)
 		
 	get_tree().set_pause(true)
+	Global.can_be_paused = true
 	SaveLoad.load_map()
 	Fullscreen.hide_elements()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

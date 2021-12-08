@@ -2,6 +2,8 @@ class_name Acorn, "res://UI/zalud.png"
 extends Sprite
 
 
+const REWARD_SFX = preload("res://sfx/acorn.wav")
+
 var offset_y = 35
 
 
@@ -24,7 +26,7 @@ func set_effect():
 
 func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		# body = Vladimir
+		AudioManager.play_sfx(REWARD_SFX, 1, 0, -10)
 		body.acorn_counter += 1
 		$effect.start()
 		$Area2D/CollisionShape2D.shape = null

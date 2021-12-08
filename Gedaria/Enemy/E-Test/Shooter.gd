@@ -11,7 +11,7 @@ enemy with highest damage
 const PROJECTILE_PATH = preload("res://Enemy/E-Test/Projectile.tscn")
 const AIMING_BERNARD = "res://Enemy/E-Test/BernardLookingDownward.png"
 const NORMAL_BERNARD = "res://Enemy/E-Test/Bernadr.png"
-const SHOT_SFX = preload("res://Enemy/E-Test/audio/musket.wav")
+const SHOT_SFX = preload("res://sfx/musket.wav")
 
 export(bool) var can_shoot_in_sector = false
 
