@@ -29,6 +29,7 @@ func _on_HitArea_body_entered(body):
 		if not arr_enemy.empty():
 			var bees = BeesPath.instance()
 			self.call_deferred("add_child", bees)
+			
 		
 		elif arr_enemy.empty():
 			var pebbleOnGround = PebbleOnGroundPath.instance()

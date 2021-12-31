@@ -7,6 +7,8 @@ medium health and damage
 """
 
 
+const ATTACK1_SFX = preload("res://sfx/hit_by_sword.wav")
+const ATTACK2_SFX = preload("res://sfx/sword_hit.wav")
 
 enum Type {
 	ERNEST,
@@ -42,7 +44,9 @@ func _physics_process(delta):
 				cooldown_timer = get_tree().create_timer(2.6, false)
 				if not is_yield_paused:
 					yield(cooldown_timer, "timeout")
-					.attack(1.0, 0.45)
+					randomize()
+					var sound = ATTACK2_SFX if randi()%2 == 0 else ATTACK1_SFX
+					.attack(1.0, 0.45, sound, -10)
 				
 		if cooldown_roll_timer.time_left <= 0.0 and not can_attack and is_able_to_roll:
 			if not is_yield_paused:
@@ -87,12 +91,14 @@ func move(var from, var to): # MOVE
 				direction = -1
 				sprite.flip_h = true
 				$HitRay.cast_to.x = -FoV
-				$WallDetection.position.x = -65
+				if find_node("WallDetection"):
+					$WallDetection.position.x = -65
 			elif position.x < from:
 				direction = 1
 				sprite.flip_h = false
 				$HitRay.cast_to.x = FoV
-				$WallDetection.position.x = 65
+				if find_node("WallDetection"):
+					$WallDetection.position.x = 65
 				
 			# LOOK AROUND FOR PLAYER
 			if turn_around_timer.time_left <= 0.0 and not has_player:
@@ -125,7 +131,8 @@ func move(var from, var to): # MOVE
 					direction = 1
 					sprite.flip_h = false
 					$HitRay.cast_to.x = FoV
-					$WallDetection.position.x = 65
+					if find_node("WallDetection"):
+						$WallDetection.position.x = 65
 			
 			# MOVE TOWARDS PLAYER (LEFT)
 			elif player.position.x >= position.x-FoV and player.position.x < position.x:
@@ -133,7 +140,8 @@ func move(var from, var to): # MOVE
 					direction = -1
 					sprite.flip_h = true
 					$HitRay.cast_to.x = -FoV
-					$WallDetection.position.x = -65
+					if find_node("WallDetection"):
+						$WallDetection.position.x = -65
 					
 			# IF RUNNING FOR TOO MUCH LONG
 			if position.x < from or position.x > to:
@@ -154,7 +162,8 @@ func turn_around():
 		sprite.flip_h = not sprite.flip_h
 		is_moving = false
 		$HitRay.cast_to.x = -$HitRay.cast_to.x
-		$WallDetection.position.x *= -1
+		if find_node("WallDetection"):
+			$WallDetection.position.x *= -1
 		
 		if turn_around_timer.time_left <= 0.0:
 			turn_around_timer = get_tree().create_timer(0.75, false)
@@ -166,8 +175,13 @@ func turn_around():
 					# LOOK FORWARD
 					sprite.flip_h = not sprite.flip_h
 					$HitRay.cast_to.x = -$HitRay.cast_to.x
-					$WallDetection.position.x *= -1
+					if find_node("WallDetection"):
+						$WallDetection.position.x *= -1
 				state_machine.travel('run')
+# ------------------------------------------------------------------------------
+
+func hit(dmg, sound=""):
+	.hit(dmg, hit_sfx[randi()%9])
 # ------------------------------------------------------------------------------
 
 func set_enemy():

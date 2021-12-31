@@ -9,7 +9,8 @@ export(String, "res://Level/InTheWood/In the wood.tscn",
 			   "res://Level/CultInCave/Mine shaft.tscn",
 			   "res://Level/CaveDuel/Cave duel.tscn",
 			   "res://Level/ForestClearing/Forest clearing.tscn",
-			   "res://Level/Telpenor town/Telpenor town.tscn"
+			   "res://Level/Telpenor town/Telpenor town.tscn",
+			   "res://Level/Fortress/Fortress.tscn"
 ) var scene
 
 var level_acorns = 0
@@ -24,15 +25,20 @@ var played_time = 0 # in seconds
 func _on_Sign_body_entered(body):
 	# collision layer 1 = Player
 	if body.get_collision_layer_bit(1):
-		if Global.level_root().filename != "res://Level/MerchantSquirrel.tscn":
+		if Global.level_root().filename != "res://Level/MerchantSquirrel.tscn"\
+		 and Global.level_root().filename != "res://Level/Prologue/KidnapLevel.tscn":
 			self.set_collectibles_values()
+		Fullscreen.is_sign_entered = true
 		Fullscreen.find_node("PauseMenu").hide()
 		Fullscreen.show_loading_screen()
 		body.state_machine.travel("IDLE")
 		body.is_moving = false
+		body.velocity = Vector2.ZERO
+		body.find_node("Rake").hide()
 		Global.stop_enemy_timers()
 			
 		yield(get_tree().create_timer(1.0), "timeout")
+		Fullscreen.is_sign_entered = false
 		SaveLoad.save_to_file(4)
 		Global.is_pausable = true
 		yield(get_tree().create_timer(2.5), "timeout")

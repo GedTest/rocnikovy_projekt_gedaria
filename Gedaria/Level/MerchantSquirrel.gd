@@ -1,6 +1,8 @@
 extends Node2D
 
-const MENU_BTN_SFX = preload("res://sfx/klik_do_menu_i_z_menu.wav")
+const INTERACTION_SFX = preload("res://sfx/interaction.wav")
+const REWARD_SFX = preload("res://sfx/reward.wav")
+
 const HEALTH_LIMIT = 20
 const DAMAGE_LIMIT = 10
 const SPEED_LIMIT = 25 # 25%
@@ -29,7 +31,7 @@ onready var arr_texts = {
 	"damage:":$CanvasLayer/AttackButton,
 	"speed":$CanvasLayer/SpeedButton,
 	"statiscitcs":$Statistics/Label,
-	"timer":$Statistics/TimeLabel,
+	"time":$Statistics/TimeLabel,
 	}
 onready var arr_buttons = [
 	$CanvasLayer/HealthButton,$CanvasLayer/AttackButton,
@@ -40,6 +42,7 @@ onready var arr_buttons = [
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().set_pause(true)
+	Global.can_be_paused = false
 	SaveLoad.load_map()
 	
 	var squirrel = $Tree/Squirrel
@@ -87,6 +90,8 @@ func _on_LoadingTimer_timeout():
 func _process(delta):
 	if can_interact and (Input.is_action_just_pressed("interact")
 						or Input.is_action_just_pressed("pause")):
+		AudioManager.play_sfx(INTERACTION_SFX, 0, 0, -10)
+		
 		for button in get_tree().get_nodes_in_group("buy_btn"):
 			button.visible = not button.visible
 		$Vladimir.is_moving = not $Vladimir.is_moving
@@ -115,13 +120,13 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func _on_HealthButton_pressed():
-	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 3+int(pow(1.4, health_upgrade_counter))
 	var cost = 12
 	if $Vladimir.health < HEALTH_LIMIT:
 		if $Vladimir.acorn_counter >= cost:
 			$Vladimir.acorn_counter -= cost
 			health_upgrade_counter += 1
+			AudioManager.play_sfx(REWARD_SFX, 1, 0, -11)
 		
 			$CanvasLayer/UserInterface.update_health(1, "upgrade", \
 			$Vladimir.health, $Vladimir.max_health)
@@ -140,13 +145,13 @@ func _on_HealthButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_AttackButton_pressed():
-	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 3+int(pow(1.4, health_upgrade_counter))
 	var cost = 16
 	if $Vladimir.damage < DAMAGE_LIMIT:
 		if $Vladimir.acorn_counter >= cost:
 			$Vladimir.acorn_counter -= cost
 			damage_upgrade_counter += 1
+			AudioManager.play_sfx(REWARD_SFX, 1, 0, -11)
 		
 			$Vladimir.damage += 1
 			
@@ -155,13 +160,13 @@ func _on_AttackButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_SpeedButton_pressed():
-	AudioManager.play_sfx(MENU_BTN_SFX)
 #	var cost = 2+int(pow(1.4, health_upgrade_counter))
 	var cost = 8
 	if $Vladimir.speed <= BASE_SPEED + BASE_SPEED*SPEED_LIMIT/100:
 		if $Vladimir.acorn_counter >= cost:
 			$Vladimir.acorn_counter -= cost
 			speed_upgrade_counter += 1
+			AudioManager.play_sfx(REWARD_SFX, 1, 0, -11)
 		
 			$Vladimir.speed += $Vladimir.speed * 0.05
 			
@@ -170,13 +175,13 @@ func _on_SpeedButton_pressed():
 # ------------------------------------------------------------------------------
 
 func _on_HeavyAttackButton_pressed():
-	AudioManager.play_sfx(MENU_BTN_SFX)
 	var cost = 30
 	if $Vladimir.heavy_attack_increment < HEAVY_ATTACK_LIMIT:
 		if $Vladimir.acorn_counter >= cost:
 			$Vladimir.acorn_counter -= cost
-		
+			
 			$Vladimir.heavy_attack_increment += 1
+			AudioManager.play_sfx(REWARD_SFX, 1, 0, -11)
 			
 			$CanvasLayer/HeavyAttackButton/Counter.text = str($Vladimir.heavy_attack_increment)+"/"+str(HEAVY_ATTACK_LIMIT)
 			SaveLoad.save_to_file(4)
@@ -195,7 +200,7 @@ func set_stats():
 	var seconds = int(slot[stats]["played_time"]-((hour*3600)+ (minute*60)))
 	Languages.translate(arr_texts, Global.prefered_language)
 	$Statistics/TimeLabel.text += str(hour)+":"+str(minute)+":"+str(seconds)
-	arr_texts.erase("timer")
+	arr_texts.erase("time")
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):

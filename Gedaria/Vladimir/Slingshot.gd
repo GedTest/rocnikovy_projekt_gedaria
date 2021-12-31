@@ -1,6 +1,8 @@
 extends Area2D
 
 
+const REWARD_SFX = preload("res://sfx/reward.wav")
+
 var offset_y = 35
 
 
@@ -13,6 +15,7 @@ func _ready():
 
 func _on_Slingshot_body_entered(body):
 	if body.get_collision_layer_bit(1):
+		AudioManager.play_sfx(REWARD_SFX, 0, 0, -9)
 		body.has_slingshot = true
 		SaveLoad.delete_actor(self)
 # ------------------------------------------------------------------------------

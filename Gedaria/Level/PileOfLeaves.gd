@@ -114,7 +114,8 @@ func append_leaf(leaf_holder):
 		
 #		if leaf_texture == null or leaf_texture == LeafHolder.EMPTY_FRAME:
 #			leaf_texture = 1
-		leaf_holder.find_node("Sprite").frame = leaf_texture
+		if leaf_holder:
+			leaf_holder.find_node("Sprite").frame = leaf_texture
 # ------------------------------------------------------------------------------
 
 func build_pile(full_leaf_holder, sum):
@@ -131,7 +132,8 @@ func build_pile(full_leaf_holder, sum):
 		
 		#if sum <= 2:
 		var frame = int(full_leaf_holder.get_groups()[index].substr(6, 2))
-		full_leaf_holder.find_node("Sprite").frame = frame
+		if full_leaf_holder:
+			full_leaf_holder.find_node("Sprite").frame = frame
 		
 		if row_number > current_row_number:
 			for child in arr_children:

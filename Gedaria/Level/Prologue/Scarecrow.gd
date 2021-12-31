@@ -4,7 +4,6 @@ extends Enemy
 const SCARECROW_SFX = preload("res://sfx/scarecrow.wav")
 
 var previous_hp = 0
-var is_done_once = true
 
 
 func _ready():

@@ -70,11 +70,13 @@ func move():
 				# HE LOST PLAYER FROM SIGH, HE GOES TO THE GUARD POSITION
 				if int(position.x) > starting_position:
 					direction = -1
-					$WallDetection.position.x = -90
+					if find_node("WallDetection"):
+						$WallDetection.position.x = -90
 					state_machine.travel('RUN')
 				elif int(position.x) < starting_position:
 					direction = 1
-					$WallDetection.position.x = 90
+					if find_node("WallDetection"):
+						$WallDetection.position.x = 90
 					state_machine.travel('RUN')
 				
 		# FOLLOW PLAYER OR NOT
@@ -131,13 +133,13 @@ func move_in_range(from, to):
 		self.turn(direction)
 # ------------------------------------------------------------------------------
 
-func hit(dmg):
+func hit(dmg, sound=""):
 	is_hitted = true
 	$AnimationTree.set("parameters/HIT/blend_position", is_blocking)
 	
 	if not is_blocking:
 		# CALLING THE "BASE FUNTCION" FIRST
-		.hit(dmg)
+		.hit(dmg, hit_sfx[randi()%9])
 	
 	if $HitRay2.is_colliding():
 		has_player_behind = true
@@ -164,9 +166,9 @@ func hit(dmg):
 		is_moving = true
 # ------------------------------------------------------------------------------
 
-func attack(attack_time, cooldown_time):
+func attack(attack_time, cooldown_time, sound=GENERAL_ATTACK_SFX, sound_db=-10):
 	$AnimationTree.set("parameters/STANDING/blend_position", is_blocking)
-	.attack(attack_time, cooldown_time)
+	.attack(attack_time, cooldown_time, sound, sound_db)
 # ------------------------------------------------------------------------------
 
 func turn(direction):

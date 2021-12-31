@@ -40,7 +40,6 @@ onready var arr_texts = {
 	"f11":$ScrollContainer/Labels/Label9,
 	"interaction":$ScrollContainer/Labels/Label10,
 	"aim":$ScrollContainer/Labels/Label11,
-	"pause":$ScrollContainer/Labels/Label12,
 }
 
 func _ready():

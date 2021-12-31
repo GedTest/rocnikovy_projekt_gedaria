@@ -2,6 +2,8 @@ class_name Bush, "res://Level/LightGreenBush2.png"
 extends Sprite
 
 
+const BUSH_SFX = preload("res://sfx/schování se do křoví.wav")
+
 var player = null
 var arr_collision_size = [
 	"res://Level/SmallBush.tres",
@@ -29,6 +31,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	# collision_layer_bit 1 = Player
 	if body.get_collision_layer_bit(1):
+		AudioManager.play_sfx(BUSH_SFX, 2, 0, -10)
 		player = body
 # ------------------------------------------------------------------------------
 

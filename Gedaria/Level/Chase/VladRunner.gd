@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 
+const WALK_SFX = preload("res://sfx/vladimir_run.wav")
 const GRAVITY = Vector2(0, 70)
 
 export var speed = 465
@@ -17,6 +18,7 @@ var is_slow_motion = false
 
 
 func _ready():
+	AudioManager.play_sfx(WALK_SFX, 1, 0, -31)
 	state_machine = $AnimationTree.get("parameters/playback")
 
 func _process(delta):

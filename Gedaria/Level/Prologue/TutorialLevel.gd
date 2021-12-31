@@ -3,8 +3,8 @@ extends Node2D
 const BossWardenPath = preload("res://Enemy/BOSS_Warden/BOSS_Warden.tscn")
 const LetterPath = preload("res://Level/Prologue/Letter.tscn")
 const MushroomPath = preload("res://Level/Mushroom.tscn")
+
 const LETTER_SFX = preload("res://sfx/open_letter.wav")
-const EARTQUAKE_SFX = preload("res://sfx/earthquake.wav")
 
 var is_boss_on_map = false
 var is_letter_on_map = false
@@ -23,6 +23,7 @@ onready var spawn_positions = [
 
 
 func _ready():
+	$Vladimir.has_rake = false
 	Fullscreen.hide_elements()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Vladimir.damage = 1
@@ -41,6 +42,8 @@ func _ready():
 	
 	if $Vladimir.position.x == 150:
 		$TutorialSign3.show()
+	
+	$BossHPBar/Label.text = Languages.languages[Global.prefered_language]["boss1"]
 # ------------------------------------------------------------------------------
 
 func _process(delta):
@@ -64,6 +67,7 @@ func _process(delta):
 			$InteractTutorial.hide()
 			$Rake.call_deferred("queue_free")
 			$Vladimir/Sprite.show()
+			$Vladimir.has_rake = true
 			$Vladimir/AnimationTree.active = true
 			$Vladimir.state_machine = $Vladimir/AnimationTree.get("parameters/playback")
 			$Vladimir/AnimationTree2.queue_free()
@@ -73,7 +77,7 @@ func _process(delta):
 			$InteractTutorial/CollisionShape2D.disabled = true
 			$Tree.show()
 			$Tree.play('Grow')
-			AudioManager.play_sfx(EARTQUAKE_SFX, 0)
+			$AnimationPlayer/AudioStreamPlayer2D.play()
 			$Shake.start(15, 1.25, 0.1)
 			yield(get_tree().create_timer(1.3), "timeout")
 			
@@ -84,7 +88,7 @@ func _process(delta):
 			$Branch/leaves.hide()
 			$Branch/AnimationPlayer.stop()
 			$Letter/Text.show()
-			AudioManager.play_sfx(LETTER_SFX, 0)
+			AudioManager.play_sfx(LETTER_SFX, 0, 0, -2)
 			yield(get_tree().create_timer(8.0), "timeout")
 			
 			get_tree().change_scene("res://Level/Prologue/KidnapLevel.tscn")
@@ -103,8 +107,7 @@ func _process(delta):
 		
 		# BOSS HP BAR
 		$BossHPBar.show()
-		$BossHPBar/Label.text = 'Warden: ' + str($Boss.health) 
-		$BossHPBar/Health.rect_size.x = 60 * $Boss.health
+		$BossHPBar.calc_health($Boss.health, $Boss.max_health)
 		
 		$Boss.move()
 		

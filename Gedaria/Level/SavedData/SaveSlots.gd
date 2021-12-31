@@ -5,7 +5,7 @@ onready var arr_texts = {
 }
 
 
-func _ready():
+func translate_close_button():
 	Languages.translate(arr_texts, Global.prefered_language)
 # ------------------------------------------------------------------------------
 

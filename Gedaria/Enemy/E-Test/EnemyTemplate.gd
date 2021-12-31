@@ -7,8 +7,11 @@ Base enemy class
 
 
 var GRAVITY = Vector2(0, 98)
+
 const WARNING_ICON = 12
 const HIDDEN_ICON = 13
+
+const GENERAL_ATTACK_SFX = preload("res://sfx/hit_by_sword.wav")
 
 var direction = 1
 var velocity = Vector2(0, 0)
@@ -27,9 +30,16 @@ var hit_in_row = 0
 var death_anim_time = 3.0
 var death_frame = 0
 var hit_anim_time = 0.75
+
 var things_to_save = {}
+var hit_sfx = [
+	"res://sfx/enemy_hit1.wav","res://sfx/enemy_hit2.wav","res://sfx/enemy_hit3.wav",
+	"res://sfx/enemy_hit4.wav","res://sfx/enemy_hit5.wav","res://sfx/enemy_hit6.wav",
+	"res://sfx/enemy_hit7.wav","res://sfx/enemy_hit8.wav","res://sfx/enemy_hit9.wav",
+]
 
 var is_dead = false
+var is_done_once = true
 var has_player = false
 var can_attack = false
 var is_attacking = false
@@ -47,6 +57,7 @@ var attack_timer = null
 var hit_timer = null
 var cooldown_timer = null
 var turn_around_timer = null
+var sfx_timer = null
 var state_machine = null
 
 
@@ -56,6 +67,7 @@ func _ready():
 	attack_timer = get_tree().create_timer(0.0, false)
 	hit_timer = get_tree().create_timer(0.0, false)
 	turn_around_timer = get_tree().create_timer(0.0, false)
+	sfx_timer = get_tree().create_timer(0.0, false)
 	state_machine = $AnimationTree.get("parameters/playback")
 	
 	self.reset_icon()
@@ -87,6 +99,7 @@ func _physics_process(delta):
 			# DISTANCE IS USED TO CALC VARIOUS BEHAVIOUR
 	
 		velocity = move_and_slide(velocity)
+		
 	
 	elif is_dead and not $CollisionShape2D.disabled:
 		# WHEN RELOAD DEAD ENEMY DISALBE HIS COLLISION
@@ -100,11 +113,13 @@ func die():
 	is_dead = true
 	self.z_index -= 1
 	
-	state_machine.travel('DEATH')
+	$AnimationTree.active = false
+	$AnimationTree/AnimationPlayer.play("DEATH")
 	
 	if not is_yield_paused:
 		yield(get_tree().create_timer(death_anim_time), "timeout")
-		$Weapon/CollisionShape2D.disabled = true
+		if self.find_node("Weapon"):
+			$Weapon/CollisionShape2D.disabled = true
 # ------------------------------------------------------------------------------
 
 func save():
@@ -121,11 +136,12 @@ func save():
 	return things_to_save
 # ------------------------------------------------------------------------------
 
-func attack(attack_time, cooldown_time):
+func attack(attack_time, cooldown_time, sound=GENERAL_ATTACK_SFX, sound_db=0):
 	if not is_dead and not is_attacking:
 		is_moving = false
 		$AnimationTree.set("parameters/ATTACK/blend_position", direction)
 		state_machine.travel('ATTACK')
+		AudioManager.play_sfx(sound, 1, 0.7, sound_db)
 		
 		if attack_timer.time_left <= 0.0:
 			attack_timer = get_tree().create_timer(cooldown_time, false)
@@ -145,10 +161,13 @@ func attack(attack_time, cooldown_time):
 						is_moving = true
 # ------------------------------------------------------------------------------
 
-func hit(dmg):
+func hit(dmg, sound=""):
 	is_moving = false
 	is_hitted = true
 	health -= dmg if not is_heavy_attacked else dmg * 2
+	is_heavy_attacked = false
+	if not sound.empty():
+		AudioManager.play_sfx(load(sound), 1, -8)
 	if not (health - dmg) < 0 and dmg > 0:
 		state_machine.travel('HIT')
 	if hit_timer.time_left <= 0.0:
@@ -199,9 +218,10 @@ func reset_icon():
 			$Icon.scale = Vector2(0.9, 0.9)
 			$Icon.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		
-		$Tween.interpolate_property($Icon, "scale", Vector2(0.6, 0.6),\
-								Vector2(0.9, 0.9), 0.5,\
-								Tween.TRANS_QUAD, Tween.EASE_OUT)
-		$Tween.interpolate_property($Icon, "modulate", Color(1,1,1,1),\
-								Color(1.0,1.0,1.0,0.0), 1.0,\
-								Tween.TRANS_QUAD, Tween.EASE_OUT, 0.35)
+			$Tween.interpolate_property($Icon, "scale", Vector2(0.6, 0.6),\
+									Vector2(0.9, 0.9), 0.5,\
+									Tween.TRANS_QUAD, Tween.EASE_OUT)
+			$Tween.interpolate_property($Icon, "modulate", Color(1,1,1,1),\
+									Color(1.0,1.0,1.0,0.0), 1.0,\
+									Tween.TRANS_QUAD, Tween.EASE_OUT, 0.35)
+# ------------------------------------------------------------------------------

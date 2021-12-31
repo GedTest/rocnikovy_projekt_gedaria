@@ -1,6 +1,8 @@
 extends StaticBody2D
 
 
+const CROW_SFX = preload("res://sfx/crow.wav")
+
 var speed = 0
 var is_flying = false
 
@@ -15,6 +17,7 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	$Particles2D.emitting = true
+	AudioManager.play_sfx(CROW_SFX, 1, 0, -11)
 # ------------------------------------------------------------------------------
 
 func _on_VisibilityNotifier2D_viewport_entered(viewport):

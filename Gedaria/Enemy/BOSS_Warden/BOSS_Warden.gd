@@ -10,11 +10,12 @@ and has two attacks - thresh & throw
 
 const STICK_PATH = preload("res://Enemy/BOSS_Warden/Stick.tscn")
 const BIRD_PATH = preload("res://Level/Prologue/Bird.tscn")
+
 const KICK_SFX = preload("res://sfx/kick.wav")
+const ATTACK_SFX = preload("res://sfx/praštění dřevěnou holí.wav")
 
 var can_throw = false
 var is_throwing = false
-var is_done_once = true
 var can_jump = true
 var can_move_during_cutscene = true
 var is_immune = true
@@ -38,10 +39,10 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func say_dialog():
-	yield(get_tree().create_timer(20.0, false), "timeout")
+	yield(get_tree().create_timer(22.0, false), "timeout")
 	$Dialog.text = Languages.languages[Global.prefered_language]["boss_warden_quote"]
 	$Dialog.show()
-	yield(get_tree().create_timer(4.5, false), "timeout")
+	yield(get_tree().create_timer(7.0, false), "timeout")
 	$Dialog.queue_free()
 # ------------------------------------------------------------------------------
 
@@ -64,7 +65,7 @@ func _process(delta):
 			is_blocking = true
 			var bird = BIRD_PATH.instance()
 			self.get_parent().add_child(bird)
-			AudioManager.play_sfx(bird.CROW_SFX, 0, 0.5)
+			AudioManager.play_sfx(bird.CROW_SFX, 0, 0.5, -10)
 			bird.position = Vector2(1920, 300)
 			self.jump()
 			is_done_once = false
@@ -132,7 +133,7 @@ func attack_player():
 			is_attacking = true
 			if not player.is_blocking:
 				player.hit(damage)
-				print("Vladimir's health: ", player.health)
+				AudioManager.play_sfx(ATTACK_SFX)
 			
 		if attack_timer.time_left <= 0.0 and not is_throwing:
 			attack_timer = get_tree().create_timer(1.2, false)
@@ -201,7 +202,7 @@ func throw():
 			$HitRay.enabled = true
 # ------------------------------------------------------------------------------
 
-func hit(dmg):
+func hit(dmg, sound="res://sfx/warden_hit.wav"):
 	if not is_immune:
 		is_moving = false
 		
@@ -227,9 +228,12 @@ func kick():
 	# KICK PLAYER BACK SO BOSS CAN ATTACK
 	if self.has_player:
 		state_machine.travel('KICK')
-		AudioManager.play_sfx(KICK_SFX, 0, 0.35)
+		AudioManager.play_sfx(KICK_SFX, 1)
+		
+		yield(get_tree().create_timer(0.25), "timeout")
+		player.hit(0)
 		
 		var kick_direction = 1 if player.position.x - self.position.x > 0 else -1
 		var x = 350 * kick_direction
-		$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x+x, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN, 0.3)
+		$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x+x, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN)
 		$Tween.start()

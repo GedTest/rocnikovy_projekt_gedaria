@@ -7,6 +7,8 @@ const ROLLING_TREE_PATH = preload("res://Level/ForestClearing/RollingTree.tscn")
 const ENEMY_PATH = preload("res://Enemy/E-Test/Patroller.tscn")
 const LEAF_PATH = preload("res://Level/Leaf.tscn")
 
+const CHOP_SFX = preload("res://sfx/chop_wood2.wav")
+
 var has_spawned_once = false
 var can_spawn = false
 
@@ -49,12 +51,20 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 				var new_leaf = LEAF_PATH.instance()
 				$Leaves.call_deferred("add_child", new_leaf)
 				new_leaf.position = Vector2(25000, 8650)
+				
+	if $Vladimir.has_slingshot:
+		if self.find_node("SlingshotItem"):
+			SaveLoad.delete_actor($SlingshotItem)
+		$TutorialSign.queue_free()
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
 func _process(delta):
 	._process(delta)
 	
+	if find_node("BOSS_EARL"):
+		$BOSS_EARL.move()
+		
 	if not $Shooter.can_shoot_in_sector:
 		$Shooter/HitRay.rotation_degrees = 180 #if $Shooter/Sprite.flip_h else 0
 	
@@ -73,13 +83,17 @@ func _process(delta):
 func _on_StalkingArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		$Vladimir/Camera.current = false
+		$Vladimir.has_learned_leaf_blower = false
 		$Vladimir/SpecialCamera.current = true
+		$BOSS_EARL.has_jumped = false
+		$BOSS_EARL.is_cutscene_finished = true
 # ------------------------------------------------------------------------------
 
 func _on_StalkingArea_body_exited(body):
 	if body.get_collision_layer_bit(1):
 		$Vladimir/Camera.current = true
 		$Vladimir/SpecialCamera.current = false
+		$Vladimir.has_learned_leaf_blower = true
 		if body.position.x >= 18700:
 			SaveLoad.delete_actor($Vladimir/SpecialCamera)
 			SaveLoad.delete_actor($StalkingArea)
@@ -90,6 +104,7 @@ func _on_WindArea_body_entered(body):
 		$WindArea.position.y += 8000
 		$Winds/Wind6.position.x = 25000
 		$Winds/Wind6.impulse.x = -10000
+		$KillZones/KillZone2.queue_free()
 		SaveLoad.delete_actor($Winds/Wind5)
 		$PilesOfLeaves/PileOf4Leaves.remove_from_group("DoNotBlow")
 		$PilesOfLeaves/PileOf4Leaves.set_collision_layer_bit(3, true)
@@ -104,6 +119,7 @@ func spawn_rolling_trees():
 		if not is_yield_paused:
 			yield(spawn_timer, "timeout")
 			
+			AudioManager.play_sfx(CHOP_SFX)
 			count += 1
 			sec = 1.2 if count % 4 == 0 else 3.3
 			
@@ -152,3 +168,10 @@ func _on_BridgeArea2D_body_entered(body):
 		for collision in $Winds/WindBlowerWind.get_children():
 				if collision is CollisionShape2D:
 					collision.set_deferred("disabled", false)
+# ------------------------------------------------------------------------------
+
+func _on_UnderLevelKillZone_body_entered(body):
+	if body.get_collision_layer_bit(0) and "Tree" in body.name:
+		SaveLoad.delete_actor(body)
+	if body.get_collision_layer_bit(2):
+		SaveLoad.delete_actor(body)

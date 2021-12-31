@@ -5,7 +5,7 @@ var is_interactable = false
 
 
 func _on_Letter_body_entered(body):
-	$Interact.append_bbcode(Languages.languages[Global.prefered_language]["interaction"])
+	$Interact.text = "E"
 	$Text/Label.append_bbcode(Languages.languages[Global.prefered_language]["letter"])
 	$Interact.show()
 	is_interactable = true

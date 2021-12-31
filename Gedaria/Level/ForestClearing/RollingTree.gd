@@ -9,7 +9,7 @@ func _on_Area2D_body_entered(body):
 		var direction = b.direction_to(a).x
 		
 		player = body
-		if abs(direction) > 0.5:
+		if abs(direction) > 0.5 and player:
 			$AdvancedTween.play(0.5, body.position.x, body.position.x + (200*direction))
 # ------------------------------------------------------------------------------
 

@@ -4,6 +4,10 @@ extends StaticBody2D
 
 const EMPTY_FRAME = 28
 const PARTS_OF_PILE = "res://Level/PileOfLeavesTextures2.png"
+const POP_IN_SFX = preload("res://sfx/pop_in.wav")
+const POP_IN2_SFX = preload("res://sfx/pop_in2.wav")
+const POP_OUT_SFX = preload("res://sfx/pop_out.wav")
+const POP_OUT2_SFX = preload("res://sfx/pop_out2.wav")
 
 var LeafPath = preload("res://Level/Leaf.tscn")
 
@@ -55,6 +59,8 @@ func _on_Area2D_body_entered(body):
 			# if frame is empty = leave is not placed yet
 			if $Area2D/Sprite.frame == EMPTY_FRAME or ((3 * 7) + level):
 				self.set_texture()
+				var sound = POP_IN_SFX if randi()%2 == 0 else POP_IN2_SFX
+				AudioManager.play_sfx(sound, 0, 0, -10)
 				
 				if is_part_of_pile:
 					$Area2D/Sprite.frame = int(get_groups()[1].substr(6, 2))
@@ -63,7 +69,6 @@ func _on_Area2D_body_entered(body):
 				self.set_collision_layer_bit(3, true)
 				self.set_collision_mask_bit(3, true)
 					
-	
 	if body.get_collision_layer_bit(4) and is_destroyable and not is_empty:
 		if not is_invincible:
 			self.spawn_leaf()
@@ -82,8 +87,8 @@ func save():
 
 func _on_Area2D_area_entered(area):
 	if (area.get_collision_layer_bit(1) and $Area2D/Sprite.frame != EMPTY_FRAME\
-	 and not is_part_of_pile) or area.name == "WindBlowerWind":
-		if has_leaf and not is_invincible:
+	 and not is_part_of_pile) or area.get_collision_layer_bit(17):
+		if (has_leaf and not is_invincible) or "Hand" in area.get_parent().name:
 			has_leaf = 0
 			$Area2D/Sprite.frame = EMPTY_FRAME
 			self.spawn_leaf()
@@ -109,6 +114,8 @@ func spawn_leaf():
 	var new_leaf = LeafPath.instance()
 	new_leaf.name = "from_"+name
 	
+	var sound = POP_OUT_SFX if randi()%2 == 0 else POP_OUT2_SFX
+	AudioManager.play_sfx(sound, 0, 0, -10)
 	var root = Global.level_root()
 	root.call_deferred("add_child", new_leaf)
 	new_leaf.texture = texture

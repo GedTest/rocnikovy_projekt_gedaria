@@ -3,7 +3,12 @@ extends CanvasLayer
 
 const FPS = ["10", "24", "30", "60", "120", "144", "240",]
 const MSAA = ["Disabled", "2x", "4x", "8x", "16x",]
-const LANGUAGES = ["čeština", "english"]
+const LANGUAGES = [
+	"english", "čeština", "slovenčina", 
+	"polskie", "deutsch", "français", 
+	"italiano", "español", "português",
+	"svenska", "norsk", "dansk", "suomi", 
+]
 
 var MENU_BTN_SFX = ""
 
@@ -36,9 +41,6 @@ func set_drop_down_menu(node, options, curent_option):
 func _on_LangButton_pressed():
 	var drop_down = $SettingsTree/LangDropDown
 	drop_down.visible = not drop_down.visible
-#	$SettingsTree/HBoxContainer2/LangButton.visible = not $SettingsTree/HBoxContainer2/LangButton.visible
-#	$SettingsTree.hide()
-#	$Languages.show()
 # ------------------------------------------------------------------------------
 
 func _on_lang_btn_pressed():
@@ -95,7 +97,7 @@ func hide_all():
 	$SettingsTree.hide()
 # ------------------------------------------------------------------------------
 
-func _on_Back_pressed():
+func _on_Close_pressed():
 	AudioManager.play_sfx(MENU_BTN_SFX)
 	$AudioSettings.hide()
 	$VideoSettings.hide()
@@ -118,15 +120,32 @@ func _on_VSyncCheckBox_toggled(button_pressed):
 func _on_LangDropDown_item_selected(id):
 	var btn = $SettingsTree/lang_btn 
 	btn.language = LANGUAGES[id]
-	btn.connect("pressed", btn, "_on_lang_btn_pressed")
+	if not btn.is_connected("pressed", btn, "_on_lang_btn_pressed"):
+		btn.connect("pressed", btn, "_on_lang_btn_pressed")
 	btn.emit_signal("pressed")
+	$KeyBinding.arr_texts["wrong_translation"] = $SettingsTree/Control/Label
+	Languages.translate($KeyBinding.arr_texts, Global.prefered_language)
+	
+	$SettingsTree/Control.show()
+	for btn in $SettingsTree.get_children():
+		if btn is Button:
+			btn.disabled = true
+	$SettingsTree/Control/Label.text += "gedaria@seznam.cz"
 # ------------------------------------------------------------------------------
 
 func _on_VSyncCheckBox_pressed():
 	AudioManager.play_sfx(MENU_BTN_SFX)
+# ------------------------------------------------------------------------------
+
+func _on_Popup_pressed():
+	$SettingsTree/Control.hide()
+	for btn in $SettingsTree.get_children():
+		if btn is Button:
+			btn.disabled = false
 
 
 
 
 func _on_DropDown_item_selected(id, node_name):
 	self.find_node(node_name).rect_size.x = 130
+

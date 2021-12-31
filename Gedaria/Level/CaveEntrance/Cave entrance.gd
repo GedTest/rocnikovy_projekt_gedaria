@@ -1,7 +1,9 @@
 extends Level
 
 
-var has_key = false
+const REWARD_SFX = preload("res://sfx/reward.wav")
+const INTERACTION_SFX = preload("res://sfx/interaction.wav")
+
 var is_interactable = false
 
 onready var arr_bats = [
@@ -30,6 +32,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact") and is_interactable:
 		#play animation of opening bars
 		$AnimationPlayer.play("BARS_UP")
+		Global.has_key = false
 		$CanvasLayer/UserInterface/Key.hide()
 		
 	if $PilesOfLeaves/PileOf4Leaves3.is_complete:
@@ -42,22 +45,22 @@ func _process(delta):
 			$Winds/Wind15.disable_wind()
 # ------------------------------------------------------------------------------
 
-func _on_Area2D_body_entered(body):
-	if body.get_collision_layer_bit(1) and has_key:
+func _on_Bars_body_entered(body):
+	if body.get_collision_layer_bit(1) and Global.has_key:
 		is_interactable = true
 # ------------------------------------------------------------------------------
 
-func _on_Area2D_body_exited(body):
+func _on_Bars_body_exited(body):
 	if body.get_collision_layer_bit(1):
 		is_interactable = false
 # ------------------------------------------------------------------------------
 
 func _on_Key_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		has_key = true
+		AudioManager.play_sfx(REWARD_SFX, 0, 0, -9)
+		Global.has_key = true
 		$TutorialSign6.show()
 		$Key.queue_free()
-		$CanvasLayer/UserInterface/Key.show()
 # ------------------------------------------------------------------------------
 
 func _on_LeafArea_body_entered(body):

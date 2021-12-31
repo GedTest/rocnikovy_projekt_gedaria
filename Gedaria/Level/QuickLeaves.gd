@@ -32,7 +32,6 @@ func _ready():
 	$KillZone.position = Vector2.ZERO
 	$KillZone/CollisionShape2D.shape.extents = Vector2.ZERO
 	
-	
 	for i in range(number_of_levels):
 		var node = Node2D.new()
 		self.add_child(node)
@@ -46,6 +45,7 @@ func _ready():
 			leaf_holder.level = leaf_holder_level
 			leaf_holder.can_be_filled = false
 			leaf_holder.is_invincible = true
+			leaf_holder.is_destroyable = false
 			if i == number_of_levels-1:
 				leaf_holder.can_be_filled = true
 			node.add_child(leaf_holder)
@@ -56,17 +56,19 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func falling_leaves():
-	var y = 0
+	var y = -600
+	var y_offset = 0
 	for i in range(number_of_levels):
 		for j in leaf_holder_per_level:
 			var leaf = LEAF_PATH.instance()
 			leaf.set_collision_mask_bit(0, false)
 			self.call_deferred("add_child", leaf)
 			leaf.position = Vector2(0, -400)
-			y = -660
-			if i > 7:
-				y = -800
-			leaf.position += Vector2(90*j, (y*i) - j*70)
+			
+			y_offset = i
+			if leaf_holder_per_level > 5 or number_of_levels > 10:
+				y_offset = 2.6*i
+			leaf.position += Vector2(90*j, (y*y_offset) - j*100)
 # ------------------------------------------------------------------------------
 
 func fill():
@@ -89,8 +91,7 @@ func fill():
 		else:
 			is_completed = true
 			if "Cage" in self.get_parent().name:
-				print(self.get_parent().name)
-				self.emit_signal("is_completed")
+				self.emit_signal("on_completed")
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):

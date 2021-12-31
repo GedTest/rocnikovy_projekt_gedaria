@@ -17,9 +17,9 @@ func update():
 	
 	if type == "SAVE":
 		if SaveLoad.slots["slot_"+str(slot)].empty():
-			$Label.text = "save to slot " + str(slot)
+			$Label.text = "NO DATA"
 		else:
-			$Label.text = "overwrite slot " + str(slot)
+			$Label.text = Languages.languages[Global.prefered_language]["overwrite"]
 			
 	elif type == "LOAD" and name != "RestartButton":
 		if SaveLoad.slots["slot_"+str(slot)].empty():
@@ -29,9 +29,13 @@ func update():
 			var date = current_slot["date"]
 			
 			var level = current_slot["last_map"].split('/')[4].split('.')[0]
-			$Label.text = Languages.languages[Global.prefered_language][level]
-			$Label.text += "\n\nDate: "+str(date["day"])+"."+str(date["month"])+"."+str(date["year"])
-			$Label.text += "\nTime: "+str(date["hour"]) + ":" + str(date["minute"])
+			var lang = Global.prefered_language
+			var time = Languages.languages[lang]["time"]
+			var date_translation = Languages.languages[lang]["date"]
+			
+			$Label.text = Languages.languages[lang][level]
+			$Label.text += "\n\n"+date_translation+str(date["day"])+"."+str(date["month"])+"."+str(date["year"])
+			$Label.text += "\n"+time+str(date["hour"]) + ":" + str(date["minute"])
 # ------------------------------------------------------------------------------
 
 func on_pressed():

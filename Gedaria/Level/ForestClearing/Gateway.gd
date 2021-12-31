@@ -26,6 +26,7 @@ func _on_Gateway_body_entered(body):
 				yield(get_tree().create_timer(0.2, false), "timeout")
 				body.set_deferred("mode", RigidBody2D.MODE_RIGID)
 				yield(get_tree().create_timer(1.0, false), "timeout")
-				body.find_node("CollisionShape2D").set_deferred("disabled", false)
+				if is_instance_valid(body):
+					body.find_node("CollisionShape2D").set_deferred("disabled", false)
 		else:
 			body.apply_central_impulse(Vector2(impulse, 0))

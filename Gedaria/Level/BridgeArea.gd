@@ -10,6 +10,7 @@ func _on_BridgeArea_body_entered(body):
 		
 		Patroller8.find_node("Camera").current = true
 		Patroller8.find_node("Sprite3").flip_h = true
+		Patroller8.health = 4
 		Patroller8.is_focused = true
 		yield(get_tree().create_timer(5.0, false), "timeout")
 		

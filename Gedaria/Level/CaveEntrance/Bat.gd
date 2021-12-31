@@ -1,6 +1,8 @@
 extends Enemy
 
 
+const BAT_SFX = preload("res://sfx/bat_chirpping.wav")
+
 export (int) var height = 0
 
 var is_on_ground = false
@@ -71,6 +73,7 @@ func fly_back_up():
 # ------------------------------------------------------------------------------
 
 func fly_down():
+	AudioManager.play_sfx(BAT_SFX, 1, 0, -15)
 	state_machine.travel('ATTACK')
 		
 	var vertical_distance = abs(self.position.y - player.position.y)

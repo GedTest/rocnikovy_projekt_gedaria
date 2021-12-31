@@ -1,6 +1,9 @@
 extends Node
 
 
+const HIDDEN = Input.MOUSE_MODE_HIDDEN
+const VISIBLE = Input.MOUSE_MODE_VISIBLE
+
 const LEVELS = [
 	"res://Level/Chase/ChaseLevel.tscn",
 	"res://Level/Prologue/TutorialLevel.tscn",
@@ -20,13 +23,16 @@ var positions = {
 	"4":{"start_pos":Vector2(2112, -171),"end_pos":Vector2(1828, 86),"rotate":135},
 }
 
+var is_sign_entered = false
+
 
 func _process(delta):
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 	
 	if Input.is_action_just_pressed("pause") and Global.is_pausable:
-		self.pause()
+		if Global.can_be_paused:
+			self.pause()
 # ------------------------------------------------------------------------------
 
 func _input(event):
@@ -63,8 +69,7 @@ func pause():
 				$Knirocelo.visible = not $Knirocelo.visible
 				self.get_tree().paused = not self.get_tree().paused
 				
-				var HIDDEN = Input.MOUSE_MODE_HIDDEN
-				var VISIBLE = Input.MOUSE_MODE_VISIBLE
+				
 				get_viewport().warp_mouse(Vector2(960, 540))
 				var cursor_visibility = VISIBLE if self.get_tree().paused else HIDDEN
 				if self.get_tree().paused and Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
@@ -96,14 +101,20 @@ func hide_pause_menu():
 		$Knirocelo.visible = not $Knirocelo.visible
 		var texture = BACKGROUNDS[0] if $PauseMenu.visible else BACKGROUNDS[1]
 		$TextureRect.texture = load(texture)
-		$LoadingScreen/AnimationPlayer.stop()
 # ------------------------------------------------------------------------------
 
 func show_loading_screen():
-	self.pause()
+	if not is_sign_entered:
+		self.pause()
+	Input.set_mouse_mode(HIDDEN)
+	
 	var arr_texts = { "loading":$LoadingScreen/Label }
 	Languages.translate(arr_texts, Global.prefered_language)
-	$LoadingScreen/AnimationPlayer.play("dot_wave")
+	
+	yield(get_tree().create_timer(0.25), "timeout")
+	var count_letters = len($LoadingScreen/Label.text)
+	$LoadingScreen/Label.rect_scale = Vector2(0.9, 0.9) if Global.prefered_language == "polskie" else Vector2.ONE
+	$LoadingScreen/Dots.position.x = count_letters*11
 	$LoadingScreen.show()
 	$LoadingScreen/AnimatedSprite.play()
 # ------------------------------------------------------------------------------

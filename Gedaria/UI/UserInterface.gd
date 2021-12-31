@@ -36,6 +36,9 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _process(delta):
+	if not $Key.visible and Global.has_key:
+		$Key.show()
+	
 	var vladimir = Global.level_root().find_node('Vladimir')
 	
 	# set references on vladimir's values
@@ -134,9 +137,14 @@ func load_ui_icons():
 		$Acorn.show()
 	
 	$BlueberryCounter.text = str(Global.blue_berries) + "/5"
-	if Global.leaves_in_cave_counter > 0:
-		$LeavesInCave.show()
-		$LeavesInCave/Counter.text = str(Global.leaves_in_cave_counter)+"/9"
+	if Global.has_key:
+		$Key.show()
+	
+	if Global.arr_levels.find(Global.level_root().filename) == 2:
+		var vladimir = Global.level_root().find_node('Vladimir')
+		if Global.leaves_in_cave_counter > 0 or vladimir.position.x > 34300:
+			$LeavesInCave.show()
+			$LeavesInCave/Counter.text = str(Global.leaves_in_cave_counter)+"/9"
 	self.set_unique_leaf(unique_leaf)
 # ------------------------------------------------------------------------------
 
@@ -152,6 +160,8 @@ func set_unique_leaf(texture):
 			
 	elif texture == "res://UI/list_kopřiva":
 		$UniqueLeaf.margin_left = 1635
+		
+	self.scale_unique_leaf()
 # ------------------------------------------------------------------------------
 
 func scale_unique_leaf(start=0.4, end=1.0):

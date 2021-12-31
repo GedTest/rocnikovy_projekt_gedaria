@@ -10,8 +10,18 @@ once he found the legendary rake he became a hero
 
 const GRAVITY = Vector2(0, 98)
 const FLOOR_NORMAL = Vector2(0, -1)
+
 const PEBBLE_PATH = preload("res://Vladimir/Pebble.tscn")
 const WIND_PATH = preload("res://Vladimir/WindBlowerWind.tscn")
+
+const WALK_SFX = preload("res://sfx/vladimir_run.wav")
+const ATTACK_SFX = preload("res://sfx/slabý útok.wav")
+const CROUCH_SFX = preload("res://sfx/crouch.wav")
+const RAKING_SFX = preload("res://sfx/raking.wav")
+const SHOT_SFX = preload("res://sfx/Shot.wav")
+const THROW_SFX = preload("res://sfx/Throw.wav")
+const HIT1_SFX = preload("res://sfx/vladimir_hit.wav")
+const HIT2_SFX = preload("res://sfx/vladimir_hit2.wav")
 
 export(int) var speed = 480
 export(int) var modify_speed = 1
@@ -28,7 +38,7 @@ var heavy_attack_increment = 4
 var next_pos_ID = ""
 
 var direction = 1
-var attack_direction = 1
+var attack_direction = -1
 var velocity = Vector2(0, 0)
 var mouse_position = Vector2(0, 0)
 var jumped_height = Vector2(0, 0)
@@ -50,6 +60,7 @@ var is_blowing = false
 var was_blowing = false
 var is_yield_paused = false
 var has_slingshot = false
+var has_rake = true
 
 var has_learned_attack = true
 var has_learned_heavy_attack = true
@@ -133,20 +144,37 @@ func jump(delta): # JUMP
 
 func move(): # MOVE
 	if Input.is_action_pressed("right") and (not is_raking or is_blowing):
-		direction = 1
 		attack_direction = 1
+		direction = 1
+		$Rake.flip_h = false
 		$Sprite.flip_h = false
 		$WeaponHitbox.position.x = 90
 	elif Input.is_action_pressed("left") and (not is_raking or is_blowing):
 		direction = -1
 		attack_direction = -1
+		$Rake.flip_h = true
 		$Sprite.flip_h = true
 		$WeaponHitbox.position.x = -90
 	else:
 		direction = 0
 	
+	if state_machine.get_current_node() == "RUN" or\
+		state_machine.get_current_node() == "IDLE":
+		if has_rake:
+			$Rake.visible = true if not is_blowing else false
+			$LeafBlower.visible = true if is_blowing else false
+	
+	# choose right animation based on movement
 	velocity.x = direction * (speed*modify_speed) * int(can_move) # * delta
 	var animation = "RUN" if velocity.x != 0  else "IDLE"
+	$AnimationTree.set("parameters/"+animation+"/blend_position", attack_direction)
+	
+	# walking sound effect
+	if can_jump and is_moving:
+		if velocity.x != 0 and not AudioManager.is_playing_sfx(WALK_SFX):
+			AudioManager.play_sfx(WALK_SFX, 1, 0, -12)
+	if animation == "IDLE" or not can_jump:
+		AudioManager.stop_sfx(WALK_SFX)
 	
 	
 	$Sprite.flip_v = false
@@ -156,10 +184,13 @@ func move(): # MOVE
 # ------------------------------------------------------------------------------
 
 func crouch(): # CROUCH
+	if Input.is_action_just_pressed("crouch"):
+		AudioManager.play_sfx(CROUCH_SFX, 0, 0, -9)
 	if (Input.is_action_pressed("crouch") and not is_hitted) or not can_stand_up:
 		is_crouching = true
 		$CollisionShape2D.position.y = 35
 		$CollisionShape2D.scale.y = 0.825
+		
 		var animation = "CRAWLING" if velocity.x != 0  else "CRAWLING_STAND"
 		state_machine.travel(animation)
 		velocity.x = direction * speed / 1.8
@@ -177,6 +208,7 @@ func attack(): # LIGHT ATTACK, fast but low dmg,
 			$AnimationTree.set("parameters/ATTACK/blend_position", attack_direction)
 			if state_machine.get_current_node() != "HOLD_PEBBLE":
 				state_machine.travel('ATTACK')
+				AudioManager.play_sfx(ATTACK_SFX, 1, 0.3, -4)
 			
 			if attack_timer.time_left <= 0.0:
 				attack_timer = get_tree().create_timer(0.35)
@@ -207,34 +239,40 @@ func heavy_attack(delta): # HEAVY ATTACK, slow but high dmg
 						heavy_attack_timer = get_tree().create_timer(0.6)
 						if not is_yield_paused:
 							yield(heavy_attack_timer, "timeout")
-
+							is_moving = true
+							
 							if breakable_stone:
 								breakable_stone.hit()
+								is_moving = true
 								heavy_attack_counter += 1
 								breakable_stone = null
-
-
+								
+								
 							if enemy and can_attack:
 								enemy.is_heavy_attacked = true
 								if is_instance_valid(enemy):
 									is_moving = true
 									enemy.hit(damage)
-									enemy.jump_back()
-
+									if enemy.has_method("jump_back"):
+										enemy.jump_back()
+								
 							is_moving = true
 							is_attacking = false
 # ------------------------------------------------------------------------------
 
 func blowing(delta):
 	if heavy_attack_counter > 0:
-		if Input.is_action_pressed("heavy_attack") and Input.is_action_pressed("rake") and has_learned_leaf_blower:
-			blowing_time += delta/2
+		if Input.is_action_pressed("heavy_attack") and \
+		Input.is_action_pressed("rake") and has_learned_leaf_blower:
+			blowing_time += (delta/1.875) - (heavy_attack_increment*0.00015)
 			mouse_position = get_local_mouse_position()
 			if not is_blowing:
 				is_blowing = true
 				wind = WIND_PATH.instance()
 	
 				wind.z_index = 1
+				wind.scale.y = 0.4
+				$LeafBlower.show()
 				self.call_deferred("add_child", wind)
 				
 			var dist = self.position - get_global_mouse_position()
@@ -244,7 +282,9 @@ func blowing(delta):
 			var center = OS.get_screen_size()/2
 			var deg = rad2deg(center.angle_to(mouse_position))
 			wind.global_position = self.position - (dist/10)
+			wind.position.y = 80
 			wind.rotation_degrees = deg+30
+			$LeafBlower.rotation_degrees = deg+200
 			for collision in wind.get_children():
 				if collision is CollisionShape2D:
 					collision.disabled = not collision.disabled
@@ -280,6 +320,8 @@ func shoot():
 		is_aiming = true
 		mouse_position = get_local_mouse_position()
 		var animation = "SLINGSHOT" if has_slingshot else "PEBBLE"
+		var sound = SHOT_SFX if has_slingshot else THROW_SFX
+		
 		state_machine.travel("HOLD_" + animation)
 		
 		if Input.is_action_just_pressed("attack"):
@@ -289,6 +331,7 @@ func shoot():
 				if not is_yield_paused:
 					yield(throw_timer, "timeout")
 					can_move = true
+					AudioManager.play_sfx(sound, 0, 0, -5)
 			
 					var pebble = PEBBLE_PATH.instance()
 					get_parent().add_child(pebble)
@@ -329,9 +372,12 @@ func rake(): # RAKE LEAVES TO CREATE PILE OF LEAVES
 			is_raking = false
 			$AnimationTree.active = false
 			$AnimationTree.active = true
+			AudioManager.stop_sfx(RAKING_SFX)
 			
 		if Input.is_action_pressed("rake") and not is_crouching \
 		and not is_hitted and not is_blowing:
+			if not is_raking:
+				AudioManager.play_sfx(RAKING_SFX, 1, 0, -10)
 			is_raking = true
 			
 			if Input.is_action_pressed("right"):
@@ -366,6 +412,9 @@ func hit(var dmg):
 			if current_animation == 'HEAVY_ATTACK':
 				heavy_attack_counter += 1
 				
+			var sound = HIT1_SFX if randi()%2 == 0 else HIT2_SFX
+			if not AudioManager.is_playing_sfx(sound):
+				AudioManager.play_sfx(sound, 0, 0, -2)
 			state_machine.travel('HIT')
 		if not is_yield_paused:
 			yield(get_tree().create_timer(0.95, false), "timeout")
@@ -399,7 +448,8 @@ func save(): # SAVE VARIABLES IN DICTIONARY
 		"has_learned_heavy_attack":has_learned_heavy_attack,
 		"heavy_attack_increment":heavy_attack_increment,
 		"has_learned_raking":has_learned_raking,
-		"has_learned_blocking":has_learned_blocking
+		"has_learned_blocking":has_learned_blocking,
+		"has_learned_leaf_blower":has_learned_leaf_blower
 	}
 	return saved_data
 # ------------------------------------------------------------------------------
@@ -423,6 +473,7 @@ func _on_WeaponHitbox_body_exited(body):
 func _draw(): # DRAW LINE BETWEEN MOUOSE AND VLADIMIR
 	if is_aiming or is_blowing:
 		$Sprite.flip_h = true if mouse_position.x < 0 else false
+		$LeafBlower.scale.y = 0.5 if mouse_position.x < 0 else -0.5
 		draw_line(Vector2(0, 0), mouse_position, Color(1.0, 1.0, 1.0, 0.3), 8.0)
 # ------------------------------------------------------------------------------
 
@@ -449,6 +500,7 @@ func _on_Ceiling_body_exited(body):
 func stop_moving_during_cutsene(time=0.0):
 	self.is_moving = false
 	self.velocity = Vector2.ZERO
+	$AnimationTree.set("parameters/IDLE/blend_position", attack_direction)
 	self.state_machine.travel("IDLE")
 	yield(get_tree().create_timer(time, false), "timeout")
 	self.is_moving = true

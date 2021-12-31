@@ -1,6 +1,6 @@
 extends Control
 
-
+const FOREST_MUSIC = preload("res://gedaria_theme1wav.wav")
 const MENU_BTN_SFX = preload("res://sfx/klik_do_menu_i_z_menu.wav")
 
 #var is_yield_paused = true
@@ -8,10 +8,8 @@ onready var arr_texts = {
 	"start":$StartButton/Label,
 	"load":$LoadButton/Label,
 	"options":$OptionButton/Label,
-	"achievements":$AchievementButton,
 	"credits":$CreditsButton/Label,
 	"quit":$QuitButton/Label,
-	"back":$Back,
 	"continue":$StartGame/Continue/Label,
 	"new_game":$StartGame/NewGame/Label,
 	"audio":$Settings/SettingsTree/AudioButton,
@@ -27,6 +25,8 @@ var latest_slot = -1
 
 
 func _ready():
+	AudioManager.play_music(FOREST_MUSIC)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 0)
 	get_tree().paused = false
 	
 	yield(get_tree().create_timer(0.1), "timeout")
@@ -54,8 +54,11 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _process(delta):
-	$Settings/AudioSettings/Back.text = $Back.text
-	$Settings/Languages/Back.text = $Back.text
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$Settings/AudioSettings/Close.text = $Settings/SettingsTree/Close.text
+	$Settings/VideoSettings/Close.text = $Settings/SettingsTree/Close.text
+	$Slots/Close.text = $Settings/SettingsTree/Close.text
 	$Settings/KeyBinding/Close.text = $Settings/SettingsTree/Close.text
 # ------------------------------------------------------------------------------
 
@@ -149,13 +152,6 @@ func disable_buttons():
 func _on_CreditsButton_pressed():
 	AudioManager.play_sfx(MENU_BTN_SFX)
 	$Authors.show()
-	$Back.show()
-# ------------------------------------------------------------------------------
-
-func _on_Back_pressed():
-	AudioManager.play_sfx(MENU_BTN_SFX)
-	$Authors.hide()
-	$Back.hide()
 # ------------------------------------------------------------------------------
 
 func _on_TextureButton_pressed():
@@ -172,7 +168,6 @@ func _on_Continue_pressed():
 
 func _on_NewGame_pressed():
 	AudioManager.play_sfx(MENU_BTN_SFX)
-	Fullscreen.show_loading_screen()
 	var dir_to_remove = Directory.new()
 	dir_to_remove.open("user://Saves/")
 	for file in SaveLoad.paths:
@@ -187,23 +182,16 @@ func _on_NewGame_pressed():
 	new_dir.make_dir("user://Saves")
 
 	
-	get_tree().change_scene("res://Level/InTheWood/In the wood.tscn")
-#	get_tree().change_scene("res://Level/Prologue/TutorialLevel.tscn")
-#	get_tree().change_scene("res://Level/Chase/ChaseLevel.tscn")
+#	get_tree().change_scene("res://Level/InTheWood/In the wood.tscn")
+	get_tree().change_scene("res://Level/Chase/ChaseLevel.tscn")
 # ------------------------------------------------------------------------------
-
-func _on_instagram_button_pressed(link):
-	OS.shell_open(link)
-
 
 func _on_Back_lang_pressed():
 	$Languages.hide()
 
-
 func _on_SettingsClose_pressed():
 	$Settings/background.hide()
 	self.disable_buttons()
-
 
 func _on_LoadClose_pressed():
 	$Settings/background.hide()

@@ -3,7 +3,7 @@ extends RigidBody2D
 
 const PebblePath = preload("res://Vladimir/PebbleOnGround.tscn")
 
-var damage = 2
+var damage = 1
 
 
 func _on_Area2D_body_entered(body):

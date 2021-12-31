@@ -1,15 +1,12 @@
 extends Level
 
 
-signal enemy_health_changed
-
 var is_done_once_tutorial = true
+var has_vlad_jumped_across = false
 
 
 func _ready():
 	# CALLING THE "BASE FUNTCION" FIRST
-	connect("enemy_health_changed", $FallingTree, "on_enemy_health_changed")
-	
 	$Vladimir.has_learned_heavy_attack = false
 	$Vladimir.has_learned_raking = false
 	$Vladimir/Camera.current = true
@@ -54,13 +51,24 @@ func _process(delta):
 		$PilesOfLeaves/PileOf4Leaves4.mode = RigidBody2D.MODE_STATIC
 		$Tutorials/Tutorial7.position = Vector2(35310, 7140)
 	
-	if find_node("Patroller5"):
-		if find_node("Patroller5").health <= 2 and is_done_once:
-			is_done_once = false
-			emit_signal("enemy_health_changed")
+	if $Patroller5.is_dead and $Patroller4.is_dead and is_done_once:
+		is_done_once = false
+		$FallingTree.fall()
 			
-			$Vladimir.position = Vector2(6980, 5820)
-			$Vladimir.is_moving = false
+	
+	if has_vlad_jumped_across:
+		$BOSS_EARL.has_jumped = false
+		$BOSS_EARL.move()
+		
+		if $BOSS_EARL.position.x <= 30580 and has_vlad_jumped_across:
+			print("bruh")
+			has_vlad_jumped_across = false
+			$BOSS_EARL.velocity = Vector2.ZERO
+			$BOSS_EARL.kick()
+	
+	if self.find_node("BOSS_EARL"):
+		if $PilesOfLeaves/PileOf4Leaves6.is_complete:
+			SaveLoad.delete_actor($BOSS_EARL)
 # ------------------------------------------------------------------------------
 
 func _on_AmbushArea_body_entered(body):
@@ -86,7 +94,7 @@ func _on_HeavyAttackLearn_body_entered(body):
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
 	$Patroller3.direction = -1
 	$Patroller3.speed = 350
-
+# ------------------------------------------------------------------------------
 
 func _on_Tutorial4_entered(body):
 	if body.get_collision_layer_bit(1) and is_done_once_tutorial:
@@ -99,7 +107,15 @@ func _on_Tutorial4_entered(body):
 		$Tutorials/Tutorial4.show_text()
 		$Vladimir.can_move = true
 		$CanvasLayer/UserInterface.scale_unique_leaf()
+# ------------------------------------------------------------------------------
 
+func _on_KickDownArea_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		has_vlad_jumped_across = true
+		$BOSS_EARL.has_jumped = false
+		$BOSS_EARL.is_cutscene_finished = true
+		body.stop_moving_during_cutsene(1.75)
+		$KickDownArea/CollisionShape2D.set_deferred("disabled", true)
 
 
 
@@ -125,3 +141,5 @@ func demo_lang(lang):
 		$DEMO_TUTORIAL/Crouch.bbcode_text = "[color=#004a23]S[/color] Crouch"
 		$DEMO_TUTORIAL/Attack.bbcode_text = "[color=#004a23]Left mouse button[/color] Attack"
 		$DEMO_TUTORIAL/Block.bbcode_text = "[color=#004a23]Spacebar[/color] Block"
+
+
