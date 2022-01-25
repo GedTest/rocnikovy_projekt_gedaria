@@ -92,7 +92,7 @@ func _on_DoorArea2D_body_entered(body):
 # ------------------------------------------------------------------------------
 
 func play_cutscene():
-	var SPAWN_POSITION = Vector2(2800, 985)
+	var SPAWN_POSITION = Vector2(3000, 985)
 	$CutsceneEnemies/Guardian.position = SPAWN_POSITION
 	$CutsceneEnemies/Patroller.position = SPAWN_POSITION
 	

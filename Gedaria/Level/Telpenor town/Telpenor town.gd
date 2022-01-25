@@ -1,4 +1,4 @@
-extends Level
+	extends Level
 
 
 func _ready():
@@ -50,6 +50,14 @@ func _on_EavesdropArea_body_entered(body):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$Vladimir.is_moving = true
 # ------------------------------------------------------------------------------
+
+func _on_Chimney_body_entered(body):
+	$Background/House3/Sprite2.hide()
+# ------------------------------------------------------------------------------
+
+func _on_Area2D_body_exited(body):
+	$Background/House3/Sprite2.show()
+
 
 func _on_BarArea_body_entered(body):
 	if body.get_collision_layer_bit(2) and "Patroller" in body.name:

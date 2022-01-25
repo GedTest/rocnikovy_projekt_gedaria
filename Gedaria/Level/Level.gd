@@ -26,11 +26,11 @@ onready var leaf_holders = $LeafHolders.get_children()
 
 
 func _ready():
-#	Global.set_player_position_at_start($Vladimir, $Level_start)
+	AudioManager.fade_in_music()
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 	if Global.level_root().filename != "res://Level/InTheWood/In the wood.tscn":
 		Global.is_first_entrance(self.filename)
 	
-
 	get_tree().set_pause(true)
 	Global.can_be_paused = true
 	SaveLoad.load_map()
@@ -68,7 +68,9 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	if Global.level_root().filename != "res://Level/InTheWood/In the wood.tscn":
 		if Global.first_entrance:
 			self.set_vladimirs_skills()
+		
 	$CanvasLayer/UserInterface.load_ui_icons()
+	
 	if Global.level_root().filename in CAVE_LEVELS:
 		AudioManager.play_music(CAVE_MUSIC)
 	else:

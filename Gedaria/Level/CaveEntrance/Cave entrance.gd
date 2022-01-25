@@ -43,6 +43,11 @@ func _process(delta):
 		if $LeafHolders/LeafHolder12.has_leaf:
 			$Winds/Wind4.disable_wind()
 			$Winds/Wind15.disable_wind()
+			
+	if $LeafHolders.find_node("LeafHolder95"):
+		$LeafHolders/LeafHolder95.set_collision_layer_bit(0, false)
+		$LeafHolders/LeafHolder95.set_collision_layer_bit(3, false)
+		$LeafHolders/LeafHolder95.set_collision_mask_bit(3, false)
 # ------------------------------------------------------------------------------
 
 func _on_Bars_body_entered(body):

@@ -5,6 +5,9 @@ const LEAF_PATH = preload("res://Level/Leaf.tscn")
 const MUSHROOM_PATH = preload("res://Level/Mushroom.tscn")
 const PILE_OF_LEAVES_PATH = preload("res://Level/PileOf6Leaves.tscn")
 
+const BOSS_MUSIC = preload("res://Enemy/boss_fight_theme.wav")
+const FOREST_MUSIC = preload("res://gedaria_theme1wav.wav")
+
 var is_yield_paused = false
 var can_spawn_pile_of_leaves = false
 var has_kicked_once = true
@@ -30,12 +33,12 @@ onready var mushroom_positions = [
 
 func _ready():
 	timer = get_tree().create_timer(0.0, false)
-#	Global.set_player_position_at_start($Vladimir, $Level_start)
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 
 	get_tree().set_pause(true)
 	Global.can_be_paused = false
 	SaveLoad.load_map()
-	
+	$Checkpoint.position.x = 585
 	
 	$Tween.interpolate_property($CutsceneEnemies/Father, "modulate", \
 								Color(1,1,1,1), Color(1,1,1,0.3), 1.7, \
@@ -62,12 +65,18 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	
 	$Vladimir.has_learned_leaf_blower = true
 	
-	$BOSS_EARL.state_machine.travel('STANDING')
-	$BOSS_EARL.has_jumped = false
+	if not $BOSS_EARL.is_dead:
+		$BOSS_EARL.state_machine.travel('STANDING')
+		$BOSS_EARL.has_jumped = false
+	if $BOSS_EARL.is_dead and not AudioManager.is_playing_sfx(BOSS_MUSIC):
+		AudioManager.play_music(BOSS_MUSIC)
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
 func _process(delta):
+	if $TutorialSign2/InteractIcon.visible:
+		$TutorialSign2/InteractIcon.hide()
+	
 	if not $Vladimir.has_rake and not $BOSS_ONIHRO.is_dead:
 		$Vladimir.is_moving = false
 		Input.action_release("crouch")
@@ -78,7 +87,7 @@ func _process(delta):
 		$TutorialSign/Sprite.hide()
 		$Vladimir.shoot()
 		
-	if $BOSS_EARL.position.x > 970 and has_kicked_once:
+	if not $BOSS_EARL.is_dead and $BOSS_EARL.position.x > 970 and has_kicked_once:
 		has_kicked_once = false
 		$BOSS_EARL.is_moving = false
 		$BOSS_EARL.has_jumped = true
@@ -93,7 +102,7 @@ func _process(delta):
 		yield(get_tree().create_timer(0.55), "timeout")
 		$CutsceneEnemies.run_away(2300, 1)
 		
-	if is_instance_valid(find_node("CutsceneEnemies")):
+	if is_instance_valid(find_node("CutsceneEnemies")) and $Vladimir.position.x < 2250:
 		if $CutsceneEnemies/Patroller.position.x > 2300:
 			yield(get_tree().create_timer(1.5), "timeout")
 			$CutsceneEnemies.play(1200, 1050)
@@ -133,8 +142,6 @@ func _process(delta):
 				$Vladimir.pebble_counter = 5
 				$TutorialSign.show_text()
 				$TutorialSign/Sprite.show()
-		
-		
 		
 	if $Vladimir.heavy_attack_counter < $Vladimir.heavy_attack_increment:
 		$Vladimir.heavy_attack_counter += 1
@@ -177,6 +184,7 @@ func _process(delta):
 		self.add_pile_of_leaves()
 		for e in $Enemies.get_children():
 			e.find_node("AnimationTree").active = false
+			e.find_node("AnimationPlayer").stop()
 			SaveLoad.delete_actor(e)
 	
 	$BOSS_EARL.move()
@@ -193,10 +201,6 @@ func _process(delta):
 	if $Vladimir.health <= 6 and $Mushrooms.get_child_count() < 4:
 		if $MushroomSpawnTimer.time_left <= 0.0:
 			$MushroomSpawnTimer.start()
-	
-	if $Vladimir.health <= 0 and $Timer.time_left == 0.0:
-		get_tree().paused = true
-		$Timer.start()
 		
 	if $BOSS_ONIHRO.has_spawned_quickleaves:
 		if $QuickLeaves.level == 1:
@@ -207,6 +211,7 @@ func _process(delta):
 		if is_done_once:
 			is_done_once = false
 			has_played_once = false
+			AudioManager.play_music(FOREST_MUSIC)
 			self.destroy_all_leafholders()
 			$Camera2D.position.y = 1230
 			$BOSS_ONIHRO/CanvasLayer/BossHPBar.hide()
@@ -261,10 +266,6 @@ func _on_MushroomSpawnTimer_timeout():
 		$Mushrooms.call_deferred("add_child", mushroom)
 # ------------------------------------------------------------------------------
 
-func _on_Timer_timeout():
-	get_tree().change_scene("res://Level/Fortress/Fortress.tscn")
-# ------------------------------------------------------------------------------
-
 func add_pile_of_leaves():
 	if $PilesOfLeaves.get_child_count() == 0:
 		var number = 0
@@ -304,6 +305,7 @@ func destroy_all_leafholders():
 
 func _on_CaughtVladimirArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
+		$Checkpoint.position.x = -350
 		$CaughtVladimirArea/CollisionShape2D.shape = null
 		$Vladimir.pebble_counter = 0
 		$AnimationPlayer.play("BARS_UP")
@@ -324,12 +326,14 @@ func _on_PebbleHitArea_body_entered(body):
 		$BOSS_EARL/Rake.hide()
 		
 		yield(get_tree().create_timer(1.5), "timeout")
+		AudioManager.play_music(BOSS_MUSIC)
 		$Vladimir.has_rake = true
 		$Vladimir.is_moving = true
 		$Vladimir.is_aiming = false
 		$Vladimir.can_move = true
 		
 		$BOSS_EARL.is_moving = true
+		$BOSS_EARL.state_machine.travel('RUN')
 		$BOSS_EARL.has_jumped = false
 		$BOSS_EARL.is_cutscene_finished = true
 		$BOSS_EARL.can_throw_foot_traps = true
@@ -393,6 +397,8 @@ func _on_SuckBossInRakeArea_body_entered(body):
 
 func _on_SecondBossArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
+		$Checkpoint.position.x = 2420
+		$Bars.set_collision_mask_bit(3, false)
 		$SecondBossArea/CollisionShape2D.set_deferred("disabled", true)
 		$Camera2D.current = true
 		$Camera2D.position = Vector2(3300, 1170)
@@ -401,3 +407,12 @@ func _on_SecondBossArea_body_entered(body):
 		$AnimationPlayer.play_backwards("BARS_UP")
 		$BOSS_ONIHRO.can = true
 		$BOSS_ONIHRO/CanvasLayer/BossHPBar.show()
+		
+		yield(get_tree().create_timer(1.0), "timeout")
+		$Checkpoint.position.x = -350
+
+
+func _on_KillZone_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		body.is_dead = true
+		body.die()

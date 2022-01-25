@@ -16,6 +16,7 @@ const BOULDER_ROLLING_SFX = preload("res://sfx/boulder_rolling.wav")
 const COLLAPSING_SFX = preload("res://sfx/collapsing.wav")
 const SPLASH_SFX = preload("res://sfx/splash.wav")
 const BARS_UP_SFX = preload("res://sfx/bars_up.wav")
+const BOSS_MUSIC = preload("res://Enemy/boss_fight_theme.wav")
 
 var is_rope_interactable = false
 var is_lever_interactable = false
@@ -71,11 +72,10 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	$RollingStones.sleeping = true
 	$BOSS_IN_CAVE.can_emit_signal = false
 	
-	if Global.is_boss_on_map:
-		if Global.is_done_once:
-			Global.is_done_once = false
-			$Vladimir.position = Vector2(21900, 8195)
-			
+	if Global.is_boss_on_map or not $BOSS_IN_CAVE.is_first_phase:
+#		if Global.is_done_once:
+#			Global.is_done_once = false
+		$Vladimir.position = Vector2(21900, 8195)
 			
 		$AnimationPlayer.play("ELEVATOR_UP_HALF")
 		$Vladimir.is_moving = false
@@ -88,6 +88,7 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 		connect("on_vladimir_escaped", $Vladimir/Cage, "on_vladimir_escaped")
 			
 		$BOSS_IN_CAVE/CanvasLayer/BossHPBar.show()
+		$BOSS_IN_CAVE/CanvasLayer/BossHPBar.calc_health($BOSS_IN_CAVE.health, $BOSS_IN_CAVE.max_health)
 		set_vladimir_values_after_duel()
 		$BOSS_IN_CAVE.set_values()
 	else:
@@ -233,11 +234,13 @@ func _on_CutsceneArea_body_entered(body):
 # ------------------------------------------------------------------------------
 
 func _on_FinalLeafHolders_body_entered(body):
+	AudioManager.play_music(BOSS_MUSIC)
 	$QuickLeaves2/Area2D/CollisionShape2D.set_deferred("disabled", true)
 	$QuickLeaves2/KillZone/CollisionShape2D.set_deferred("disabled", true)
 	$FinalLeafHolders/CollisionPolygon2D.set_deferred("disabled", true)
 	$BOSS_IN_CAVE.to = 27500
 	$BOSS_IN_CAVE.position = Vector2(25588, 5060)
+	$BOSS_IN_CAVE.is_moving = true
 	var array = [
 		$QuickLeaves2/Level0/LeafHolder9,
 		$QuickLeaves2/Level0/LeafHolder10,
@@ -323,12 +326,13 @@ func _on_LeafBlowerEnable_body_exited(body):
 
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
 	if $BOSS_IN_CAVE.is_dead:
+		AudioManager.play_music(CAVE_MUSIC)
 		AudioManager.play_sfx(BARS_UP_SFX)
 		$AnimationPlayer.play("BARS_UP")
 # ------------------------------------------------------------------------------
 
 func _on_RunBossArea_body_entered(body):
-	if body.get_collision_layer_bit(1) and Global.is_boss_on_map:
+	if body.get_collision_layer_bit(1) and (Global.is_boss_on_map or not $BOSS_IN_CAVE.is_first_phase):
 		$BOSS_IN_CAVE.is_moving = true
 		$RunBossArea/CollisionShape2D.set_deferred("disabled", true)
 		$AnimationPlayer.play("RUN_BOSS")

@@ -101,6 +101,8 @@ func set_player_position_at_start(player, start):
 func is_first_entrance(level):
 	if level in SaveLoad.visited_maps:
 		first_entrance = false
+	elif not level in SaveLoad.visited_maps:
+		first_entrance = true
 # ------------------------------------------------------------------------------
 
 func update_data_from_merchant(vladimir):

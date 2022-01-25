@@ -63,7 +63,8 @@ func pause():
 				for node in canvas_layer.get_children():
 					if node is Button:
 						node.visible = not node.visible
-						
+				
+				$TextureRect.texture = load(BACKGROUNDS[0])
 				$TextureRect.visible = not $TextureRect.visible
 				$PauseMenu.visible = not $PauseMenu.visible
 				$Knirocelo.visible = not $Knirocelo.visible

@@ -6,6 +6,7 @@ var has_vlad_jumped_across = false
 
 
 func _ready():
+	is_done_once = false
 	# CALLING THE "BASE FUNTCION" FIRST
 	$Vladimir.has_learned_heavy_attack = false
 	$Vladimir.has_learned_raking = false
@@ -51,17 +52,11 @@ func _process(delta):
 		$PilesOfLeaves/PileOf4Leaves4.mode = RigidBody2D.MODE_STATIC
 		$Tutorials/Tutorial7.position = Vector2(35310, 7140)
 	
-	if $Patroller5.is_dead and $Patroller4.is_dead and is_done_once:
-		is_done_once = false
-		$FallingTree.fall()
-			
-	
 	if has_vlad_jumped_across:
 		$BOSS_EARL.has_jumped = false
 		$BOSS_EARL.move()
 		
 		if $BOSS_EARL.position.x <= 30580 and has_vlad_jumped_across:
-			print("bruh")
 			has_vlad_jumped_across = false
 			$BOSS_EARL.velocity = Vector2.ZERO
 			$BOSS_EARL.kick()
@@ -116,8 +111,17 @@ func _on_KickDownArea_body_entered(body):
 		$BOSS_EARL.is_cutscene_finished = true
 		body.stop_moving_during_cutsene(1.75)
 		$KickDownArea/CollisionShape2D.set_deferred("disabled", true)
+# ------------------------------------------------------------------------------
 
+func _on_FallingTreeArea_body_entered(body):
+	if $Patroller5.is_dead and $Patroller4.is_dead:
+		$FallingTreeArea/CollisionShape2D.set_deferred("disabled", true)
+		$FallingTree.fall()
+# ------------------------------------------------------------------------------
 
+func _on_BeeProtector_body_entered(body):
+	if body.get_collision_layer_bit(13):
+		body.queue_free()
 
 
 
@@ -141,5 +145,4 @@ func demo_lang(lang):
 		$DEMO_TUTORIAL/Crouch.bbcode_text = "[color=#004a23]S[/color] Crouch"
 		$DEMO_TUTORIAL/Attack.bbcode_text = "[color=#004a23]Left mouse button[/color] Attack"
 		$DEMO_TUTORIAL/Block.bbcode_text = "[color=#004a23]Spacebar[/color] Block"
-
 

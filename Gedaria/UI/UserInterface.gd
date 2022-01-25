@@ -142,7 +142,8 @@ func load_ui_icons():
 	
 	if Global.arr_levels.find(Global.level_root().filename) == 2:
 		var vladimir = Global.level_root().find_node('Vladimir')
-		if Global.leaves_in_cave_counter > 0 or vladimir.position.x > 34300:
+		
+		if Global.leaves_in_cave_counter > 0 or vladimir.position.x > 34300 and vladimir.position.y > 2740:
 			$LeavesInCave.show()
 			$LeavesInCave/Counter.text = str(Global.leaves_in_cave_counter)+"/9"
 	self.set_unique_leaf(unique_leaf)

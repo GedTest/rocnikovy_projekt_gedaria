@@ -30,6 +30,7 @@ func _ready():
 	death_anim_time = 1.3
 	death_frame = 34
 	if can_shoot_in_sector:
+		$CollisionShape2D.position = Vector2.ZERO
 		$SpotArea/CollisionPolygon2D.disabled = false
 		for obj in rotation_objects:
 			obj.show()

@@ -91,7 +91,7 @@ func DEMOlang():
 		$Label.show()
 		$Label2.hide()
 		DEMOlang = "čeština"
-	elif Global.prefered_language == "english":
+	elif Global.prefered_language != "čeština":
 		$Label.hide()
 		$Label2.show()
 		DEMOlang = "english"

@@ -80,3 +80,8 @@ func is_playing_sfx(sfx_name):
 			if child.stream == sfx_name:
 				return true
 	return false
+# ------------------------------------------------------------------------------
+
+func fade_in_music():
+	$Tween.interpolate_property($Music/AudioPlayer, "volume_db", -80, -5, 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()

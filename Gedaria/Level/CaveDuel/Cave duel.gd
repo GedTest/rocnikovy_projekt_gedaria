@@ -6,6 +6,7 @@ const PILE_OF_LEAVES_PATH = preload("res://Level/PileOf4Leaves.tscn")
 const MUSHROOM_PATH = preload("res://Level/Mushroom.tscn")
 
 const COLLAPSING_SFX = preload("res://sfx/earthquakeMineShaft.wav")
+const BOSS_MUSIC = preload("res://Enemy/boss_fight_theme.wav")
 
 var is_yield_paused = false
 
@@ -22,8 +23,10 @@ func _ready():
 	connect("crashed_in_pile", $BOSS_IN_CAVE, "on_crashed_in_pile")
 	
 	$Vladimir/Camera.current = false
-	Global.set_player_position_at_start($Vladimir, $Level_start)
+	$Camera2D.current = true
+	$Checkpoint3.position.x = -292.799
 
+	Global.set_player_position_at_start($Vladimir, $Level_start)
 	get_tree().set_pause(true)
 	SaveLoad.load_map()
 # ------------------------------------------------------------------------------
@@ -39,27 +42,41 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	Global.is_pausable = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$CanvasLayer/UserInterface.load_ui_icons()
-	$Vladimir.damage = 6
+	$Vladimir.heavy_attack_counter = 0
 	vlad_damage = $Vladimir.damage
 	
 	boss = $BOSS_IN_CAVE
-	boss.set_variable_health(vlad_damage)
 	
-	$Vladimir.stop_moving_during_cutsene(7.5)
-	$BOSS_IN_CAVE.is_moving = false
-	$BOSS_IN_CAVE.state_machine.travel("STANDING")
-	
-	yield(get_tree().create_timer(2.0), "timeout")
-	$AnimationPlayer.play("INTRO")
-	yield(get_tree().create_timer(0.5), "timeout")
-	$BOSS_IN_CAVE.state_machine.travel("LUNGE")
-	
-	yield(get_tree().create_timer(2.0), "timeout")
-	$BOSS_IN_CAVE.state_machine.travel("STANDING")
-	
-	yield(get_tree().create_timer(3.5), "timeout")
-	$BOSS_IN_CAVE.is_moving = true
-	$BOSS_IN_CAVE.state_machine.travel('SUMMON_BATS')
+	if $BOSS_IN_CAVE.is_first_phase:
+		$BOSS_IN_CAVE.set_variable_health(vlad_damage)
+		$Vladimir.stop_moving_during_cutsene(7.5)
+		$BOSS_IN_CAVE.is_moving = false
+		$BOSS_IN_CAVE.state_machine.travel("STANDING")
+		
+		yield(get_tree().create_timer(2.0), "timeout")
+		$AnimationPlayer.play("INTRO")
+		yield(get_tree().create_timer(0.5), "timeout")
+		$BOSS_IN_CAVE.state_machine.travel("LUNGE")
+		
+		yield(get_tree().create_timer(2.0), "timeout")
+		$BOSS_IN_CAVE.state_machine.travel("STANDING")
+		
+		yield(get_tree().create_timer(3.5), "timeout")
+		$Checkpoint3.position.x = -1000
+		AudioManager.play_music(BOSS_MUSIC)
+		$BOSS_IN_CAVE.is_moving = true
+		$BOSS_IN_CAVE.state_machine.travel('SUMMON_BATS')
+		
+	if not $BOSS_IN_CAVE.is_first_phase:
+		$Camera2D.current = false
+		$MineCart/Camera2D.current = true
+		$BOSS_IN_CAVE.position = Vector2(0, 2843)
+		$CanvasLayer/UserInterface.hide()
+		$BOSS_IN_CAVE/CanvasLayer/BossHPBar.show()
+		$BOSS_IN_CAVE/CanvasLayer/BossHPBar.calc_health(boss.health, boss.max_health)
+		
+		if not AudioManager.is_playing_sfx(BOSS_MUSIC):
+			AudioManager.play_music(BOSS_MUSIC)
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
@@ -76,10 +93,6 @@ func _process(delta):
 	if $Vladimir.health <= 6 and $Mushrooms.get_child_count() < 4:
 		if $MushroomSpawnTimer.time_left <= 0.0:
 			$MushroomSpawnTimer.start()
-	
-	if $Vladimir.health <= 0 and $timer.time_left == 0.0:
-		get_tree().paused = true
-		$timer.start()
 	
 	if $Vladimir.position.x <= -13875:
 		$Vladimir.damage = vlad_damage
@@ -133,7 +146,7 @@ func _on_MushroomSpawnTimer_timeout():
 func _on_EndArea_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		Global.is_done_once = true
-		Global.is_boss_on_map = true
+		Fullscreen.is_sign_entered = true
 		Fullscreen.show_loading_screen()
 		SaveLoad.save_to_slot("slot_4")
 		yield(get_tree().create_timer(0.5), "timeout")
@@ -156,7 +169,7 @@ func collapse_floor():
 	vlad_damage = $Vladimir.damage
 	$Vladimir.damage = 1
 	$BOSS_IN_CAVE.is_blocking = false
-
+	Global.is_boss_on_map = true
 # ------------------------------------------------------------------------------
 
 func _on_BoosterArea_body_entered(body):
@@ -172,10 +185,6 @@ func _on_BoosterArea_body_entered(body):
 		yield(get_tree().create_timer(1.0), "timeout")
 		body.is_moving = true
 		body.velocity.y = -100
-# ------------------------------------------------------------------------------
-
-func _on_Timer_timeout():
-	get_tree().change_scene("res://Level/CaveDuel/Cave duel.tscn")
 # ------------------------------------------------------------------------------
 
 func _on_ReduceDamageArea_body_entered(body):

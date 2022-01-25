@@ -6,6 +6,9 @@ var can_interact = false
 func _ready():
 	if Global.level_root().filename == "res://Level/InTheWood/In the wood.tscn":
 		$Icon.show()
+	elif Global.level_root().filename == "res://Level/MerchantSquirrel.tscn":
+		if Global.blue_berries == 5:
+			self.play("happy")
 # ------------------------------------------------------------------------------
 
 func _process(delta):

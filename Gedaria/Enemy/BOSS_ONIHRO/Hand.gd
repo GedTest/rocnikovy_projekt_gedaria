@@ -64,9 +64,9 @@ func smash(player_position, return_position, is_last_smash=false):
 	$Tween.start()
 	
 	warning = Sprite.new()
-	warning.modulate = Color.red
-	warning.texture = load("res://icon.png")
+	warning.texture = load("res://Enemy/Warning.png")
 	Global.level_root().call_deferred("add_child", warning)
+	warning.scale = Vector2(2.5, 3)
 	warning.global_position = Vector2(player_position.x+(x*dir), y)
 # ------------------------------------------------------------------------------
 

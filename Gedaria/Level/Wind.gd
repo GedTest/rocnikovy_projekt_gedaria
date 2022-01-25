@@ -52,6 +52,9 @@ func _on_Wind_body_entered(body):
 				body.state_machine.travel("HIT")
 				body.blowing_time += 0.016
 				if body.blowing_time >= 1.5:
+					Global.level_root().find_node("TutorialSign2")\
+					.find_node("Area").find_node("CollisionShape2D")\
+					.set_deferred("disabled", true)
 					body.is_hitted_by_wind = true
 		
 		if "Hand" in body.name:

@@ -41,6 +41,7 @@ func _on_Area2D_area_entered(area):
 	if area.get_collision_mask_bit(3):
 		connect("time_to_fly", self, "fly_away")
 		yield(get_tree().create_timer(1.0), "timeout")
+		Global.level_root().find_node("ShakeTimer").start()
 		
 		emit_signal("time_to_fly")
 		area.get_parent().cracks = 1

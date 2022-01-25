@@ -18,9 +18,10 @@ func _process(delta):
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_body_entered(body):
-	$CollisionPolygon2D2.set_deferred("disabled", false)
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	$StaticBody2D/CollisionPolygon2D2.set_deferred("disabled", false)
 	if body.get_collision_layer_bit(2):
+		body.state_machine.travel("STANDING")
 		self.has_enemy = true
 	if body.get_collision_layer_bit(1):
 		self.is_done_once = true

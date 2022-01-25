@@ -28,6 +28,7 @@ func _on_Area2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		AudioManager.play_sfx(REWARD_SFX, 1, 0, -11)
 		body.acorn_counter += 1
+		body.collected_acorn_in_level_counter += 1
 		$effect.start()
 		$Area2D/CollisionShape2D.shape = null
 		

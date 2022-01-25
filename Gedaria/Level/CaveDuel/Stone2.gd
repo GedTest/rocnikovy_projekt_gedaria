@@ -12,7 +12,7 @@ func _on_Area2D_body_entered(body):
 		self.queue_free()
 		
 	elif body.get_collision_layer_bit(0):
-		if randi() % 2 == 0:
+		if randi() % 4 == 0:
 			var pebble = PebblePath.instance()
 			pebble.position = self.position
 			get_parent().call_deferred("add_child", pebble)

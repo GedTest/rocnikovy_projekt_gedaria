@@ -231,9 +231,10 @@ func kick():
 		AudioManager.play_sfx(KICK_SFX, 1)
 		
 		yield(get_tree().create_timer(0.25), "timeout")
-		player.hit(0)
-		
-		var kick_direction = 1 if player.position.x - self.position.x > 0 else -1
-		var x = 350 * kick_direction
-		$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x+x, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN)
-		$Tween.start()
+		if player:
+			player.hit(0)
+			
+			var kick_direction = 1 if player.position.x - self.position.x > 0 else -1
+			var x = 350 * kick_direction
+			$Tween.interpolate_property(player, "position", player.position, Vector2(player.position.x+x, player.position.y), 0.3, Tween.TRANS_SINE, Tween.EASE_IN)
+			$Tween.start()

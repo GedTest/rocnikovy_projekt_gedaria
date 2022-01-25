@@ -24,6 +24,9 @@ var damage_upgrade_counter = 1
 var health_upgrade_counter = 1
 var speed_upgrade_counter = 1
 
+var close = ""
+var key = ""
+
 onready var arr_texts = {
 	"price":$CanvasLayer/HealthButton/Label,
 	"heavyattack":$CanvasLayer/HeavyAttackButton,
@@ -92,8 +95,18 @@ func _process(delta):
 						or Input.is_action_just_pressed("pause")):
 		AudioManager.play_sfx(INTERACTION_SFX, 0, 0, -10)
 		
+		key = InputMap.get_action_list("interact")[0].as_text()
+		close = Languages.languages[Global.prefered_language]["close"]
+		$CanvasLayer/BigTable/CloseShop.text = key + " " + close
+		
 		for button in get_tree().get_nodes_in_group("buy_btn"):
 			button.visible = not button.visible
+			
+		$CanvasLayer/HealthButton/Counter.text = str($Vladimir.max_health)+"/"+str(HEALTH_LIMIT)
+		$CanvasLayer/AttackButton/Counter.text = str($Vladimir.damage)+"/"+str(DAMAGE_LIMIT)
+		$CanvasLayer/SpeedButton/Counter.text = str((speed_upgrade_counter-1)*5)+"%/"+str(SPEED_LIMIT)+"%"
+		$CanvasLayer/HeavyAttackButton/Counter.text = str($Vladimir.heavy_attack_increment)+"/"+str(HEAVY_ATTACK_LIMIT)
+		
 		$Vladimir.is_moving = not $Vladimir.is_moving
 		$Vladimir.velocity = Vector2.ZERO
 		$Vladimir.state_machine.travel("IDLE")
@@ -190,8 +203,12 @@ func _on_HeavyAttackButton_pressed():
 func set_stats():
 	var slot = SaveLoad.slots["slot_4"]
 	var stats = "["+Global.arr_levels[Global.arr_levels.find(Global.last_map)]+", Sign]"
+	var vladimir_data = SaveLoad.slots["slot_4"][Global.vladimir_data()]["collected_acorn_in_level_counter"]
 
-	$Statistics/AcornLabel.text = str(slot[stats]["vladimir_acorns"])+"/"+str(slot[stats]["level_acorns"])
+	if vladimir_data:
+		$Statistics/AcornLabel.text = str(vladimir_data)+"/"+str(slot[stats]["level_acorns"])
+	else:
+		$Statistics/AcornLabel.text = "0/"+str(slot[stats]["level_acorns"])
 	$Statistics/LeafLabel.text = str(slot[stats]["collected_unique_leaves"])+"/"+str(slot[stats]["level_unique_leaves"])
 	$Statistics/EnemyLabel.text = str(slot[stats]["killed_enemies"])+"/"+str(slot[stats]["level_enemies"])
 

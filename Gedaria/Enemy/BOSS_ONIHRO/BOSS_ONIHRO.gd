@@ -220,6 +220,7 @@ func spawn_quickleaves():
 		var quick_leaves = QUICKLEAVES_PATH.instance()
 		self.get_parent().call_deferred("add_child", quick_leaves)
 		quick_leaves.number_of_levels = 4
+		quick_leaves.z_index = -22
 		quick_leaves.leaf_holder_per_level = 14
 		quick_leaves.scale = Vector2(1.5, 1.5)
 		quick_leaves.position = Vector2(2158, 1840)

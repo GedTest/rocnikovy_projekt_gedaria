@@ -31,6 +31,7 @@ export(int) var max_health = 12
 export(int) var health = 12
 
 var shoot_distance = 500
+var collected_acorn_in_level_counter = 0
 var acorn_counter = 0
 var pebble_counter = 0
 var heavy_attack_counter = 0
@@ -449,7 +450,8 @@ func save(): # SAVE VARIABLES IN DICTIONARY
 		"heavy_attack_increment":heavy_attack_increment,
 		"has_learned_raking":has_learned_raking,
 		"has_learned_blocking":has_learned_blocking,
-		"has_learned_leaf_blower":has_learned_leaf_blower
+		"has_learned_leaf_blower":has_learned_leaf_blower,
+		"collected_acorn_in_level_counter":collected_acorn_in_level_counter
 	}
 	return saved_data
 # ------------------------------------------------------------------------------
@@ -459,7 +461,7 @@ func _on_WeaponHitbox_body_entered(body):
 	if body.get_collision_layer_bit(2):
 		enemy = body if body.name != "Shield" else body.get_parent()
 		can_attack = true
-	elif body.get_collision_layer_bit(7) and not "Shield" in body.name:
+	elif body.get_collision_layer_bit(7) and "BreakableFloor" in body.name:
 		breakable_stone = body
 # ------------------------------------------------------------------------------
 

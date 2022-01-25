@@ -69,6 +69,13 @@ func _process(delta):
 			self.lunge()
 		
 		if is_first_phase:
+			if $event_timer.time_left < 1.1 and $event_timer.time_left > 1.05:
+				$Warning.show()
+				$Tween.interpolate_property($Warning, "scale", Vector2(0.5, 1.9), Vector2(8.0, 1.9), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN)
+				$Tween.start()
+				$Tween.interpolate_property($Warning, "position", Vector2(0, 75), $Warning.position + Vector2(220*direction, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN)
+				$Tween.start()
+			
 			# (176HP - 150HP)
 			if health >= (max_health*0.75) and health < (max_health*0.9) and is_done_once:
 				is_done_once = false
@@ -97,6 +104,8 @@ func _process(delta):
 					self.disconnect("health_changed", get_parent(), "add_pile_of_leaves")
 					can_emit_signal = false
 					is_done_once = false
+					self.is_moving = true
+					self.velocity = GRAVITY
 					Global.level_root().collapse_floor()
 					can_fly = false
 			
@@ -196,7 +205,6 @@ func attack(attack_time, cooldown_time, sound=GENERAL_ATTACK_SFX, sound_db=0):
 	if not is_dead and not is_attacking:
 		is_moving = false
 		$AnimationTree.set("parameters/ATTACK/blend_position", direction)
-		print("attakc")
 		state_machine.travel('ATTACK')
 		
 		if attack_timer.time_left <= 0.0:
@@ -219,34 +227,16 @@ func attack(attack_time, cooldown_time, sound=GENERAL_ATTACK_SFX, sound_db=0):
 # ------------------------------------------------------------------------------
 
 func set_invincible():
-	print("jak často")
 	if is_first_phase and can_emit_signal:
 		self.emit_signal("health_changed")
 		leaves_counter = get_parent().get_node("Leaves").get_child_count()
 		if leaves_counter == 0:
 			self.spawn_leaves_in_range(leaves_counter)
 	
-	if not is_blocking:# and can_fly:
-#		if tween_finished:
-#			can_fly = false
-	#		tween_finished = false
-	#		$event_timer.stop()
-	#		$HitRay.enabled = false
-	#		$HitRay2.enabled = false
+	if not is_blocking:
 		$ShieldLeft.emitting = true
 		$ShieldRight.emitting = true
 		is_blocking = true
-	#		GRAVITY.y = 0
-			
-	#		$AnimationTree.set("parameters/FLY/blend_position", direction)
-	#		state_machine.travel('FLY')
-			
-	#		$Tween2.interpolate_property(self, "position", position, Vector2(position.x, y), 0.5, Tween.TRANS_SINE, Tween.EASE_IN)
-	#		$Tween2.start()
-	#
-	#		var new_pos = Vector2(position.x, y)
-	#		$Tween.interpolate_property(self, "position", new_pos, Vector2(x, y), 2.0, Tween.TRANS_SINE, Tween.EASE_IN, 0.55)
-	#		$Tween.start()
 # ------------------------------------------------------------------------------
 
 func _on_falling_timer_timeout():
@@ -277,11 +267,9 @@ func falling_rocks():
 # ------------------------------------------------------------------------------
 
 func hit(dmg, sound=""):
-	is_moving = false
 	$stars.emitting = false
 	
 	if not is_blocking:
-		is_moving = true
 		if not is_first_phase and not is_in_minecart:
 			hit_in_row += 1
 			
@@ -289,25 +277,9 @@ func hit(dmg, sound=""):
 				hit_in_row = 0
 				self.quickleaves()
 		
-		.hit(dmg)
+		.hit(dmg, hit_sfx[randi()%9])
 		if not is_in_minecart:
 			self.dodge()
-# ------------------------------------------------------------------------------
-
-func _on_Tween_tween_completed(object, key):
-	is_moving = false
-	
-#	var tween_timer = get_tree().create_timer(0.0, false)
-#	if tween_timer.time_left <= 0.0:
-#		tween_timer = get_tree().create_timer(2.5, false)
-#		if not is_yield_paused:
-#			yield(tween_timer, "timeout")
-#			is_moving = true
-#			is_invincible = false
-#			tween_finished = true
-			
-#			leaves_counter = get_parent().get_node("Leaves").get_child_count()
-#			self.spawn_leaves_in_range(leaves_counter)
 # ------------------------------------------------------------------------------
 
 func spawn_leaves_in_range(number):
@@ -321,9 +293,7 @@ func spawn_leaves_in_range(number):
 func on_crashed_in_pile():
 	self.has_crashed = true
 	$event_timer.stop()
-	$Tween.stop_all()
 	$LungeArea/CollisionShape2D.set_deferred("disabled", true)
-	print("crashed hit long")
 	state_machine.travel("HIT_LONG")
 	self.can_fly = false
 	self.velocity = Vector2.ZERO
@@ -332,13 +302,12 @@ func on_crashed_in_pile():
 	self.is_blocking = false
 	
 	if unconsciousness_timer.time_left <= 0.0:
-		unconsciousness_timer = get_tree().create_timer(3.0, false)
+		unconsciousness_timer = get_tree().create_timer(2.0, false)
 		if not is_yield_paused:
 			yield(unconsciousness_timer, "timeout")
 			$stars.emitting = false
 			self.has_crashed = false
 			self.can_lunge = true
-			print("crashed run")
 			state_machine.travel("RUN")
 			self.is_moving = true
 			self.tween_finished = true
@@ -348,7 +317,6 @@ func on_crashed_in_pile():
 
 func turn_around(): # LOOK BACK AND FORTH
 	if not is_dead and not has_player and not has_crashed:
-		print("standing turn_around")
 		state_machine.travel('STANDING')
 		$Sprite.flip_h = not $Sprite.flip_h
 		is_moving = false
@@ -367,7 +335,6 @@ func turn_around(): # LOOK BACK AND FORTH
 					$HitRay.cast_to.x = -$HitRay.cast_to.x
 					$HitRay2.cast_to.x = -$HitRay2.cast_to.x
 					$WallDetection.position.x *= -1
-				print("turn_around")
 				state_machine.travel('RUN')
 # ------------------------------------------------------------------------------
 
@@ -383,9 +350,9 @@ func dodge():
 func lunge():
 	if can_lunge and position.x >= -500 and position.x <= 1500:
 		$AnimationTree.set("parameters/LUNGE/blend_position", direction)
-		print("lunge")
 		state_machine.travel('LUNGE')
 		
+		self.is_blocking = true
 		is_lunging = true
 		can_lunge = false
 		$HitRay.enabled = false
@@ -396,8 +363,8 @@ func lunge():
 
 func _on_event_timer_timeout():
 	if is_first_phase:
-		print("can_fly = t")
 		can_fly = true
+		
 		self.stalactite_wave()
 	
 	elif not is_in_minecart:
@@ -405,7 +372,7 @@ func _on_event_timer_timeout():
 # ------------------------------------------------------------------------------
 
 func _on_AdvancedTween_advance_tween(sat):
-	if not is_blocking and not has_crashed:
+	if not has_crashed:
 		self.position.x += sat * -direction
 # ------------------------------------------------------------------------------
 
@@ -413,14 +380,15 @@ func _on_AdvancedTween_tween_completed(object, key):
 	if not has_crashed:
 		$HitRay.enabled = true
 		$HitRay2.enabled = true
-		is_lunging = false
+		self.is_blocking = false
+		self.is_lunging = false
 		
 		# cooldown before next lunge
 		if lunge_timer.time_left <= 0.0:
-			lunge_timer = get_tree().create_timer(2.5, false)
+			lunge_timer = get_tree().create_timer(1.8, false)
 			if not is_yield_paused and not has_crashed:
 				yield(lunge_timer, "timeout")
-				can_lunge = true
+				self.can_lunge = true
 # ------------------------------------------------------------------------------
 
 func _on_LungeArea_body_entered(body):
@@ -439,6 +407,7 @@ func summon_bats():
 	var index = 0
 	
 	if BAT_COUNT+previous_number-3 > level.arr_bats.size():
+		state_machine.travel("SUMMON_BATS")
 		previous_number = number
 		for i in range(number):
 			index = randi() % 6
@@ -462,19 +431,23 @@ func summon_bats():
 func stalactite_wave():
 	if not is_vlad_in_quickleaves:
 		var stalactites = []
+		$Warning.hide()
+		self.is_moving = false
+		
 		for i in range(8):
 			var stalactite = STALACTITE_PATH.instance()
-			stalactite.scale.y = 0.8-(i*0.05)
+			stalactite.scale.y = 1.0-(i*0.06)
 			stalactite.rotation_degrees = 180
-			var offset = Vector2((100 + i*70)*direction, 200)
-			stalactite.position = self.position + offset
+			var offset = Vector2((100 + i*70)*direction, 120+i*5)
+			stalactite.position = Vector2(self.position.x, 1540) + offset
 			stalactite.frame = 3
+			stalactite.damage = 1 if i%2 == 0 else 0
 			stalactite.z_index = -2
 			$Tween4.interpolate_property(stalactite, "position", stalactite.position, Vector2(stalactite.position.x, stalactite.position.y-80), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN, i*0.2)
 			self.get_parent().call_deferred("add_child", stalactite)
 			stalactites.append(stalactite)
 			$Tween4.start()
-			
+		self.is_moving = true
 			
 		if despawn_timer.time_left <= 0.0:
 			despawn_timer = get_tree().create_timer(1.5, false)
@@ -490,12 +463,18 @@ func quickleaves():
 	if not is_vlad_in_quickleaves:
 		is_vlad_in_quickleaves = true
 		self.is_moving = false
+		self.is_blocking = true
+		$ShieldLeft.emitting = true
+		$ShieldRight.emitting = true
 		Global.level_root().set_quick_leaves()
 # ------------------------------------------------------------------------------
 
 func _on_quickleaves_completed():
 	is_vlad_in_quickleaves = false
 	self.is_moving = true
+	self.is_blocking = false
+	$ShieldLeft.emitting = false
+	$ShieldRight.emitting = false
 	Global.level_root().set_quick_leaves(true)
 # ------------------------------------------------------------------------------
 
@@ -521,5 +500,6 @@ func set_values():
 func save():
 	things_to_save.is_first_phase = self.is_first_phase
 	things_to_save.is_done_once = self.is_done_once
+	things_to_save.max_health = self.max_health
 	.save()
 	return things_to_save

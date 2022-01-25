@@ -60,6 +60,7 @@ func _process(delta):
 	$Settings/VideoSettings/Close.text = $Settings/SettingsTree/Close.text
 	$Slots/Close.text = $Settings/SettingsTree/Close.text
 	$Settings/KeyBinding/Close.text = $Settings/SettingsTree/Close.text
+	$Continue2/Label.text = $StartGame/Continue/Label.text
 # ------------------------------------------------------------------------------
 
 func _on_StartButton_pressed():
@@ -103,7 +104,6 @@ func find_latest_slot(data):
 			var seconds = SaveLoad.slots[slot]["date"]["second"]
 			
 			var result = days + hours + minutes + seconds
-	#			print("d: ",days," h: ",hours," m: ",minutes," s: ",seconds," result: ",result)
 			if result > default:
 				default = result
 				latest = int(slot[-1])
@@ -180,11 +180,30 @@ func _on_NewGame_pressed():
 	
 	var new_dir = Directory.new()
 	new_dir.make_dir("user://Saves")
-
 	
-#	get_tree().change_scene("res://Level/InTheWood/In the wood.tscn")
-	get_tree().change_scene("res://Level/Chase/ChaseLevel.tscn")
+	$StartButton.disabled = true
+	$LoadButton.disabled = true
+	$OptionButton.disabled = true
+	$CreditsButton.disabled = true
+	$QuitButton.disabled = true
+	
+	$AnimationPlayer.play("INTRO")
 # ------------------------------------------------------------------------------
+
+func _on_LoadingButton_pressed():
+	$Slots.hide_all()
+	$Settings/background.hide()
+	self.disable_buttons()
+# ------------------------------------------------------------------------------
+
+func _on_ContinueIntro_pressed():
+	$StartButton.disabled = false
+	$LoadButton.disabled = false
+	$OptionButton.disabled = false
+	$CreditsButton.disabled = false
+	$QuitButton.disabled = false
+	get_tree().change_scene("res://Level/Chase/ChaseLevel.tscn")
+
 
 func _on_Back_lang_pressed():
 	$Languages.hide()

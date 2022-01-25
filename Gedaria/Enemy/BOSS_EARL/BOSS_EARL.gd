@@ -14,6 +14,7 @@ var health_limit = 0
 
 var tossable_player = null
 var throw_timer = null
+var shelf = null
 
 var is_player_in_air = false
 var has_jumped = true
@@ -22,6 +23,8 @@ var can_throw_foot_traps = false
 
 
 func _ready():
+	if Global.level_root().filename == "res://Level/Fortress/Fortress.tscn":
+		shelf = Global.level_root().find_node("Shelf").find_node("CollisionShape2D")
 	hit_sfx = ["res://sfx/earl_hit1.wav", "res://sfx/earl_hit2.wav"]
 	self.set_variable_health(get_parent().find_node("Vladimir").damage)
 	throw_timer = get_tree().create_timer(0.0)
@@ -31,7 +34,8 @@ func _ready():
 
 func _process(delta):
 	if not is_dead:
-		$CanvasLayer/BossHPBar.calc_health(self.health, self.max_health)
+		if Global.level_root().filename == "res://Level/Fortress/Fortress.tscn":
+			$CanvasLayer/BossHPBar.calc_health(self.health, self.max_health)
 		
 		if is_done_once:
 			if (health <= health_limit and health > health_limit-(2*vlad_damage)):
@@ -87,6 +91,8 @@ func jump():
 	var TARGET_POSITION = Vector2(1955, 1060)
 	$Tween.interpolate_property(self, "position", self.position, TARGET_POSITION, 0.5, Tween.TRANS_BACK, Tween.EASE_IN)
 	$Tween.start()
+	shelf.set_deferred("disabled", false)
+	
 	yield(get_tree().create_timer(0.4), "timeout")
 	has_jumped = true
 # ------------------------------------------------------------------------------
@@ -94,6 +100,7 @@ func jump():
 func summon_enemies():
 	var root = self.get_parent()
 	for index in range(6):
+		yield(get_tree().create_timer(0.25), "timeout")
 		var enemy_path = GUARDIAN_PATH if randi()%2 == 0 else PATROLLER_PATH
 		var enemy = enemy_path.instance()
 		enemy.position = root.spawning_positions[index].position
@@ -118,20 +125,21 @@ func hit(dmg, sound=""):
 		.hit(dmg, hit_sfx[randi()%2])
 		self.hit_in_row += 1
 		
-		yield(get_tree().create_timer(0.75), "timeout")
-		self.state_machine.travel("RUN")
-		if hit_in_row > 1:
-			yield(get_tree().create_timer(1.75), "timeout")
-			self.hit_in_row = 0
+		if not has_jumped:
+			yield(get_tree().create_timer(0.5), "timeout")
+			self.state_machine.travel("RUN")
+			if hit_in_row > 1:
+				self.hit_in_row = 0
 		
 		if has_jumped:
 			var pile_of_leaves = self.get_parent().find_node("PilesOfLeaves")
 			if pile_of_leaves.get_child_count() > 0:
+				shelf.set_deferred("disabled", true)
 				pile_of_leaves = pile_of_leaves.get_child(0)
 				pile_of_leaves.call_deferred("queue_free")
 				has_jumped = false
 				is_done_once = true
-				self.health += vlad_damage
+				self.health += 2*vlad_damage
 # ------------------------------------------------------------------------------
 
 func throw_foot_trap():

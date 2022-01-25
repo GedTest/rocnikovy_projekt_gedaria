@@ -5,6 +5,8 @@ const LetterPath = preload("res://Level/Prologue/Letter.tscn")
 const MushroomPath = preload("res://Level/Mushroom.tscn")
 
 const LETTER_SFX = preload("res://sfx/open_letter.wav")
+const BOSS_MUSIC = preload("res://Enemy/boss_fight_theme.wav")
+const FOREST_MUSIC = preload("res://gedaria_theme1wav.wav")
 
 var is_boss_on_map = false
 var is_letter_on_map = false
@@ -23,6 +25,8 @@ onready var spawn_positions = [
 
 
 func _ready():
+	AudioManager.play_music(FOREST_MUSIC)
+	UnPausedForTutorialLevel.is_done_once = true
 	$Vladimir.has_rake = false
 	Fullscreen.hide_elements()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -89,7 +93,7 @@ func _process(delta):
 			$Branch/AnimationPlayer.stop()
 			$Letter/Text.show()
 			AudioManager.play_sfx(LETTER_SFX, 0, 0, -2)
-			yield(get_tree().create_timer(8.0), "timeout")
+			yield(get_tree().create_timer(6.5), "timeout")
 			
 			get_tree().change_scene("res://Level/Prologue/KidnapLevel.tscn")
 	
@@ -154,6 +158,7 @@ func _on_Scarecrow_tree_exiting():
 	yield(get_tree().create_timer(0.2), "timeout")
 	
 	is_boss_on_map = true
+	AudioManager.play_music(BOSS_MUSIC)
 	yield(get_tree().create_timer(1.5), "timeout")
 	
 	$Branch/Area2D2/CollisionShape2D.disabled = false
@@ -180,3 +185,13 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_UnderLevelKillZone_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		_on_timer_timeout()
+# ------------------------------------------------------------------------------
+
+func _on_ShakeTimer_timeout():
+	if boss:
+		if boss.health <= boss.max_health/2:
+			$AnimationPlayer.play("shake_lil_branch")
+			yield(get_tree().create_timer(0.75), "timeout")
+			if $Branch.cracks < 1:
+				$Branch/AnimationPlayer.play("shake")
+			$ShakeTimer.start()
