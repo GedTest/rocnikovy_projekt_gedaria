@@ -41,7 +41,7 @@ func _ready():
 		$Sprite.texture = load(NORMAL_BERNARD)
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	if not is_dead:
 		if turn_around_timer.time_left <= 0.0 and not has_player and not can_shoot_in_sector:
 			# LOOK AROUND FOR PLAYER
@@ -65,8 +65,8 @@ func _process(delta):
 	if is_dead:
 		if not is_yield_paused:
 			yield(get_tree().create_timer(death_anim_time+0.3), "timeout")
-			$Sprite.frame = death_frame
-			$AnimationTree.active = false
+			if is_done_once:
+				self.die()
 # ------------------------------------------------------------------------------
 
 func turn_around():
@@ -85,6 +85,7 @@ func turn_around():
 # ------------------------------------------------------------------------------
 
 func die():
+	is_done_once = false
 	$Sprite.texture = load(NORMAL_BERNARD)
 	$Sprite.vframes = 4
 	$Sprite.hframes = 10

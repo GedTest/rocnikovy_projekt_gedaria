@@ -302,7 +302,7 @@ func blowing(delta):
 		is_aiming = false
 		is_blowing = false
 		
-	if not is_blowing and was_blowing:
+	if not is_blowing and (was_blowing or heavy_attack_counter == 0):
 		self.recharge_leaf_blower(delta)
 # ------------------------------------------------------------------------------
 
@@ -459,8 +459,10 @@ func save(): # SAVE VARIABLES IN DICTIONARY
 func _on_WeaponHitbox_body_entered(body):
 	# collision_layer_bit 2 = Enemy
 	if body.get_collision_layer_bit(2):
+		breakable_stone = null
 		enemy = body if body.name != "Shield" else body.get_parent()
 		can_attack = true
+		return
 	elif body.get_collision_layer_bit(7) and "BreakableFloor" in body.name:
 		breakable_stone = body
 # ------------------------------------------------------------------------------

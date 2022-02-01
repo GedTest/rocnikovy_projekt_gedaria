@@ -53,7 +53,7 @@ func _ready():
 	$CanvasLayer/BossHPBar/Label.text = Languages.languages[Global.prefered_language]["boss2"]
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	if has_crashed:
 		self.velocity = Vector2.ZERO
 	
@@ -294,6 +294,7 @@ func on_crashed_in_pile():
 	self.has_crashed = true
 	$event_timer.stop()
 	$LungeArea/CollisionShape2D.set_deferred("disabled", true)
+	$Warning.hide()
 	state_machine.travel("HIT_LONG")
 	self.can_fly = false
 	self.velocity = Vector2.ZERO
@@ -467,6 +468,10 @@ func quickleaves():
 		$ShieldLeft.emitting = true
 		$ShieldRight.emitting = true
 		Global.level_root().set_quick_leaves()
+# ------------------------------------------------------------------------------
+
+func jump_back(var obj=self, var distance = 100, var time = 0.3, dir=-direction):
+	.jump_back(self, 0, 0)
 # ------------------------------------------------------------------------------
 
 func _on_quickleaves_completed():

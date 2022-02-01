@@ -10,7 +10,6 @@ var LeafPath = preload("res://Level/Leaf.tscn")
 export (int) var value = 4
 export (Array) var arr_leaves_in = [0, 0, 0, 0]
 export (bool) var is_movable = false
-#export (Vector2) var grab_position = Vector2(150, 50)
 
 var arr_children = []
 var is_complete = false

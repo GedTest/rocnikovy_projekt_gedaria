@@ -8,7 +8,7 @@ var is_slow_motion = false
 var has_player = false
 
 
-func _process(delta):
+func _physics_process(delta):
 	if not has_player:
 		if is_slow_motion:
 			velocity.x = 200

@@ -17,7 +17,7 @@ func _ready():
 	timer = get_tree().create_timer(0.0)
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	var leaf = LeafPath.instance()
 	
 	if cracks == 1 and not is_don_once:

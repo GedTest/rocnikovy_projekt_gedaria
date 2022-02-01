@@ -64,6 +64,7 @@ func _process(delta):
 	if self.find_node("BOSS_EARL"):
 		if $PilesOfLeaves/PileOf4Leaves6.is_complete:
 			SaveLoad.delete_actor($BOSS_EARL)
+			$KickStaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 # ------------------------------------------------------------------------------
 
 func _on_AmbushArea_body_entered(body):
@@ -105,10 +106,11 @@ func _on_Tutorial4_entered(body):
 # ------------------------------------------------------------------------------
 
 func _on_KickDownArea_body_entered(body):
-	if body.get_collision_layer_bit(1):
+	if body.get_collision_layer_bit(1) and is_instance_valid(self.find_node("BOSS_EARL")):
+		$KickStaticBody2D/CollisionShape2D.set_deferred("disabled", false)
 		has_vlad_jumped_across = true
-		$BOSS_EARL.has_jumped = false
-		$BOSS_EARL.is_cutscene_finished = true
+		self.find_node("BOSS_EARL").has_jumped = false
+		self.find_node("BOSS_EARL").is_cutscene_finished = true
 		body.stop_moving_during_cutsene(1.75)
 		$KickDownArea/CollisionShape2D.set_deferred("disabled", true)
 # ------------------------------------------------------------------------------
@@ -145,4 +147,3 @@ func demo_lang(lang):
 		$DEMO_TUTORIAL/Crouch.bbcode_text = "[color=#004a23]S[/color] Crouch"
 		$DEMO_TUTORIAL/Attack.bbcode_text = "[color=#004a23]Left mouse button[/color] Attack"
 		$DEMO_TUTORIAL/Block.bbcode_text = "[color=#004a23]Spacebar[/color] Block"
-

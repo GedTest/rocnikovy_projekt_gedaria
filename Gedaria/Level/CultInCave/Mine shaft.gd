@@ -73,13 +73,13 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	$BOSS_IN_CAVE.can_emit_signal = false
 	
 	if Global.is_boss_on_map or not $BOSS_IN_CAVE.is_first_phase:
-#		if Global.is_done_once:
-#			Global.is_done_once = false
 		$Vladimir.position = Vector2(21900, 8195)
-			
+		
+		yield(get_tree().create_timer(0.5), "timeout")
 		$AnimationPlayer.play("ELEVATOR_UP_HALF")
 		$Vladimir.is_moving = false
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(1.5), "timeout")
+		$CanvasLayer/UserInterface.load_ui_icons()
 		$BOSS_IN_CAVE.is_moving = false
 		$BOSS_IN_CAVE.state_machine.travel("STANDING")
 		$Vladimir.is_moving = true
@@ -217,14 +217,14 @@ func _on_AmbushArea_body_entered(body):
 		yield(get_tree().create_timer(3.0), "timeout")
 		
 		var ambush_enemies = [
-			$Guardian2,$Guardian3,$Patroller2,
-			$Patroller3,$Patroller4,$Patroller5,
+			$Guardian2,$Patroller2,$Patroller3,
+			$Patroller4,$Patroller5,$Guardian3
 		]
 		$AmbushArea/CollisionShape2D.set_deferred("disabled", true)
 		var offset
 		for enemy in ambush_enemies:
-			offset = ambush_enemies.find(enemy)*500
-			enemy.position = Vector2(21400+offset, 8185)
+			offset = ambush_enemies.find(enemy)*450
+			enemy.position = Vector2(21400+offset, 8150)
 # ------------------------------------------------------------------------------
 
 func _on_CutsceneArea_body_entered(body):
@@ -336,6 +336,11 @@ func _on_RunBossArea_body_entered(body):
 		$BOSS_IN_CAVE.is_moving = true
 		$RunBossArea/CollisionShape2D.set_deferred("disabled", true)
 		$AnimationPlayer.play("RUN_BOSS")
+		$PilesOfLeaves/PileOfLeaves4.global_position = Vector2(22540, 7493)
+		if $BreakableFloors.find_node("BreakableFloor5"):
+			SaveLoad.delete_actor($BreakableFloors.find_node("BreakableFloor5"))
+		if $BreakableFloors.find_node("BreakableFloor6"):
+			SaveLoad.delete_actor($BreakableFloors.find_node("BreakableFloor6"))
 # ------------------------------------------------------------------------------
 
 func _on_SplashArea_body_entered(body):

@@ -57,8 +57,18 @@ func _on_Chimney_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	$Background/House3/Sprite2.show()
-
+# ------------------------------------------------------------------------------
 
 func _on_BarArea_body_entered(body):
 	if body.get_collision_layer_bit(2) and "Patroller" in body.name:
 		$AnimationPlayer.play("BARS_UP")
+# ------------------------------------------------------------------------------
+
+func _on_OneLeafTutorial_body_entered(body, tutorial_sign):
+	if body.get_collision_layer_bit(1):
+		get_node(tutorial_sign).find_node("Sprite").show()
+# ------------------------------------------------------------------------------
+
+func _on_OneLeafTutorial_body_exited(body, tutorial_sign):
+	if body.get_collision_layer_bit(1):
+		get_node(tutorial_sign).find_node("Sprite").hide()

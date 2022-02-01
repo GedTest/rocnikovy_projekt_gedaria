@@ -41,7 +41,8 @@ func _process(delta):
 	._process(delta)
 	
 	if Global.prefered_language != DEMOlang:
-		DEMOlang()
+#		DEMOlang()
+		pass
 	
 	if $PilesOfLeaves/PileOf6Leaves2.is_complete:
 		$Winds/Wind10.impulse = Vector2(700, -2400)

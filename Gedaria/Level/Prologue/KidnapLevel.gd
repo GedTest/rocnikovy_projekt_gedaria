@@ -25,7 +25,7 @@ func _ready():
 	for enemy in arr_soldiers:
 		enemy.is_moving = false
 # ------------------------------------------------------------------------------
-func _process(delta):
+func _physics_process(delta):
 	$Vladimir/Rake.show()
 	$BOSS_EARL.move()
 	

@@ -16,7 +16,7 @@ func _ready():
 	speed *= 1 if enemy.direction == 1 else -1
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	$Sprite.flip_h = true if enemy.direction == 1 else false
 	if abs(position.x) > starting_pos+distance:
 		speed *= -1

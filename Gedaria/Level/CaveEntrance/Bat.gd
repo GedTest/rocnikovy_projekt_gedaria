@@ -8,7 +8,7 @@ export (int) var height = 0
 var is_on_ground = false
 
 
-func _process(delta):
+func _physics_process(delta):
 	if not is_dead:
 		velocity.y = -GRAVITY.y
 		
@@ -75,10 +75,11 @@ func fly_back_up():
 func fly_down():
 	AudioManager.play_sfx(BAT_SFX, 1, 0, -15)
 	state_machine.travel('ATTACK')
-		
-	var vertical_distance = abs(self.position.y - player.position.y)
-	if vertical_distance > 0:
-		velocity.y += vertical_distance*2
+	
+	if self.player and self.has_player:
+		var vertical_distance = abs(self.position.y - player.position.y)
+		if vertical_distance > 0:
+			velocity.y += vertical_distance*2
 # ------------------------------------------------------------------------------
 
 func bite(player):

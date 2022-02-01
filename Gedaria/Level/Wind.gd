@@ -50,7 +50,7 @@ func _on_Wind_body_entered(body):
 		if not can_blow_player and "BOSS_ONIHRO" in body.name:
 			if body.can_be_hitted_again:
 				body.state_machine.travel("HIT")
-				body.blowing_time += 0.016
+				body.blowing_time += 0.015
 				if body.blowing_time >= 1.5:
 					Global.level_root().find_node("TutorialSign2")\
 					.find_node("Area").find_node("CollisionShape2D")\

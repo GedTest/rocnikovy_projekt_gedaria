@@ -65,6 +65,7 @@ func _process(delta):
 
 func _on_StartButton_pressed():
 	AudioManager.play_sfx(MENU_BTN_SFX)
+	$StartGame/Continue.disabled = false if latest_slot >= 0 else true
 	$StartGame.visible = false if $StartGame.visible else true
 # ------------------------------------------------------------------------------
 

@@ -28,7 +28,7 @@ func _ready():
 		$Particles2D.rotation_degrees += angle
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	if direction is Vector2:
 		position += speed * direction * int(is_moving) * delta
 	else:

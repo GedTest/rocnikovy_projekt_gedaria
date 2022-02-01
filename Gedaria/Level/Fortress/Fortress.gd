@@ -92,6 +92,7 @@ func _process(delta):
 		$BOSS_EARL.is_moving = false
 		$BOSS_EARL.has_jumped = true
 		$BOSS_EARL.kick()
+		$VladimirNotOutOfScreen/CollisionShape2D2.disabled = false
 		yield(get_tree().create_timer(1.0), "timeout")
 		$Vladimir.has_rake = false
 		$Vladimir/Rake.hide()

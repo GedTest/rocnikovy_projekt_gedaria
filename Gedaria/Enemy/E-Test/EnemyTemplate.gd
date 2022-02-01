@@ -197,7 +197,8 @@ func _on_WallDetection_body_entered(body):
 
 func jump_back(var obj=self, var distance = 100, var time = 0.3, dir=-direction):
 	# KNOCKBACK obj IN distance AND direction
-	$AdvancedTween.play(time, obj.position.x, obj.position.x + (distance*dir))
+	if distance > 0:
+		$AdvancedTween.play(time, obj.position.x, obj.position.x + (distance*dir))
 # ------------------------------------------------------------------------------
 
 func _on_AdvancedTween_advance_tween(sat):

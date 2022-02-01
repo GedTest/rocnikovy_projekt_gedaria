@@ -7,7 +7,7 @@ var speed = 0
 var is_flying = false
 
 
-func _process(delta):
+func _physics_process(delta):
 	position.x -= speed
 	
 	if $RayCast2D.is_colliding() and is_flying:

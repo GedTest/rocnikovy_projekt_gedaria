@@ -75,6 +75,8 @@ func _on_LoadingTimer_timeout():
 	$CanvasLayer/UserInterface.load_ui_icons()
 	
 	$Sign.scene = Global.get_next_level()
+	if Global.last_map == "res://Level/CaveEntrance/Lil cave.tscn":
+		$Sign.scene = "res://Level/CultInCave/Mine shaft.tscn"
 	
 	var vladimir_data = Global.vladimir_data()
 	if Global.vladimir_has_previous_data():
@@ -104,7 +106,7 @@ func _process(delta):
 			
 		$CanvasLayer/HealthButton/Counter.text = str($Vladimir.max_health)+"/"+str(HEALTH_LIMIT)
 		$CanvasLayer/AttackButton/Counter.text = str($Vladimir.damage)+"/"+str(DAMAGE_LIMIT)
-		$CanvasLayer/SpeedButton/Counter.text = str((speed_upgrade_counter-1)*5)+"%/"+str(SPEED_LIMIT)+"%"
+		$CanvasLayer/SpeedButton/Counter.text = str(floor(($Vladimir.speed-480) / 24) * 5)+"%/"+str(SPEED_LIMIT)+"%"
 		$CanvasLayer/HeavyAttackButton/Counter.text = str($Vladimir.heavy_attack_increment)+"/"+str(HEAVY_ATTACK_LIMIT)
 		
 		$Vladimir.is_moving = not $Vladimir.is_moving
@@ -183,7 +185,7 @@ func _on_SpeedButton_pressed():
 		
 			$Vladimir.speed += $Vladimir.speed * 0.05
 			
-			$CanvasLayer/SpeedButton/Counter.text = str((speed_upgrade_counter-1)*5)+"%/"+str(SPEED_LIMIT)+"%"
+			$CanvasLayer/SpeedButton/Counter.text = str(floor(($Vladimir.speed-480) / 24) * 5)+"%/"+str(SPEED_LIMIT)+"%"
 			SaveLoad.save_to_file(4)
 # ------------------------------------------------------------------------------
 
@@ -203,10 +205,14 @@ func _on_HeavyAttackButton_pressed():
 func set_stats():
 	var slot = SaveLoad.slots["slot_4"]
 	var stats = "["+Global.arr_levels[Global.arr_levels.find(Global.last_map)]+", Sign]"
-	var vladimir_data = SaveLoad.slots["slot_4"][Global.vladimir_data()]["collected_acorn_in_level_counter"]
-
-	if vladimir_data:
-		$Statistics/AcornLabel.text = str(vladimir_data)+"/"+str(slot[stats]["level_acorns"])
+	var vladimir_collected_acorns = SaveLoad.slots["slot_4"][Global.vladimir_data()]["collected_acorn_in_level_counter"]
+	
+	if Global.last_map == "res://Level/CaveEntrance/Lil cave.tscn":
+		stats = "[res://Level/CaveEntrance/Lil cave.tscn, Sign]"
+		
+	if vladimir_collected_acorns:
+		$Statistics/AcornLabel.text = str(vladimir_collected_acorns)+"/"+str(slot[stats]["level_acorns"])
+	# E X C E P T I O N   D E L E T E   28.2.
 	else:
 		$Statistics/AcornLabel.text = "0/"+str(slot[stats]["level_acorns"])
 	$Statistics/LeafLabel.text = str(slot[stats]["collected_unique_leaves"])+"/"+str(slot[stats]["level_unique_leaves"])

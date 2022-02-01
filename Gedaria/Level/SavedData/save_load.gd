@@ -211,7 +211,7 @@ func save_to_file(slot):
 
 	yield(get_tree().create_timer(0.25), "timeout")
 	var save_game = File.new()
-
+	
 	save_game.open(paths[slot-1], File.WRITE)
 
 	save_game.store_line(to_json(current_data.duplicate()))

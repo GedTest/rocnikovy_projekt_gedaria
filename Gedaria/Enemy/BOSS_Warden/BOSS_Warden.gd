@@ -46,7 +46,7 @@ func say_dialog():
 	$Dialog.queue_free()
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	if not is_dead and not is_throwing:
 		# DAMPING VELOCITY FROM JUMP IMPULSE
 		if not can_jump and is_in_air:

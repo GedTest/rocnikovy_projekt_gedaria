@@ -110,6 +110,7 @@ func _on_WindArea_body_entered(body):
 		$PilesOfLeaves/PileOf4Leaves.set_collision_layer_bit(3, true)
 		yield(get_tree().create_timer(1.5, false), "timeout")
 		$PilesOfLeaves/PileOf4Leaves.set_collision_layer_bit(3, false)
+		$Tutorial2.position.y = 9120
 		SaveLoad.delete_actor($WindArea)
 # ------------------------------------------------------------------------------
 
@@ -163,11 +164,12 @@ func _on_Gateway7_body_entered(body):
 
 func _on_BridgeArea2D_body_entered(body):
 	if body.get_collision_layer_bit(1):
-		$WindyBridge/CollisionShape2D.set_deferred("disabled", false)
+		$WindyBridge/CollisionShape2D.set_deferred("disabled", true)
 		$Winds/WindBlowerWind.show()
-		for collision in $Winds/WindBlowerWind.get_children():
-				if collision is CollisionShape2D:
-					collision.set_deferred("disabled", false)
+		SaveLoad.delete_actor($LeafHolders.find_node("LeafHolder11"))
+		SaveLoad.delete_actor($LeafHolders.find_node("LeafHolder12"))
+		SaveLoad.delete_actor($LeafHolders.find_node("LeafHolder13"))
+		SaveLoad.delete_actor($LeafHolders.find_node("LeafHolder14"))
 # ------------------------------------------------------------------------------
 
 func _on_UnderLevelKillZone_body_entered(body):

@@ -32,7 +32,7 @@ func _ready():
 	$CanvasLayer/BossHPBar/Label.text = Languages.languages[Global.prefered_language]["boss3"]
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	if not is_dead:
 		if Global.level_root().filename == "res://Level/Fortress/Fortress.tscn":
 			$CanvasLayer/BossHPBar.calc_health(self.health, self.max_health)

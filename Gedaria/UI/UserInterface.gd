@@ -62,6 +62,7 @@ func _process(delta):
 			$UniqueLeaf.value = vladimir.heavy_attack_increment
 		
 		$Slingshot.visible = vladimir.has_slingshot
+		$LeafBlower.visible = vladimir.has_learned_leaf_blower
 # ------------------------------------------------------------------------------
 
 func update_health(var value, var condition : String, var current_health, \

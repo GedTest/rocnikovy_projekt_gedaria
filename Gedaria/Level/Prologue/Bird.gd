@@ -13,7 +13,7 @@ var movement_speed = Vector2(0,0)
 var gravity = 0
 
 
-func _process(delta):
+func _physics_process(delta):
 	position += movement_speed
 	
 	if position.x >= GOAL_DESTINATION:

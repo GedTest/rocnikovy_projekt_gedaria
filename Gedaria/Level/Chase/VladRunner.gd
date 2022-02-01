@@ -21,7 +21,7 @@ func _ready():
 	AudioManager.play_sfx(WALK_SFX, 1, 0, -31)
 	state_machine = $AnimationTree.get("parameters/playback")
 
-func _process(delta):
+func _physics_process(delta):
 	if not is_hitted:
 		velocity.x = speed*modify_speed if not is_slow_motion else (speed/2.5)*modify_speed
 		velocity.y += GRAVITY.y if not is_slow_motion else GRAVITY.y / 5

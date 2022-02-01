@@ -20,6 +20,7 @@ onready var spawn_positions = [$Position1.position,$Position2.position,
 
 func _ready():
 	Global.can_be_paused = false
+	Global.first_entrance = true
 	connect("crashed_in_pile", $BOSS_IN_CAVE, "on_crashed_in_pile")
 	
 	$Vladimir/Camera.current = false
@@ -42,7 +43,6 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 	Global.is_pausable = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$CanvasLayer/UserInterface.load_ui_icons()
-	$Vladimir.heavy_attack_counter = 0
 	vlad_damage = $Vladimir.damage
 	
 	boss = $BOSS_IN_CAVE
@@ -80,7 +80,7 @@ func _on_LoadingTimer_timeout(): # Yield() doesn't work in ready() so an autosta
 # ------------------------------------------------------------------------------
 
 # warning-ignore:unused_argument
-func _process(delta):
+func _physics_process(delta):
 	if not find_node("BOSS_IN_CAVE"):
 		boss = $MineCart2/BOSS_IN_CAVE
 	if not boss.is_in_minecart:
@@ -149,7 +149,7 @@ func _on_EndArea_body_entered(body):
 		Fullscreen.is_sign_entered = true
 		Fullscreen.show_loading_screen()
 		SaveLoad.save_to_slot("slot_4")
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(1.5), "timeout")
 		get_tree().change_scene("res://Level/CultInCave/Mine shaft.tscn")
 # ------------------------------------------------------------------------------
 
@@ -179,6 +179,9 @@ func _on_BoosterArea_body_entered(body):
 		body.is_in_minecart = true
 		body.velocity.y = -200
 		body.can_emit_signal = false
+		body.find_node("Warning").hide()
+		body.find_node("ShieldRight").hide()
+		body.find_node("ShieldLeft").hide()
 		
 	if body.get_collision_layer_bit(1):
 		body.is_moving = false

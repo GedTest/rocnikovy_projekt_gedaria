@@ -17,7 +17,7 @@ func _ready():
 	$Patroller/Enemy.hide()
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	if is_cutscene_playing:
 		$Guardian.move()
 		$Patroller.move($Patroller.from, $Patroller.to)

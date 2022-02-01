@@ -50,7 +50,7 @@ func _ready():
 	$BossHPBar/Label.text = Languages.languages[Global.prefered_language]["boss1"]
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		$TutorialSign3.hide()
 		 

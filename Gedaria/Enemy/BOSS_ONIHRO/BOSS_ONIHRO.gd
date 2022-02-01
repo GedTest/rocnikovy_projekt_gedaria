@@ -40,7 +40,7 @@ func _ready():
 	$CanvasLayer/BossHPBar/Label.text = Languages.languages[Global.prefered_language]["boss4"]
 # ------------------------------------------------------------------------------
 
-func _process(delta):
+func _physics_process(delta):
 	if not is_dead:
 		$CanvasLayer/BossHPBar.calc_health(self.health, self.max_health)
 		
