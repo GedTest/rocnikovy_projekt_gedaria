@@ -32,7 +32,6 @@ func _ready():
 		Global.is_first_entrance(self.filename)
 	
 	get_tree().set_pause(true)
-	Global.can_be_paused = true
 	SaveLoad.load_map()
 	Fullscreen.hide_elements()
 	self.play_level_title_effect()

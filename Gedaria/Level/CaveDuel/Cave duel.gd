@@ -19,7 +19,6 @@ onready var spawn_positions = [$Position1.position,$Position2.position,
 
 
 func _ready():
-	Global.can_be_paused = false
 	Global.first_entrance = true
 	connect("crashed_in_pile", $BOSS_IN_CAVE, "on_crashed_in_pile")
 	

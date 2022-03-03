@@ -10,6 +10,13 @@ const LEVELS = [
 	"res://Level/Prologue/KidnapLevel.tscn",
 	"res://Level/MainMenu/MainMenu.tscn"]
 
+const BOSS_LEVES = [
+	"res://Level/Prologue/TutorialLevel.tscn",
+	"res://Level/CaveDuel/Cave duel.tscn",
+	"res://Level/Fortress/Fortress.tscn",
+	"res://Level/MerchantSquirrel.tscn"
+]
+
 const BACKGROUNDS = [
 	"res://Level/MainMenu/Pause_bg.png", 
 	"res://Level/MainMenu/Pause_bg_full.png"
@@ -31,16 +38,22 @@ func _process(delta):
 		OS.window_fullscreen = not OS.window_fullscreen
 	
 	if Input.is_action_just_pressed("pause") and Global.is_pausable:
-		if Global.can_be_paused:
-			self.pause()
+		self.pause()
 # ------------------------------------------------------------------------------
 
 func _input(event):
-	for input in InputMap.get_actions():
-		if "quick_slot" in input:
-			var number = input[-1]
-			if Input.is_action_just_pressed("quick_slot"+number):
-				SaveLoad.save_to_file(int(number))
+	if not Global.level_root().filename in BOSS_LEVES:
+		for input in InputMap.get_actions():
+			if "quick_slot" in input:
+				var number = input[-1]
+				if Input.is_action_just_pressed("quick_slot"+number):
+					$QuickSave.show()
+					$QuickSave.playing = true
+					SaveLoad.save_to_file(int(number))
+					
+					yield(get_tree().create_timer(3.0), "timeout")
+					$QuickSave.hide()
+					$QuickSave.playing = false
 # ------------------------------------------------------------------------------
 
 func pause():
@@ -54,6 +67,8 @@ func pause():
 		
 		if key_binding.can_close:
 			can_close_main_menu = true
+		
+		canvas_layer.find_node("SaveButton").disabled = Global.level_root().filename in BOSS_LEVES
 		
 		if not settings.is_visible:
 			ui.visible = not ui.visible
@@ -76,11 +91,6 @@ func pause():
 				if self.get_tree().paused and Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
 					Input.set_mouse_mode(VISIBLE)
 				Input.set_mouse_mode(cursor_visibility)
-			
-	elif Global.level_root().filename == LEVELS[1]:
-		$TextureRect.texture = load(BACKGROUNDS[1])
-		$TextureRect.visible = not $TextureRect.visible
-		self.get_tree().paused = not self.get_tree().paused
 # ------------------------------------------------------------------------------
 
 func hide_elements():

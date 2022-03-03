@@ -45,7 +45,6 @@ onready var arr_buttons = [
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().set_pause(true)
-	Global.can_be_paused = false
 	SaveLoad.load_map()
 	
 	var squirrel = $Tree/Squirrel
@@ -81,7 +80,15 @@ func _on_LoadingTimer_timeout():
 	var vladimir_data = Global.vladimir_data()
 	if Global.vladimir_has_previous_data():
 		$Vladimir.set_values(SaveLoad.slots["slot_4"][vladimir_data])
+	$Vladimir.health = $Vladimir.max_health
+	
 	self.set_stats()
+	
+#	for key in SaveLoad.current_data.keys():
+#		if key.substr(1,33) != "res://Level/MerchantSquirrel.tscn" or \
+#		key.substr(1,38) != "res://Level/CultInCave/Mine shaft.tscn":
+#			print(key)
+#			SaveLoad.current_data.erase(key)
 # ------------------------------------------------------------------------------
 #	var sum = 0
 #	for i in range(1,9):
@@ -212,9 +219,10 @@ func set_stats():
 		
 	if vladimir_collected_acorns:
 		$Statistics/AcornLabel.text = str(vladimir_collected_acorns)+"/"+str(slot[stats]["level_acorns"])
-	# E X C E P T I O N   D E L E T E   28.2.
+	# E X C E P T I O N   D E L E T E   30. 3.
 	else:
 		$Statistics/AcornLabel.text = "0/"+str(slot[stats]["level_acorns"])
+	# E X C E P T I O N   D E L E T E   30. 3.
 	$Statistics/LeafLabel.text = str(slot[stats]["collected_unique_leaves"])+"/"+str(slot[stats]["level_unique_leaves"])
 	$Statistics/EnemyLabel.text = str(slot[stats]["killed_enemies"])+"/"+str(slot[stats]["level_enemies"])
 

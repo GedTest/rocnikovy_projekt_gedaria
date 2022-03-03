@@ -38,7 +38,6 @@ var is_pausable = true
 var is_yield_paused = false
 var first_entrance = true
 var is_boss_on_map = false
-var can_be_paused = true
 
 
 func level_root():

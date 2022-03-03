@@ -39,7 +39,6 @@ func restart_level():
 
 func update_current_data():
 	if level_root() != null:
-
 		for node in get_tree().get_nodes_in_group("persistant"):
 			var node_data = [] # array
 
@@ -72,8 +71,7 @@ func update_current_data():
 		current_data["globals"] = {
 			"blue_berries":Global.blue_berries,
 			"leaves_in_cave_counter":Global.leaves_in_cave_counter,
-			"has_key":Global.has_key,
-			"can_be_paused":Global.can_be_paused
+			"has_key":Global.has_key
 		}
 # ------------------------------------------------------------------------------
 
@@ -108,7 +106,7 @@ func load_map():
 		# DELETE OBJECTS
 		for key in keys_in_map:
 			if not(current_data.has( str(key[0]) )): # if c_d doesn't have key
-				key[1].queue_free()                # free it from memory
+				key[1].queue_free()                  # free it from memory
 	else:
 		visited_maps.append(level_root().filename)
 
@@ -198,7 +196,6 @@ func load_from_slot(slot_name):
 	Global.blue_berries = slots[slot_name]["globals"]["blue_berries"]
 	Global.leaves_in_cave_counter = slots[slot_name]["globals"]["leaves_in_cave_counter"]
 	Global.has_key = slots[slot_name]["globals"]["has_key"]
-	Global.can_be_paused = slots[slot_name]["globals"]["can_be_paused"]
 	
 	is_yield_paused = true
 	

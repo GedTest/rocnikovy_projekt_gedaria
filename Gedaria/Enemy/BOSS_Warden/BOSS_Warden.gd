@@ -18,7 +18,6 @@ var can_throw = false
 var is_throwing = false
 var can_jump = true
 var can_move_during_cutscene = true
-var is_immune = true
 var is_in_air = false
 var is_hitted_by_leaf = false
 
@@ -70,6 +69,9 @@ func _physics_process(delta):
 			self.jump()
 			is_done_once = false
 			can_throw = true
+			
+			if Global.level_root().find_node("TutorialSign2"):
+				Global.level_root().find_node("TutorialSign2").call_deferred("queue_free")
 			
 		# IS HE IN THE AIR ?
 		can_jump = true if $GroundRay.is_colliding() else false
@@ -203,25 +205,24 @@ func throw():
 # ------------------------------------------------------------------------------
 
 func hit(dmg, sound="res://sfx/warden_hit.wav"):
-	if not is_immune:
-		is_moving = false
-		
-		if is_blocking:
+	is_moving = false
+	
+	if is_blocking:
+		self.kick()
+	
+	if not is_blocking:
+		hit_in_row += 1
+		if hit_in_row == 3:
+			hit_in_row = 0
 			self.kick()
+			return
 		
-		if not is_blocking:
-			hit_in_row += 1
-			if hit_in_row == 3:
-				hit_in_row = 0
-				self.kick()
-				return
-			
-			if $stars.emitting:
-				$ShieldLeft.emitting = true
-				$ShieldRight.emitting = true
-				$stars.emitting = false
-			is_moving = true
-			.hit(dmg)
+		if $stars.emitting:
+			$ShieldLeft.emitting = true
+			$ShieldRight.emitting = true
+			$stars.emitting = false
+		is_moving = true
+		.hit(dmg)
 # ------------------------------------------------------------------------------
 
 func kick():

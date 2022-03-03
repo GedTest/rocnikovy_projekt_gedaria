@@ -28,10 +28,10 @@ func _on_Sign_body_entered(body):
 		if Global.level_root().filename != "res://Level/MerchantSquirrel.tscn"\
 		 and Global.level_root().filename != "res://Level/Prologue/KidnapLevel.tscn":
 			self.set_collectibles_values()
-			
+
 		elif Global.level_root().filename == "res://Level/MerchantSquirrel.tscn": 
 			body.collected_acorn_in_level_counter = 0
-			
+
 		Fullscreen.is_sign_entered = true
 		Fullscreen.find_node("PauseMenu").hide()
 		Fullscreen.show_loading_screen()
@@ -40,7 +40,7 @@ func _on_Sign_body_entered(body):
 		body.velocity = Vector2.ZERO
 		body.find_node("Rake").hide()
 		Global.stop_enemy_timers()
-			
+
 		yield(get_tree().create_timer(1.0), "timeout")
 		Fullscreen.is_sign_entered = false
 		SaveLoad.save_to_file(4)

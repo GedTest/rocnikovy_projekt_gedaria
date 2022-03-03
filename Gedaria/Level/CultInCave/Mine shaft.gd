@@ -157,7 +157,7 @@ func _on_MushroomSpawnTimer_timeout():
 	var rand_index = randi() % 4
 	mushroom.position = mushroom_positions[rand_index]
 	mushroom.hp = "plus"
-	if $Vladimir.health <= 6:
+	if $Vladimir.health <= 8:
 		$MushroomsBoss.call_deferred("add_child", mushroom)
 # ------------------------------------------------------------------------------
 
@@ -325,7 +325,7 @@ func _on_LeafBlowerEnable_body_exited(body):
 # ------------------------------------------------------------------------------
 
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
-	if $BOSS_IN_CAVE.is_dead:
+	if $BOSS_IN_CAVE.is_dead and $Bars2.position.y != 4830:
 		AudioManager.play_music(CAVE_MUSIC)
 		AudioManager.play_sfx(BARS_UP_SFX)
 		$AnimationPlayer.play("BARS_UP")
@@ -345,3 +345,19 @@ func _on_RunBossArea_body_entered(body):
 
 func _on_SplashArea_body_entered(body):
 	AudioManager.play_sfx(SPLASH_SFX, 0, 0, -6)
+# ------------------------------------------------------------------------------
+
+func _on_BatKillZone_area_entered(area):
+	if "Bat" in area.get_parent().name:
+		arr_bats.erase(area.get_parent())
+		area.get_parent().queue_free()
+# ------------------------------------------------------------------------------
+
+func _on_TwoLeafTutorial_body_entered(body, tutorial_sign):
+	if body.get_collision_layer_bit(1):
+		get_node(tutorial_sign).find_node("Sprite").show()
+# ------------------------------------------------------------------------------
+
+func _on_TwoLeafTutorial_body_exited(body, tutorial_sign):
+	if body.get_collision_layer_bit(1):
+		get_node(tutorial_sign).find_node("Sprite").hide()

@@ -81,6 +81,7 @@ func disable_wind():
 	for child in self.get_children():
 		if "CollisionShape2D" in child.name:
 			$CollisionShape2D.disabled = true
+			$Particles2D.emitting = false
 			self.hide()
 # ------------------------------------------------------------------------------
 

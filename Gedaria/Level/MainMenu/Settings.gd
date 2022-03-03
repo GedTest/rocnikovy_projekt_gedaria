@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-const FPS = ["10", "24", "30", "60", "120", "144", "240",]
+const FPS = ["10", "24", "30", "60", "120", "144",]
 const MSAA = ["Disabled", "2x", "4x", "8x", "16x",]
 const LANGUAGES = [
 	"english", "čeština", "slovenčina", 
@@ -110,6 +110,10 @@ func _on_MenuButton_item_selected(id):
 # ------------------------------------------------------------------------------
 
 func _on_FPSDropDown_item_selected(id):
+	# E X C E P T I O N   D E L E T E   30. 3.
+	if id == 6:
+		id = 3
+	# E X C E P T I O N   D E L E T E   30. 3.
 	Engine.target_fps = int(FPS[id])
 # ------------------------------------------------------------------------------
 

@@ -287,7 +287,11 @@ func spawn_leaves_in_range(number):
 		var leaf = LEAF_PATH.instance()
 		leaf.texture = "res://UI/list_lipa.png"
 		self.get_parent().get_node("Leaves").add_child(leaf)
-		leaf.global_position = Vector2(self.position.x, 550)
+		
+		var x_pos = self.position.x
+		if self.position.x > 400 and self.position.x < 900:
+			x_pos = 350
+		leaf.global_position = Vector2(x_pos, 550)
 # ------------------------------------------------------------------------------
 
 func on_crashed_in_pile():

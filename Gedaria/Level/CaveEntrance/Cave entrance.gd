@@ -32,6 +32,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact") and is_interactable:
 		#play animation of opening bars
 		$AnimationPlayer.play("BARS_UP")
+		$Winds/Wind.disable_wind()
+		$Winds/Wind20.disable_wind()
+		$Winds/Wind22.disable_wind()
 		Global.has_key = false
 		$CanvasLayer/UserInterface/Key.hide()
 		
@@ -115,3 +118,10 @@ func _on_TwoLeafTutorial_body_entered(body, tutorial_sign):
 func _on_TwoLeafTutorial_body_exited(body, tutorial_sign):
 	if body.get_collision_layer_bit(1):
 		get_node(tutorial_sign).find_node("Sprite").hide()
+# ------------------------------------------------------------------------------
+
+func _on_FreeObjectsArea_body_entered(body):
+	for node in get_tree().get_nodes_in_group("free"):
+		if is_instance_valid(node):
+			SaveLoad.delete_actor(node)
+	$FreeLeavesArea/CollisionShape2D.set_deferred("disabled", true)

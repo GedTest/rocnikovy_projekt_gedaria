@@ -26,7 +26,6 @@ onready var spawn_positions = [
 
 func _ready():
 	AudioManager.play_music(FOREST_MUSIC)
-	UnPausedForTutorialLevel.is_done_once = true
 	$Vladimir.has_rake = false
 	Fullscreen.hide_elements()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -51,6 +50,11 @@ func _ready():
 # ------------------------------------------------------------------------------
 
 func _physics_process(delta):
+	if Input.is_action_pressed("block") and find_node("TutorialSign2"):
+		if $Vladimir.has_learned_blocking:
+			find_node("TutorialSign2").call_deferred("queue_free")
+	
+	
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		$TutorialSign3.hide()
 		 
@@ -99,15 +103,13 @@ func _physics_process(delta):
 	
 	if is_boss_on_map:
 		if is_pause_time:
-			if $Boss.state_machine.get_current_node() == "ATTACK" and $Boss.has_player:
-				is_pause_time = false
-				yield(get_tree().create_timer(0.6), "timeout")
-				Fullscreen.pause()
-				$TutorialSign.call_deferred("queue_free")
-				yield(get_tree().create_timer(2.5), "timeout")
-				$Vladimir.has_learned_blocking = true
-				Global.is_pausable = true
-				$C/TutorialSign2.show_text()
+			is_pause_time = false
+			yield(get_tree().create_timer(1.0), "timeout")
+			$TutorialSign.call_deferred("queue_free")
+			yield(get_tree().create_timer(2.5), "timeout")
+			$Vladimir.has_learned_blocking = true
+			Global.is_pausable = true
+			$C/TutorialSign2.show_text()
 		
 		# BOSS HP BAR
 		$BossHPBar.show()

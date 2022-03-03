@@ -178,16 +178,16 @@ func _on_NewGame_pressed():
 			dir_to_remove.remove(file)
 	Global.reset_data()
 	yield(get_tree().create_timer(0.1), "timeout")
-	
+
 	var new_dir = Directory.new()
 	new_dir.make_dir("user://Saves")
-	
+
 	$StartButton.disabled = true
 	$LoadButton.disabled = true
 	$OptionButton.disabled = true
 	$CreditsButton.disabled = true
 	$QuitButton.disabled = true
-	
+
 	$AnimationPlayer.play("INTRO")
 # ------------------------------------------------------------------------------
 
